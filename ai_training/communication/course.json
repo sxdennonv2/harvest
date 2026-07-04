@@ -83,6 +83,15 @@
       "grid_label": "Reword for tone & audience",
       "theme": "tone-audience",
       "contexts": ["email"]
+    },
+    {
+      "slug": "summarise-a-thread-without-losing-the-ask",
+      "file": "summarise-a-thread-without-losing-the-ask.html",
+      "title": "Summarise a thread without losing the ask",
+      "nav_label": "Summarise",
+      "grid_label": "Summarise a thread",
+      "theme": "condense-summarise",
+      "contexts": ["email"]
     }
   ],
   "candidates": [
@@ -94,7 +103,6 @@
     { "theme": "structure-framing", "working_title": "From bullets to prose (and back)", "contexts": ["email", "document"], "survey_signal": "\"write emails/formalise\"; \"write intro email from data\"; moved from Outlook frame" },
     { "theme": "structure-framing", "working_title": "Lead with the answer: bottom line up front", "contexts": ["email", "document"], "survey_signal": "\"preparing submissions for GDM or other audiences\"" },
     { "theme": "correctness", "working_title": "The 60-second proof pass", "contexts": ["email"], "survey_signal": "\"spell check\"; \"proofreading\"; \"checking emails\"" },
-    { "theme": "condense-summarise", "working_title": "Summarise a thread without losing the ask", "contexts": ["email"], "survey_signal": "\"summarising a message into a particular tone or more condensed\"; \"summarising emails\"" },
     { "theme": "condense-summarise", "working_title": "Meeting notes to minutes & actions", "contexts": ["document", "email"], "survey_signal": "\"meeting notes to text\"; \"summarise meeting notes & populate minutes\"" }
   ]
 }
