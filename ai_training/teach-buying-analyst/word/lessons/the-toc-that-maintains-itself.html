@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0004 — The table of contents that maintains itself</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="breaks-and-sections.html">0003 — Sections</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="tables-that-behave.html">0005 — Tables</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="styles-not-formatting.html">Styles: the document's skeleton</a>
+    <a href="breaks-and-sections.html" class="current">Structure &amp; navigation</a>
+    <a href="tables-that-behave.html">Tables &amp; figures</a>
+    <a href="track-changes-without-fear.html">Review &amp; collaborate</a>
+    <a href="working-the-document-template.html">Templates &amp; consistency</a>
+  </nav>
+
+  <p class="kicker">Word to a High Standard · Lesson 0004</p>
+  <h1>The table of contents that maintains itself</h1>
+
+  <p class="mission">
+    Tied to your mission: a GDM submission gets read by people who jump straight to the
+    section they care about, and the table of contents is how they get there. A wrong
+    page number in front of a director doesn't read as a typo — it reads as a document
+    nobody proofed. This lesson makes sure the page numbers in your contents page are
+    never something you typed, so they're never something you forgot to fix.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice pack · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/word-practice-pack.html#scenario-b">Open the practice pack</a>
+      and find <strong>Scenario B — The fighting page numbers</strong>: the same
+      range-review submission, whose table of contents was typed by hand in March and
+      has been quietly lying ever since.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    Never type a table of contents. A real one is a <strong>field</strong> — a query
+    over your document's heading styles, generated once and refreshed on demand. It is
+    never edited directly, the same way you'd never hand-edit a formula's calculated
+    result instead of the formula. <em>Builds on
+    <a href="the-heading-hierarchy.html">The heading hierarchy</a>:</em> the field has
+    nothing to query if your headings aren't real Heading 1/2 styles — a typed-bold
+    line is invisible to it.
+  </p>
+  <p>
+    Typing a contents page by hand creates a second copy of the document's structure,
+    sitting apart from the actual structure the headings describe — and two copies of
+    anything diverge. That's exactly why the March table of contents lies: page 9
+    became page 11 sometime in April, the body moved on, and the typed list never
+    heard about it. The discipline that fixes this for good: a wrong entry is never a
+    contents-page problem, it's a body problem wearing a contents-page symptom. Fix the
+    heading, then refresh the field — never edit the rendered entry.
+  </p>
+
+  <h2>Why it matters to a buyer</h2>
+  <p>
+    A range-review submission goes through drafts across weeks — sections get added,
+    a subsection gets promoted, an annex grows by four pages. Every one of those edits
+    shifts page numbers below it. A director or GDM reader opening your contents page
+    to "Supplier scorecards, page 9" and finding section 4 instead doesn't conclude the
+    document moved — they conclude you didn't check your own work before it left your
+    outbox. A field-based contents page absorbs every one of those edits automatically;
+    a typed one accumulates a lie for every edit since the day you typed it.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Typing a contents page from what you can see in the document right now, then
+    hand-adjusting the page numbers whenever something "obviously" moved — which only
+    catches the moves you happened to notice. Its subtler cousin is just as costly:
+    having a real, field-generated table of contents, then clicking into its text and
+    retyping a wrong-sounding entry by hand. That edit isn't wrong for long — it's
+    wrong the moment someone next presses F9, because the field regenerates from the
+    headings and silently erases the hand-typed "fix", taking it with no warning and
+    no memory that you ever made it.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    Open Scenario B's repaired document (the one already carrying real Heading 1/2
+    styles from the heading-hierarchy lesson). First, get rid of the lie: click into
+    the March table of contents and delete it entirely — select the whole block and
+    press Delete, not just the numbers.
+  </p>
+  <p>
+    Now build the real one. Put your cursor where the contents page belongs, open the
+    <strong>References</strong> tab, and choose <strong>Table of Contents</strong> →
+    an Automatic Table style. Word walks every paragraph carrying a Heading style,
+    reads its outline level and current page, and lays out the field in front of you —
+    you did not type a single page number.
+  </p>
+  <p>
+    Prove it's alive before you trust it. Scroll into the body, add a new
+    <code>Heading 2</code> paragraph — anything, even a placeholder title — a page or
+    two above an existing entry. Click back into the table of contents (it greys to
+    show it's a field), right-click, and choose <strong>Update Field</strong> → Update
+    entire table (or select it and press <kbd>F9</kbd>). Watch your new heading appear
+    with the correct page number, and every entry below it renumber without you
+    touching one of them.
+  </p>
+  <p>
+    Now run the source-fix drill, because this is the habit that actually sticks. Say
+    an entry reads "Supplier Scorcards" — a misworded heading, not a contents-page
+    typo. Do not click into the table of contents and correct the spelling there. Find
+    that heading in the body, fix the word on the heading itself, then select the
+    table of contents and <kbd>F9</kbd> again. The correction appears in the field
+    because you fixed it at the only place a fix is allowed to live.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="2">
+      <p class="q">1. A contents-page entry reads "Supplier Scorcards" instead of
+        "Supplier Scorecards". Where do you fix it?</p>
+      <ul class="opts">
+        <li><button class="opt">click into the table of contents and retype that entry</button></li>
+        <li><button class="opt">delete the whole table of contents and leave it out</button></li>
+        <li><button class="opt">fix the heading text in the body, then update the field</button></li>
+        <li><button class="opt">leave it — the reader will understand</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="1">
+      <p class="q">2. Why did the March table of contents end up lying by April?</p>
+      <ul class="opts">
+        <li><button class="opt">Word's page-numbering feature is unreliable</button></li>
+        <li><button class="opt">it was a typed second copy of the structure, and the body kept changing without it</button></li>
+        <li><button class="opt">the document was saved in the wrong file format</button></li>
+        <li><button class="opt">someone deleted a section break</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. You've inserted a real, field-based table of contents. What
+        happens if you click into its text and hand-edit an entry?</p>
+      <ul class="opts">
+        <li><button class="opt">the next Update Field silently overwrites your edit with the queried value</button></li>
+        <li><button class="opt">Word locks the field so your edit can't be lost</button></li>
+        <li><button class="opt">the edit becomes permanent and the field stops updating</button></li>
+        <li><button class="opt">Word prompts you to save the edit into the heading automatically</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    On Scenario B's document: delete the typed March table of contents, insert a real
+    one from References → Table of Contents, then add one new heading anywhere in the
+    body and update the field. Self-check: every entry's page number must match the
+    page the heading actually falls on when you scroll to it — not "close enough", an
+    exact match, because that's the whole point of the field querying instead of you
+    typing.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — a table of contents that reflects the document's real heading
+    structure, not a remembered one — with more handed to AI at each rung. The check
+    never changes: every fix must land in the body or the field settings, never in the
+    rendered contents-page text.
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it diffs your two lists, it can't touch either one</h3>
+  <p>Aldi:GPT can't see your document, so hand it both lists as text: what your typed
+    table of contents currently says, and what your heading styles actually are. It
+    can spot the divergence; it cannot fix a single character of your file.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="9" readonly>I have a Word document with a hand-typed table of contents and I don't trust it. Here is what the typed table of contents currently says (heading text and page number, one per line):
+[paste your typed TOC entries here]
+
+Here is the real heading list from the document's nav pane, in order, with the current page each one falls on:
+[paste your heading list here]
+
+Compare the two. List every entry that's missing from the typed TOC, every page number that's wrong, and every heading whose wording drifted between the two lists. For each mismatch, tell me whether the fix belongs on the heading in the body or somewhere else — do not suggest editing the TOC text itself.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> the signature failure at this rung is Aldi:GPT
+      prescribing an edit to the table-of-contents text — "change that entry's page
+      number to 11". That's the wrong-copy instinct again, just handed to an AI. Every
+      fix it names must point at the body (a heading's wording) or at the field
+      settings (levels included, style applied) — never at the rendered entries
+      themselves.</p>
+  </div>
+
+  <h3>Rung 3 · M365 Copilot — the honest boundary: this is a native Word feature</h3>
+  <p>Inserting and updating a table of contents is not a Copilot capability at all —
+    it's the References tab, native to Word, and has been for decades. Copilot's
+    actual move here is summarising what the document's structure currently looks
+    like, or drafting a section you then apply a heading style to yourself.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Word)</span>
+    <div class="prompt">
+      <textarea rows="4" readonly>Summarise this document's current heading structure — list every Heading 1 and Heading 2 in order, exactly as worded in the document right now.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> any structural claim Copilot makes about the document —
+      "this document has six main sections", "the annex starts at Heading 1" — verify
+      against the nav pane yourself, not against the old typed table of contents.
+      Copilot summarises text; it doesn't know your typed TOC was ever wrong, so it
+      can repeat the same lie back to you if you feed it that instead of the real
+      structure.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it reports divergence, it never rewrites the field</h3>
+  <p>An agent with file access can open the .docx, walk the heading tree, read the
+    table-of-contents field's own stored entries, and report where they disagree —
+    but it must treat the rendered table of contents as read-only output, never a
+    place to write a fix.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="8" readonly>Write a python-docx script that opens a .docx file and reconciles its table of contents against its actual heading structure: (1) extract the heading tree — every paragraph styled Heading 1/2/3, in document order, with its text; (2) extract the TOC field's stored entries (text and referenced page/bookmark) without altering them; (3) report every divergence — headings missing from the TOC, TOC entries with no matching heading, and wording that differs between a heading and its TOC entry. The script must only report; it must never write to the TOC field's entries — any suggested fix is reported as "edit heading text" or "update the field", never as a rewritten TOC entry.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> run it against the March-TOC specimen first — it must
+      report the lies (the missing entries, the page drift, the reworded heading).
+      Then run it against your regenerated document — it must report zero divergence.
+      If it ever proposes rewriting a TOC entry directly instead of pointing at the
+      body or the field settings, the script has broken the one rule that matters
+      here and needs fixing before you trust its reports.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "diff two pasted lists" to "reconcile the file's own structures" — the
+    deliverable never changes: a table of contents that is a live query, not a typed
+    guess. What protects you at every rung is the same rule — fixes land in the body
+    or the field settings, never in the rendered entries — because that rule is what a
+    field <em>is</em>. Learn the References-tab craft first, so an AI proposing "just
+    edit that entry" reads to you as the bad habit it is, not a shortcut.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/en-us/office/insert-a-table-of-contents-882e8564-0edb-435e-84b5-1d8552ccf0c0">Microsoft — Insert a table of contents</a>
+    and <a href="https://support.microsoft.com/en-us/copilot-word">Microsoft — Copilot in Word</a>
+    for exactly what's native to Word versus what Copilot actually does.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want this retargeted to your actual submission
+    template — the real section names, the real annex structure — instead of the
+    practice pack's fictional range review? Send a sanitised copy of your document's
+    heading list and I'll rebuild the drill around it.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="breaks-and-sections.html">0003 — Sections</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="tables-that-behave.html">0005 — Tables</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — that is the source-fix discipline at work.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>
