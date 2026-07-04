@@ -8,8 +8,10 @@ Earlwood), analysed 2026-07-04. ✅ = populated from source; ⬜ = placeholder, 
 
 The unit contract — what one meal-plan artifact must contain, and how it moves through
 its lifecycle — is `meal_plans/CONTRACT.md`, drafted 2026-07-05 once the meal-selection
-mechanism and plan lifecycle were both fully specified. No generator skill exists yet;
-the contract is the shape a future one must satisfy.
+mechanism and plan lifecycle were both fully specified. The instantiate-stage skill,
+`.claude/skills/meal-plan-author/SKILL.md`, was extracted the same day — one invocation
+generates one resident's one-period `draft` plan against the contract. No verify skill
+exists yet, and no sample artifact has been generated.
 
 ## The axes
 
