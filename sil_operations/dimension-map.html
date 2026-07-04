@@ -133,17 +133,16 @@
 
 <div class="wrap">
   <header class="masthead">
-    <p class="eyebrow">Harvest · pipeline instrument · 05 Jul 2026 · frame v0.6-draft</p>
+    <p class="eyebrow">Harvest · pipeline instrument · 05 Jul 2026 · frame v0.7-draft</p>
     <h1>The SIL-operations dimension space</h1>
     <p class="lede">Harvest instance #4 (FRAME-LEDGER row 4) — a domain <b>promoted</b>
       from real source artifacts rather than elicited blind: three residents' actual
       Weekly Menu Planner <code>.docx</code> files, residence <b>Earlwood</b>, provider
       <b>Danny Met Sally (DMS)</b>. Today it's <b>fully manual</b> — Debbie hand-builds
       one plan per resident per 28-day period. The automation idea taking shape: Debbie
-      builds each resident up to 10 acceptable options per meal <b>quarterly</b>, and
-      the generator can pick randomly, stratify for <b>variety across the 28 days</b>,
-      or <b>harmonize</b> across a house wherever those options overlap — with Debbie
-      able to override any pick.</p>
+      builds each resident up to 10 acceptable options per meal <b>quarterly</b>; the
+      algorithm pre-fills a <b>dropdown per cell</b> (random, stratified for variety, or
+      harmonized across a house), and Debbie reviews and overrides any cell directly.</p>
     <div class="stats">
       <div class="stat"><div class="n">1</div><div class="l">domain frame</div></div>
       <div class="stat"><div class="n">1 / 5</div><div class="l">residences populated</div></div>
@@ -152,7 +151,7 @@
       <div class="stat"><div class="n">4×</div><div class="l">pool refresh · per year</div></div>
       <div class="stat"><div class="n">3</div><div class="l">allocation modes</div></div>
       <div class="stat"><div class="n">TBA</div><div class="l">support-worker roster · parked</div></div>
-      <div class="stat warn"><div class="n">4</div><div class="l">open questions</div></div>
+      <div class="stat warn"><div class="n">5</div><div class="l">open questions</div></div>
     </div>
   </header>
 
@@ -166,14 +165,13 @@
   </nav>
 
   <section id="axes">
-    <p class="eyebrow">The nine axes</p>
+    <p class="eyebrow">The ten axes</p>
     <h2>Dimensions and their values</h2>
     <p class="read">Solid green chips are populated from real source data; dashed
       chips are addressable but empty. The <b>weekly grid</b> is the one invariant
       axis here — stable across all 3 source residents, the closest analogue to the
-      AI-training frame's ladder. <b>Meal-option-pool</b> and <b>allocation-process</b>
-      are new this pass — see <a href="#selection">the mechanism</a>.
-      <b>Support-worker-roster</b> is now parked.</p>
+      AI-training frame's ladder. <b>Review-interface</b> is new this pass — see
+      <a href="#selection">the mechanism</a>. <b>Support-worker-roster</b> is parked.</p>
     <div class="axes">
       <div class="axis">
         <div class="axname">organisation<small>binding parameter</small></div>
@@ -264,6 +262,16 @@
         pick, any time. <b>Harmonization</b>: if an option overlaps across residents'
         pools in the same house/day/slot, assign it to all of them — one cook serves
         several, tracked for savings. Scoped to one residence; never crosses houses.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">review-interface<small>new axis, 05 Jul</small></div>
+        <div class="axkind">interaction shape</div>
+        <div class="axk">Every resident × meal-slot × day cell is a <b>dropdown</b> of
+          that resident's currently-valid option pool. The allocation algorithm
+          pre-fills each cell's initial value; Debbie reviews the whole plan and changes
+          any cell's selection directly — this <i>is</i> the override mechanism, made
+          concrete. Open: what format hosts an interactive review step, and how an edit
+          in a harmonized slot affects the others sharing it.</div>
       </div>
       <div class="axis">
         <div class="axname">support-worker-roster<small>parked, 05 Jul</small></div>
@@ -448,14 +456,22 @@
             <td class="slotcell">Count harmonized day/slot combinations and how many
               residents each covered, so the time/cost benefit is measured, not assumed</td>
             <td class="slotcell">Metric sketch only — no real numbers yet</td></tr>
+          <tr><th>5 · Review interface</th>
+            <td class="slotcell">Every resident × meal-slot × day cell renders as a
+              <b>dropdown</b> of that resident's option pool, pre-filled by steps 2–3's
+              output. Debbie reviews the whole plan and changes any cell directly —
+              the override, made concrete as a UI control</td>
+            <td class="slotcell">Interaction shape confirmed — hosting format (web UI?
+              spreadsheet dropdowns?) still open</td></tr>
         </tbody>
       </table>
     </div>
     <div class="decision" style="margin-top:16px">
-      <b>Open question this raises</b>
-      <p>How does an override on one resident's shared slot interact with
-        harmonization for the others sharing it — does the group keep the original
-        shared option, or does harmonization re-run?</p>
+      <b>Open questions this raises</b>
+      <p>How does changing one resident's dropdown in a harmonized slot affect the
+        others sharing it — do their dropdowns stay on the original shared option, or
+        does harmonization re-run around the edit? And what format actually hosts this
+        interactive review step?</p>
     </div>
   </section>
 
@@ -505,11 +521,21 @@
         repetition — a 10-option pool over 28 days still repeats each option ~2-3 times —
         just no clustering.</p>
     </div>
+    <div class="decision"><b style="color:var(--thyme-deep)">Resolved · 05 Jul 2026 (fifth pass)</b>
+      <p><b style="display:inline;color:var(--ink)">Review interface confirmed</b> —
+        every resident × meal-slot × day cell is a dropdown of that resident's option
+        pool. The algorithm pre-fills each cell; Debbie reviews and changes any cell
+        directly. This turns "Debbie can override any pick" into a concrete UI: the
+        dropdown itself is the override mechanism, not a separate control.</p>
+    </div>
     <div class="decision open"><b>Still open — before any contract/skill is built</b>
       <ul>
-        <li>How does Debbie's override interact with harmonization — does an override
-          for one resident break the shared option for others in that house/slot, or
-          does the group keep it?</li>
+        <li>How does changing one resident's dropdown in a harmonized slot affect the
+          others sharing it — do they keep the original shared option, or does
+          harmonization re-run around the edit?</li>
+        <li>What format hosts the interactive review step (per-cell dropdowns need more
+          than a static docx) — web/HTML UI? Spreadsheet with data-validation dropdowns?
+          Does the final signed-off artifact still render as static docx regardless?</li>
         <li>Typical residents-per-home (Earlwood = 3; unconfirmed as typical)</li>
         <li>Full list of residences/resident counts nationwide — deferred, sticking
           with Earlwood + 4 placeholders for now</li>
@@ -517,17 +543,17 @@
       </ul>
     </div>
     <div class="decision"><b>Next unit of work</b>
-      <p>Resolve the override/harmonization interaction, then draft the unit contract
-        (one printable 28-day meal-plan artifact per resident) and generate <b>one
-        sample artifact</b> — still no repo infrastructure, frame file + skill +
-        artifact only.</p>
+      <p>Resolve the override/harmonization interaction and the review-artifact format,
+        then draft the unit contract (one printable 28-day meal-plan artifact per
+        resident) and generate <b>one sample artifact</b> — still no repo
+        infrastructure, frame file + skill + artifact only.</p>
     </div>
   </section>
 
   <footer>source of truth: <b>sil_operations/dimension-map.html</b> (this file, in-repo) —
     generated against <code>sil_operations/frame.json</code> ·
     <code>sil_operations/DIMENSIONS.md</code> · sxdennonv2/harvest ·
-    branch <code>feat/sil-meal-plan-frame</code> · frame v0.6-draft, 05 Jul 2026</footer>
+    branch <code>feat/sil-meal-plan-frame</code> · frame v0.7-draft, 05 Jul 2026</footer>
 </div>
 
 <script>

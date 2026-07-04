@@ -1,8 +1,8 @@
 {
   "domain": "sil-operations",
   "unit": "meal-plan",
-  "frame_version": "0.6-draft",
-  "source": "Promoted from 3 real Weekly Menu Planner .docx files (residence: Earlwood, June 2026 cycle), analysed 2026-07-04. See FRAME-LEDGER.md row 4. Updated 2026-07-04 with Stuart's answers on organisation, process state, rotation, template, and roster. Updated 2026-07-05 (a) with roster volatility and per-house dinner-sharing conditionality, (b) parking the roster axis and adding the meal-option-pool + harmonization mechanism, then (c) with the option-pool's real cadence (quarterly, Debbie-built, time-boxed validity, live mid-quarter edits) and the allocation modes (random / stratified random / manual override).",
+  "frame_version": "0.7-draft",
+  "source": "Promoted from 3 real Weekly Menu Planner .docx files (residence: Earlwood, June 2026 cycle), analysed 2026-07-04. See FRAME-LEDGER.md row 4. Updated 2026-07-04 with Stuart's answers on organisation, process state, rotation, template, and roster. Updated 2026-07-05 (a) with roster volatility and per-house dinner-sharing conditionality, (b) parking the roster axis and adding the meal-option-pool + harmonization mechanism, (c) with the option-pool's real cadence (quarterly, Debbie-built, time-boxed validity, live mid-quarter edits) and the allocation modes (random / stratified random / manual override), (d) with the stratification variable (variety across the 28-day period), then (e) with the review interface's concrete UI shape - a dropdown per resident x meal-slot x day cell.",
   "privacy_note": "Documentation is internal (Stuart, 2026-07-04) - privacy anonymisation lifted for this repo. Real resident names now used. Still avoid publishing this repo externally without re-checking that footing.",
 
   "organisation": {
@@ -77,6 +77,14 @@
         "individual_meals_avoided = sum over harmonized slots of (residents_covered - 1) - the count of separate cooks NOT needed because of harmonization"
       ],
       "status": "sketch only - no calculation built, no real numbers yet"
+    },
+    "review_interface": {
+      "confirmed": "2026-07-05 - the review artifact's core interaction shape",
+      "shape": "every cell in the resident x meal-slot x day grid is a DROPDOWN, populated with that resident's currently-valid option pool (up to 10 named options)",
+      "initial_value": "pre-filled by the automated allocation process (random, stratified-random, or harmonization - whichever produced that cell's pick)",
+      "override_mechanism": "Debbie reviews the pre-filled plan and changes any cell's dropdown selection directly, cell by cell, as she reviews - this IS the override mechanism described in allocation_process.override, expressed as a concrete UI control rather than an abstract capability",
+      "implication_for_artifact_format": "a per-cell dropdown implies the review artifact needs to be interactive at review time (e.g. a web/HTML review UI, or a spreadsheet with data-validation dropdowns) even though the FINAL distributed artifact may still render as a static docx once Debbie signs off - open question: what format hosts the interactive review step itself",
+      "still_open": "when Debbie changes one resident's dropdown in a harmonized slot, what happens to the other residents sharing that slot - does their dropdown stay on the original shared option, or does the mechanism re-run harmonization around her edit? (same open question as allocation_process.override, now sharpened to a concrete UI behaviour)"
     }
   },
 
@@ -228,7 +236,8 @@
   ],
 
   "open_questions": [
-    "How does Debbie's override interact with harmonization - if she overrides one resident's allocation for a shared slot, does that break harmonization for the others sharing it that day, or do they keep the original shared option?",
+    "How does changing one resident's dropdown in a harmonized slot affect the others sharing it - do their dropdowns stay on the original shared option, or does harmonization re-run around Debbie's edit?",
+    "What format hosts the interactive review step (per-cell dropdowns need something more interactive than a static docx) - a web/HTML review UI? A spreadsheet with data-validation dropdowns? Does the FINAL signed-off artifact still render as static docx regardless?",
     "How many residents typically live in one SIL home (Earlwood = 3; unconfirmed as typical) - affects how much harmonization opportunity typically exists per house",
     "Full list of residences/resident counts nationwide - deferred, sticking with Earlwood + 4 placeholders for now",
     "Support-worker roster data source - PARKED (single 'TBA' value in use); revisit only if/when worth pursuing"

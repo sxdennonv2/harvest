@@ -18,6 +18,7 @@ Earlwood), analysed 2026-07-04. ✅ = populated from source; ⬜ = placeholder, 
 | `dinner-rotation` | **conditional, not a fixed rule** (clarified 2026-07-05) | 28-recipe rotation, identical across all 3 Earlwood residents for the same week/day. Sharing one dinner across a house is only possible when residents' dietary requirements are compatible — where they clash (allergens, texture, medical diets), residents need individual dinners instead. Cadence is arbitrary/manual, not a fixed constraint | frame — now resolved mechanically by `meal-option-pool` × `allocation-process` below, rather than assumed |
 | `meal-option-pool` | resident × time-boxed data | up to 10 named meal options per resident, per meal slot. **Built by Debbie, quarterly** (4x/year); each pool version has a start/end date it's valid between; options can be added/removed/altered mid-quarter, taking effect immediately until changed again | frame — a pool is a sequence of time-boxed versions per resident, not one static list |
 | `allocation-process` | crosscutting mechanism | three modes, confirmed 2026-07-05: **random** (uniform pick from the resident's currently-valid pool), **stratified random** (stratifies by **variety across the 28-day period** — spread option usage evenly rather than clustering repeats), **manual override** (Debbie can override any automated pick). Plus **harmonization**: detect an option shared across multiple residents' pools in the same house/day/slot and assign it to all of them | frame — the concrete answer to "can this house share a dinner", replacing manual judgement with overlap-detection, with an escape hatch for Debbie's judgement |
+| `review-interface` | **new, 2026-07-05** | every resident × meal-slot × day cell is a **dropdown** of that resident's currently-valid option pool, pre-filled by the allocation algorithm's output; Debbie reviews and can change any cell's selection directly — this IS the override mechanism, as a concrete UI control | frame — the artifact's core interaction shape; open question is what format hosts an interactive review step |
 | `support-worker-roster` | **parked, 2026-07-05** | single fixed value `TBA` — kept as a dimension so the shape isn't lost, but not pursued as live/volatile data right now | frame — revisit only if worth pursuing later |
 | `tier` | deployment | static (docx, current — **fully manual today**, hand-built by Debbie per resident per 28-day period) · live (generated per resident/period — the automation goal) | same frame + contract would serve both |
 
@@ -88,6 +89,25 @@ makes that evaluation automatic rather than a manual judgement call:
 This replaces "does Debbie judge this house compatible?" with "do these residents'
 option pools happen to overlap?" — and the override mode means her judgement is never
 locked out even if the mechanism gets something wrong.
+
+## Review interface: the override made concrete (2026-07-05)
+
+The abstract "Debbie can override any automated pick" now has a shape: **every cell in
+the resident × meal-slot × day grid is a dropdown**, populated with that resident's
+currently-valid option pool (up to 10 named options). The algorithm's output (random,
+stratified-random, or harmonization) pre-fills each dropdown's initial value; Debbie
+reviews the whole plan and changes any cell's selection directly, cell by cell, as she
+goes. This is the concrete review workflow, not just a capability statement.
+
+Two implications, both still open:
+- **Format**: a per-cell dropdown needs something more interactive than a static docx —
+  a web/HTML review UI? A spreadsheet with data-validation dropdowns (mirroring the
+  dropdown mechanic already used elsewhere in the office-app frame)? The final,
+  signed-off artifact might still render as static docx regardless of what hosts the
+  review step — that's a separate decision from the interactive review surface itself.
+- **Override × harmonization interaction**: if Debbie changes one resident's dropdown in
+  a harmonized slot, do the other residents sharing that slot keep their original shared
+  option, or does harmonization re-run around her edit? Not yet decided.
 
 ## Roster: parked (2026-07-05)
 
