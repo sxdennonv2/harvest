@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0005 — Tables that behave: widths, headers, repeat rows</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="the-toc-that-maintains-itself.html">0004 — TOC</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="figures-and-captions.html">0006 — Figures</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="styles-not-formatting.html">Styles: the document's skeleton</a>
+    <a href="breaks-and-sections.html">Structure &amp; navigation</a>
+    <a href="tables-that-behave.html" class="current">Tables &amp; figures</a>
+    <a href="track-changes-without-fear.html">Review &amp; collaborate</a>
+    <a href="working-the-document-template.html">Templates &amp; consistency</a>
+  </nav>
+
+  <p class="kicker">Word to a High Standard · Lesson 0005</p>
+  <h1>Tables that behave: widths, headers, repeat rows</h1>
+
+  <p class="mission">
+    Tied to your mission: a range-review submission lives or dies on its
+    supplier-comparison table, and tables that hold their shape across edits is
+    a named line in this course's mission. A table you have to fight every time
+    someone edits a cell isn't a table doing its job — it's a decision you
+    forgot to make, resurfacing as a chore.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice pack · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/word-practice-pack.html#scenario-c">Open the practice pack</a>
+      and find <strong>Scenario C — The drifting table</strong>: the submission's
+      supplier-comparison table, five suppliers by six criteria, misbehaving in
+      three specific ways.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    A table behaves when you tell it to. Left to its defaults, a Word table
+    negotiates its column widths with whatever you type into it — that
+    negotiation is what you're calling "drift" when a long supplier name shoves
+    every other column sideways. Three orders end the negotiation for good:
+    fixed column widths (AutoFit switched off, so the widths are a decision you
+    made, not an outcome the table arrived at), the header row set to
+    <strong>repeat</strong> across pages (a property you turn on once, not a
+    copy of the header row you re-paste every time it "falls off"), and real
+    tables for anything tabular — tab-spaced text that merely looks like
+    columns is a fake table, and it shatters the first time anyone edits a line
+    above it.
+  </p>
+  <p>
+    This is the same demand the Excel course's Tables lesson made of a range:
+    data as data, structured as what it is, not dressed up to look structured
+    while secretly being loose text or an accident of formatting.
+  </p>
+
+  <h2>Why it matters to an office assistant</h2>
+  <p>
+    The supplier-comparison table is the page a director actually reads before
+    signing off a range review — five suppliers, six criteria, and whichever
+    row has the lowest landed cost. You're often the one assembling and
+    tidying that submission before it goes out under the department's name, so
+    if the columns drift every time you fix a typo in "BrightHarvest Produce
+    Ltd", the table looks unfinished even when the numbers are right — and a
+    reviewer who doesn't trust the formatting starts doubting the figures too.
+    A header that vanishes on page 7 turns a comparison into a guessing game —
+    which column was "lead time" again? A submission that survives a
+    proof-pass with its table intact reads as a document someone controlled;
+    one you have to re-fix after every review round reads as one that's
+    controlling you, and that's an afternoon of drag-and-nudge you don't get
+    back.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Wrestling the drift instead of ending it: dragging column borders back
+    into place after every edit, because AutoFit is still switched on and
+    renegotiates the widths the moment anyone types a longer name. Re-pasting
+    the header row onto page 7 where it "fell off" — which doesn't fix
+    anything, it just creates a second header that is really just an ordinary
+    row wearing bold, invisible to the repeat-header setting and destined to
+    drift out of sync with the real one at the next edit.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    Open Scenario C's supplier-comparison table and discipline it against its
+    own spec, one order at a time. First, the widths: select the table, open
+    <strong>Table Layout → AutoFit → Disable AutoFit</strong>, then set each
+    column's width deliberately by dragging or by exact measurement in
+    <strong>Table Properties → Column</strong> — enough for the widest
+    realistic supplier name, not the widest name currently in the table. This
+    is the difference between a width and an accident: a width survives the
+    next edit because you decided it, not because nothing longer has been
+    typed yet.
+  </p>
+  <p>
+    Second, the header: click into the top row, open
+    <strong>Table Layout → Repeat Header Rows</strong> (or Table Properties →
+    Row → "Repeat as header row at the top of each page"), and confirm it's
+    ticked. Do not touch page 7 at all — if the setting is on, there is nothing
+    there to fix, because Word draws the header for you on every page the
+    table crosses. If a duplicate header already exists on page 7 from a
+    previous "fix", delete that row now; it's not a header, it's a row that
+    will drift out of step with the real one.
+  </p>
+  <p>
+    Third, the fake columns: below the main table, the summary line that looks
+    like two columns is tab-spaced text. Select it, <strong>Insert → Table →
+    Convert Text to Table</strong>, telling Word to split on tabs. Confirm it
+    lands as a real table with its own cells, not text that merely lines up
+    today.
+  </p>
+  <p>
+    Now the test, typed live: click into the shortest supplier name and retype
+    it as something absurdly long — "BrightHarvest Sustainable Produce Group
+    (Northern Region) Ltd" — and watch. Nothing else moves. The cell wraps to
+    a second line inside its fixed width; no column border shifts; the header
+    is exactly where it was.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="2">
+      <p class="q">1. Every time a supplier name gets edited, the table's
+        columns resize themselves and you drag the borders back. What's
+        actually happening?</p>
+      <ul class="opts">
+        <li><button class="opt">Word has a rendering bug that needs a repair install</button></li>
+        <li><button class="opt">the table is too wide for the page margins</button></li>
+        <li><button class="opt">AutoFit is on, so the table renegotiates widths with its content on every edit</button></li>
+        <li><button class="opt">the header row hasn't been set to repeat</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="1">
+      <p class="q">2. The header row keeps "vanishing" on page 7, so you paste
+        a copy of it there each time. What's wrong with that fix?</p>
+      <ul class="opts">
+        <li><button class="opt">nothing — a pasted header row is exactly as good as a repeating one</button></li>
+        <li><button class="opt">the pasted row is just bold text, not the repeat-header property, and will drift out of sync with the real header</button></li>
+        <li><button class="opt">Word only allows one header per document</button></li>
+        <li><button class="opt">it should be pasted on every page, not just page 7</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="3">
+      <p class="q">3. A summary line under the table lines up into neat
+        columns using the Tab key. Why is this a problem waiting to happen?</p>
+      <ul class="opts">
+        <li><button class="opt">it isn't a problem — tabs and tables look identical to a reader</button></li>
+        <li><button class="opt">tab-spaced text prints slower than a real table</button></li>
+        <li><button class="opt">it needs a caption to be valid</button></li>
+        <li><button class="opt">it's a fake table that only looks aligned today — the first edit above it, or a font change, shatters the alignment</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    On a table in your own work (or Scenario C's, if you don't have one to
+    hand), apply all three orders: AutoFit off with widths set by decision,
+    header row set to repeat, any tab-spaced pseudo-table converted to a real
+    one. Self-check: type a supplier or product name at least twice as long as
+    anything currently in the table, into any cell. If any column border
+    moves, or the header duplicates or disappears on a later page, one of the
+    three orders isn't actually applied yet — go back and check Table Layout
+    again before you call it done.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — discipline a table so it stops negotiating with its content —
+    with more handed to AI at each rung. The check never changes: type a long
+    name into it, and confirm zero drift.
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it maps symptoms to properties, you apply them</h3>
+  <p>Aldi:GPT can't see your document, so describe the table and what it's
+    doing wrong; it maps each symptom to the Word property that actually owns
+    it, and you go apply the fix yourself.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>I have a supplier-comparison table in Word: 5 suppliers as rows, 6 criteria as columns, spanning about 8 pages. Three problems: (1) column widths shift every time someone edits a cell with a longer supplier name, (2) the header row is missing on later pages, (3) a summary section below the table uses tab characters to fake two columns instead of a real table. For each problem, tell me exactly which Word property or setting is responsible and where to find it, so I can fix the underlying cause rather than the symptom.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> the signature failure at this rung is content
+      advice creeping into a formatting question — the model starts suggesting
+      you rewrite your comparison criteria or reorder the suppliers. You only
+      asked about properties; if the answer touches your content instead of
+      AutoFit, repeat-header, and table-conversion, discard that part and
+      re-ask.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — honest boundary: the properties are native, Copilot drafts around them</h3>
+  <p>Table Layout, AutoFit, and repeat-header are native Word controls — no AI
+    is involved in setting them, and none is needed. Copilot's real move in
+    Word is drafting and summarising text around a table, or formatting
+    consistently on request; be honest that fixing the table's own properties
+    is still done by hand, in the Table Layout tab.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Word)</span>
+    <div class="prompt">
+      <textarea rows="4" readonly>Write a one-sentence caption summarising what this supplier-comparison table shows, to sit above it. Don't change any numbers, supplier names, or the order of rows in the table itself.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> after any Copilot move that touches a document
+      containing a table, verify every number and every supplier name in the
+      table survived verbatim — models resist rewriting a table less than they
+      should, and a "helpful" pass can quietly reorder rows or round a figure.
+      This is the proof-pass discipline: read the table cell-by-cell against
+      the source before you trust it.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the table from the data files</h3>
+  <p>An agent with file access can generate the table directly from your
+    source data with python-docx — fixed widths from a spec, repeat-header set
+    programmatically, one real table per data source, rather than typed and
+    fought with by hand.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="8" readonly>Write a python-docx script that generates a supplier-comparison table in a .docx file from a data source I'll provide (columns: supplier name, and 5 numeric/text criteria). Requirements: (1) disable AutoFit and set each column to a fixed width I specify in a config list, not derived from content, (2) set the header row to repeat at the top of each page, (3) build one real table object per data source — no tab-spaced or manually aligned text anywhere, (4) leave all cell values exactly as given in the source, no rounding or reordering. Show me the column-width config as a separate, editable list at the top of the script.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> reconcile every total and figure in the
+      generated table against the source data file — parts to whole, nothing
+      dropped or rounded in transit. Then regenerate with one supplier name
+      swapped for a much longer one: confirm the diff touches only that cell's
+      text, and no column width, row, or other cell changes as a result.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI names which property to change" to "AI builds the table
+    programmatically from data" — the deliverable never changes: a table with
+    fixed widths, a repeating header, and no fake columns pretending to be
+    real ones. The check that protects you at every rung is the same one from
+    rung 1: type a long name in, and see whether anything moves that shouldn't.
+    Learn to discipline a table by hand first, so a generated one can be
+    verified against a standard you already know how to apply yourself.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/word">Microsoft Support — Word help &amp; learning</a>
+    and <a href="https://support.microsoft.com/en-us/copilot-word">Microsoft — Copilot in Word</a>
+    for exactly what Copilot can and can't do to a table.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want this retargeted to your actual
+    submission's table — the real criteria columns and the real supplier list
+    instead of Scenario C's fictional five? Send a sanitised extract and I'll
+    rebuild the walkthrough around it.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="the-toc-that-maintains-itself.html">0004 — TOC</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="figures-and-captions.html">0006 — Figures</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — that is the property doing its job.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

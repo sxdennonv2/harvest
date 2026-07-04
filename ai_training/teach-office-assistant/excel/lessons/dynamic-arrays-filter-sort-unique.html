@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0013 — Dynamic arrays: FILTER, SORT &amp; UNIQUE</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="add-sliders-to-pivottables.html">0012.1 — Slicers</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="number-and-custom-formatting.html">0014 — Number formatting</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="relative-and-absolute-references.html">Source &amp; prepare</a>
+    <a href="logical-functions-and-iferror.html" class="current">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0013</p>
+  <h1>Dynamic arrays: FILTER, SORT &amp; UNIQUE</h1>
+
+  <p class="mission">
+    Tied to your mission: a PivotTable summarises, but sometimes you want a live <em>list</em> — the
+    distinct categories, or just the Snacks lines, refreshing themselves as the data changes.
+    <strong>UNIQUE</strong>, <strong>SORT</strong> and <strong>FILTER</strong> are formulas that
+    return a whole range at once — they "spill" — so one formula builds a list that used to need a
+    pivot or a manual copy.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">Dynamic arrays</span> tab — a product list with categories
+      and revenue sits ready for a spilled list of unique categories and a filtered view of one of
+      them.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    A dynamic array formula returns many results from a single cell and spills them into the cells
+    below and right — you type it once, in the top-left cell, and Excel fills the rest.
+    <span class="cell">UNIQUE</span> strips duplicates:
+    <span class="cell">=UNIQUE(A2:A15)</span>. Wrap it in <span class="cell">SORT</span> for an
+    ordered list: <span class="cell">=SORT(UNIQUE(A2:A15))</span>.
+  </p>
+  <p>
+    <span class="cell">FILTER</span> returns only the rows that meet a test:
+    <span class="cell">=FILTER(B2:C15, A2:A15="Snacks")</span> spills every Snacks product and its
+    revenue. If a spill is blocked by something in the way, you'll see
+    <span class="cell">#SPILL!</span> — clear the cells below and it fills. Point another formula at
+    the top cell with a <span class="cell">#</span> — <span class="cell">=COUNTA(E2#)</span> — to
+    count the whole spilled range however long it grows.
+  </p>
+
+  <h2>Why it matters to an office assistant</h2>
+  <p>
+    A lot of what crosses your desk is "give me the current list of X" — the active categories, the
+    products still in Snacks, the names on this month's roster — and today that probably means a
+    copy-paste-and-tidy each time someone asks. A spilled <span class="cell">SORT(UNIQUE(...))</span>
+    is that list built once, staying correct as the source changes, so you're not the person
+    re-running the same clean-up every week.
+  </p>
+  <p>
+    A <span class="cell">FILTER</span> does the same for "just show me the Snacks lines" requests —
+    a live view that sits next to the source without you touching it, so the master list stays intact
+    for whoever else needs the full picture. Both are the kind of self-updating building block that
+    keeps a shared workbook trustworthy under your name.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Copying a column, using Remove Duplicates, then sorting — a one-off snapshot that's wrong the next
+    time the data changes. And filtering the source in place to "just look at Snacks", which hides the
+    other rows from everyone else. Spill a formula instead and the list maintains itself.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    On the <span class="cell">Dynamic arrays</span> tab, in <span class="cell">E2</span> type
+    <span class="cell">=SORT(UNIQUE(A2:A15))</span> and press Enter — a clean, ordered list of
+    categories spills down from that one cell. In <span class="cell">G2</span> type
+    <span class="cell">=FILTER(B2:C15, A2:A15="Snacks")</span> — every Snacks product and its revenue
+    spills into <span class="cell">G</span> and <span class="cell">H</span>. Don't fill these down;
+    the single formula does it all. Change a category in the data and watch both lists update.
+  </p>
+  <p>
+    <em>Builds on tables:</em> point these formulas at a Table's columns instead of
+    <span class="cell">A2:A15</span> and the spill grows and shrinks with the table automatically —
+    the structured range from the tables lesson doing the range-management for you.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="2">
+      <p class="q">1. "Spilling" means a formula …</p>
+      <ul class="opts">
+        <li><button class="opt">shows an error</button></li>
+        <li><button class="opt">must be filled down manually</button></li>
+        <li><button class="opt">returns many results from one cell into the cells below/right</button></li>
+        <li><button class="opt">rounds its result</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">2. A sorted, de-duplicated category list comes from …</p>
+      <ul class="opts">
+        <li><button class="opt">=SORT(UNIQUE(A2:A15))</button></li>
+        <li><button class="opt">=SUM(A2:A15)</button></li>
+        <li><button class="opt">=FILTER(A2:A15)</button></li>
+        <li><button class="opt">=UNIQUE(SUM(A2:A15))</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="1">
+      <p class="q">3. <span class="cell">#SPILL!</span> usually means …</p>
+      <ul class="opts">
+        <li><button class="opt">the formula is wrong</button></li>
+        <li><button class="opt">something is blocking the range the result needs</button></li>
+        <li><button class="opt">the data is too small</button></li>
+        <li><button class="opt">you need to press F9</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Build both spills on the <span class="cell">Dynamic arrays</span> tab. Confirm the category list is
+    sorted and has no duplicates, and that the FILTER shows only Snacks. Then add a new Snacks row to
+    the data and watch it appear in the filtered list with no edit. Try
+    <span class="cell">=SORT(FILTER(B2:C15, A2:A15="Snacks"), 2, -1)</span> to sort the filtered lines
+    by revenue, highest first.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — a live unique list and a live filtered view — with more handed to AI at each rung. The
+    check never changes: does the list de-duplicate and sort, and does the filter update when the data
+    changes?
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it writes the formula, you place it</h3>
+  <p>Aldi:GPT can't see your workbook, so it writes the formula; you place and verify it.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I'm using Excel with dynamic arrays. Column A is Category, column B is Product and column C is Revenue, data in rows 2 to 15. Write me a formula for E2 that spills a sorted list of the unique categories, and a formula for G2 that spills only the Snacks rows showing Product and Revenue. Explain how spilling works and what #SPILL! means.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer uses <span class="cell">SORT(UNIQUE(...))</span> and
+      <span class="cell">FILTER(B2:C15, A2:A15="Snacks")</span> — one formula each, not a filled-down
+      column.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it builds the spills in your workbook</h3>
+  <p>Copilot inside Excel can act on the sheet you have open. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>On the "Dynamic arrays" sheet, in E2 add a formula that spills a sorted, de-duplicated list of the categories in A2:A15. In G2 add a FILTER that spills the Product and Revenue (columns B and C) for rows where the category is "Snacks". Don't fill them down — let them spill.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> click <span class="cell">E2</span> and confirm it's one
+      <span class="cell">SORT(UNIQUE(...))</span> formula with a spill outline, then add a Snacks row
+      and watch the FILTER grow.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the self-updating summary from scratch</h3>
+  <p>An agent with file access builds the workbook for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>Create an Excel workbook named live-lists.xlsx with a sheet "Data" listing about 14 products with Category, Product and Revenue (AUD) across four categories. On a "Summary" sheet, use SORT(UNIQUE(...)) to spill the category list and FILTER to spill the Snacks lines with their revenue. Make sure the formulas spill rather than being filled down. Save the file and tell me how many Snacks lines there are.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file, add a category to the data, and confirm the unique list
+      picks it up; confirm the Snacks count matches a hand-count.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI writes the FILTER" to "AI builds the self-updating summary" — the deliverable is the same
+    live list that maintains itself. What protects you is checking the list de-duplicates and sorts,
+    and that it updates when you change the data.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/en-us/office/filter-function-f4f7cb66-82eb-4767-8f7c-4877ad80c759">Microsoft — FILTER function</a> and
+    <a href="https://support.microsoft.com/en-us/office/unique-function-c5ab87fd-30a3-4ce9-9d1a-40204fb85e1e">Microsoft — UNIQUE function</a>.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want a live summary sheet — unique keys and filtered views —
+    built on your real data so it refreshes itself? Send a sanitised extract and I'll spill it out.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="add-sliders-to-pivottables.html">0012.1 — Slicers</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="number-and-custom-formatting.html">0014 — Number formatting</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — one formula spills a whole live list.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

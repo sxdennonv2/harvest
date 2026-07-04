@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0005 — Search Folders: saved searches that stay fresh</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="search-operators.html">0004 — Search</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="threading-hygiene-reply-reply-all-forward.html">0006 — Threading</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="folders-categories-and-flags.html">Triage &amp; organise</a>
+    <a href="search-operators.html" class="current">Find &amp; retrieve</a>
+    <a href="threading-hygiene-reply-reply-all-forward.html">Write &amp; respond</a>
+    <a href="invites-that-get-accepted.html">Schedule &amp; coordinate</a>
+    <a href="quick-steps-one-click-three-actions.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Outlook to a High Standard · Lesson 0005</p>
+  <h1>Search Folders: saved searches that stay fresh</h1>
+
+  <p class="mission">
+    Tied to your mission: the same survey that asked for search asked for it
+    <em>repeatable</em> — nobody wants to describe the same mail to the index every
+    Friday. <a href="search-operators.html">Builds on Search operators</a>: once you can
+    write a query that narrows a mailbox of thousands to a handful, the next win is
+    never typing that query again. A Search Folder is yesterday's query made permanent.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice pack · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/outlook-practice-pack.html#scenario-b">Open the practice pack</a>
+      and re-read <span class="tab-name">Scenario B — The lost attachment</span>, job 3:
+      "everything still flagged from before last month." You solved that once with a
+      typed query in <a href="search-operators.html">Search operators</a>. This lesson
+      turns it into something you never have to type again.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    A Search Folder is a query wearing a folder's clothes: it looks like a folder in the
+    navigation pane, but what's saved isn't a location, it's a question — and that
+    question is asked fresh, in full, every single time you click it open. Nothing is
+    pre-fetched or cached; the moment you open it, Outlook re-runs the search across the
+    mail you actually have right now.
+  </p>
+  <p>
+    That freshness comes with a property you must hold in your head: a Search Folder is
+    <strong>virtual</strong>. The mail inside it hasn't moved — it still lives in
+    whatever real folder you filed it to. The Search Folder is a view onto that mail, not
+    a place it resides. Build one per standing question you ask weekly — "what's flagged
+    and aging?", "what did suppliers send with attachments this month?" — and the
+    question starts answering itself.
+  </p>
+
+  <h2>Why it matters to an office assistant</h2>
+  <p>
+    Every Friday you re-type some version of the same question, because the department
+    runs on a handful of standing checks: what's still flagged from before this week,
+    what came in from a supplier or a room-booking contact with an attachment attached
+    that still needs actioning, what's sitting unanswered from a meeting two weeks back.
+    That's not searching — it's re-describing a question you already know the shape of,
+    over and over, because nothing remembered it for you. An office assistant with a
+    Search Folder for "flagged and aging" opens one click and sees this week's answer,
+    already narrowed, without composing anything. The five minutes you save isn't the
+    point — the point is that when something is filed under the department's name and
+    someone asks "did we ever deal with that?", the standing question can no longer be
+    forgotten, because it sits in the navigation pane whether you remember to ask it or
+    not.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Retyping the same search every Friday — <span class="cell">flagged received:&lt;date</span>
+    again, with the date hand-adjusted, because nobody saved it last time. The more
+    dangerous misread sits one level deeper: treating a Search Folder as if it were a
+    real folder. Drag mail "out" of it, or delete mail while it's open, and you haven't
+    tidied a view — you've deleted or moved the actual message from its real home,
+    possibly a folder you rely on elsewhere for records or minutes. A Search Folder shows
+    you the mail; it does not own the mail.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    Build two Search Folders in your own mailbox. Right-click
+    <span class="cell">Search Folders</span> in the navigation pane (under your mailbox
+    name) and choose <span class="cell">New Search Folder</span> for both.
+  </p>
+  <p>
+    <strong>Folder 1 — the aging-flags folder (job 3 from Scenario B).</strong> In the
+    New Search Folder dialog, pick <span class="cell">Mail flagged for follow up</span>
+    from the ready-made list as your starting point, then open
+    <span class="cell">Choose Search Folder</span> &gt; <span class="cell">Criteria</span>
+    and add the same narrowing you used by hand in
+    <a href="search-operators.html">Search operators</a>: flagged, received before the
+    start of last month. Name it <span class="cell">Aging flags</span>. Click it open
+    now — it should return the same small, nameable set you got by typing
+    <span class="cell">flagged received:&lt;1/6/2026</span> directly into the search box.
+    Same question, now permanent.
+  </p>
+  <p>
+    <strong>Folder 2 — a custom one from operator criteria.</strong> New Search
+    Folder &gt; scroll to the bottom &gt; <span class="cell">Create a custom Search
+    Folder</span> &gt; <span class="cell">Choose</span>. Name it
+    <span class="cell">Supplier attachments this month</span>. Under
+    <span class="cell">Criteria</span> &gt; <span class="cell">Messages</span>, set the
+    from-address condition to your regular supplier domains, then switch to
+    <span class="cell">Advanced</span> and add
+    <span class="cell">hasattachments:yes</span> and a
+    <span class="cell">received:</span> range covering this month — the exact operator
+    criteria from Search operators, just entered once into the dialog instead of typed
+    into the search box every time. Confirm it covers all mail folders you care about,
+    not only the Inbox, since supplier mail may already be filed by supplier.
+  </p>
+  <p>
+    Open both folders. Per the practice pack's check: each result set still fits on one
+    screen, and you can still name which criterion is doing the narrowing — a Search
+    Folder changes nothing about what makes a good query, only how often you have to
+    write it.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="1">
+      <p class="q">1. You delete a message while viewing it inside a Search Folder. What
+        actually happens?</p>
+      <ul class="opts">
+        <li><button class="opt">nothing — Search Folders are read-only views that can't be edited</button></li>
+        <li><button class="opt">the real message is deleted from wherever it actually lives — the Search Folder was never its home</button></li>
+        <li><button class="opt">only the saved search is deleted, the message stays put</button></li>
+        <li><button class="opt">the message is moved into the Search Folder permanently, then deleted from there only</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="2">
+      <p class="q">2. You filed a supplier's price list into its supplier folder last
+        month. It also appears in your "Supplier attachments this month" Search Folder.
+        Where does it actually live?</p>
+      <ul class="opts">
+        <li><button class="opt">in both places at once — a genuine duplicate copy exists in the Search Folder</button></li>
+        <li><button class="opt">it moved into the Search Folder the moment the query matched it</button></li>
+        <li><button class="opt">only in the supplier folder — the Search Folder is a view, not a location</button></li>
+        <li><button class="opt">nowhere fixed — Search Folders don't preserve a message's real location</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. You built the aging-flags Search Folder two weeks ago and haven't
+        touched it since. You open it today. What will it show?</p>
+      <ul class="opts">
+        <li><button class="opt">today's answer, re-run fresh against the criteria — including flags added since you built it</button></li>
+        <li><button class="opt">exactly what it showed the day you built it, frozen at creation</button></li>
+        <li><button class="opt">nothing, because saved searches expire after a few days</button></li>
+        <li><button class="opt">only messages that were flagged before the folder existed</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Identify your own most-repeated search from this month — the query you've typed more
+    than once because it answers a standing question. Build it as a Search Folder using
+    the same click-path: <span class="cell">Search Folders</span> &gt;
+    <span class="cell">New Search Folder</span> &gt; custom, with the operator criteria
+    from that repeated search entered into the dialog.
+    <strong>Check:</strong> the standing question now answers itself in one click instead
+    of a retyped query — and you can explain the virtual-view property in one sentence
+    ("the mail hasn't moved, I'm just looking at it through a saved question"). If you
+    can't say that sentence, or you still feel the pull to "clean up" the Search Folder by
+    deleting things out of it, rebuild it before moving on.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — turn a standing question into something that answers itself — with more
+    handed to AI at each rung. The check never changes: is the underlying criteria real
+    Outlook syntax, and does opening the result still show the actual mail rather than a
+    paraphrase of it?
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it designs the Search Folder set, you verify the syntax</h3>
+  <p>
+    Aldi:GPT can't see your mailbox, so it can only design Search Folders from the
+    standing questions you describe — you place the criteria into Outlook's dialog and
+    verify every operator yourself.
+  </p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>I use Outlook (new Outlook, Windows) as an office assistant. Here are the standing questions I find myself asking most weeks: (1) what's still flagged and hasn't been dealt with in over two weeks, (2) what have my regular suppliers sent me with attachments this month, (3) [describe your own third weekly question]. Design a Search Folder for each one: name it, and give me the exact Outlook search-operator criteria to enter (from:, hasattachments:, received:, flagged, and date ranges as needed). For each, tell me which real Outlook folders it should search across.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> every proposed folder must use real Outlook operator
+      syntax — verify each one against the
+      <a href="https://support.microsoft.com/en-us/office/search-email-in-outlook-7d060fe6-eea4-4a91-96f8-2c6c4c209513">Microsoft search-operators reference</a>
+      before entering it into the dialog. Just as important: every folder must map to a
+      question you actually ask weekly, not once a year — a Search Folder for something
+      you check twice a year is clutter with a query attached; drop it from the set.</p>
+  </div>
+
+  <h3>Rung 3 · M365 Copilot — it answers the standing question ad hoc, on demand</h3>
+  <p>
+    Copilot in Outlook can answer a standing question when you ask it — "what's still
+    flagged from before this month?" — but it doesn't build you anything that keeps
+    watching after it answers.
+  </p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Outlook)</span>
+    <div class="prompt">
+      <textarea rows="4" readonly>What's still flagged in my mailbox from before the start of this month? List each one with the sender, subject, and how long it's been flagged.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> Copilot's answer is a paraphrase — open the actual flagged
+      items before you act on any of them, the same way you would any Copilot summary.
+      Note the trade this rung makes plain: Copilot answers when you ask it, the Search
+      Folder answers before you ask, sitting in the navigation pane whether or not you
+      remember to open Copilot this week. Different instruments, not competing ones.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds a standing-report kit from a mailbox export</h3>
+  <p>
+    GitHub Copilot is an agent with file access but no live mailbox connection — given an
+    exported CSV, it can build a standing report with one section per standing question,
+    regenerable every time you export fresh data.
+  </p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="8" readonly>I have a CSV export of my Outlook mailbox metadata (columns: MessageId, From, Subject, ReceivedDate, HasAttachment, Flagged, FlaggedDate, Folder). Write a Python script that builds a standing-report kit with one section per standing question: (1) Aging flags — messages still Flagged with FlaggedDate more than 14 days ago, (2) Supplier attachments this month — messages from a supplied list of supplier domains with HasAttachment true and ReceivedDate in the current month, (3) Unanswered questions — [define the criteria]. Each section must state the exact filter criteria it used, and the count of rows in each section must reconcile to a matching subset count of the full export (parts sum to whole, no message double-counted across sections it doesn't belong in).</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> section counts must reconcile to the export's rows — add
+      up each section's matched rows against a manual filter of the same export and
+      confirm they agree exactly. Each section must also state its query criteria in the
+      output itself, so the report is auditable from its own text, not oracular — a
+      report that shows numbers with no stated criteria behind them fails the check even
+      if the numbers look right.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "you design and place the criteria" to "an agent regenerates the whole report
+    from an export" — the deliverable is the same standing question, answered without
+    being re-asked from scratch. What protects you at every rung is the same check: real
+    operator syntax verified against the source, the actual mail opened instead of the
+    paraphrase trusted, counts reconciled instead of taken on faith. Craft first, so you
+    can supervise.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/outlook">Microsoft Support — Outlook help &amp; learning</a>
+    and
+    <a href="https://support.microsoft.com/en-us/office/search-email-in-outlook-7d060fe6-eea4-4a91-96f8-2c6c4c209513">Microsoft — Search email in Outlook (search operators)</a>
+    for the operator syntax a Search Folder saves. If a detail here ever disagrees with
+    the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want your actual most-repeated searches turned into
+    a ready-made Search Folder set instead of the practice pack's generic ones? Send me a
+    sanitised list of the searches you've typed more than once this month and I'll design
+    the folders and criteria around them.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="search-operators.html">0004 — Search</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="threading-hygiene-reply-reply-all-forward.html">0006 — Threading</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — that is the virtual-view property at work.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>
