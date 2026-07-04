@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0008 — Aggregation &amp; precision</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="logical-functions-and-iferror.html">0007 — Logical &amp; IFERROR</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="sumifs-totals-by-criteria.html">0009 — SUMIFS</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="relative-and-absolute-references.html">Source &amp; prepare</a>
+    <a href="logical-functions-and-iferror.html" class="current">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0008</p>
+  <h1>Aggregation &amp; precision</h1>
+
+  <p class="mission">
+    Tied to your mission: <span class="cell">SUMIFS</span> totals by criteria, but a summary needs
+    more than totals — it needs <em>how many</em> lines sit behind a category and their
+    <em>average</em>, both rounded so the report reads cleanly.
+    <strong>COUNTIFS</strong> and <strong>AVERAGEIFS</strong> are the siblings of SUMIFS, and
+    <strong>ROUND</strong> is the discipline that stops a stray <span class="cell">0.3333333</span>
+    from making your report look unfinished.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">Aggregation</span> tab — a product list with categories
+      and revenue sits beside a small summary block waiting for a count and a rounded average per
+      category.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    The <span class="cell">...IFS</span> family all read the same way — a range to act on, then
+    range/criteria pairs. <span class="cell">COUNTIFS</span> counts the matching rows:
+    <span class="cell">=COUNTIFS($A$2:$A$15, F2)</span>. <span class="cell">AVERAGEIFS</span> averages
+    a value across them: <span class="cell">=AVERAGEIFS($D$2:$D$15, $A$2:$A$15, F2)</span> — note the
+    value range comes <em>first</em> here, unlike SUMIFS' identical shape.
+  </p>
+  <p>
+    <span class="cell">ROUND</span> takes a number and a digit count:
+    <span class="cell">=ROUND(123.456, 0)</span> gives <span class="cell">123</span>,
+    <span class="cell">=ROUND(0.318, 3)</span> gives <span class="cell">0.318</span>.
+    <span class="cell">ROUNDUP</span> and <span class="cell">ROUNDDOWN</span> force the direction when
+    you need to always round a case count up. Rounding changes the stored value; number formatting
+    only changes what's shown — use rounding when the number feeds another calculation.
+  </p>
+
+  <h2>Why it matters to a manager</h2>
+  <p>
+    A total alone hides the shape of the range: two categories can share a revenue total while one is
+    ten steady lines and the other is two spikes — and when someone hands you a report showing only
+    totals, you can't tell which. A count and an average expose that, and knowing to ask for them is
+    part of reviewing work fast rather than taking it on faith. A report peppered with long decimals
+    also reads as unfinished the moment it lands on a GDM desk — rounding to sensible precision is part
+    of making numbers a senior audience trusts at a glance, whether you built the sheet or someone
+    built it for you.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Filtering to a category and reading the status bar count, then typing it into the summary by hand —
+    it's stale the moment the data changes. And leaving raw <span class="cell">0.33333</span> averages
+    in a report because "the cell shows two decimals anyway". Compute the count and round the value.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    On the <span class="cell">Aggregation</span> tab the categories are listed in
+    <span class="cell">F2:F5</span>. In <span class="cell">G2</span> type
+    <span class="cell">=COUNTIFS($A$2:$A$15, F2)</span> and fill down — each row shows how many lines
+    that category has. In <span class="cell">H2</span> type
+    <span class="cell">=ROUND(AVERAGEIFS($D$2:$D$15, $A$2:$A$15, F2), 0)</span> and fill down for a
+    clean whole-dollar average. The <span class="cell">$</span> locks the data ranges so they don't
+    slide as you fill.
+  </p>
+  <p>
+    <em>Builds on SUMIFS &amp; references:</em> the criteria shape is identical to SUMIFS, and the
+    absolute <span class="cell">$</span> ranges are the same discipline — lock what should stay put,
+    let the criteria cell walk down.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="2">
+      <p class="q">1. <span class="cell">=COUNTIFS($A$2:$A$15, F2)</span> returns …</p>
+      <ul class="opts">
+        <li><button class="opt">the total revenue for F2's category</button></li>
+        <li><button class="opt">the average revenue for F2's category</button></li>
+        <li><button class="opt">how many rows match F2's category</button></li>
+        <li><button class="opt">the highest revenue in the range</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">2. In <span class="cell">AVERAGEIFS</span>, the range you average goes …</p>
+      <ul class="opts">
+        <li><button class="opt">first, before the criteria pairs</button></li>
+        <li><button class="opt">last, after the criteria pairs</button></li>
+        <li><button class="opt">it doesn't matter</button></li>
+        <li><button class="opt">inside a ROUND</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="1">
+      <p class="q">3. The difference between <span class="cell">ROUND</span> and number formatting is …</p>
+      <ul class="opts">
+        <li><button class="opt">there is none</button></li>
+        <li><button class="opt">ROUND changes the stored value; formatting only changes the display</button></li>
+        <li><button class="opt">formatting changes the stored value; ROUND only the display</button></li>
+        <li><button class="opt">ROUND only works on whole numbers</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Fill both summary columns on the <span class="cell">Aggregation</span> tab. Hand-check one
+    category: filter the list to it, count the rows and eyeball the average, and confirm the summary
+    agrees. Then change a revenue figure in the data and watch the count stay put while the average
+    updates — that's a live summary, not a typed one.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — a count and a rounded average per category — with more handed to AI at each rung. The
+    check never changes: do the counts match a hand-count, and are the averages rounded sensibly?
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it writes the formula, you place it</h3>
+  <p>Aldi:GPT can't see your workbook, so it writes the formula; you place and verify it.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I'm using Excel. Column A is Category and column D is Revenue, data in rows 2 to 15. My category labels are listed from F2 down. Write me a COUNTIFS formula for G2 that counts how many rows match the category in F2, and an AVERAGEIFS formula for H2 that gives the average revenue for that category, wrapped in ROUND to a whole number. Use absolute references so both fill down cleanly.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer locks the data ranges with <span class="cell">$</span>,
+      puts the value range first in <span class="cell">AVERAGEIFS</span>, and wraps it in
+      <span class="cell">ROUND(..., 0)</span>.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it builds the summary in your workbook</h3>
+  <p>Copilot inside Excel can act on the sheet you have open. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>On the "Aggregation" sheet, for each category listed from F2 down, put a COUNTIFS in column G that counts matching rows in A2:A15, and a ROUND(AVERAGEIFS(...),0) in column H that gives the whole-dollar average revenue from D2:D15 for that category. Use absolute references for the data ranges.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> click a cell in <span class="cell">H</span> and confirm it's a real
+      <span class="cell">ROUND(AVERAGEIFS(...))</span> formula, then hand-count one category to prove
+      the count in <span class="cell">G</span>.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the summarised workbook from scratch</h3>
+  <p>An agent with file access builds the workbook for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>Create an Excel workbook named category-summary.xlsx with a sheet "Data" listing about 14 products with columns Category, Product, Cases and Revenue (AUD) across four categories. Add a small summary block that lists each category once with a COUNTIFS of its line count and a ROUND(AVERAGEIFS(...),0) of its average revenue. Save the file and tell me which category has the most lines and which has the highest average.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file, hand-count one category against its COUNTIFS, and confirm
+      the averages are whole numbers, not long decimals.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI writes the COUNTIFS" to "AI builds the summarised workbook" — the deliverable is the same
+    count-and-average block. What protects you is a hand-count of one category and a glance that the
+    averages are cleanly rounded.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/en-us/office/round-function-c018c5d8-40fb-4053-90b1-b3e7f61a213c">Microsoft — ROUND function</a> and the
+    <a href="https://support.microsoft.com/en-us/office/excel-functions-alphabetical-b3944572-255d-4efb-bb96-c6d90033e188">Microsoft — Excel functions (alphabetical)</a> list for COUNTIFS and AVERAGEIFS.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want the count-and-average block rebuilt around your real
+    categories and the precision your reports expect? Send a sanitised extract and I'll retarget it.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="logical-functions-and-iferror.html">0007 — Logical &amp; IFERROR</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="sumifs-totals-by-criteria.html">0009 — SUMIFS</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — count and average expose the shape; rounding keeps it clean.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

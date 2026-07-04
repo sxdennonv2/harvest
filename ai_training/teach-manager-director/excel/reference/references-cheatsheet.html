@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet — $ locking &amp; F4</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <p class="kicker">Excel to a High Standard · Reference</p>
+  <h1>References: <span class="cell">$</span> locking &amp; <kbd>F4</kbd></h1>
+
+  <table class="grid" aria-label="Lock states">
+    <tr><th>Type</th><th>Column</th><th>Row</th><th>Use when…</th></tr>
+    <tr><td>A1</td><td>moves</td><td>moves</td><td>the formula should follow the fill (default)</td></tr>
+    <tr><td class="locked">$A$1</td><td>lock</td><td>lock</td><td>one fixed cell: a rate, a constant, a total</td></tr>
+    <tr><td class="locked">$A1</td><td>lock</td><td>moves</td><td>filling across columns, same source column</td></tr>
+    <tr><td class="locked">A$1</td><td>moves</td><td>lock</td><td>filling down rows, same header row</td></tr>
+  </table>
+
+  <h3>The <kbd>F4</kbd> cycle</h3>
+  <p>
+    <span class="cell">A1</span> → <span class="cell">$A$1</span> →
+    <span class="cell">A$1</span> → <span class="cell">$A1</span> → back to
+    <span class="cell">A1</span>. Select the reference in the formula bar first.
+  </p>
+
+  <h3>Read it in one breath</h3>
+  <p>The <span class="cell">$</span> locks whatever comes <em>right after it</em>.
+     <span class="cell">$A1</span> locks the column; <span class="cell">A$1</span> locks the row.</p>
+
+  <div class="callout bad">
+    <span class="label">Smell test</span>
+    If you're retyping the same value into many rows, or fixing drift by hand after a fill —
+    you needed a <span class="cell">$</span>.
+  </div>
+
+  <footer class="lesson-nav">
+    <span>Lesson: <a href="../lessons/relative-and-absolute-references.html">Relative &amp; Absolute References</a></span>
+    <span>Source: <a href="https://exceljet.net/glossary/absolute-reference">ExcelJet</a></span>
+  </footer>
+
+</body>
+</html>

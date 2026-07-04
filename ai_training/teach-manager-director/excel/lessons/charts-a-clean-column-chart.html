@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0016 — Charts: a clean column chart</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="conditional-formatting-make-numbers-signal.html">0015 — Conditional formatting</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="print-and-export-ready-tables.html">0017 — Print-ready</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="relative-and-absolute-references.html">Source &amp; prepare</a>
+    <a href="logical-functions-and-iferror.html">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html" class="current">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0016</p>
+  <h1>Charts: a clean column chart</h1>
+
+  <p class="mission">
+    Tied to your mission: a four-row summary of revenue by category is fine in a table, but a
+    <strong>column chart</strong> lets you see the shape of it in a heartbeat — who's biggest,
+    who's lagging — before you take it further up. The skill isn't clicking "Insert Chart"; it's
+    recognising a chart that says <em>one thing</em>, cleanly, whether you're building it yourself
+    or reviewing one someone sent you.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">Chart</span> tab — a tidy
+      <span class="cell">Category</span> / <span class="cell">Revenue (AUD)</span> summary is ready.
+      Your job is to turn it into a clean chart.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    A chart maps numbers to a picture. For comparing amounts across a handful of categories, a
+    <strong>clustered column chart</strong> is the honest default: bars from a common zero baseline,
+    read left to right. Select the summary, insert the column chart, then <em>strip it back</em> —
+    a clear title, no clutter, light gridlines. A chart that shows one comparison well beats a busy
+    one that shows five badly.
+  </p>
+
+  <h2>Why it matters to a manager</h2>
+  <p>
+    Most charts land on your desk already built — in a deck, a submission, an emailed workbook —
+    and your job is to judge them in seconds before they go further up or into a room with senior
+    audiences. A clean chart lets you confirm the point at a glance and move on; a cluttered one,
+    or the wrong type (a pie for six near-equal slices), forces you to stop and untangle it, and
+    quietly erodes trust in whoever built it. When you do build the quick summary yourself, the
+    same minute of tidying is what makes it presentable without waiting on someone else.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Accepting Excel's default chart untouched — legend for a single series, a generic "Chart Title",
+    heavy gridlines, maybe a 3-D pie — and shipping it. Or worse, screenshotting numbers instead of
+    charting them. A minute of tidying turns a default into something a director reads at a glance.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    On the <span class="cell">Chart</span> tab, select <span class="cell">A1:B5</span>, then
+    <span class="cell">Insert → Column Chart → 2-D Clustered Column</span>. Now clean it: click the
+    title and type <span class="cell">Revenue by category</span>; with one data series you don't need
+    a legend, so select it and press <span class="cell">Delete</span>; keep gridlines faint. Drag the
+    chart clear of the data so it reads on its own.
+  </p>
+  <p>
+    <em>Choose the right type:</em> columns compare amounts, a line shows change over time, and a
+    pie only earns its place with two or three parts of a whole. When in doubt, use columns.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="1">
+      <p class="q">1. To compare revenue across four categories, the honest default chart is a …</p>
+      <ul class="opts">
+        <li><button class="opt">3-D pie</button></li>
+        <li><button class="opt">clustered column chart</button></li>
+        <li><button class="opt">scatter plot</button></li>
+        <li><button class="opt">doughnut</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">2. Your chart has one data series. The legend should be …</p>
+      <ul class="opts">
+        <li><button class="opt">deleted — it adds nothing</button></li>
+        <li><button class="opt">made bigger</button></li>
+        <li><button class="opt">moved to the title</button></li>
+        <li><button class="opt">coloured red</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="2">
+      <p class="q">3. A chart is best for showing change <em>over time</em> when it's a …</p>
+      <ul class="opts">
+        <li><button class="opt">pie</button></li>
+        <li><button class="opt">stacked bar</button></li>
+        <li><button class="opt">line chart</button></li>
+        <li><button class="opt">table</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Build and clean the chart on the <span class="cell">Chart</span> tab. Then test that it's
+    live: change a revenue figure in <span class="cell">B2:B5</span> and watch the matching column
+    resize. That link is the whole point — the chart is a view of the data, not a picture of it.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — a clean column chart of revenue by category — with more handed to AI at each rung.
+    The check never changes: is it the right chart type, and does it move when the data moves?
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it advises, you build it</h3>
+  <p>Aldi:GPT can't see your workbook, so it advises; you build and verify.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I'm using Excel. I have a small summary with Category in column A and Revenue (AUD) in column B, four rows. Tell me the best chart type to compare revenue across categories, the exact steps to insert it, and how to clean it up: title, whether to keep the legend, and gridlines. Keep it minimal and director-ready.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer recommends a <span class="cell">clustered column</span>
+      chart, tells you to add a clear title and remove the legend for a single series, and doesn't
+      suggest a pie. If it reaches for 3-D, ask it why — flat is easier to read.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it builds the chart in your workbook</h3>
+  <p>Copilot inside Excel can act on the sheet you have open. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>On the "Chart" sheet, create a 2-D clustered column chart from A1:B5 comparing Revenue (AUD) by Category. Title it "Revenue by category", remove the legend since there is one series, and keep gridlines light. Place it to the right of the data.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> you should get a titled column chart, no legend, sitting beside the
+      table. Change a revenue value and confirm the column resizes — if it doesn't, the chart isn't
+      linked to the range.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the whole workbook from scratch</h3>
+  <p>An agent with file access builds the workbook for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>Create an Excel workbook named revenue-chart.xlsx with a sheet "Summary" holding four categories and their Revenue (AUD). Add a 2-D clustered column chart titled "Revenue by category" with no legend (single series) and light gridlines, placed beside the data. Save the file and tell me which range the chart is built on.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file, confirm it's a column chart (not a pie) with a real
+      title and no legend, and that it's linked to the summary range — edit a number and the chart
+      should update.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI advises the chart type" to "AI builds the chart and the workbook" — the deliverable is
+    the same clean comparison. What protects you at every rung is judgement about chart type and the
+    live-link test. Craft first, so you can supervise.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://exceljet.net/articles/excel-charts">ExcelJet — Excel charts</a> and
+    <a href="https://support.microsoft.com/en-us/office/create-a-chart-from-start-to-finish-0baf399e-dd61-4e18-8a73-b3fd5d5680c2">Microsoft — Create a chart from start to finish</a>.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want a lesson on combo charts (columns plus a target line) or
+    sparklines for tiny in-cell trends? Say the word and I'll add the next charting lesson.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="conditional-formatting-make-numbers-signal.html">0015 — Conditional formatting</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="print-and-export-ready-tables.html">0017 — Print-ready</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — that is a chart that says one thing well.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>
