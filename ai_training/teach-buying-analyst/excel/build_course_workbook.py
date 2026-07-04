@@ -20,9 +20,7 @@ from openpyxl.worksheet.datavalidation import DataValidation
 from openpyxl.worksheet.properties import PageSetupProperties
 from openpyxl.worksheet.worksheet import Worksheet
 
-OUT = Path(
-    r"C:\Users\dennon\VSCodeProjects\ai_training\teach-buying-analyst\excel\artefacts\excel-course-workbook.xlsx"
-)
+OUT = Path(__file__).parent / "artefacts" / "excel-course-workbook.xlsx"
 COURSE_JSON = Path(__file__).with_name("course.json")
 
 HEADER_FILL = PatternFill("solid", fgColor="1A7A4C")
@@ -1227,6 +1225,7 @@ def build() -> None:
 
     _reorder_sheets(wb, [sheet for _, _, sheet in catalogue])
 
+    OUT.parent.mkdir(parents=True, exist_ok=True)
     wb.save(OUT)
     if not _apply_dynamic_array_formulas(OUT):
         print("WARNING: Excel/pywin32 unavailable — dynamic-array soln formulas not written.")
