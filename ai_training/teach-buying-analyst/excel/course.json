@@ -82,6 +82,7 @@
       "nav_label": "Tables",
       "grid_label": "Tables",
       "theme": "source-prepare",
+      "builds_on": ["relative-and-absolute-references"],
       "cheatsheet": { "href": "../reference/tables-cheatsheet.html", "label": "Tables cheat sheet" }
     },
     {
@@ -155,7 +156,8 @@
       "title": "SUMIFS: totals by criteria",
       "nav_label": "SUMIFS",
       "grid_label": "SUMIFS",
-      "theme": "summarise-analyse"
+      "theme": "summarise-analyse",
+      "builds_on": ["relative-and-absolute-references", "pivottables-summarise-in-seconds"]
     },
     {
       "slug": "xlookup-pull-matching-details",
@@ -183,6 +185,7 @@
       "nav_label": "PivotTables",
       "grid_label": "PivotTables",
       "theme": "summarise-analyse",
+      "builds_on": ["tables-the-modern-foundation"],
       "subcards": [
         {
           "slug": "add-sliders-to-pivottables",
