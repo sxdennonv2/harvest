@@ -10,8 +10,8 @@ being swapped, it belongs in communication.* ✅ = populated.
 
 | Dimension | Kind | Values today | Owned by |
 |---|---|---|---|
-| `pipeline` | top-level split | app-functionality (Excel ✅) · communication (frame drafted 2026-07-04) | decision, FRAME-LEDGER; the ladder is invariant **across pipelines** |
-| `application` | swappable tree root (functionality pipeline); binding `context` (communication pipeline: email ✅ · document ✅ · slides ✅ · chat ✅ — rebound 2026-07-05 via the context-rebind element) | Excel ✅ 20 · Outlook ✅ 13 · PowerPoint (frame drafted 2026-07-05, 10 candidates) · Word (frame drafted 2026-07-05, 10 candidates) | frame (one course.json each) — **all four applications now framed**; ladder asserted invariant across all 5 frames |
+| `pipeline` | top-level split | app-functionality ✅ (4 courses, 53 pages) · communication ✅ (11 pages, 4 contexts bound) | decision, FRAME-LEDGER; the ladder is invariant **across pipelines** |
+| `application` | swappable tree root (functionality pipeline); binding `context` (communication pipeline: email ✅ · document ✅ · slides ✅ · chat ✅ — rebound 2026-07-05 via the context-rebind element) | Excel ✅ 20 · Outlook ✅ 13 · PowerPoint ✅ 10 · Word ✅ 10 — all complete (built 2026-07-04) | frame (one course.json each) — **all four applications now framed**; ladder asserted invariant across all 5 frames |
 | `theme` | swappable tree, nested in application | Excel: Source & prepare · Summarise & analyse · Report & visualise · Communicate & present · Automate the repetitive (all ✅) · Outlook: Triage & organise · Find & retrieve · Write & respond · Schedule & coordinate · Automate the repetitive (elicited, 0 lessons) | frame — elicited per app: *"what are the fundamental pillars of functionality within {app}?"* |
 | `lesson` | tree leaf, nested in theme (+ subcards; `builds_on` DAG edges) | Excel: 19 ✅ · Outlook: 15 candidates enumerated, survey-tagged | frame |
 | `rung` | **invariant crosscutting ladder** | 1 Manual craft · 2 Aldi:GPT · 3 M365 Copilot · 4 GitHub Copilot | org — the GenAI adoption model; swap the org, swap the ladder |
