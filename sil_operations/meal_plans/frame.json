@@ -1,8 +1,8 @@
 {
   "domain": "sil-operations",
   "unit": "meal-plan",
-  "frame_version": "0.3-draft",
-  "source": "Promoted from 3 real Weekly Menu Planner .docx files (residence: Earlwood, June 2026 cycle), analysed 2026-07-04. See FRAME-LEDGER.md row 4. Updated 2026-07-04 with Stuart's answers on organisation, process state, rotation, template, and roster. Updated 2026-07-05 with roster volatility and per-house dinner-sharing conditionality.",
+  "frame_version": "0.4-draft",
+  "source": "Promoted from 3 real Weekly Menu Planner .docx files (residence: Earlwood, June 2026 cycle), analysed 2026-07-04. See FRAME-LEDGER.md row 4. Updated 2026-07-04 with Stuart's answers on organisation, process state, rotation, template, and roster. Updated 2026-07-05 (a) with roster volatility and per-house dinner-sharing conditionality, then (b) parking the roster axis and adding the meal-option-pool + harmonization mechanism as the concrete answer to dinner-sharing.",
   "privacy_note": "Documentation is internal (Stuart, 2026-07-04) - privacy anonymisation lifted for this repo. Real resident names now used. Still avoid publishing this repo externally without re-checking that footing.",
 
   "organisation": {
@@ -14,7 +14,7 @@
     "process": "fully manual today - Debbie hand-builds one Weekly Menu Planner .docx per resident, per 28-day period",
     "unit_of_work": "one meal plan = one resident x one 28-day (4-week) period",
     "automation_goal": "Harvest pipeline generates the same artifact per resident, so Debbie can plan across the entire fleet of residences/residents instead of one home at a time",
-    "scale_driver": "support-worker rostering (see support_worker_roster below) is what currently limits Debbie to doing this by hand per home; automating it is the actual unlock for fleet-wide planning"
+    "scale_driver": "revised 2026-07-05 - the primary automation value is now the meal_selection mechanism below (option pools + harmonization), which directly targets time/cost savings via shared cooking. Staff rostering is parked (see support_worker_roster) rather than pursued as the scale driver for now."
   },
 
   "shared": {
@@ -37,14 +37,38 @@
       "cycle_weeks": 4,
       "source_evidence": "identical dinner text across Earlwood's 3 residents for corresponding weeks/days, e.g. all three had the same dish on Monday of week 1 - consistent with their dietary requirements being compatible enough to share",
       "cadence_rule": "confirmed by Stuart 2026-07-04: today the rotation's cadence is arbitrary/manual ('whenever') - it is NOT a fixed real-world constraint the frame must preserve. Automation is free to set the rotation cycle however it wants; do not treat the observed 4-week/28-recipe pattern as a hard requirement.",
-      "generator_implication": "the generator must decide per-house, per-period whether residents can share a dinner rotation or need individual ones, driven by each resident's dietary/constraint-block profile - not assume either way."
+      "generator_implication": "the generator must decide per-house, per-period whether residents can share a dinner rotation or need individual ones, driven by each resident's dietary/constraint-block profile - not assume either way. Concrete mechanism for this: see meal_selection.allocation_process.harmonization below - overlap-detection across residents' option pools, rather than a manual judgement call."
     },
     "support_worker_roster": {
-      "type": "NEW axis, added 2026-07-04 - support workers are rostered on/off shift by day, by week, by month",
-      "implication": "the 'Created with Support Worker' field and the community-participation marker's named-worker variant are both roster lookups, not free text - a generator needs the actual shift roster as an input, not just a static name",
-      "volatility": "clarified 2026-07-05: the roster is highly changeable - named staff can change at short notice. A meal plan that bakes in a specific support worker's name can go stale quickly. Implication: this is not a fact to freeze into a static document at generation time; the generator (especially any 'live' tier) needs to read the roster close to when the plan is used, not once and cache it indefinitely.",
-      "source_of_roster_data": "unknown - open question, see open_questions",
-      "why_it_matters": "this is the real scale bottleneck: automating roster-aware plan generation is what lets Debbie cover the whole fleet instead of one resident/home at a time"
+      "status": "PARKED, 2026-07-05 - kept as a dimension so the shape isn't lost, but fixed to a single placeholder value rather than pursued as live/volatile data right now",
+      "value": "TBA",
+      "history": "identified 2026-07-04 as support workers being rostered on/off shift by day/week/month (the 'Created with Support Worker' field and the named-CP-marker variant are roster lookups, not free text); clarified 2026-07-05 as highly volatile (staff swap at short notice). Both observations stand, but Stuart chose to park this axis rather than solve roster integration now.",
+      "revisit_when": "if/when roster data source and format are found and worth pursuing - not blocking any current work"
+    }
+  },
+
+  "meal_selection": {
+    "status": "NEW mechanism, 2026-07-05 - the concrete design for how a resident's meal gets chosen, and how sharing across residents is detected rather than assumed",
+    "option_pool": {
+      "scope": "per resident, per meal slot (breakfast / morning_tea / lunch / afternoon_tea / dinner)",
+      "max_options": 10,
+      "shape": "a list of up to 10 named meal options for that resident+slot, each assumed already compatible with that resident's constraint-block (dislikes, portion-guide, etc. - satisfied by construction when the pool is built, not re-checked at allocation time)",
+      "status": "schema only - no real option pools populated yet for any resident; who builds the pool (Debbie? a dietitian?) is an open question"
+    },
+    "allocation_process": {
+      "baseline": "random selection - for each day and slot, pick one option at random from that resident's own pool",
+      "harmonization": "smarter mode, replacing the earlier manual dinner-sharing judgement: before allocating individually, check whether an option appears in more than one resident's pool for the same house, day, and slot. If an overlapping option exists, assign that SAME option to every resident whose pool contains it - one cooked meal serves several residents. Residents with no shared option available fall back to a random pick from their own pool.",
+      "residence_scope": "harmonization operates within one residence (one house, one kitchen) - never across residences",
+      "priority_slot": "dinner is the natural first target, matching the pattern already observed at Earlwood, but the mechanism is written to generalise to any meal slot"
+    },
+    "savings_tracking": {
+      "goal": "capture the time/cost saved by harmonizing, so the value of automation is measurable rather than assumed",
+      "metric_sketch": [
+        "harmonized_slot_count per 28-day period - how many day+slot combinations ended up shared across 2+ residents",
+        "residents_covered_per_harmonized_slot - how many residents each shared meal served",
+        "individual_meals_avoided = sum over harmonized slots of (residents_covered - 1) - the count of separate cooks NOT needed because of harmonization"
+      ],
+      "status": "sketch only - no calculation built, no real numbers yet"
     }
   },
 
@@ -196,9 +220,10 @@
   ],
 
   "open_questions": [
-    "Where does the support-worker shift roster live, and in what format (spreadsheet? rostering system? manual)? Made more urgent by its volatility (2026-07-05) - a short-notice-changeable roster means the generator needs a live/current lookup, not a one-time import.",
-    "How does the generator determine whether a house's residents have dietary requirements compatible enough to share one dinner rotation, vs needing individual dinners? Is this something Debbie assesses manually today, and could that assessment be captured as data per resident?",
-    "How many residents typically live in one SIL home (Earlwood = 3; unconfirmed as typical)",
-    "Full list of residences/resident counts nationwide - deferred, sticking with Earlwood + 4 placeholders for now"
+    "Who builds each resident's up-to-10-option meal pool per slot, and how - is it Debbie, a dietitian, or some combination, and how does it map to the existing constraint-block fields (dislikes, portion-guide)?",
+    "Does random allocation + overlap-detection actually produce meal plans Debbie would consider acceptable, or is there additional judgement (variety, recent-repeat avoidance, seasonal availability) the mechanism is missing?",
+    "How many residents typically live in one SIL home (Earlwood = 3; unconfirmed as typical) - affects how much harmonization opportunity typically exists per house",
+    "Full list of residences/resident counts nationwide - deferred, sticking with Earlwood + 4 placeholders for now",
+    "Support-worker roster data source - PARKED (single 'TBA' value in use); revisit only if/when worth pursuing"
   ]
 }

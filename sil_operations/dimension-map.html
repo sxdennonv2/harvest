@@ -133,24 +133,25 @@
 
 <div class="wrap">
   <header class="masthead">
-    <p class="eyebrow">Harvest · pipeline instrument · 05 Jul 2026 · frame v0.3-draft</p>
+    <p class="eyebrow">Harvest · pipeline instrument · 05 Jul 2026 · frame v0.4-draft</p>
     <h1>The SIL-operations dimension space</h1>
     <p class="lede">Harvest instance #4 (FRAME-LEDGER row 4) — a domain <b>promoted</b>
       from real source artifacts rather than elicited blind: three residents' actual
       Weekly Menu Planner <code>.docx</code> files, residence <b>Earlwood</b>, provider
       <b>Danny Met Sally (DMS)</b>. Today it's <b>fully manual</b> — Debbie hand-builds
-      one plan per resident per 28-day period; automating it is the point. Deliberately
-      small: one frame, one unit, no skill or generator yet — see
-      <a href="#decisions">open questions</a> before building one.</p>
+      one plan per resident per 28-day period. The automation idea taking shape: give
+      each resident up to 10 acceptable options per meal, then <b>harmonize</b> across a
+      house wherever those options overlap. Deliberately small — see
+      <a href="#decisions">open questions</a> before building a generator.</p>
     <div class="stats">
       <div class="stat"><div class="n">1</div><div class="l">domain frame</div></div>
       <div class="stat"><div class="n">1 / 5</div><div class="l">residences populated</div></div>
       <div class="stat"><div class="n">3</div><div class="l">residents · real names</div></div>
-      <div class="stat"><div class="n">8</div><div class="l">residents · placeholder</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">max options per meal slot</div></div>
       <div class="stat"><div class="n">7</div><div class="l">constraint-block types</div></div>
-      <div class="stat"><div class="n">1</div><div class="l">standard template, confirmed</div></div>
+      <div class="stat"><div class="n">TBA</div><div class="l">support-worker roster · parked</div></div>
       <div class="stat"><div class="n">0</div><div class="l">contracts / skills built</div></div>
-      <div class="stat warn"><div class="n">4</div><div class="l">open questions</div></div>
+      <div class="stat warn"><div class="n">5</div><div class="l">open questions</div></div>
     </div>
   </header>
 
@@ -159,17 +160,19 @@
     <a href="#residences">RESIDENCE × RESIDENT</a>
     <a href="#grid">WEEKLY GRID</a>
     <a href="#constraints">CONSTRAINT-BLOCK MATRIX</a>
+    <a href="#selection">MEAL SELECTION</a>
     <a href="#decisions">OPEN QUESTIONS</a>
   </nav>
 
   <section id="axes">
-    <p class="eyebrow">The eight axes</p>
+    <p class="eyebrow">The nine axes</p>
     <h2>Dimensions and their values</h2>
     <p class="read">Solid green chips are populated from real source data; dashed
       chips are addressable but empty. The <b>weekly grid</b> is the one invariant
       axis here — stable across all 3 source residents, the closest analogue to the
-      AI-training frame's ladder. <b>Support-worker roster</b> is new this pass —
-      the real scale bottleneck behind the automation goal.</p>
+      AI-training frame's ladder. <b>Meal-option-pool</b> and <b>allocation-process</b>
+      are new this pass — see <a href="#selection">the mechanism</a>.
+      <b>Support-worker-roster</b> is now parked.</p>
     <div class="axes">
       <div class="axis">
         <div class="axname">organisation<small>binding parameter</small></div>
@@ -225,25 +228,41 @@
         No block is guaranteed present — see the <a href="#constraints">matrix</a>.</div>
       </div>
       <div class="axis">
-        <div class="axname">dinner-rotation<small>conditional, not a fixed rule (05 Jul)</small></div>
+        <div class="axname">dinner-rotation<small>conditional, not a fixed rule</small></div>
         <div class="axkind">conditional constant</div>
         <div class="axk">28-recipe rotation, identical across all 3 Earlwood residents
           for the same week/day — but <b>only because their dietary requirements happen
-          to be compatible</b>. Where residents' needs clash (allergens, texture,
-          medical diets), sharing one dinner is impracticable and each resident needs
-          their own. Evaluated per house, per period — not a universal rule. Cadence
-          itself is arbitrary/manual, free for automation to set however it wants.</div>
+          to be compatible</b>. Where residents' needs clash, sharing is impracticable.
+          Now resolved mechanically — see <a href="#selection">meal selection</a> below
+          — rather than a manual per-house judgement call.</div>
       </div>
       <div class="axis">
-        <div class="axname">support-worker-roster<small>new axis 2026-07-04, volatile (05 Jul)</small></div>
-        <div class="axkind">roster input</div>
-        <div class="axk">Support workers are rostered on/off shift by day, by week, by
-          month, and named staff can change <b>at short notice</b>. The "Created with
-          Support Worker" field and the named-CP-marker variant are roster lookups, not
-          static facts — a plan that hard-codes a name can go stale fast. <b>This is
-          the real scale bottleneck</b>: automating roster-aware generation (read close
-          to time-of-use, not once) is what lets Debbie plan across the whole fleet
-          instead of one home at a time.</div>
+        <div class="axname">meal-option-pool<small>new axis, 05 Jul</small></div>
+        <div class="axkind">candidate set</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">up to 10 options</span><span class="chip built">per resident</span>
+          <span class="chip built">per meal slot</span>
+        </div>
+        Each option assumed already compatible with that resident's constraint-block.
+        Not yet populated for any resident — who builds the pool is open.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">allocation-process<small>new mechanism, 05 Jul</small></div>
+        <div class="axkind">selection + harmonize</div>
+        <div class="axk">Baseline: random pick from a resident's own pool per day/slot.
+          <b>Harmonization</b>: if an option overlaps across residents' pools in the
+          same house/day/slot, assign it to all of them — one cook serves several
+          residents, tracked for savings. Scoped to one residence; never crosses houses.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">support-worker-roster<small>parked, 05 Jul</small></div>
+        <div class="axkind">parked axis</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">TBA</span>
+        </div>
+        Kept as a dimension so the shape isn't lost, fixed to one placeholder value.
+        Not pursued as live/volatile data right now — the automation value comes from
+        meal selection instead.</div>
       </div>
       <div class="axis">
         <div class="axname">tier<small>same frame would serve both</small></div>
@@ -320,7 +339,7 @@
           <tr><th>Afternoon Tea · 3:30pm</th>
             <td class="slotcell" colspan="7">Personalised — carries conditional-substitution rules</td></tr>
           <tr><th>Dinner · 6pm</th>
-            <td class="slotcell" colspan="7"><b>Shared 28-recipe rotation at Earlwood</b> — conditional on dietary compatibility, not a fixed rule; identical text across all 3 residents here, same week/day</td></tr>
+            <td class="slotcell" colspan="7"><b>Shared 28-recipe rotation at Earlwood</b> — an outcome of overlapping option pools (see <a href="#selection">meal selection</a>), not a fixed rule; identical text across all 3 residents here, same week/day</td></tr>
         </tbody>
       </table>
     </div>
@@ -381,6 +400,46 @@
     </div>
   </section>
 
+  <section id="selection">
+    <p class="eyebrow">Projection 4 · meal selection mechanism</p>
+    <h2>From judgement call to a mechanism</h2>
+    <p class="read">The concrete design that replaces "does Debbie judge this house
+      compatible?" with "do these residents' option pools happen to overlap?" — sketch
+      only, nothing built yet.</p>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>Step</th><th>What it does</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><th>1 · Option pool</th>
+            <td class="slotcell">Each resident gets up to <b>10 named options</b> per
+              meal slot, already assumed compatible with their constraint-block
+              (dislikes, portion-guide, etc.)</td>
+            <td class="slotcell">Schema only — no pools populated for any resident yet</td></tr>
+          <tr><th>2 · Baseline allocation</th>
+            <td class="slotcell">Random pick from the resident's own pool, per day, per slot</td>
+            <td class="slotcell">Sketch only</td></tr>
+          <tr><th>3 · Harmonization</th>
+            <td class="slotcell">Check whether an option appears in multiple residents'
+              pools for the same house/day/slot; if so, assign that same option to all
+              of them — one cook, several residents. Scoped to one residence, never
+              crosses houses</td>
+            <td class="slotcell">Sketch only — this is the mechanical answer to the
+              dinner-sharing question above</td></tr>
+          <tr><th>4 · Savings tracking</th>
+            <td class="slotcell">Count harmonized day/slot combinations and how many
+              residents each covered, so the time/cost benefit is measured, not assumed</td>
+            <td class="slotcell">Metric sketch only — no real numbers yet</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="decision" style="margin-top:16px">
+      <b>Open question this raises</b>
+      <p>Does random allocation + overlap-detection actually produce plans Debbie would
+        accept, or is there additional judgement — variety across the 28 days, avoiding
+        recent repeats, seasonal availability — that the mechanism doesn't yet capture?</p>
+    </div>
+  </section>
+
   <section id="decisions">
     <p class="eyebrow">Milestones &amp; standing questions</p>
     <h2>What the frame is asking you</h2>
@@ -393,39 +452,46 @@
         second lineage. <b style="display:inline;color:var(--ink)">Privacy</b> —
         anonymisation lifted for this internal documentation; real names now in use.</p>
     </div>
-    <div class="decision"><b style="color:var(--thyme-deep)">Resolved · 05 Jul 2026</b>
+    <div class="decision"><b style="color:var(--thyme-deep)">Resolved · 05 Jul 2026 (first pass)</b>
       <p><b style="display:inline;color:var(--ink)">Dinner-sharing is conditional, not
         universal</b> — a house can share one dinner across residents only when their
         dietary requirements are compatible; where needs clash, each resident needs
-        their own. Earlwood's 3 happen to be compatible; that's not a company rule.
-        <b style="display:inline;color:var(--ink)">Roster is volatile</b> — support
-        workers can be swapped at short notice, so a plan can't hard-code a name and
-        stay correct; the generator needs a near-real-time roster read, which pushes
-        this toward the <b>live tier</b>, not static docx generation.</p>
+        their own. <b style="display:inline;color:var(--ink)">Roster is volatile</b> —
+        support workers can be swapped at short notice.</p>
+    </div>
+    <div class="decision"><b style="color:var(--thyme-deep)">Resolved · 05 Jul 2026 (second pass)</b>
+      <p><b style="display:inline;color:var(--ink)">Roster parked</b> — kept as an axis,
+        fixed to one placeholder value (<code>TBA</code>); not pursued as live data for
+        now. <b style="display:inline;color:var(--ink)">Meal-selection mechanism
+        adopted</b> — up to 10 candidate options per resident per meal slot, random
+        baseline allocation, and <b>harmonization</b> (overlap-detection across a
+        house's residents) as the mechanical answer to dinner-sharing, with savings
+        tracked rather than assumed. See <a href="#selection">the mechanism</a>.</p>
     </div>
     <div class="decision open"><b>Still open — before any contract/skill is built</b>
       <ul>
-        <li>Where the support-worker shift roster lives, in what format, and how
-          current a lookup can be — now more urgent given its volatility</li>
-        <li>How dietary-compatibility (can this house share one dinner?) is assessed
-          today — by Debbie, by eye? — and whether it can be captured as data per resident</li>
+        <li>Who builds each resident's option pool, and how it maps to the existing
+          constraint-block fields (dislikes, portion-guide)</li>
+        <li>Whether random allocation + harmonization actually produces plans Debbie
+          would accept, or misses judgement she currently applies (variety, repeat-avoidance)</li>
         <li>Typical residents-per-home (Earlwood = 3; unconfirmed as typical)</li>
         <li>Full list of residences/resident counts nationwide — deferred, sticking
           with Earlwood + 4 placeholders for now</li>
+        <li>Support-worker roster data source — parked, revisit only if worth pursuing</li>
       </ul>
     </div>
     <div class="decision"><b>Next unit of work</b>
-      <p>Locate/confirm the support-worker roster source and how dietary compatibility
-        is judged, then draft the unit contract (one printable 28-day meal-plan
-        artifact per resident) and generate <b>one sample artifact</b> — still no repo
-        infrastructure, frame file + skill + artifact only.</p>
+      <p>Sketch how option pools get populated and validate the harmonization idea
+        against how Debbie actually plans today, then draft the unit contract (one
+        printable 28-day meal-plan artifact per resident) and generate <b>one sample
+        artifact</b> — still no repo infrastructure, frame file + skill + artifact only.</p>
     </div>
   </section>
 
   <footer>source of truth: <b>sil_operations/dimension-map.html</b> (this file, in-repo) —
     generated against <code>sil_operations/frame.json</code> ·
     <code>sil_operations/DIMENSIONS.md</code> · sxdennonv2/harvest ·
-    branch <code>feat/sil-meal-plan-frame</code> · frame v0.3-draft, 05 Jul 2026</footer>
+    branch <code>feat/sil-meal-plan-frame</code> · frame v0.4-draft, 05 Jul 2026</footer>
 </div>
 
 <script>
