@@ -104,6 +104,15 @@
       "builds_on": ["reword-for-tone-and-audience"]
     },
     {
+      "slug": "the-one-ask-email",
+      "file": "the-one-ask-email.html",
+      "title": "The one-ask email",
+      "nav_label": "One ask",
+      "grid_label": "The one-ask email",
+      "theme": "structure-framing",
+      "contexts": ["email"]
+    },
+    {
       "slug": "summarise-a-thread-without-losing-the-ask",
       "file": "summarise-a-thread-without-losing-the-ask.html",
       "title": "Summarise a thread without losing the ask",
@@ -116,7 +125,6 @@
   "candidates": [
     { "theme": "clarity-conciseness", "working_title": "Say exactly one thing: killing ambiguity", "contexts": ["email", "document"], "survey_signal": "\"professional writing for external stakeholders where ambiguity is removed\"" },
     { "theme": "tone-audience", "working_title": "External stakeholders: firm, polite, unambiguous", "contexts": ["email"], "survey_signal": "\"professional writing for external stakeholders\"" },
-    { "theme": "structure-framing", "working_title": "The one-ask email", "contexts": ["email"], "survey_signal": "\"clarity and conciseness\"; moved from Outlook frame 2026-07-04" },
     { "theme": "structure-framing", "working_title": "From bullets to prose (and back)", "contexts": ["email", "document"], "survey_signal": "\"write emails/formalise\"; \"write intro email from data\"; moved from Outlook frame" },
     { "theme": "structure-framing", "working_title": "Lead with the answer: bottom line up front", "contexts": ["email", "document"], "survey_signal": "\"preparing submissions for GDM or other audiences\"" },
     { "theme": "correctness", "working_title": "The 60-second proof pass", "contexts": ["email"], "survey_signal": "\"spell check\"; \"proofreading\"; \"checking emails\"" },

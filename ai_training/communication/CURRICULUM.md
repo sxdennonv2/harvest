@@ -47,9 +47,13 @@ before a single lesson was authored, so the move cost nothing.
 - [0002 — Reword for tone & audience](lessons/reword-for-tone-and-audience.html)
 - [0003 — Writing up: the senior-leadership register](lessons/writing-up-the-senior-leadership-register.html)
 
+### Structure & framing
+
+- [0004 — The one-ask email](lessons/the-one-ask-email.html)
+
 ### Condense & summarise
 
-- [0004 — Summarise a thread without losing the ask](lessons/summarise-a-thread-without-losing-the-ask.html)
+- [0005 — Summarise a thread without losing the ask](lessons/summarise-a-thread-without-losing-the-ask.html)
 <!-- END:auto:lessons -->
 
 ## The grid
@@ -59,9 +63,9 @@ before a single lesson was authored, so the move cost nothing.
 |---|---|---|---|---|
 | **Clarity & conciseness** | ✅ [0001 Tighten](lessons/tighten-cut-the-flab-keep-the-message.html); tighten; remove ambiguity | Tighten this draft — same message, half the words | Rewrite this selection in place: clearer, shorter, same meaning | Batch-rewrite a library of standard texts to the new standard |
 | **Tone & audience** | ✅ [0002 Reword for tone & audience](lessons/reword-for-tone-and-audience.html); ✅ [0003 Senior-leadership register](lessons/writing-up-the-senior-leadership-register.html); the survey's dominant cluster — most lessons live here | Reword for the reader — formal, firm, or friendly | Adjust the tone of this draft for its audience, in place | Generate audience-tuned variants of a template set |
-| **Structure & framing** | lead with the ask; bullets to prose and back | Restructure this: lead with the ask, turn bullets into prose | Draft the message from these bullet points, in the app | Build skeleton templates for your recurring message types |
+| **Structure & framing** | ✅ [0004 The one-ask email](lessons/the-one-ask-email.html); lead with the ask; bullets to prose and back | Restructure this: lead with the ask, turn bullets into prose | Draft the message from these bullet points, in the app | Build skeleton templates for your recurring message types |
 | **Correctness** | grammar, spelling, punctuation, house style | Proof this — grammar, spelling, punctuation, house style | Check and correct the draft in place | Build a house-style checklist and apply it across a document set |
-| **Condense & summarise** | ✅ [0004 Summarise a thread](lessons/summarise-a-thread-without-losing-the-ask.html); threads, meeting notes, reports — keep every ask and owner | Summarise this thread or these notes — keep every ask and owner | Summarise the thread and draft the minutes, in the app | Build the meeting-pack generator: notes in, minutes + actions out |
+| **Condense & summarise** | ✅ [0005 Summarise a thread](lessons/summarise-a-thread-without-losing-the-ask.html); threads, meeting notes, reports — keep every ask and owner | Summarise this thread or these notes — keep every ask and owner | Summarise the thread and draft the minutes, in the app | Build the meeting-pack generator: notes in, minutes + actions out |
 <!-- END:auto:grid -->
 
 ## Practice artefact (decision pending first lesson)
