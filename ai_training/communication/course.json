@@ -85,6 +85,15 @@
       "contexts": ["email"]
     },
     {
+      "slug": "say-exactly-one-thing",
+      "file": "say-exactly-one-thing.html",
+      "title": "Say exactly one thing: killing ambiguity",
+      "nav_label": "Ambiguity",
+      "grid_label": "Killing ambiguity",
+      "theme": "clarity-conciseness",
+      "contexts": ["email", "document"]
+    },
+    {
       "slug": "reword-for-tone-and-audience",
       "file": "reword-for-tone-and-audience.html",
       "title": "Reword for tone & audience",
@@ -104,6 +113,16 @@
       "builds_on": ["reword-for-tone-and-audience"]
     },
     {
+      "slug": "external-stakeholders-firm-polite-unambiguous",
+      "file": "external-stakeholders-firm-polite-unambiguous.html",
+      "title": "External stakeholders: firm, polite, unambiguous",
+      "nav_label": "External",
+      "grid_label": "External stakeholders",
+      "theme": "tone-audience",
+      "contexts": ["email"],
+      "builds_on": ["reword-for-tone-and-audience"]
+    },
+    {
       "slug": "the-one-ask-email",
       "file": "the-one-ask-email.html",
       "title": "The one-ask email",
@@ -111,6 +130,24 @@
       "grid_label": "The one-ask email",
       "theme": "structure-framing",
       "contexts": ["email"]
+    },
+    {
+      "slug": "from-bullets-to-prose-and-back",
+      "file": "from-bullets-to-prose-and-back.html",
+      "title": "From bullets to prose (and back)",
+      "nav_label": "Bullets ↔ prose",
+      "grid_label": "Bullets to prose",
+      "theme": "structure-framing",
+      "contexts": ["email", "document"]
+    },
+    {
+      "slug": "lead-with-the-answer",
+      "file": "lead-with-the-answer.html",
+      "title": "Lead with the answer: bottom line up front",
+      "nav_label": "BLUF",
+      "grid_label": "Lead with the answer",
+      "theme": "structure-framing",
+      "contexts": ["email", "document"]
     },
     {
       "slug": "the-60-second-proof-pass",
@@ -129,13 +166,17 @@
       "grid_label": "Summarise a thread",
       "theme": "condense-summarise",
       "contexts": ["email"]
+    },
+    {
+      "slug": "meeting-notes-to-minutes-and-actions",
+      "file": "meeting-notes-to-minutes-and-actions.html",
+      "title": "Meeting notes to minutes & actions",
+      "nav_label": "Minutes",
+      "grid_label": "Minutes & actions",
+      "theme": "condense-summarise",
+      "contexts": ["document", "email"],
+      "builds_on": ["summarise-a-thread-without-losing-the-ask"]
     }
   ],
-  "candidates": [
-    { "theme": "clarity-conciseness", "working_title": "Say exactly one thing: killing ambiguity", "contexts": ["email", "document"], "survey_signal": "\"professional writing for external stakeholders where ambiguity is removed\"" },
-    { "theme": "tone-audience", "working_title": "External stakeholders: firm, polite, unambiguous", "contexts": ["email"], "survey_signal": "\"professional writing for external stakeholders\"" },
-    { "theme": "structure-framing", "working_title": "From bullets to prose (and back)", "contexts": ["email", "document"], "survey_signal": "\"write emails/formalise\"; \"write intro email from data\"; moved from Outlook frame" },
-    { "theme": "structure-framing", "working_title": "Lead with the answer: bottom line up front", "contexts": ["email", "document"], "survey_signal": "\"preparing submissions for GDM or other audiences\"" },
-    { "theme": "condense-summarise", "working_title": "Meeting notes to minutes & actions", "contexts": ["document", "email"], "survey_signal": "\"meeting notes to text\"; \"summarise meeting notes & populate minutes\"" }
-  ]
+  "candidates": []
 }
