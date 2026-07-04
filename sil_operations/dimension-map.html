@@ -133,22 +133,24 @@
 
 <div class="wrap">
   <header class="masthead">
-    <p class="eyebrow">Harvest · pipeline instrument · 04 Jul 2026 · frame v0.1-draft</p>
+    <p class="eyebrow">Harvest · pipeline instrument · 04 Jul 2026 · frame v0.2-draft</p>
     <h1>The SIL-operations dimension space</h1>
-    <p class="lede">Harvest instance #4 (FRAME-LEDGER row 4) — the first domain
-      <b>promoted</b> from real source artifacts rather than elicited blind: three
-      residents' actual Weekly Menu Planner <code>.docx</code> files, residence
-      <b>Earlwood</b>. Deliberately small: one frame, one unit (meal-plan), no skill
-      or generator yet — see <a href="#decisions">open questions</a> before building one.</p>
+    <p class="lede">Harvest instance #4 (FRAME-LEDGER row 4) — a domain <b>promoted</b>
+      from real source artifacts rather than elicited blind: three residents' actual
+      Weekly Menu Planner <code>.docx</code> files, residence <b>Earlwood</b>, provider
+      <b>Danny Met Sally (DMS)</b>. Today it's <b>fully manual</b> — Debbie hand-builds
+      one plan per resident per 28-day period; automating it is the point. Deliberately
+      small: one frame, one unit, no skill or generator yet — see
+      <a href="#decisions">open questions</a> before building one.</p>
     <div class="stats">
       <div class="stat"><div class="n">1</div><div class="l">domain frame</div></div>
       <div class="stat"><div class="n">1 / 5</div><div class="l">residences populated</div></div>
-      <div class="stat"><div class="n">3</div><div class="l">residents · source data</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">residents · real names</div></div>
       <div class="stat"><div class="n">8</div><div class="l">residents · placeholder</div></div>
       <div class="stat"><div class="n">7</div><div class="l">constraint-block types</div></div>
-      <div class="stat warn"><div class="n">2</div><div class="l">footer lineages, unresolved</div></div>
+      <div class="stat"><div class="n">1</div><div class="l">standard template, confirmed</div></div>
       <div class="stat"><div class="n">0</div><div class="l">contracts / skills built</div></div>
-      <div class="stat warn"><div class="n">7</div><div class="l">open questions</div></div>
+      <div class="stat warn"><div class="n">4</div><div class="l">open questions</div></div>
     </div>
   </header>
 
@@ -161,20 +163,22 @@
   </nav>
 
   <section id="axes">
-    <p class="eyebrow">The seven axes</p>
+    <p class="eyebrow">The eight axes</p>
     <h2>Dimensions and their values</h2>
     <p class="read">Solid green chips are populated from real source data; dashed
       chips are addressable but empty. The <b>weekly grid</b> is the one invariant
       axis here — stable across all 3 source residents, the closest analogue to the
-      AI-training frame's ladder.</p>
+      AI-training frame's ladder. <b>Support-worker roster</b> is new this pass —
+      the real scale bottleneck behind the automation goal.</p>
     <div class="axes">
       <div class="axis">
         <div class="axname">organisation<small>binding parameter</small></div>
         <div class="axkind">binding param</div>
         <div class="axk"><div class="chips">
-          <span class="chip latent">name TBD — Debbie's employer</span>
+          <span class="chip built">Danny Met Sally (DMS)</span>
         </div>
-        Nationwide, estimated ~20–30 homes. Whole tree sits under one org today.</div>
+        Confirmed — matches the docx creator field <code>dannymetsally</code> seen on
+        2 of 3 source files. Nationwide, ~20–30 homes; sticking with what's known for now.</div>
       </div>
       <div class="axis">
         <div class="axname">residence<small>swappable tree root</small></div>
@@ -185,17 +189,19 @@
           <span class="chip latent">Burwood</span>
           <span class="chip latent">Blacktown</span>
           <span class="chip latent">Mascot</span>
-        </div></div>
+        </div>
+        Remaining four deferred by Stuart's word — not chasing the full nationwide list yet.</div>
       </div>
       <div class="axis">
         <div class="axname">resident<small>tree leaf, nested in residence</small></div>
         <div class="axkind">tree leaf</div>
-        <div class="axk">3 populated (Earlwood, names anonymised pending a privacy
-          footing) + 2 placeholder per unbuilt residence = 11 total addressable
-          today. One personalisation profile per resident.</div>
+        <div class="axk">3 populated — <b>Kathryn Briggs, Teresa, Vanessa Ryan</b> (real
+          names; anonymisation lifted 2026-07-04, internal documentation) + 2 placeholder
+          per unbuilt residence = 11 total addressable today. One personalisation
+          profile per resident, one 28-day plan per period.</div>
       </div>
       <div class="axis">
-        <div class="axname">weekly-grid<small>7 days × 5 meal slots, 4-week cycle</small></div>
+        <div class="axname">weekly-grid<small>7 days × 5 meal slots, 28-day period</small></div>
         <div class="axkind">invariant contract</div>
         <div class="axk"><div class="chips">
           <span class="chip built">Breakfast 8am</span>
@@ -204,7 +210,8 @@
           <span class="chip built">Afternoon Tea 3:30pm</span>
           <span class="chip built">Dinner 6pm</span>
         </div>
-        Confirmed identical shape across all 3 source residents — treat as fixed.</div>
+        Confirmed identical shape across all 3 source residents — treat as fixed;
+        one 28-day period per resident is the confirmed standard unit.</div>
       </div>
       <div class="axis">
         <div class="axname">constraint-block<small>crosscutting, optional per resident</small></div>
@@ -221,15 +228,27 @@
         <div class="axname">dinner-rotation<small>shared cross-resident constant</small></div>
         <div class="axkind">shared constant</div>
         <div class="axk">28-recipe rotation, identical across all 3 Earlwood residents
-          for the same week/day — batch-cooked. Scope beyond Earlwood unconfirmed.</div>
+          for the same week/day — batch-cooked. <b>Confirmed not a fixed constraint</b>:
+          cadence is arbitrary/manual today, and automation is free to set it however
+          it wants.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">support-worker-roster<small>new axis, 2026-07-04</small></div>
+        <div class="axkind">roster input</div>
+        <div class="axk">Support workers are rostered on/off shift by day, by week, by
+          month. The "Created with Support Worker" field and the named-CP-marker
+          variant are roster lookups, not free text. <b>This is the real scale
+          bottleneck</b> — automating roster-aware generation is what lets Debbie plan
+          across the whole fleet instead of one home at a time.</div>
       </div>
       <div class="axis">
         <div class="axname">tier<small>same frame would serve both</small></div>
         <div class="axkind">deployment</div>
         <div class="axk"><div class="chips">
-          <span class="chip built">static · docx, hand-produced today</span>
-          <span class="chip latent">live · generated per resident/week</span>
-        </div></div>
+          <span class="chip built">static · docx, fully manual today</span>
+          <span class="chip latent">live · generated per resident/period</span>
+        </div>
+        The automation goal, not yet built.</div>
       </div>
     </div>
   </section>
@@ -237,17 +256,17 @@
   <section id="residences">
     <p class="eyebrow">Projection 1 · residence × resident</p>
     <h2>The five-home map</h2>
-    <p class="read">Earlwood is the only populated column — its 3 residents carry
-      real personalisation <b>shape</b> (anonymised identity, per the privacy note in
-      <code>frame.json</code>). The other four are placeholder stubs proving the tree
-      generalises; no real data exists for them yet.</p>
+    <p class="read">Earlwood is the only populated column — real names, real
+      personalisation shape (anonymisation lifted 2026-07-04; this documentation is
+      internal). The other four are placeholder stubs proving the tree generalises;
+      no real data exists for them yet, and Stuart's holding off chasing the rest.</p>
     <div class="resgrid">
       <div class="rescol built">
         <h3>Earlwood <span class="st">source data</span></h3>
         <div class="residentlist">
-          <div class="residentcell"><b>Resident A</b><span>dislikes · portion-guide · rotating SIL-days</span></div>
-          <div class="residentcell"><b>Resident B</b><span>portion-guide + medical · running quota</span></div>
-          <div class="residentcell"><b>Resident C</b><span>fixed SIL-days · no guide/dislikes</span></div>
+          <div class="residentcell"><b>Kathryn Briggs</b><span>dislikes · portion-guide · rotating SIL-days</span></div>
+          <div class="residentcell"><b>Teresa</b><span>portion-guide + medical · running quota</span></div>
+          <div class="residentcell"><b>Vanessa Ryan</b><span>fixed SIL-days · no guide/dislikes</span></div>
         </div>
       </div>
       <div class="rescol"><h3>Berala <span class="st">unbuilt</span></h3>
@@ -277,8 +296,10 @@
     <p class="eyebrow">Projection 2 · the weekly grid</p>
     <h2>One resident's fixed shape</h2>
     <p class="read">Every resident's plan fills the same 7×5 grid, repeated across a
-      4-week cycle. Dinner is the one row confirmed <b>shared</b> across residents —
-      the rest personalise per resident within the constraint-block layer.</p>
+      confirmed 28-day period. Dinner is the one row confirmed <b>shared</b> across
+      residents — batch-cooked, and its cadence is a free parameter for automation, not
+      a constraint to preserve. The rest personalise per resident within the
+      constraint-block layer.</p>
     <div class="scroller">
       <table>
         <thead><tr>
@@ -306,15 +327,16 @@
     <h2>What each resident actually carries</h2>
     <p class="read">Real data from the 3 source residents — no block is guaranteed
       present, and where present, wording/vocabulary differs (see
-      <code>frame.json</code> for the exact community-participation spellings).
-      This is the matrix a generator would need to branch on.</p>
+      <code>frame.json</code> for the exact community-participation spellings). The
+      template itself is confirmed standard company-wide, so the footer-shape column
+      is drift to reconcile, not a second lineage to preserve.</p>
     <div class="scroller">
       <table>
         <thead><tr><th>Resident (Earlwood)</th><th>Dislikes</th><th>Portion-guide</th>
           <th>SIL-day flag</th><th>CP marker</th><th>Conditional sub.</th>
-          <th>Running quota</th><th>Eat-out</th><th>Footer lineage</th></tr></thead>
+          <th>Running quota</th><th>Eat-out</th><th>Footer shape</th></tr></thead>
         <tbody>
-          <tr class="mrow"><th>Resident A</th>
+          <tr class="mrow"><th>Kathryn Briggs</th>
             <td class="dot"><span class="yes" title="present"></span></td>
             <td class="dot"><span class="yes" title="present · Dietitian"></span></td>
             <td class="dot"><span class="part" title="rotates weekly"></span></td>
@@ -322,8 +344,8 @@
             <td class="dot"><span class="yes" title="present"></span></td>
             <td class="dot"><span class="no" title="absent"></span></td>
             <td class="dot"><span class="yes" title="present"></span></td>
-            <td>A · 2×2</td></tr>
-          <tr class="mrow"><th>Resident B</th>
+            <td>2×2</td></tr>
+          <tr class="mrow"><th>Teresa</th>
             <td class="dot"><span class="no" title="absent"></span></td>
             <td class="dot"><span class="yes" title="present · Doctor &amp; Dietitian, medical directives"></span></td>
             <td class="dot"><span class="no" title="absent entirely"></span></td>
@@ -331,8 +353,8 @@
             <td class="dot"><span class="no" title="absent"></span></td>
             <td class="dot"><span class="yes" title="present"></span></td>
             <td class="dot"><span class="yes" title="present"></span></td>
-            <td>B · 1×2</td></tr>
-          <tr class="mrow"><th>Resident C</th>
+            <td>1×2 (drift)</td></tr>
+          <tr class="mrow"><th>Vanessa Ryan</th>
             <td class="dot"><span class="no" title="absent"></span></td>
             <td class="dot"><span class="no" title="absent"></span></td>
             <td class="dot"><span class="part" title="fixed Tue/Thu/Sat/Sun"></span></td>
@@ -340,46 +362,60 @@
             <td class="dot"><span class="no" title="absent"></span></td>
             <td class="dot"><span class="no" title="absent"></span></td>
             <td class="dot"><span class="no" title="absent"></span></td>
-            <td>A · 2×2</td></tr>
+            <td>2×2</td></tr>
         </tbody>
       </table>
     </div>
     <div class="decision" style="margin-top:16px">
       <b>Reading the matrix</b>
       <p>Zero blocks are present for all 3 residents. Only the CP marker is present
-        for all 3 — and even that has 3 different spellings. A frame-first design
-        (build the contract before the generator) has to treat every column as
-        optional, not assume a shape.</p>
+        for all 3 — and even that has 3 different spellings, now understood as
+        per-resident drift rather than real variation, since the template is
+        confirmed standard. A frame-first design (build the contract before the
+        generator) has to treat every column as optional, not assume a shape — and
+        normalise the CP marker/footer shape rather than preserve their variants.</p>
     </div>
   </section>
 
   <section id="decisions">
-    <p class="eyebrow">Standing questions</p>
+    <p class="eyebrow">Milestones &amp; standing questions</p>
     <h2>What the frame is asking you</h2>
-    <div class="decision open"><b>Before any contract/skill is built</b>
+    <div class="decision"><b style="color:var(--thyme-deep)">Resolved · 04 Jul 2026</b>
+      <p><b style="display:inline;color:var(--ink)">Organisation</b> — Danny Met Sally
+        (DMS), confirmed. <b style="display:inline;color:var(--ink)">Process state</b> —
+        fully manual today, one plan per resident per 28-day period; automation is the
+        explicit goal. <b style="display:inline;color:var(--ink)">Dinner-rotation
+        cadence</b> — arbitrary/manual, not a fixed constraint; free for automation to
+        set. <b style="display:inline;color:var(--ink)">Template</b> — one standard
+        company-wide template confirmed; the 1×2 footer variant is drift, not a second
+        lineage. <b style="display:inline;color:var(--ink)">Privacy</b> — anonymisation
+        lifted for this internal documentation; real names now in use.
+        <b style="display:inline;color:var(--ink)">New axis</b> — support-worker roster
+        (on/off shift by day/week/month) identified as the real automation unlock.</p>
+    </div>
+    <div class="decision open"><b>Still open — before any contract/skill is built</b>
       <ul>
-        <li>Organisation name</li>
-        <li>Total residences nationwide (~20–30 estimated) and their names</li>
-        <li>Whether the dinner rotation is shared across residences or only within Earlwood</li>
-        <li>Whether footer lineage A/B reflects two real template versions company-wide, or a one-off drift</li>
-        <li>Whether one support worker covers a whole residence, or plans are made per-resident by different staff</li>
+        <li>Where the support-worker shift roster lives and in what format — the key
+          new input the generator needs</li>
         <li>Typical residents-per-home (Earlwood = 3; unconfirmed as typical)</li>
-        <li><b style="display:inline;color:var(--amber)">Privacy/consent footing</b> for using real resident names and health data in any generated artifact — currently blocking, per FRAME-LEDGER's standing rule</li>
+        <li>Whether the dinner rotation/template are literally identical across all
+          ~20–30 homes, or just within Earlwood — deferred, not blocking</li>
+        <li>Full list of residences/resident counts nationwide — deferred, sticking
+          with Earlwood + 4 placeholders for now</li>
       </ul>
     </div>
     <div class="decision"><b>Next unit of work</b>
-      <p>Per the FRAME-LEDGER kickoff: interview Debbie for the domain tree
-        (promoted-frame path, not elicited-only), resolve the privacy footing, then
-        draft the unit contract (one printable weekly meal-plan artifact per
-        resident) and generate <b>one sample artifact for a fictional resident</b> —
-        no repo infrastructure, no real data, frame file + skill + artifact only.</p>
+      <p>Locate/confirm the support-worker roster source, then draft the unit contract
+        (one printable 28-day meal-plan artifact per resident) and generate
+        <b>one sample artifact</b> — still no repo infrastructure, frame file + skill +
+        artifact only.</p>
     </div>
   </section>
 
   <footer>source of truth: <b>sil_operations/dimension-map.html</b> (this file, in-repo) —
     generated against <code>sil_operations/frame.json</code> ·
     <code>sil_operations/DIMENSIONS.md</code> · sxdennonv2/harvest ·
-    branch <code>feat/sil-meal-plan-frame</code> · frame v0.1-draft, 04 Jul 2026</footer>
+    branch <code>feat/sil-meal-plan-frame</code> · frame v0.2-draft, 04 Jul 2026</footer>
 </div>
 
 <script>

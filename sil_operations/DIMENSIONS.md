@@ -10,22 +10,24 @@ Earlwood), analysed 2026-07-04. ✅ = populated from source; ⬜ = placeholder, 
 
 | Dimension | Kind | Values today | Owned by |
 |---|---|---|---|
-| `organisation` | binding parameter | one SIL provider (name TBD — Debbie's employer); nationwide, ~20–30 homes | frame — the whole tree sits under one org today |
-| `residence` | swappable tree root | Earlwood ✅ (3 residents, source data) · Berala ⬜ · Burwood ⬜ · Blacktown ⬜ · Mascot ⬜ (all placeholder, no source data) | frame — one SIL home each |
-| `resident` | tree leaf, nested in residence | 3 populated (Earlwood, placeholder names — see privacy note) + 2 placeholder per unbuilt residence | frame — one participant, one personalisation profile |
-| `weekly-grid` | **invariant crosscutting contract** | 7 days × 5 meal slots (Breakfast 8am, Morning Tea 10:30am, Lunch 12:30pm, Afternoon Tea 3:30pm, Dinner 6pm), repeated 4 weeks/cycle | frame — stable across all 3 source residents; treat as the fixed shape, like the ladder in the AI-training frame |
+| `organisation` | binding parameter | **Danny Met Sally (DMS)** ✅ — confirmed 2026-07-04; explains the docx creator field `dannymetsally` seen on 2 of 3 source files. Nationwide, ~20–30 homes; sticking with the residences already known rather than chasing the full list | frame — the whole tree sits under one org today |
+| `residence` | swappable tree root | Earlwood ✅ (3 residents, source data) · Berala ⬜ · Burwood ⬜ · Blacktown ⬜ · Mascot ⬜ (placeholder, deferred by Stuart's word — not chasing the rest for now) | frame — one SIL home each |
+| `resident` | tree leaf, nested in residence | 3 populated (Earlwood: Kathryn Briggs, Teresa, Vanessa Ryan — real names, privacy anonymisation lifted for this internal repo 2026-07-04) + 2 placeholder per unbuilt residence | frame — one participant, one personalisation profile |
+| `weekly-grid` | **invariant crosscutting contract** | 7 days × 5 meal slots (Breakfast 8am, Morning Tea 10:30am, Lunch 12:30pm, Afternoon Tea 3:30pm, Dinner 6pm), one 28-day period per resident (confirmed the standard unit) | frame — stable across all 3 source residents; treat as the fixed shape, like the ladder in the AI-training frame |
 | `constraint-block` | crosscutting, **optional per resident** | 7 block types observed: dislikes list, portion-guide/clinical paragraph, SIL-day flag, community-participation marker, conditional substitution, running quota, eat-out placeholder | frame — presence/absence and wording vary per resident; none is guaranteed present |
-| `dinner-rotation` | shared cross-resident constant | 28-recipe rotation, identical across all 3 Earlwood residents for the same week/day | frame — batch-cooked; confirmed shared *within* Earlwood only; unknown across residences |
-| `tier` | deployment | static (docx, current — hand-produced by Debbie) · live (generated per resident/week) | same frame + contract would serve both |
+| `dinner-rotation` | shared cross-resident constant | 28-recipe rotation, identical across all 3 Earlwood residents for the same week/day; confirmed **not** a fixed real-world constraint — cadence is currently arbitrary/manual and automation is free to set it however it wants | frame — batch-cooked; confirmed shared *within* Earlwood only |
+| `support-worker-roster` | **new axis, 2026-07-04** | support workers rostered on/off shift by day/week/month; the "Created with Support Worker" field and the named-CP-marker variant are both roster lookups, not free text | frame — the real scale bottleneck; automating this is what lets Debbie plan fleet-wide instead of home-by-home |
+| `tier` | deployment | static (docx, current — **fully manual today**, hand-built by Debbie per resident per 28-day period) · live (generated per resident/period — the automation goal) | same frame + contract would serve both |
 
 ## How they compose
 
 ```
 organisation → residence → resident         swappable tree, one home per residence
-resident × weekly-grid                       the fixed 7×5 grid every resident's plan fills
+resident × weekly-grid                       the fixed 7×5 grid, one 28-day period per resident
 resident × constraint-block                  the optional personalisation layer (0–7 blocks present)
-residence × dinner-rotation                  shared batch-cooked constant (scope TBD beyond Earlwood)
-everything × tier                            static docx today, live generation is unbuilt
+residence × dinner-rotation                  shared batch-cooked constant (cadence is a free parameter, not fixed)
+residence × support-worker-roster            shift-based staffing that the generator must read, not assume
+everything × tier                            static docx today (fully manual), live generation is the goal
 ```
 
 Not a full cartesian product: `constraint-block` values are **optional and free-text today**,
@@ -34,24 +36,25 @@ observed spellings (`ExtCP`, `EXTCP - <name>`, `DMS-CP`) across just 3 residents
 generator built directly on this frame would need to decide whether to normalise that
 vocabulary or preserve resident-specific convention.
 
-## Two template lineages (real finding, not yet resolved)
+## One standard template, not two lineages (resolved 2026-07-04)
 
-The footer/document-control table itself differs in shape across the 3 source residents:
-- **Lineage A** (2×2: Document Name / Version / Document Number / Effective Date) — 2 of 3
-- **Lineage B** (1×2: Document Name / Date Developed / Version, Author / Date of Review / Page) — 1 of 3
+The footer/document-control table differs in shape across the 3 source residents:
+- **2×2 shape** (Document Name / Version / Document Number / Effective Date) — Kathryn Briggs, Vanessa Ryan
+- **1×2 shape** (Document Name / Date Developed / Version, Author / Date of Review / Page) — Teresa
 
-Open question for Debbie: does this reflect two real template versions used across the
-company (e.g. per-region or per-era), or a one-off drift in a single document? The frame
-tracks both lineages until resolved — see `open_questions` in `meal_plans/frame.json`.
+Stuart confirmed the template is standard, company-wide — so this is **not** two real
+template versions. It's per-resident variation or drift on top of one canonical template.
+The generator should target one footer shape; the 1×2 variant is something to reconcile,
+not preserve. Same ruling likely applies to the community-participation marker's three
+spellings (`ExtCP` / `EXTCP - <name>` / `DMS-CP`) — treat as drift to normalise, backed by
+the support-worker roster, not three real conventions.
 
 ## Privacy note
 
-Real resident names and clinical details (medication timing, weight targets) appear in the
-source `.docx` files. Per the FRAME-LEDGER's standing rule ("real-resident data must NOT be
-used until a privacy footing is agreed"), this frame uses **placeholder names for all
-residents, including Earlwood's three** — the personalisation *shape* is drawn from the
-real source, identities are not. Do not paste real names/health specifics into this repo
-until that footing exists.
+This documentation is internal (Stuart, 2026-07-04) — the anonymisation used in the first
+draft has been lifted, and residents' real names are now used (Kathryn Briggs, Teresa,
+Vanessa Ryan). Re-check this footing before this repo is ever made external or the
+generator handles a wider resident set with more sensitive clinical detail.
 
 ## Generative prompts (dimension elicitation primitives)
 

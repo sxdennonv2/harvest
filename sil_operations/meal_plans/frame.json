@@ -1,19 +1,27 @@
 {
   "domain": "sil-operations",
   "unit": "meal-plan",
-  "frame_version": "0.1-draft",
-  "source": "Promoted from 3 real Weekly Menu Planner .docx files (residence: Earlwood, June 2026 cycle), analysed 2026-07-04. See FRAME-LEDGER.md row 4.",
-  "privacy_note": "Real resident names and clinical specifics (medication, weight targets) appeared in source docs but are NOT reproduced here. All resident names below are placeholders pending a privacy footing, per FRAME-LEDGER's standing rule.",
+  "frame_version": "0.2-draft",
+  "source": "Promoted from 3 real Weekly Menu Planner .docx files (residence: Earlwood, June 2026 cycle), analysed 2026-07-04. See FRAME-LEDGER.md row 4. Updated 2026-07-04 with Stuart's answers on organisation, process state, rotation, template, and roster.",
+  "privacy_note": "Documentation is internal (Stuart, 2026-07-04) - privacy anonymisation lifted for this repo. Real resident names now used. Still avoid publishing this repo externally without re-checking that footing.",
 
   "organisation": {
-    "name": "PLACEHOLDER_ORG_NAME",
-    "note": "SIL service provider Debbie works for; nationwide, estimated ~20-30 homes. Name not yet captured."
+    "name": "Danny Met Sally (DMS)",
+    "note": "Confirmed 2026-07-04. Explains the docx core-property creator field 'dannymetsally' seen on 2 of 3 source files - same org, not a coincidence. Nationwide, estimated 20-30 SIL homes; sticking with the residences already known (Earlwood populated, 4 others as placeholders) rather than chasing the full list for now."
+  },
+
+  "current_state": {
+    "process": "fully manual today - Debbie hand-builds one Weekly Menu Planner .docx per resident, per 28-day period",
+    "unit_of_work": "one meal plan = one resident x one 28-day (4-week) period",
+    "automation_goal": "Harvest pipeline generates the same artifact per resident, so Debbie can plan across the entire fleet of residences/residents instead of one home at a time",
+    "scale_driver": "support-worker rostering (see support_worker_roster below) is what currently limits Debbie to doing this by hand per home; automating it is the actual unlock for fleet-wide planning"
   },
 
   "shared": {
     "cycle": {
       "weeks_per_cycle": 4,
-      "days_per_week": 7
+      "days_per_week": 7,
+      "note": "28-day period, confirmed the standard unit for one resident's plan"
     },
     "meal_slots": [
       { "slot": "breakfast", "time": "8am" },
@@ -24,13 +32,16 @@
     ],
     "dinner_rotation": {
       "shared_across_residents": true,
-      "shared_across_residences": "unknown - confirmed only within Earlwood; verify with Debbie",
+      "shared_across_residences": "unknown - confirmed only within Earlwood; not chasing further for now",
       "cycle_weeks": 4,
-      "source_evidence": "identical dinner text across Earlwood's 3 residents for corresponding weeks/days, e.g. all three had the same dish on Monday of week 1"
+      "source_evidence": "identical dinner text across Earlwood's 3 residents for corresponding weeks/days, e.g. all three had the same dish on Monday of week 1",
+      "cadence_rule": "confirmed by Stuart 2026-07-04: today the rotation's cadence is arbitrary/manual ('whenever') - it is NOT a fixed real-world constraint the frame must preserve. Automation is free to set the rotation cycle however it wants; do not treat the observed 4-week/28-recipe pattern as a hard requirement."
     },
-    "support_worker_field": {
-      "observed_value": "Debbie",
-      "scope": "confirmed for Earlwood only; unknown whether one support worker covers a whole residence or is per-resident elsewhere"
+    "support_worker_roster": {
+      "type": "NEW axis, added 2026-07-04 - support workers are rostered on/off shift by day, by week, by month",
+      "implication": "the 'Created with Support Worker' field and the community-participation marker's named-worker variant are both roster lookups, not free text - a generator needs the actual shift roster as an input, not just a static name",
+      "source_of_roster_data": "unknown - open question, see open_questions",
+      "why_it_matters": "this is the real scale bottleneck: automating roster-aware plan generation is what lets Debbie cover the whole fleet instead of one resident/home at a time"
     }
   },
 
@@ -38,7 +49,7 @@
     "dislikes": {
       "type": "optional free-text list",
       "shape": "comma-separated food items, paragraph before the week heading",
-      "observed_in": ["1 of 3 Earlwood residents"]
+      "observed_in": ["Kathryn Briggs"]
     },
     "portion_guide": {
       "type": "optional free-text paragraph",
@@ -48,62 +59,64 @@
         "medical directives (weight targets, medication timing, exercise mandates)"
       ],
       "author_role_observed": ["Dietitian", "Doctor & Dietitian"],
-      "observed_in": ["2 of 3 Earlwood residents"]
+      "observed_in": ["Kathryn Briggs", "Teresa"]
     },
     "sil_day_flag": {
       "type": "per-day marker, currently embedded in the day-column header text rather than a structured field",
       "pattern_varies_by_resident": true,
       "observed_patterns": [
-        "rotates week to week (different days flagged each of the 4 weeks)",
-        "fixed set of days every week (e.g. always Tue/Thu/Sat/Sun)",
-        "absent entirely (no SIL flag on any day)"
+        "rotates week to week (different days flagged each of the 4 weeks) - Kathryn Briggs",
+        "fixed set of days every week (always Tue/Thu/Sat/Sun) - Vanessa Ryan",
+        "absent entirely (no SIL flag on any day) - Teresa"
       ]
     },
     "community_participation_marker": {
       "type": "inline prefix within a meal cell, not a separate column",
-      "vocabulary_observed": ["ExtCP", "EXTCP - <support worker name>", "DMS-CP"],
+      "vocabulary_observed": ["ExtCP (Kathryn Briggs)", "EXTCP - <support worker name> (Teresa)", "DMS-CP (Vanessa Ryan)"],
       "controlled_vocabulary": false,
-      "note": "three different spellings/conventions across 3 residents - needs a normalisation decision before generation"
+      "note": "three different spellings/conventions across 3 residents. Given the standard-template ruling below, treat this as per-resident/drift, not three real company conventions - normalise to one vocabulary in the generator, backed by the support-worker roster."
     },
     "conditional_substitution": {
       "type": "prose rule embedded in a cell",
       "example_pattern": "if <person> unavailable, substitute <food>",
-      "observed_in": ["1 of 3 Earlwood residents"]
+      "observed_in": ["Kathryn Briggs"]
     },
     "running_quota": {
       "type": "prose rule embedded in a cell, tracking a daily/weekly cap",
       "example_pattern": "(only if under N for the day)",
-      "observed_in": ["1 of 3 Earlwood residents"]
+      "observed_in": ["Teresa"]
     },
     "eat_out_placeholder": {
       "type": "cell value delegating the meal to an outing or support worker instead of specifying food",
-      "observed_in": ["2 of 3 Earlwood residents"]
+      "observed_in": ["Kathryn Briggs", "Teresa"]
     }
   },
 
-  "footer_template_lineages": [
+  "template_ruling": {
+    "confirmed": "standard template, company-wide (Stuart, 2026-07-04)",
+    "implication": "the two observed footer/document-control table shapes (see footer_template_variation below) are NOT two real template lineages - they are per-resident variation or drift on top of one canonical template. The generator should target ONE footer shape and treat the 1x2 variant as something to reconcile, not preserve."
+  },
+  "footer_template_variation": [
     {
-      "lineage": "A",
       "shape": "2 rows x 2 cols",
       "fields": ["Document Name", "Version", "Document Number", "Effective Date"],
-      "observed_in": ["2 of 3 Earlwood residents"]
+      "observed_in": ["Kathryn Briggs", "Vanessa Ryan"]
     },
     {
-      "lineage": "B",
       "shape": "1 row x 2 cols",
       "fields": ["Document Name", "Date Developed", "Version", "Author", "Date of Review", "Page"],
-      "observed_in": ["1 of 3 Earlwood residents"]
+      "observed_in": ["Teresa"]
     }
   ],
 
   "residences": [
     {
       "name": "Earlwood",
-      "status": "populated - source data available (3 real residents, anonymised here)",
+      "status": "populated - source data available, 3 real residents",
       "residents": [
         {
           "id": "res-earlwood-01",
-          "name": "Resident A (placeholder)",
+          "name": "Kathryn Briggs",
           "constraint_block": {
             "dislikes": "present - free-text food list",
             "portion_guide": { "present": true, "author_role": "Dietitian" },
@@ -112,12 +125,12 @@
             "conditional_substitution": true,
             "running_quota": false,
             "eat_out_placeholder": true,
-            "footer_lineage": "A"
+            "footer_shape": "2x2"
           }
         },
         {
           "id": "res-earlwood-02",
-          "name": "Resident B (placeholder)",
+          "name": "Teresa",
           "constraint_block": {
             "dislikes": "absent",
             "portion_guide": { "present": true, "author_role": "Doctor & Dietitian", "includes_medical_directives": true },
@@ -126,12 +139,12 @@
             "conditional_substitution": false,
             "running_quota": true,
             "eat_out_placeholder": true,
-            "footer_lineage": "B"
+            "footer_shape": "1x2"
           }
         },
         {
           "id": "res-earlwood-03",
-          "name": "Resident C (placeholder)",
+          "name": "Vanessa Ryan",
           "constraint_block": {
             "dislikes": "absent",
             "portion_guide": { "present": false },
@@ -140,14 +153,14 @@
             "conditional_substitution": false,
             "running_quota": false,
             "eat_out_placeholder": false,
-            "footer_lineage": "A"
+            "footer_shape": "2x2"
           }
         }
       ]
     },
     {
       "name": "Berala",
-      "status": "unbuilt - no source data, placeholder residents only",
+      "status": "unbuilt - no source data, placeholder residents only; deferred per Stuart 2026-07-04 (sticking with known residences for now)",
       "residents": [
         { "id": "res-berala-01", "name": "Resident (placeholder)", "constraint_block": null },
         { "id": "res-berala-02", "name": "Resident (placeholder)", "constraint_block": null }
@@ -155,7 +168,7 @@
     },
     {
       "name": "Burwood",
-      "status": "unbuilt - no source data, placeholder residents only",
+      "status": "unbuilt - no source data, placeholder residents only; deferred",
       "residents": [
         { "id": "res-burwood-01", "name": "Resident (placeholder)", "constraint_block": null },
         { "id": "res-burwood-02", "name": "Resident (placeholder)", "constraint_block": null }
@@ -163,7 +176,7 @@
     },
     {
       "name": "Blacktown",
-      "status": "unbuilt - no source data, placeholder residents only",
+      "status": "unbuilt - no source data, placeholder residents only; deferred",
       "residents": [
         { "id": "res-blacktown-01", "name": "Resident (placeholder)", "constraint_block": null },
         { "id": "res-blacktown-02", "name": "Resident (placeholder)", "constraint_block": null }
@@ -171,7 +184,7 @@
     },
     {
       "name": "Mascot",
-      "status": "unbuilt - no source data, placeholder residents only",
+      "status": "unbuilt - no source data, placeholder residents only; deferred",
       "residents": [
         { "id": "res-mascot-01", "name": "Resident (placeholder)", "constraint_block": null },
         { "id": "res-mascot-02", "name": "Resident (placeholder)", "constraint_block": null }
@@ -180,12 +193,9 @@
   ],
 
   "open_questions": [
-    "Organisation name",
-    "Total number of residences nationwide (estimated 20-30) and their names",
-    "Whether the dinner rotation is shared across residences or only within one",
-    "Whether footer lineage A/B reflects two real template versions across the company, or a one-off drift in a single document",
-    "Whether one support worker (like Debbie) covers a whole residence, or plans are created per-resident by different staff",
+    "Where does the support-worker shift roster live, and in what format (spreadsheet? rostering system? manual)? This is the key new input the generator needs.",
     "How many residents typically live in one SIL home (Earlwood = 3; unconfirmed as typical)",
-    "Privacy/consent footing for using real resident names and health data in any generated artifact"
+    "Whether the dinner rotation and template are literally identical across all ~20-30 homes, or just within Earlwood - deferred, not blocking",
+    "Full list of residences/resident counts nationwide - deferred, sticking with Earlwood + 4 placeholders for now"
   ]
 }
