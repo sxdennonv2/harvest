@@ -133,18 +133,17 @@
 
 <div class="wrap">
   <header class="masthead">
-    <p class="eyebrow">Harvest · pipeline instrument · 05 Jul 2026 · frame v0.11-draft</p>
+    <p class="eyebrow">Harvest · pipeline instrument · 05 Jul 2026 · frame v0.12-draft</p>
     <h1>The SIL-operations dimension space</h1>
     <p class="lede">Harvest instance #4 (FRAME-LEDGER row 4) — a domain <b>promoted</b>
       from real source artifacts rather than elicited blind: three residents' actual
       Weekly Menu Planner <code>.docx</code> files, residence <b>Earlwood</b>, provider
       <b>Danny Met Sally (DMS)</b>. Today it's <b>fully manual</b> — Debbie hand-builds
-      one plan per resident per 28-day period. The automation idea taking shape: Debbie
-      builds each resident up to 10 acceptable options per meal <b>quarterly</b>; a
-      web/HTML UI pre-fills a <b>dropdown per cell</b> and Debbie edits as much or as
-      little as she likes, then <b>locks</b> the plan — a locked plan can be
-      <b>shopped</b> (reversible: shopping can be reset back to draft), and only once
-      <b>closed</b> is a plan permanently unchangeable.</p>
+      one plan per resident per 28-day period. The automated design: Debbie builds each
+      resident up to 10 acceptable options per meal <b>quarterly</b>; a web/HTML UI
+      pre-fills a <b>dropdown per cell</b> and Debbie edits as much or as little as she
+      likes, then moves the plan through <code>locked → shopped → closed</code>. The
+      <b>unit contract</b> is now drafted — the shape a future generator must satisfy.</p>
     <div class="stats">
       <div class="stat"><div class="n">1</div><div class="l">domain frame</div></div>
       <div class="stat"><div class="n">1 / 5</div><div class="l">residences populated</div></div>
@@ -152,7 +151,7 @@
       <div class="stat"><div class="n">10</div><div class="l">max options per meal slot</div></div>
       <div class="stat"><div class="n">4×</div><div class="l">pool refresh · per year</div></div>
       <div class="stat"><div class="n">4</div><div class="l">plan-lifecycle states</div></div>
-      <div class="stat"><div class="n">TBA</div><div class="l">support-worker roster · parked</div></div>
+      <div class="stat"><div class="n">1</div><div class="l">unit contract drafted</div></div>
       <div class="stat warn"><div class="n">3</div><div class="l">open questions</div></div>
     </div>
   </header>
@@ -581,7 +580,17 @@
         (direct unlock from <code>locked</code>, or reset from <code>shopped</code>);
         <code>closed</code> is the sole one-way door.</p>
     </div>
-    <div class="decision open"><b>Still open — before any contract/skill is built</b>
+    <div class="decision"><b style="color:var(--thyme-deep)">Milestone · 05 Jul 2026</b>
+      <p><b style="display:inline;color:var(--ink)">Unit contract drafted</b> —
+        <code>meal_plans/CONTRACT.md</code>. Defines the meal plan's elements
+        (header-info, optional constraint blocks, the 7×5×4-week dropdown grid,
+        footer-document-control, the lifecycle control), the three ownership classes
+        (data/Debbie, algorithm, reviewer/Debbie), the target footer shape and
+        normalised CP-marker vocabulary, and a verify checklist for a future
+        <code>meal-plan-verify</code> skill. No generator or verifier built yet — the
+        contract is the shape one must satisfy.</p>
+    </div>
+    <div class="decision open"><b>Still open — before any generator/skill is built</b>
       <ul>
         <li>Typical residents-per-home (Earlwood = 3; unconfirmed as typical)</li>
         <li>Full list of residences/resident counts nationwide — deferred, sticking
@@ -590,17 +599,17 @@
       </ul>
     </div>
     <div class="decision"><b>Next unit of work</b>
-      <p>The meal-selection mechanism and plan lifecycle are now both fully specified.
-        Draft the unit contract (one printable 28-day meal-plan artifact per resident)
-        and generate <b>one sample artifact</b> — still no repo infrastructure, frame
-        file + skill + artifact only.</p>
+      <p>Build the generator skill against <code>CONTRACT.md</code> and produce
+        <b>one sample artifact</b> for a fictional/anonymised resident — still no repo
+        infrastructure beyond the frame + contract + skill + artifact.</p>
     </div>
   </section>
 
   <footer>source of truth: <b>sil_operations/dimension-map.html</b> (this file, in-repo) —
     generated against <code>sil_operations/frame.json</code> ·
-    <code>sil_operations/DIMENSIONS.md</code> · sxdennonv2/harvest ·
-    branch <code>feat/sil-meal-plan-frame</code> · frame v0.11-draft, 05 Jul 2026</footer>
+    <code>sil_operations/DIMENSIONS.md</code> ·
+    <code>sil_operations/meal_plans/CONTRACT.md</code> · sxdennonv2/harvest ·
+    branch <code>feat/sil-meal-plan-frame</code> · frame v0.12-draft, 05 Jul 2026</footer>
 </div>
 
 <script>

@@ -6,6 +6,11 @@ row 4) — the first non-office-app domain, promoted from real source artifacts 
 elicited blind: three residents' actual Weekly Menu Planner `.docx` files (residence:
 Earlwood), analysed 2026-07-04. ✅ = populated from source; ⬜ = placeholder, awaiting data.
 
+The unit contract — what one meal-plan artifact must contain, and how it moves through
+its lifecycle — is `meal_plans/CONTRACT.md`, drafted 2026-07-05 once the meal-selection
+mechanism and plan lifecycle were both fully specified. No generator skill exists yet;
+the contract is the shape a future one must satisfy.
+
 ## The axes
 
 | Dimension | Kind | Values today | Owned by |
