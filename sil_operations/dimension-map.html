@@ -133,7 +133,7 @@
 
 <div class="wrap">
   <header class="masthead">
-    <p class="eyebrow">Harvest · pipeline instrument · 05 Jul 2026 · frame v0.8-draft</p>
+    <p class="eyebrow">Harvest · pipeline instrument · 05 Jul 2026 · frame v0.9-draft</p>
     <h1>The SIL-operations dimension space</h1>
     <p class="lede">Harvest instance #4 (FRAME-LEDGER row 4) — a domain <b>promoted</b>
       from real source artifacts rather than elicited blind: three residents' actual
@@ -283,10 +283,11 @@
           <span class="chip built">shopping_list_generated</span>
         </div>
         <code>draft</code> is editable. <code>locked</code> is Debbie's explicit action
-        — her edits become final and the plan can generate a shopping list (whether
-        <code>locked</code> alone is already immutable is still open).
-        <code>shopping_list_generated</code> is confirmed <b>terminal</b> — unchangeable
-        under any circumstances once a shopping list has been made from it.</div>
+        — her edits become final, and it's a <b>hard gate</b>: a plan cannot generate a
+        shopping list until it's locked (whether <code>locked</code> alone is already
+        immutable is still open). <code>shopping_list_generated</code> is confirmed
+        <b>terminal</b> — unchangeable under any circumstances once a shopping list has
+        been made from it.</div>
       </div>
       <div class="axis">
         <div class="axname">support-worker-roster<small>parked, 05 Jul</small></div>
@@ -479,10 +480,10 @@
             <td class="slotcell">Fully specified</td></tr>
           <tr><th>6 · Plan lifecycle</th>
             <td class="slotcell"><code>draft</code> (editable) → <code>locked</code>
-              (Debbie's explicit action; her edits become final; enables shopping-list
-              generation) → <code>shopping_list_generated</code> (terminal — no further
-              changes, ever)</td>
-            <td class="slotcell">Terminal state confirmed immutable — whether
+              (Debbie's explicit action; her edits become final; <b>hard gate</b> — a
+              plan cannot be shopped until locked) → <code>shopping_list_generated</code>
+              (terminal — no further changes, ever)</td>
+            <td class="slotcell">Both gates confirmed hard rules — whether
               <code>locked</code> alone already blocks edits is still open</td></tr>
         </tbody>
       </table>
@@ -557,6 +558,14 @@
         <code>draft → locked → shopping_list_generated</code>, with the last state
         confirmed permanently unchangeable once a shopping list has been made from it.</p>
     </div>
+    <div class="decision"><b style="color:var(--thyme-deep)">Resolved · 05 Jul 2026 (seventh pass)</b>
+      <p><b style="display:inline;color:var(--ink)">Both lifecycle gates confirmed as
+        hard rules</b>, not just descriptions of a typical path: a plan <b>cannot</b>
+        be used to generate a shopping list until it is locked (no exceptions), and a
+        shopped plan <b>cannot</b> be changed further (no exceptions). The one
+        remaining gap: whether <code>locked</code> is itself reversible before shopping
+        happens.</p>
+    </div>
     <div class="decision open"><b>Still open — before any contract/skill is built</b>
       <ul>
         <li>Can a <code>locked</code> plan be unlocked and edited again before a
@@ -579,7 +588,7 @@
   <footer>source of truth: <b>sil_operations/dimension-map.html</b> (this file, in-repo) —
     generated against <code>sil_operations/frame.json</code> ·
     <code>sil_operations/DIMENSIONS.md</code> · sxdennonv2/harvest ·
-    branch <code>feat/sil-meal-plan-frame</code> · frame v0.8-draft, 05 Jul 2026</footer>
+    branch <code>feat/sil-meal-plan-frame</code> · frame v0.9-draft, 05 Jul 2026</footer>
 </div>
 
 <script>
