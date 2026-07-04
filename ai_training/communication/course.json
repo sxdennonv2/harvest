@@ -76,6 +76,15 @@
   ],
   "lessons": [
     {
+      "slug": "tighten-cut-the-flab-keep-the-message",
+      "file": "tighten-cut-the-flab-keep-the-message.html",
+      "title": "Tighten: cut the flab, keep the message",
+      "nav_label": "Tighten",
+      "grid_label": "Tighten",
+      "theme": "clarity-conciseness",
+      "contexts": ["email"]
+    },
+    {
       "slug": "reword-for-tone-and-audience",
       "file": "reword-for-tone-and-audience.html",
       "title": "Reword for tone & audience",
@@ -105,7 +114,6 @@
     }
   ],
   "candidates": [
-    { "theme": "clarity-conciseness", "working_title": "Tighten: cut the flab, keep the message", "contexts": ["email"], "survey_signal": "\"tighten emails\"; \"clarity and conciseness\"" },
     { "theme": "clarity-conciseness", "working_title": "Say exactly one thing: killing ambiguity", "contexts": ["email", "document"], "survey_signal": "\"professional writing for external stakeholders where ambiguity is removed\"" },
     { "theme": "tone-audience", "working_title": "External stakeholders: firm, polite, unambiguous", "contexts": ["email"], "survey_signal": "\"professional writing for external stakeholders\"" },
     { "theme": "structure-framing", "working_title": "The one-ask email", "contexts": ["email"], "survey_signal": "\"clarity and conciseness\"; moved from Outlook frame 2026-07-04" },
