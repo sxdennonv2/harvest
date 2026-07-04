@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0017 — Print- &amp; export-ready tables</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="charts-a-clean-column-chart.html">0016 — Charts</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="flash-fill-and-text-to-columns.html">0018 — Flash Fill</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="relative-and-absolute-references.html">Source &amp; prepare</a>
+    <a href="logical-functions-and-iferror.html">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html" class="current">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0017</p>
+  <h1>Print- &amp; export-ready tables</h1>
+
+  <p class="mission">
+    Tied to your mission: the analysis is right, but it prints across four ragged pages with the
+    headers stranded on page one. This lesson is the last mile — <strong>page setup</strong> that
+    turns a working sheet into a clean, one-page report your director can read on paper or as a PDF.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">Print ready</span> tab — a buying report with a
+      dozen rows is set up. It looks fine on screen; your job is to make it print clean.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    A worksheet and a printed page are two different things, and Excel gives you four controls to
+    reconcile them: a <strong>print area</strong> (print only what matters), <strong>orientation
+    and scaling</strong> (Landscape, Fit to one page wide), <strong>print titles</strong> (repeat
+    the header row on every page), and <strong>headers/footers</strong> (a page number, a report
+    name). Set them once and every print or PDF comes out tidy.
+  </p>
+
+  <h2>Why it matters to a specialist analyst</h2>
+  <p>
+    Your sustainability metrics, category and compliance figures don't stop at the screen — they
+    go out as a PDF or a printed pack to leadership, or sit alongside a POST/NBC extract someone
+    else has to read cold. A report that spills over pages with no repeating header reads as
+    careless, whatever the numbers say. Clean output is respect for the reader's time: the whole
+    picture on one page, headers where they expect them. It's also how a workbook you built becomes
+    a shareable PDF instead of a file only you can navigate.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Hitting <span class="cell">Print</span> (or Save as PDF) straight from the working sheet and
+    shipping whatever falls out — columns cut off, headers on page one only, a stray helper column in
+    the middle. Two minutes in Page Layout is the difference between "a report" and "a mess someone
+    has to decode".
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    On the <span class="cell">Print ready</span> tab: select the report range and set
+    <span class="cell">Page Layout → Print Area → Set Print Area</span>. Choose
+    <span class="cell">Orientation → Landscape</span>, then
+    <span class="cell">Scale to Fit → Width: 1 page</span>. Open
+    <span class="cell">Page Layout → Print Titles → Rows to repeat at top</span> and pick row 1 so the
+    header appears on every page. Finally, in the same dialog's
+    <span class="cell">Header/Footer</span> tab, add a footer with the page number.
+  </p>
+  <p>
+    <em>Always preview:</em> <span class="cell">File → Print</span> (or
+    <span class="cell">Ctrl+P</span>) shows the exact pages. Fix it here, not after it's printed.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="1">
+      <p class="q">1. To make the header row appear on every printed page, you set …</p>
+      <ul class="opts">
+        <li><button class="opt">a print area</button></li>
+        <li><button class="opt">Print Titles → Rows to repeat at top</button></li>
+        <li><button class="opt">a footer</button></li>
+        <li><button class="opt">conditional formatting</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">2. Your table is a little too wide for one page. The cleanest fix is …</p>
+      <ul class="opts">
+        <li><button class="opt">Scale to Fit → Width: 1 page (and Landscape)</button></li>
+        <li><button class="opt">delete columns</button></li>
+        <li><button class="opt">shrink the font to 4pt</button></li>
+        <li><button class="opt">print it anyway</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="2">
+      <p class="q">3. Before printing or exporting, you should always …</p>
+      <ul class="opts">
+        <li><button class="opt">delete the header</button></li>
+        <li><button class="opt">merge every cell</button></li>
+        <li><button class="opt">check Print Preview (Ctrl+P)</button></li>
+        <li><button class="opt">hide all gridlines forever</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Set the print area, orientation, scaling, repeating header and footer on the
+    <span class="cell">Print ready</span> tab, then press <span class="cell">Ctrl+P</span> and
+    read the preview: one page wide, header on top, page number below. Then
+    <span class="cell">File → Export → Create PDF</span> and open it — that PDF is what you'd actually
+    send. If anything's cut off, back to Page Layout.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — a clean, one-page printable report — with more handed to AI at each rung. The check
+    never changes: does Print Preview show one tidy page with the header repeating?
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it lists the settings, you apply them</h3>
+  <p>Aldi:GPT can't see your workbook, so it guides; you apply and preview.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I'm using Excel. I have a report table about 12 rows by 6 columns that currently prints across several messy pages. Walk me through the page-setup steps to make it print on one clean page: setting a print area, choosing landscape, fitting to one page wide, repeating the header row on every page, and adding a footer with the page number. Give me the exact ribbon paths.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer covers <span class="cell">Print Area</span>,
+      <span class="cell">Landscape</span>, <span class="cell">Scale to Fit → Width 1</span>,
+      <span class="cell">Print Titles</span> for the header row, and a footer — and reminds you to
+      check <span class="cell">Print Preview</span>.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it sets up the page in your workbook</h3>
+  <p>Copilot inside Excel can act on the sheet you have open. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>On the "Print ready" sheet, set the report table as the print area, use Landscape orientation, fit it to one page wide, repeat the header row (row 1) on every page, and add a footer showing "page X of Y". Then tell me what Print Preview will look like.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open <span class="cell">Ctrl+P</span> and confirm one page wide, the
+      header on top, and a page-number footer. If a column is clipped, the fit-to-width didn't take —
+      re-apply Scale to Fit.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the whole workbook from scratch</h3>
+  <p>An agent with file access builds the workbook for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>Create an Excel workbook named buying-report.xlsx with a sheet "Report" holding about 12 rows of a product buying report (Product, Category, Supplier, Case cost, Cases, Revenue). Configure it to print on one clean page: set the print area, Landscape orientation, fit to one page wide, repeat the header row on every page, and add a footer with the page number. Save the file and tell me the print settings you applied.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file, press <span class="cell">Ctrl+P</span>, and confirm one
+      tidy page with a repeating header and a page-number footer. Export to PDF and check it reads
+      cleanly — that PDF is the real deliverable.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI lists the settings" to "AI builds the workbook and sets the page up" — the deliverable is
+    the same clean, one-page report. What protects you at every rung is the Print Preview check.
+    Craft first, so you can supervise.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/en-us/office/set-a-specific-print-area-in-excel-for-the-web-cebfd77d-a52a-4d90-9b1e-98c07eff90bc">Microsoft — Set a print area</a> and
+    <a href="https://support.microsoft.com/en-us/office/print-rows-with-column-headers-on-top-of-every-page-e6589b5d-a02e-4dbb-8f79-8b3b41d8ff35">Microsoft — Repeat header rows when printing</a>.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want a reusable report template with your logo in the header
+    and a standard footer, so every export looks the same? Tell me your house style and I'll build it.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="charts-a-clean-column-chart.html">0016 — Charts</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="flash-fill-and-text-to-columns.html">0018 — Flash Fill</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — that is what makes output print clean.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>
