@@ -9,8 +9,8 @@
   --paper: #fffff8;
   --muted: #6b6b64;
   --rule: #d8d8cf;
-  --accent: #1a7a4c;      /* Excel-ish green, used sparingly */
-  --accent-soft: #e7f2ec;
+  --accent: #c43e1c;      /* PowerPoint orange — pipeline-mutation marker, 2026-07-04; was Excel green #1a7a4c */
+  --accent-soft: #fbeae4;
   --warn: #9a3b2f;
   --warn-soft: #f6e9e6;
   --code-bg: #f3f3ec;
@@ -285,7 +285,7 @@ footer.lesson-nav {
   padding: 0.5rem 0.9rem;
   margin: 0.2rem 0;
 }
-.workbook a.open:hover { background: #14603b; }
+.workbook a.open:hover { background: #9e3216; }
 .workbook .tab-name {
   font-family: var(--mono);
   font-size: 0.86em;
