@@ -1,0 +1,91 @@
+{
+  "course": {
+    "title": "Communication to a High Standard",
+    "lessons_dir": "lessons",
+    "workbook": "artefacts/communication-practice-pack",
+    "kicker_prefix": "Communication to a High Standard",
+    "end_next_label": "more coming — ask your teacher"
+  },
+  "rung_headers": {
+    "corner": "Theme ↓ / Rung →",
+    "short": [
+      "1 · Manual craft",
+      "2 · Aldi:GPT",
+      "3 · M365 Copilot",
+      "4 · GitHub Copilot"
+    ],
+    "long": [
+      "1 · Manual craft (do it well by hand)",
+      "2 · Aldi:GPT (chat, no tool use)",
+      "3 · M365 Copilot (acts in the app you write in)",
+      "4 · GitHub Copilot (builds the artefact)"
+    ]
+  },
+  "contexts": ["email", "document", "slides", "chat"],
+  "themes": [
+    {
+      "key": "clarity-conciseness",
+      "title": "Clarity & conciseness",
+      "notes": ["tighten; remove ambiguity"],
+      "rungs": [
+        "Tighten this draft — same message, half the words",
+        "Rewrite this selection in place: clearer, shorter, same meaning",
+        "Batch-rewrite a library of standard texts to the new standard"
+      ]
+    },
+    {
+      "key": "tone-audience",
+      "title": "Tone & audience",
+      "notes": ["the survey's dominant cluster — most lessons live here"],
+      "rungs": [
+        "Reword for the reader — formal, firm, or friendly",
+        "Adjust the tone of this draft for its audience, in place",
+        "Generate audience-tuned variants of a template set"
+      ]
+    },
+    {
+      "key": "structure-framing",
+      "title": "Structure & framing",
+      "notes": ["lead with the ask; bullets to prose and back"],
+      "rungs": [
+        "Restructure this: lead with the ask, turn bullets into prose",
+        "Draft the message from these bullet points, in the app",
+        "Build skeleton templates for your recurring message types"
+      ]
+    },
+    {
+      "key": "correctness",
+      "title": "Correctness",
+      "notes": ["grammar, spelling, punctuation, house style"],
+      "rungs": [
+        "Proof this — grammar, spelling, punctuation, house style",
+        "Check and correct the draft in place",
+        "Build a house-style checklist and apply it across a document set"
+      ]
+    },
+    {
+      "key": "condense-summarise",
+      "title": "Condense & summarise",
+      "notes": ["threads, meeting notes, reports — keep every ask and owner"],
+      "rungs": [
+        "Summarise this thread or these notes — keep every ask and owner",
+        "Summarise the thread and draft the minutes, in the app",
+        "Build the meeting-pack generator: notes in, minutes + actions out"
+      ]
+    }
+  ],
+  "lessons": [],
+  "candidates": [
+    { "theme": "clarity-conciseness", "working_title": "Tighten: cut the flab, keep the message", "contexts": ["email"], "survey_signal": "\"tighten emails\"; \"clarity and conciseness\"" },
+    { "theme": "clarity-conciseness", "working_title": "Say exactly one thing: killing ambiguity", "contexts": ["email", "document"], "survey_signal": "\"professional writing for external stakeholders where ambiguity is removed\"" },
+    { "theme": "tone-audience", "working_title": "Reword for tone & audience", "contexts": ["email"], "survey_signal": "DOMINANT: ~14 of 31 — reword, rephrase, formalise, professional standard" },
+    { "theme": "tone-audience", "working_title": "Writing up: the senior-leadership register", "contexts": ["email", "document"], "survey_signal": "\"tone in responses where the audience might be senior leadership\"" },
+    { "theme": "tone-audience", "working_title": "External stakeholders: firm, polite, unambiguous", "contexts": ["email"], "survey_signal": "\"professional writing for external stakeholders\"" },
+    { "theme": "structure-framing", "working_title": "The one-ask email", "contexts": ["email"], "survey_signal": "\"clarity and conciseness\"; moved from Outlook frame 2026-07-04" },
+    { "theme": "structure-framing", "working_title": "From bullets to prose (and back)", "contexts": ["email", "document"], "survey_signal": "\"write emails/formalise\"; \"write intro email from data\"; moved from Outlook frame" },
+    { "theme": "structure-framing", "working_title": "Lead with the answer: bottom line up front", "contexts": ["email", "document"], "survey_signal": "\"preparing submissions for GDM or other audiences\"" },
+    { "theme": "correctness", "working_title": "The 60-second proof pass", "contexts": ["email"], "survey_signal": "\"spell check\"; \"proofreading\"; \"checking emails\"" },
+    { "theme": "condense-summarise", "working_title": "Summarise a thread without losing the ask", "contexts": ["email"], "survey_signal": "\"summarising a message into a particular tone or more condensed\"; \"summarising emails\"" },
+    { "theme": "condense-summarise", "working_title": "Meeting notes to minutes & actions", "contexts": ["document", "email"], "survey_signal": "\"meeting notes to text\"; \"summarise meeting notes & populate minutes\"" }
+  ]
+}
