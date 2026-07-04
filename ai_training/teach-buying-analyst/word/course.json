@@ -1,0 +1,89 @@
+{
+  "course": {
+    "title": "Word to a High Standard",
+    "lessons_dir": "lessons",
+    "workbook": "artefacts/word-practice-pack",
+    "kicker_prefix": "Word to a High Standard",
+    "end_next_label": "more coming — ask your teacher"
+  },
+  "rung_headers": {
+    "corner": "Theme ↓ / Rung →",
+    "short": [
+      "1 · Manual craft",
+      "2 · Aldi:GPT",
+      "3 · M365 Copilot",
+      "4 · GitHub Copilot"
+    ],
+    "long": [
+      "1 · Manual craft (do it well by hand)",
+      "2 · Aldi:GPT (chat, no tool use)",
+      "3 · M365 Copilot (acts in Word)",
+      "4 · GitHub Copilot (builds the document)"
+    ]
+  },
+  "themes": [
+    {
+      "key": "styles-skeleton",
+      "title": "Styles: the document's skeleton",
+      "notes": ["styles over manual formatting; heading hierarchy"],
+      "rungs": [
+        "Design the style set for the document you describe",
+        "Apply consistent styles across this draft, in place",
+        "Build a styled document from a plain-text draft"
+      ]
+    },
+    {
+      "key": "structure-navigation",
+      "title": "Structure & navigation",
+      "notes": ["nav pane, TOC, breaks and sections done right"],
+      "rungs": [
+        "Plan the section structure for the document you describe",
+        "Insert and update the table of contents; reorganise via headings",
+        "Restructure a document file to a given outline by script"
+      ]
+    },
+    {
+      "key": "tables-figures",
+      "title": "Tables & figures",
+      "notes": ["tables that behave; captions; figures that stay put"],
+      "rungs": [
+        "Choose table vs figure vs prose for the content you describe",
+        "Format this table consistently; add captions throughout",
+        "Generate the document's tables from the data files"
+      ]
+    },
+    {
+      "key": "review-collaborate",
+      "title": "Review & collaborate",
+      "notes": ["track changes, comments, compare — the GDM reality"],
+      "rungs": [
+        "Triage this list of reviewer comments: accept, push back, or discuss",
+        "Summarise what changed in this reviewed document",
+        "Build a compare-and-report pass across document versions"
+      ]
+    },
+    {
+      "key": "templates-consistency",
+      "title": "Templates & consistency",
+      "notes": ["document templates; theme fonts/colours; building blocks"],
+      "rungs": [
+        "Turn the document you describe into a template checklist",
+        "Create a new document from the organisation's template",
+        "Build the organisation's document template from a brand spec"
+      ]
+    }
+  ],
+  "lessons": [],
+  "candidates": [
+    { "theme": "styles-skeleton", "working_title": "Styles, not formatting: fix it once", "survey_signal": "\"training material\"; \"formal documents\" (formatting consistency demand)" },
+    { "theme": "styles-skeleton", "working_title": "The heading hierarchy: one outline, three payoffs", "survey_signal": "pillar-derived (nav pane, TOC and structure all hang off it)" },
+    { "theme": "structure-navigation", "working_title": "Breaks & sections: why your page numbering fights you", "survey_signal": "pillar-derived" },
+    { "theme": "structure-navigation", "working_title": "The table of contents that maintains itself", "survey_signal": "\"preparing submissions for GDM or other audiences\"" },
+    { "theme": "tables-figures", "working_title": "Tables that behave: widths, headers, repeat rows", "survey_signal": "pillar-derived" },
+    { "theme": "tables-figures", "working_title": "Figures & captions that stay where you put them", "survey_signal": "pillar-derived" },
+    { "theme": "review-collaborate", "working_title": "Track changes without fear", "survey_signal": "\"preparing submissions\" (multi-reviewer reality)" },
+    { "theme": "review-collaborate", "working_title": "Comments, versions & compare", "survey_signal": "pillar-derived" },
+    { "theme": "templates-consistency", "working_title": "Working the document template", "survey_signal": "\"get ideas on formatting and templates\"" },
+    { "theme": "templates-consistency", "working_title": "Building blocks: the reusable clauses", "survey_signal": "pillar-derived (sibling of Outlook's Quick Parts)" }
+  ]
+}
