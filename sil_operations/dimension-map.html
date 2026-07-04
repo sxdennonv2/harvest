@@ -133,7 +133,7 @@
 
 <div class="wrap">
   <header class="masthead">
-    <p class="eyebrow">Harvest · pipeline instrument · 05 Jul 2026 · frame v0.10-draft</p>
+    <p class="eyebrow">Harvest · pipeline instrument · 05 Jul 2026 · frame v0.11-draft</p>
     <h1>The SIL-operations dimension space</h1>
     <p class="lede">Harvest instance #4 (FRAME-LEDGER row 4) — a domain <b>promoted</b>
       from real source artifacts rather than elicited blind: three residents' actual
@@ -153,7 +153,7 @@
       <div class="stat"><div class="n">4×</div><div class="l">pool refresh · per year</div></div>
       <div class="stat"><div class="n">4</div><div class="l">plan-lifecycle states</div></div>
       <div class="stat"><div class="n">TBA</div><div class="l">support-worker roster · parked</div></div>
-      <div class="stat warn"><div class="n">4</div><div class="l">open questions</div></div>
+      <div class="stat warn"><div class="n">3</div><div class="l">open questions</div></div>
     </div>
   </header>
 
@@ -277,19 +277,18 @@
         re-harmonization or cascading when she edits one.</div>
       </div>
       <div class="axis">
-        <div class="axname">plan-lifecycle<small>four-state machine, revised 05 Jul</small></div>
+        <div class="axname">plan-lifecycle<small>four-state machine, fully resolved 05 Jul</small></div>
         <div class="axkind">state machine</div>
         <div class="axk"><div class="chips">
           <span class="chip built">draft</span><span class="chip built">locked</span>
           <span class="chip built">shopped</span><span class="chip built">closed</span>
         </div>
         <code>draft</code> is editable. <code>locked</code> is Debbie's explicit action —
-        a <b>hard gate</b>: cannot shop an unlocked plan. <code>shopped</code> is
-        <b>reversible</b> — can reset back to <code>draft</code>, clearing the shopping
-        list — and is itself a hard gate: cannot close an unshopped plan.
-        <code>closed</code> is the confirmed <b>true terminal state</b> — unchangeable
-        under any circumstances. Open: can <code>locked</code> revert to
-        <code>draft</code> directly, or only via <code>shopped → draft</code>?</div>
+        a <b>hard gate</b>: cannot shop an unlocked plan — and can <b>revert directly
+        back to draft</b> (an unlock). <code>shopped</code> is also <b>reversible</b> —
+        resets back to <code>draft</code>, clearing the shopping list — and is itself a
+        hard gate: cannot close an unshopped plan. <code>closed</code> is the confirmed
+        <b>true terminal state</b>, the lifecycle's only one-way door.</div>
       </div>
       <div class="axis">
         <div class="axname">support-worker-roster<small>parked, 05 Jul</small></div>
@@ -481,23 +480,17 @@
               she wants, cell by cell</td>
             <td class="slotcell">Fully specified</td></tr>
           <tr><th>6 · Plan lifecycle</th>
-            <td class="slotcell"><code>draft</code> (editable) → <code>locked</code>
-              (Debbie's explicit action; <b>hard gate</b> — cannot shop until locked) →
-              <code>shopped</code> (<b>reversible</b> — can reset to <code>draft</code>,
-              clearing the shopping list; hard gate — cannot close until shopped) →
-              <code>closed</code> (true terminal — no further changes, ever)</td>
-            <td class="slotcell">Revised: <code>shopped</code> is NOT terminal (corrects
-              earlier draft); <code>closed</code> is. Whether <code>locked</code> can
-              revert to <code>draft</code> directly is still open</td></tr>
+            <td class="slotcell"><code>draft</code> ↔ <code>locked</code> (Debbie's
+              explicit action, reversible directly; <b>hard gate</b> — cannot shop until
+              locked) → <code>shopped</code> (<b>reversible</b> — can reset to
+              <code>draft</code>, clearing the shopping list; hard gate — cannot close
+              until shopped) → <code>closed</code> (true terminal — no further changes,
+              ever)</td>
+            <td class="slotcell">Fully resolved: two paths back to <code>draft</code>
+              (direct unlock, or via <code>shopped</code>); <code>closed</code> is the
+              only one-way door</td></tr>
         </tbody>
       </table>
-    </div>
-    <div class="decision" style="margin-top:16px">
-      <b>Open question this raises</b>
-      <p>Can <code>locked</code> transition directly back to <code>draft</code> (an
-        unlock), or is <code>shopped → draft</code> the only confirmed path back —
-        meaning undoing a lock alone would require generating a shopping list and then
-        resetting it?</p>
     </div>
   </section>
 
@@ -580,10 +573,16 @@
         the true terminal state, reached only after shopping (another hard gate) — and
         only <code>closed</code> is confirmed unconditionally immutable.</p>
     </div>
+    <div class="decision"><b style="color:var(--thyme-deep)">Resolved · 05 Jul 2026 (ninth pass)</b>
+      <p><b style="display:inline;color:var(--ink)">Lifecycle fully specified</b> —
+        <code>locked</code> can revert <b>directly</b> back to <code>draft</code> (an
+        unlock), confirmed to not require going via <code>shopped</code>. The plan
+        lifecycle now has zero open questions: two paths lead back to <code>draft</code>
+        (direct unlock from <code>locked</code>, or reset from <code>shopped</code>);
+        <code>closed</code> is the sole one-way door.</p>
+    </div>
     <div class="decision open"><b>Still open — before any contract/skill is built</b>
       <ul>
-        <li>Can <code>locked</code> transition directly back to <code>draft</code> (an
-          unlock), or is <code>shopped → draft</code> the only confirmed path back?</li>
         <li>Typical residents-per-home (Earlwood = 3; unconfirmed as typical)</li>
         <li>Full list of residences/resident counts nationwide — deferred, sticking
           with Earlwood + 4 placeholders for now</li>
@@ -591,17 +590,17 @@
       </ul>
     </div>
     <div class="decision"><b>Next unit of work</b>
-      <p>Confirm whether <code>locked</code> permits a direct unlock, then draft the
-        unit contract (one printable 28-day meal-plan artifact per resident) and
-        generate <b>one sample artifact</b> — still no repo infrastructure, frame file +
-        skill + artifact only.</p>
+      <p>The meal-selection mechanism and plan lifecycle are now both fully specified.
+        Draft the unit contract (one printable 28-day meal-plan artifact per resident)
+        and generate <b>one sample artifact</b> — still no repo infrastructure, frame
+        file + skill + artifact only.</p>
     </div>
   </section>
 
   <footer>source of truth: <b>sil_operations/dimension-map.html</b> (this file, in-repo) —
     generated against <code>sil_operations/frame.json</code> ·
     <code>sil_operations/DIMENSIONS.md</code> · sxdennonv2/harvest ·
-    branch <code>feat/sil-meal-plan-frame</code> · frame v0.10-draft, 05 Jul 2026</footer>
+    branch <code>feat/sil-meal-plan-frame</code> · frame v0.11-draft, 05 Jul 2026</footer>
 </div>
 
 <script>
