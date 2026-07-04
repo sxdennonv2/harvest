@@ -38,9 +38,9 @@ before a single lesson was authored, so the move cost nothing.
 ## Lessons so far (by theme)
 
 <!-- BEGIN:auto:lessons -->
-_None authored yet. 11 candidates enumerated in `course.json`, each tagged with survey
-signal and context. First up (highest demand in either pipeline): **Reword for tone &
-audience** in Tone & audience, email context._
+### Tone & audience
+
+- [0001 — Reword for tone & audience](lessons/reword-for-tone-and-audience.html)
 <!-- END:auto:lessons -->
 
 ## The grid
@@ -48,11 +48,11 @@ audience** in Tone & audience, email context._
 <!-- BEGIN:auto:grid -->
 | Theme ↓ / Rung → | 1 · Manual craft (do it well by hand) | 2 · Aldi:GPT (chat, no tool use) | 3 · M365 Copilot (acts in the app you write in) | 4 · GitHub Copilot (builds the artefact) |
 |---|---|---|---|---|
-| **Clarity & conciseness** | 2 candidates | Tighten this draft — same message, half the words | Rewrite this selection in place: clearer, shorter, same meaning | Batch-rewrite a library of standard texts to the new standard |
-| **Tone & audience** | 3 candidates ← survey demand | Reword for the reader — formal, firm, or friendly | Adjust the tone of this draft for its audience, in place | Generate audience-tuned variants of a template set |
-| **Structure & framing** | 3 candidates | Restructure this: lead with the ask, turn bullets into prose | Draft the message from these bullet points, in the app | Build skeleton templates for your recurring message types |
-| **Correctness** | 1 candidate | Proof this — grammar, spelling, punctuation, house style | Check and correct the draft in place | Build a house-style checklist and apply it across a document set |
-| **Condense & summarise** | 2 candidates | Summarise this thread or these notes — keep every ask and owner | Summarise the thread and draft the minutes, in the app | Build the meeting-pack generator: notes in, minutes + actions out |
+| **Clarity & conciseness** | tighten; remove ambiguity | Tighten this draft — same message, half the words | Rewrite this selection in place: clearer, shorter, same meaning | Batch-rewrite a library of standard texts to the new standard |
+| **Tone & audience** | ✅ [0001 Reword for tone & audience](lessons/reword-for-tone-and-audience.html); the survey's dominant cluster — most lessons live here | Reword for the reader — formal, firm, or friendly | Adjust the tone of this draft for its audience, in place | Generate audience-tuned variants of a template set |
+| **Structure & framing** | lead with the ask; bullets to prose and back | Restructure this: lead with the ask, turn bullets into prose | Draft the message from these bullet points, in the app | Build skeleton templates for your recurring message types |
+| **Correctness** | grammar, spelling, punctuation, house style | Proof this — grammar, spelling, punctuation, house style | Check and correct the draft in place | Build a house-style checklist and apply it across a document set |
+| **Condense & summarise** | threads, meeting notes, reports — keep every ask and owner | Summarise this thread or these notes — keep every ask and owner | Summarise the thread and draft the minutes, in the app | Build the meeting-pack generator: notes in, minutes + actions out |
 <!-- END:auto:grid -->
 
 ## Practice artefact (decision pending first lesson)
