@@ -21,12 +21,19 @@
       "4 · GitHub Copilot (builds the artefact)"
     ]
   },
-  "contexts": ["email", "document", "slides", "chat"],
+  "contexts": [
+    "email",
+    "document",
+    "slides",
+    "chat"
+  ],
   "themes": [
     {
       "key": "clarity-conciseness",
       "title": "Clarity & conciseness",
-      "notes": ["tighten; remove ambiguity"],
+      "notes": [
+        "tighten; remove ambiguity"
+      ],
       "rungs": [
         "Tighten this draft — same message, half the words",
         "Rewrite this selection in place: clearer, shorter, same meaning",
@@ -36,7 +43,9 @@
     {
       "key": "tone-audience",
       "title": "Tone & audience",
-      "notes": ["the survey's dominant cluster — most lessons live here"],
+      "notes": [
+        "the survey's dominant cluster — most lessons live here"
+      ],
       "rungs": [
         "Reword for the reader — formal, firm, or friendly",
         "Adjust the tone of this draft for its audience, in place",
@@ -46,7 +55,9 @@
     {
       "key": "structure-framing",
       "title": "Structure & framing",
-      "notes": ["lead with the ask; bullets to prose and back"],
+      "notes": [
+        "lead with the ask; bullets to prose and back"
+      ],
       "rungs": [
         "Restructure this: lead with the ask, turn bullets into prose",
         "Draft the message from these bullet points, in the app",
@@ -56,7 +67,9 @@
     {
       "key": "correctness",
       "title": "Correctness",
-      "notes": ["grammar, spelling, punctuation, house style"],
+      "notes": [
+        "grammar, spelling, punctuation, house style"
+      ],
       "rungs": [
         "Proof this — grammar, spelling, punctuation, house style",
         "Check and correct the draft in place",
@@ -66,7 +79,9 @@
     {
       "key": "condense-summarise",
       "title": "Condense & summarise",
-      "notes": ["threads, meeting notes, reports — keep every ask and owner"],
+      "notes": [
+        "threads, meeting notes, reports — keep every ask and owner"
+      ],
       "rungs": [
         "Summarise this thread or these notes — keep every ask and owner",
         "Summarise the thread and draft the minutes, in the app",
@@ -82,7 +97,12 @@
       "nav_label": "Tighten",
       "grid_label": "Tighten",
       "theme": "clarity-conciseness",
-      "contexts": ["email"]
+      "contexts": [
+        "email",
+        "document",
+        "slides",
+        "chat"
+      ]
     },
     {
       "slug": "say-exactly-one-thing",
@@ -91,7 +111,12 @@
       "nav_label": "Ambiguity",
       "grid_label": "Killing ambiguity",
       "theme": "clarity-conciseness",
-      "contexts": ["email", "document"]
+      "contexts": [
+        "email",
+        "document",
+        "slides",
+        "chat"
+      ]
     },
     {
       "slug": "reword-for-tone-and-audience",
@@ -100,7 +125,11 @@
       "nav_label": "Reword",
       "grid_label": "Reword for tone & audience",
       "theme": "tone-audience",
-      "contexts": ["email"]
+      "contexts": [
+        "email",
+        "document",
+        "chat"
+      ]
     },
     {
       "slug": "writing-up-the-senior-leadership-register",
@@ -109,8 +138,14 @@
       "nav_label": "Writing up",
       "grid_label": "Senior-leadership register",
       "theme": "tone-audience",
-      "contexts": ["email", "document"],
-      "builds_on": ["reword-for-tone-and-audience"]
+      "contexts": [
+        "email",
+        "document",
+        "slides"
+      ],
+      "builds_on": [
+        "reword-for-tone-and-audience"
+      ]
     },
     {
       "slug": "external-stakeholders-firm-polite-unambiguous",
@@ -119,8 +154,13 @@
       "nav_label": "External",
       "grid_label": "External stakeholders",
       "theme": "tone-audience",
-      "contexts": ["email"],
-      "builds_on": ["reword-for-tone-and-audience"]
+      "contexts": [
+        "email",
+        "document"
+      ],
+      "builds_on": [
+        "reword-for-tone-and-audience"
+      ]
     },
     {
       "slug": "the-one-ask-email",
@@ -129,7 +169,10 @@
       "nav_label": "One ask",
       "grid_label": "The one-ask email",
       "theme": "structure-framing",
-      "contexts": ["email"]
+      "contexts": [
+        "email",
+        "chat"
+      ]
     },
     {
       "slug": "from-bullets-to-prose-and-back",
@@ -138,7 +181,11 @@
       "nav_label": "Bullets ↔ prose",
       "grid_label": "Bullets to prose",
       "theme": "structure-framing",
-      "contexts": ["email", "document"]
+      "contexts": [
+        "email",
+        "document",
+        "slides"
+      ]
     },
     {
       "slug": "lead-with-the-answer",
@@ -147,7 +194,12 @@
       "nav_label": "BLUF",
       "grid_label": "Lead with the answer",
       "theme": "structure-framing",
-      "contexts": ["email", "document"]
+      "contexts": [
+        "email",
+        "document",
+        "slides",
+        "chat"
+      ]
     },
     {
       "slug": "the-60-second-proof-pass",
@@ -156,7 +208,12 @@
       "nav_label": "Proof pass",
       "grid_label": "The 60-second proof pass",
       "theme": "correctness",
-      "contexts": ["email"]
+      "contexts": [
+        "email",
+        "document",
+        "slides",
+        "chat"
+      ]
     },
     {
       "slug": "summarise-a-thread-without-losing-the-ask",
@@ -165,7 +222,10 @@
       "nav_label": "Summarise",
       "grid_label": "Summarise a thread",
       "theme": "condense-summarise",
-      "contexts": ["email"]
+      "contexts": [
+        "email",
+        "chat"
+      ]
     },
     {
       "slug": "meeting-notes-to-minutes-and-actions",
@@ -174,8 +234,14 @@
       "nav_label": "Minutes",
       "grid_label": "Minutes & actions",
       "theme": "condense-summarise",
-      "contexts": ["document", "email"],
-      "builds_on": ["summarise-a-thread-without-losing-the-ask"]
+      "contexts": [
+        "document",
+        "email",
+        "chat"
+      ],
+      "builds_on": [
+        "summarise-a-thread-without-losing-the-ask"
+      ]
     }
   ],
   "candidates": []

@@ -131,6 +131,27 @@ tier this is a real capability; on the static tier it routes to the human teache
 **behaviours.** Everything client-side and dependency-free: quiz feedback and copy buttons
 as inline script. No frameworks, no network calls, no analytics.
 
+## Optional elements
+
+**`context-rebind`** *(communication pipeline only; added 2026-07-05)* — placed after
+`ladder-point`, before `primary-source`. Heading binding: `<h2>Other rooms, same
+craft</h2>`. The communication pipeline's lessons bind to **contexts** (email ·
+document · slides · chat) instead of one application; this element is how a lesson
+authored in its demand-centre context (email) rebinds to the others **without forking
+the page** — a rebinding is a move, not a rewrite.
+
+One compact block (`div.callout`, labelled with the context name) per additional bound
+context in the frame's `contexts` array, each carrying exactly three things: the
+**scenario analog** in that context (one or two sentences transposing the lesson's
+specimen — no new pack scenario required), the **host swap** (what changes at rung 3:
+Copilot in Word / PowerPoint / Teams, and any artifact-form shift), and the
+**invariant restated** (the lesson's check, unchanged — that it survives the room swap
+is the element's whole argument). Blocks stay under ~80 words each; a context that
+needs more than that is asking for its own lesson, which is a frame decision.
+
+Mechanical verify: optional — the script does not require it; when present, block
+count must equal `len(contexts) - 1` for the page's frame entry.
+
 ## Technical constraints
 
 - One lesson = one HTML file at `lessons/{slug}.html`; slug is a stable, opaque identifier —
