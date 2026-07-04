@@ -75,6 +75,16 @@
   ],
   "lessons": [
     {
+      "slug": "relative-and-absolute-references",
+      "file": "relative-and-absolute-references.html",
+      "workbook_sheet": "References",
+      "title": "Relative & absolute references",
+      "nav_label": "References",
+      "grid_label": "References",
+      "theme": "source-prepare",
+      "cheatsheet": { "href": "../reference/references-cheatsheet.html", "label": "$ & F4 cheat sheet" }
+    },
+    {
       "slug": "tables-the-modern-foundation",
       "file": "tables-the-modern-foundation.html",
       "workbook_sheet": "Tables",
@@ -122,16 +132,6 @@
       "theme": "source-prepare"
     },
     {
-      "slug": "relative-and-absolute-references",
-      "file": "relative-and-absolute-references.html",
-      "workbook_sheet": "References",
-      "title": "Relative & absolute references",
-      "nav_label": "References",
-      "grid_label": "References",
-      "theme": "summarise-analyse",
-      "cheatsheet": { "href": "../reference/references-cheatsheet.html", "label": "$ & F4 cheat sheet" }
-    },
-    {
       "slug": "logical-functions-and-iferror",
       "file": "logical-functions-and-iferror.html",
       "workbook_sheet": "Logical & IFERROR",
@@ -157,7 +157,7 @@
       "nav_label": "SUMIFS",
       "grid_label": "SUMIFS",
       "theme": "summarise-analyse",
-      "builds_on": ["relative-and-absolute-references", "pivottables-summarise-in-seconds"]
+      "builds_on": ["relative-and-absolute-references"]
     },
     {
       "slug": "xlookup-pull-matching-details",

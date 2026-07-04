@@ -187,7 +187,11 @@ Judged (agent):
 
 1. `relative-and-absolute-references.html` has no `manual-craft` ("How to do it") section —
    predates the contract's final shape. Backfill or formally exempt.
-2. Stale bare-number cross-references from the pre-reorder sequence (e.g. SUMIFS says
-   "the pivot (Lesson 3)"; PivotTables is now 0012). Slugs, not numbers, from here on.
-3. Frame order violates `builds_on`: Tables (0001) depends on References (0006). Needs a
-   decision — move References into *Source & prepare*, or accept and soften the prose.
+2. ~~Stale bare-number cross-references from the pre-reorder sequence.~~ **Resolved
+   2026-07-04**: all ten replaced with slug links or "this lesson".
+3. ~~Frame order violates `builds_on`.~~ **Resolved 2026-07-04**: References moved into
+   *Source & prepare* as lesson 0001 (its original position); order is now a valid
+   topological sort of the DAG. A second, soft violation found during visualisation
+   (SUMIFS 0009 leaning on PivotTables 0012 in its opening contrast) was resolved by
+   rewording the contrast as a neutral forward link and dropping the edge — the prose
+   was the edge's only evidence, and it was a contrast, not a technique prerequisite.
