@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0019 — Named ranges</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="flash-fill-and-text-to-columns.html">0018 — Flash Fill</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: more coming — ask your teacher</span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="relative-and-absolute-references.html">Source &amp; prepare</a>
+    <a href="logical-functions-and-iferror.html">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html" class="current">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0019</p>
+  <h1>Named ranges</h1>
+
+  <p class="mission">
+    Tied to your mission: a formula that reads <span class="cell">=SUM(Revenue)</span> tells the next
+    person exactly what it does; <span class="cell">=SUM($F$2:$F$19)</span> makes them go and look. A
+    <strong>named range</strong> gives a cell or block a plain-English name you can use anywhere in the
+    workbook — clearer formulas, fewer mistakes, and one place to update when the data grows.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">Named ranges</span> tab — a short product-and-revenue list
+      sits ready for you to name the revenue column and total it by name.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    Select a range, type a name in the <em>Name Box</em> (the little box to the left of the formula
+    bar), press Enter — that range now answers to the name. Use it in any formula:
+    <span class="cell">=SUM(Revenue)</span>, <span class="cell">=AVERAGE(Revenue)</span>,
+    <span class="cell">=MAX(Revenue)</span>. Names are absolute by nature, so they never slide when you
+    copy a formula.
+  </p>
+  <p>
+    Manage them all under <em>Formulas &gt; Name Manager</em> — rename, delete, or repoint a name at a
+    bigger range in one place, and every formula that uses it updates. Rules: names can't contain
+    spaces (use <span class="cell">Net_Revenue</span>) and can't look like a cell reference. A name
+    can also point at a single cell — perfect for a rate or threshold you reuse.
+  </p>
+
+  <h2>Why it matters to a specialist analyst</h2>
+  <p>
+    Your sustainability and compliance summaries get re-run every cycle against refreshed SAP extracts
+    and dashboard pulls — a workbook full of <span class="cell">=SUM($F$2:$F$19)</span> is one only you
+    can safely refresh, and only if you remember exactly what that range meant last time. Names turn
+    formulas into something you (and whoever inherits the file) can read and trust at a glance, and they
+    remove a whole class of error — you can't accidentally point at the wrong column when the column has
+    a name. When this cycle's extract has more rows than last cycle's, you repoint the name once instead
+    of hunting every formula across the report.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Scattering raw <span class="cell">$F$2:$F$19</span> ranges through dozens of formulas, then
+    breaking half of them when the data grows by a row and you update only some. Name the range once
+    and point everything at the name.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    On the <span class="cell">Named ranges</span> tab, select the revenue figures in
+    <span class="cell">B2:B11</span>, click into the Name Box, type <span class="cell">Revenue</span>
+    and press Enter. Now in <span class="cell">D2</span> type <span class="cell">=SUM(Revenue)</span>
+    and in <span class="cell">D3</span> type <span class="cell">=AVERAGE(Revenue)</span> — both read
+    clearly and total the named block. Open <em>Formulas &gt; Name Manager</em> to see
+    <span class="cell">Revenue</span> listed; that's where you'd extend it if the list grew.
+  </p>
+  <p>
+    <em>Builds on references:</em> a name is really an absolute reference with a friendly label — the
+    same "lock it so it doesn't move" idea from the references lesson, made readable.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="1">
+      <p class="q">1. The quickest way to name a selected range is …</p>
+      <ul class="opts">
+        <li><button class="opt">Formulas &gt; AutoSum</button></li>
+        <li><button class="opt">type a name in the Name Box and press Enter</button></li>
+        <li><button class="opt">Insert &gt; Table</button></li>
+        <li><button class="opt">wrap it in quotes</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="2">
+      <p class="q">2. Which is a valid range name?</p>
+      <ul class="opts">
+        <li><button class="opt">Net Revenue</button></li>
+        <li><button class="opt">B2</button></li>
+        <li><button class="opt">Net_Revenue</button></li>
+        <li><button class="opt">2026Total</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. You extend a named range to cover new rows in …</p>
+      <ul class="opts">
+        <li><button class="opt">Formulas &gt; Name Manager</button></li>
+        <li><button class="opt">every formula, one at a time</button></li>
+        <li><button class="opt">the Name Box only</button></li>
+        <li><button class="opt">you can't — you must rename it</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Name the revenue column and write the two summary formulas on the
+    <span class="cell">Named ranges</span> tab. Confirm <span class="cell">=SUM(Revenue)</span> matches
+    a plain <span class="cell">=SUM(B2:B11)</span>. Then open the Name Manager and repoint
+    <span class="cell">Revenue</span> to include one more row — watch both summaries update without you
+    touching them.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — a named range and readable summary formulas — with more handed to AI at each rung. The
+    check never changes: do the named formulas total the right block, and is the name valid and
+    documented?
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it explains and drafts, you name it</h3>
+  <p>Aldi:GPT can't see your workbook, so it explains the steps and writes the formulas; you create the name.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I'm using Excel. I have revenue figures in B2:B11 that I want to name "Revenue". Talk me through naming the range with the Name Box, then give me formulas for a total and an average that use the name. Remind me of the rules for valid names and how to extend the range later in the Name Manager.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer uses <span class="cell">=SUM(Revenue)</span> and
+      <span class="cell">=AVERAGE(Revenue)</span>, and mentions no spaces and the Name Manager for
+      editing.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it names and totals in your workbook</h3>
+  <p>Copilot inside Excel can act on the sheet you have open. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>On the "Named ranges" sheet, define a named range called Revenue for the values in B2:B11. Then in D2 add =SUM(Revenue) and in D3 add =AVERAGE(Revenue), with a label beside each. Confirm the name appears in the Name Manager.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open <em>Formulas &gt; Name Manager</em> and confirm
+      <span class="cell">Revenue</span> points at <span class="cell">B2:B11</span>, and that the
+      formulas use the name, not the raw range.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the named workbook from scratch</h3>
+  <p>An agent with file access builds the workbook for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>Create an Excel workbook named named-summary.xlsx with a sheet "Sales" listing about 10 products and their Revenue (AUD) in column B. Define a workbook name "Revenue" for the revenue values, then add a total using =SUM(Revenue) and an average using =AVERAGE(Revenue) with labels. Save the file and tell me the total revenue and confirm the name is defined in the Name Manager.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file, check the Name Manager lists
+      <span class="cell">Revenue</span>, and confirm the total matches a plain sum of the column.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI drafts the named formula" to "AI builds the named workbook" — the deliverable is the same
+    readable summary anyone can maintain. What protects you is checking the name points at the right
+    block and that the totals match a plain sum.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/en-us/office/define-and-use-names-in-formulas-4d0f13ac-53b7-422e-afd2-abd7ff379c64">Microsoft — Define and use names in formulas</a> (which also covers the Name Manager) and the
+    <a href="https://support.microsoft.com/en-us/excel">Microsoft — Excel help &amp; learning</a> hub.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want the key ranges in your real workbook named so the formulas
+    read plainly and update in one place? Send a sanitised copy and I'll name them up.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="flash-fill-and-text-to-columns.html">0018 — Flash Fill</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: more coming — ask your teacher</span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — a name makes the formula read like plain English.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

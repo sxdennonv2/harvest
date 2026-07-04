@@ -1,0 +1,304 @@
+/*
+  Shared lesson stylesheet — "Excel to a High Standard".
+  Tufte-inspired: generous margins, a readable measure, restrained colour.
+  Every lesson and reference doc links this so the course looks like one thing.
+*/
+
+:root {
+  --ink: #1a1a1a;
+  --paper: #fffff8;
+  --muted: #6b6b64;
+  --rule: #d8d8cf;
+  --accent: #c43e1c;      /* PowerPoint orange — pipeline-mutation marker, 2026-07-04; was Excel green #1a7a4c */
+  --accent-soft: #fbeae4;
+  --warn: #9a3b2f;
+  --warn-soft: #f6e9e6;
+  --code-bg: #f3f3ec;
+  --measure: 38rem;
+  --serif: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  --mono: "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { font-size: 18px; }
+
+body {
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+  max-width: 46rem;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.kicker {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 0.5rem;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin: 0 0 0.4rem;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 1.35rem;
+  margin: 2.6rem 0 0.6rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+h3 { font-weight: 700; font-size: 1.05rem; margin: 1.6rem 0 0.4rem; }
+
+p, li { max-width: var(--measure); }
+p { margin: 0.8rem 0; }
+
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+a:hover { border-bottom-color: var(--accent); }
+
+code, kbd, .cell {
+  font-family: var(--mono);
+  font-size: 0.86em;
+  background: var(--code-bg);
+  padding: 0.08em 0.36em;
+  border-radius: 3px;
+}
+
+kbd {
+  border: 1px solid var(--rule);
+  border-bottom-width: 2px;
+  background: #fff;
+}
+
+.mission {
+  font-style: italic;
+  color: var(--muted);
+  border-left: 3px solid var(--accent);
+  padding: 0.2rem 0 0.2rem 1rem;
+  margin: 1rem 0 2rem;
+}
+
+.callout {
+  margin: 1.4rem 0;
+  padding: 1rem 1.2rem;
+  border-radius: 6px;
+  background: var(--accent-soft);
+  max-width: var(--measure);
+}
+
+.callout.bad { background: var(--warn-soft); }
+.callout .label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--accent);
+}
+.callout.bad .label { color: var(--warn); }
+
+table.grid {
+  border-collapse: collapse;
+  margin: 1.2rem 0;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+}
+table.grid th, table.grid td {
+  border: 1px solid var(--rule);
+  padding: 0.35rem 0.6rem;
+  text-align: center;
+  min-width: 3.2rem;
+}
+table.grid th { background: var(--code-bg); color: var(--muted); font-weight: 400; }
+table.grid td.locked { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+
+/* Quiz component */
+.quiz { margin: 1.2rem 0; padding: 1.2rem 1.3rem; border: 1px solid var(--rule); border-radius: 6px; }
+.quiz .q { font-weight: 700; margin: 0 0 0.7rem; }
+.quiz .opts { list-style: none; margin: 0; padding: 0; }
+.quiz .opts li { margin: 0.35rem 0; }
+.quiz button.opt {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  width: 100%;
+  max-width: var(--measure);
+  text-align: left;
+  padding: 0.5rem 0.8rem;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.quiz button.opt:hover { border-color: var(--accent); }
+.quiz button.opt.correct { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.quiz button.opt.wrong { background: var(--warn-soft); border-color: var(--warn); color: var(--warn); }
+.quiz .feedback { margin-top: 0.6rem; min-height: 1.4rem; font-style: italic; color: var(--muted); }
+
+/* AI move — copy-paste prompt block */
+.ai-move { margin: 1.4rem 0; padding: 1rem 1.2rem; border: 1px dashed var(--accent); border-radius: 6px; background: var(--accent-soft); max-width: var(--measure); }
+.ai-move .label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 0.4rem; }
+.prompt { position: relative; margin: 0.6rem 0; }
+.prompt textarea {
+  width: 100%;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0.8rem 0.9rem;
+  resize: vertical;
+}
+.prompt .copy {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid var(--accent);
+  background: #fff;
+  color: var(--accent);
+  border-radius: 4px;
+  padding: 0.3rem 0.7rem;
+  margin-top: 0.4rem;
+}
+.prompt .copy:hover { background: var(--accent); color: #fff; }
+.prompt .copy.done { background: var(--accent); color: #fff; }
+
+.lesson-nav {
+  font-size: 0.9rem;
+  color: var(--muted);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: baseline;
+  column-gap: 1.5rem;
+  row-gap: 0.4rem;
+}
+
+.lesson-nav .nav-prev { grid-column: 1; justify-self: start; text-align: left; }
+.lesson-nav .nav-mid  { grid-column: 2; justify-self: center; text-align: center; }
+.lesson-nav .nav-next { grid-column: 3; justify-self: end; text-align: right; }
+
+nav.lesson-nav {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+footer.lesson-nav {
+  margin-top: 4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+
+/* Section (theme) nav — jump to any theme's opening lesson */
+.theme-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.9rem;
+  margin: 0 0 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}
+.theme-nav .theme-nav-label {
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.theme-nav a {
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+  padding: 0.1rem 0;
+}
+.theme-nav a:hover { border-bottom-color: var(--accent); }
+.theme-nav a.current {
+  color: var(--ink);
+  font-weight: 700;
+  border-bottom: 2px solid var(--accent);
+}
+
+/* Contents list grouped by theme */
+.theme-group {
+  margin: 0 0 1.6rem;
+}
+.theme-group h3 {
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--rule);
+}
+.theme-group ul {
+  margin: 0;
+}
+
+.ask {
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  background: var(--code-bg);
+  padding: 0.9rem 1.1rem;
+  border-radius: 6px;
+}
+
+/* Practice-workbook hand-off panel */
+.workbook {
+  margin: 1.4rem 0;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--accent);
+  border-left-width: 4px;
+  border-radius: 6px;
+  background: #fff;
+  max-width: var(--measure);
+}
+.workbook .label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.workbook a.open {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 0.5rem 0.9rem;
+  margin: 0.2rem 0;
+}
+.workbook a.open:hover { background: #9e3216; }
+.workbook .tab-name {
+  font-family: var(--mono);
+  font-size: 0.86em;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 0.08em 0.4em;
+  border-radius: 3px;
+  font-weight: 700;
+}
+
+@media print {
+  body { padding: 0; max-width: none; }
+  .quiz button.opt { border: 1px solid #999; }
+  a { color: var(--ink); }
+  .theme-nav { display: none; }
+}

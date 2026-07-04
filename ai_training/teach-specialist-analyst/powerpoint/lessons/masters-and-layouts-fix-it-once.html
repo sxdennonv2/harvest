@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0001 — Masters &amp; layouts: fix it once, fix it everywhere</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev"></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="placeholders-not-text-boxes.html">0002 — Placeholders</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="masters-and-layouts-fix-it-once.html" class="current">Build on the master</a>
+    <a href="align-distribute-group.html">Arrange &amp; align</a>
+    <a href="excel-to-slide-paste-link.html">Charts &amp; visuals</a>
+    <a href="working-the-corporate-template.html">Reuse &amp; templates</a>
+    <a href="presenter-view-and-rehearse.html">Present &amp; share</a>
+  </nav>
+
+  <p class="kicker">PowerPoint to a High Standard · Lesson 0001</p>
+  <h1>Masters &amp; layouts: fix it once, fix it everywhere</h1>
+
+  <p class="mission">
+    Tied to your mission: turning analysis into decks that carry the finding, not
+    decorate it, starts here, before alignment, before charts, before any of it. A deck
+    has a skeleton you rarely look at — the master and its layouts — and every deck
+    that looks like it was stitched from three other decks got that way because
+    nobody opened it. This lesson is the floor: fix problems at the level that owns
+    them, and the rest of this course stops fighting the same fire on every slide.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice pack · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/powerpoint-practice-pack.html#scenario-c">Open the practice pack</a>
+      and find <strong>Scenario C — The franken-deck</strong> — a range-review deck
+      assembled from three older decks, three slide masters aboard, four title styles,
+      footers that disagree about the date, and a logo that jumps 5mm between slides.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    A deck has a skeleton you rarely see: the <strong>master</strong> owns what's
+    everywhere — the fonts, the logo, the footer, the colour theme. A
+    <strong>layout</strong> (Title Slide, Title and Content, Section Header, and so on)
+    owns the arrangement of placeholders for one kind of slide. A <strong>slide</strong>
+    only holds content — it inherits everything else from the layout it claims, which
+    in turn inherits from the master.
+  </p>
+  <p>
+    That gives you a rule for where to fix anything: fix at the highest level that
+    owns the problem. A master-level fix (the logo's position, the footer's date
+    format) lands on every slide in the deck at once. A layout-level fix (how a
+    Title-and-Content slide arranges its placeholders) lands on every slide of that
+    kind. A slide-level fix lands once, on that slide only. Editing slides one at a
+    time for a problem the master owns is fixing one leaf of a tree, forever, instead
+    of fixing the trunk.
+  </p>
+
+  <h2>Why it matters to a specialist analyst</h2>
+  <p>
+    Your reporting decks get assembled the same way every cycle: last quarter's
+    sustainability or category pack, a colleague's compliance slides, a template
+    someone downloaded two years ago — all pasted into one file the night before it's
+    due to leadership. Each import drags its old master in with it. Nobody notices
+    until the reviewer flips through it and the logo jumps, the footer date is wrong
+    on half the slides, and every title looks like it came from a different report.
+  </p>
+  <p>
+    You pull figures out of SAP extracts, dashboards and shared workbooks and turn
+    them into the summaries and charts your team acts on — the finding deserves a
+    deck that reads as one document, not three stapled together. Consolidate onto one
+    master before you touch a single slide's content, so the correction — the right
+    logo, the right footer, the right title style — happens once and holds for every
+    report built from that file afterwards.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    The franken-deck workflow: assemble slides from old decks, then hand-fix each
+    slide's logo position, footer date, and title style, one slide at a time, forever
+    — because nobody opened View → Slide Master to see that three masters were riding
+    along in the same file. Every "quick fix" is a patch on a leaf when the problem
+    lives in the trunk.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    Work Scenario C's franken-deck. First, open <strong>View → Slide Master</strong>.
+    You'll see more than one master in the left-hand pane — that's the tell. Three
+    masters riding in one file means three sets of fonts, colours, and footers, one
+    per donor deck. Pick the master that matches where this deck actually belongs (the
+    house style, not whichever one happened to be first), and delete the other two
+    from the Slide Master view.
+  </p>
+  <p>
+    Deleting the extra masters doesn't fix the slides that were built on them — those
+    slides still remember which layout they came from, and PowerPoint will flag or
+    orphan them. Select those imported slides, right-click, and choose
+    <strong>Reset</strong>, then explicitly assign each one the correct layout from the
+    surviving master (Layout picker, or right-click → Layout). Reset snaps placeholder
+    content back to the layout's arrangement; it does not, by itself, move a slide onto
+    a different master's layout — you still choose the layout.
+  </p>
+  <p>
+    Now make the corrections once, at the level that owns them. The logo and the
+    footer's date format belong to the master itself — fix them in the master view and
+    they appear correctly on every layout and every slide below it, in one edit. The
+    title style belongs to whichever layout is misbehaving — if only the
+    Title-and-Content layout has an oversized title placeholder, fix that layout, not
+    the fifteen slides using it. Narrate each fix as you make it: "this one's a master
+    fix" or "this one's a layout fix" — if you ever reach for a slide-level fix here,
+    stop and ask which level actually owns it.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="2">
+      <p class="q">1. Every slide in the deck has the wrong logo, in the same wrong
+        spot. Where's the correct fix?</p>
+      <ul class="opts">
+        <li><button class="opt">move the logo on each slide by hand</button></li>
+        <li><button class="opt">fix the layout that's used most often</button></li>
+        <li><button class="opt">fix the logo once on the slide master</button></li>
+        <li><button class="opt">group the logo and title on every slide</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="1">
+      <p class="q">2. Only the Section Header slides have an oversized title that
+        collides with the subtitle. Every other slide kind is fine. What owns this?</p>
+      <ul class="opts">
+        <li><button class="opt">the Section Header layout</button></li>
+        <li><button class="opt">the slide master</button></li>
+        <li><button class="opt">each individual Section Header slide</button></li>
+        <li><button class="opt">the deck's theme colours</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. You deleted two extra masters and ran Reset on the imported
+        slides, but three of them still show the wrong layout's arrangement. What's
+        the missing step?</p>
+      <ul class="opts">
+        <li><button class="opt">explicitly assign the correct layout to those slides — Reset alone doesn't move them</button></li>
+        <li><button class="opt">delete those three slides and start over</button></li>
+        <li><button class="opt">run Reset a second time</button></li>
+        <li><button class="opt">rebuild the master from scratch</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Open a deck of your own that's been assembled from more than one source — a
+    review deck stitched from last quarter's, a colleague's slides pasted in, anything
+    with more than one donor. Open View → Slide Master and count the masters. For
+    every problem you can see repeated across slides (a logo, a footer, a title
+    style), name which level owns it before you touch anything. Self-check: after your
+    fixes, you should be able to point at any slide and say which single edit — made
+    once, at the master or the layout — is why it now looks right, with no slide-level
+    patch left standing for a deck-wide problem.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — diagnose a franken-deck and fix each problem at the level that owns
+    it — with more handed to AI at each rung. The check never changes: every fix must
+    land at the highest level that actually owns the problem, never patched slide by
+    slide underneath it.
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it maps problems to levels, you judge the map</h3>
+  <p>Aldi:GPT can't see your deck, so it can only work from what you describe; you
+    judge whether its master/layout/slide mapping is actually correct.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="8" readonly>I have a PowerPoint deck assembled from three older decks (a "franken-deck"). Its recurring problems are: (1) the logo sits in a slightly different position on different slides, (2) the footer shows two different date formats depending on which old deck the slide came from, (3) title text size and font differ between slides that are meant to be the same kind of slide (e.g. all "Title and Content" slides), (4) one slide has a title that's just a manually drawn text box, not a real placeholder. For each problem, tell me whether the correct fix belongs at the slide master level, a specific slide layout level, or the individual slide level, and explain why.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> the signature failure at this rung is level confusion —
+      a fix prescribed at slide level for something the master owns (like problem 1 or
+      2 above, which should both resolve to "master"). Read its answer back against the
+      one idea: master owns what's everywhere, layout owns arrangement for one kind of
+      slide, slide is content only. If it tells you to fix the logo "on each affected
+      slide," it's wrong — send it back.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it builds onto layouts, it doesn't fix your skeleton</h3>
+  <p>Copilot in PowerPoint can create new slides and sections from a prompt, placing
+    them onto the layouts that already exist in your deck — but it builds on whatever
+    skeleton is already there. If your deck is still a franken-deck when you ask, you
+    get franken-slides back.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in PowerPoint)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>Add a new section to this deck called "Q3 category deep-dive" with a section header slide, followed by three content slides for Snacks, Beverages, and Household — each with a title and a placeholder for bullet points.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> before you trust the result, open Slide Master view and
+      confirm the new slides claimed real layouts from your <em>surviving, consolidated</em>
+      master — not a stray layout dragged in from one of the old decks. Reset doesn't
+      move a slide onto a different master's layout, and neither does Copilot; it
+      builds on what's there. If you ran this prompt before consolidating per the
+      manual-craft steps above, expect the new section to inherit the same three-master
+      mess — consolidate first, then let Copilot add to a clean skeleton.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the skeleton from scratch, on one master</h3>
+  <p>An agent with file access can generate an entire deck skeleton via python-pptx
+    from an outline, choosing layouts from a single named master as it goes — but it
+    can't inspect a messy existing deck for you; you still hand it a clean outline
+    and a target master to build against.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="8" readonly>Write a python-pptx script that builds a PowerPoint deck skeleton from this outline: a title slide ("Q3 Range Review"), a section header slide per category ("Snacks", "Beverages", "Household"), and under each section a content slide with a title placeholder and a body placeholder for bullet points. Use a single template file (template.pptx) as the source of the slide master and layouts — pick the closest matching layout from that one master for each slide kind (title slide layout, section header layout, title-and-content layout). Do not create or reference any other master. Every slide must use add_slide() with a layout from the template's slide_layouts collection, not a manually positioned text box.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the generated file's Slide Master view — there must
+      be exactly one master, and every slide in the Slides pane must show a claimed
+      layout (not "Custom Layout" or a blank inheritance). Search the script itself for
+      any <code>add_textbox</code> call standing in for a title or body — that's an
+      orphan text box doing a placeholder's job, the same problem Scenario C's
+      hand-drawn title box has, just introduced by code instead of by hand.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI maps the problem to a level" to "AI builds the whole skeleton on one
+    master" — the deliverable never changes: a deck where every deck-wide fix lives at
+    the level that owns it. What protects you at every rung is that same check, not
+    the tool. Learn to read a deck's skeleton by hand first, so you can tell a real
+    master fix from a slide-level patch dressed up as one — by you or by the AI.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/en-us/office/what-is-a-slide-master-b9abb2a0-7aef-4257-a14e-4329c904da54">Microsoft — What is a slide master?</a>
+    and <a href="https://support.microsoft.com/powerpoint">Microsoft Support — PowerPoint help &amp; learning</a>
+    for the canonical master/layout/placeholder relationship.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want this retargeted to your actual deck instead
+    of Scenario C's fictional franken-deck? Send a sanitised copy or a description of
+    its masters and layouts, and I'll rebuild the diagnosis around your real skeleton.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev"></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="placeholders-not-text-boxes.html">0002 — Placeholders</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — that is fixing at the level that owns the problem.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

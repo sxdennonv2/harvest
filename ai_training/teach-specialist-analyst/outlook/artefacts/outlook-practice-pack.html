@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Outlook practice pack</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+  <style>
+    .scenario{border:1px solid #d9d9d9;border-radius:6px;padding:1rem 1.25rem;margin:1.5rem 0}
+    .scenario h3{margin-top:0}
+    .meta{font-size:.9rem;color:#555;margin:.25rem 0 .75rem}
+    details.soln{margin-top:.75rem;border-left:3px solid #1A7A4C;padding:.25rem .75rem;background:#E7F2EC}
+    details.soln summary{cursor:pointer;font-weight:600;color:#12613B}
+    .survive{background:#FFF4CE;border-radius:4px;padding:.6rem .9rem;font-size:.92rem}
+    .survive b{color:#9A6A00}
+    table.inboxlist{border-collapse:collapse;width:100%;font-size:.88rem;margin:.5rem 0}
+    table.inboxlist th,table.inboxlist td{border:1px solid #d8d8cf;padding:.35rem .55rem;text-align:left;vertical-align:top}
+    table.inboxlist th{background:#f3f3ec}
+  </style>
+</head>
+<body>
+
+  <p class="kicker">Outlook to a High Standard · Practice pack</p>
+  <h1>The mailbox pack</h1>
+
+  <p class="mission">
+    Scenarios for practising Outlook mechanics. Some run in your own mailbox (search,
+    rules); others supply the material here (an inbox to triage, a thread to route, an
+    invite to fix). Suppliers are fictional and shared with the course family. Each
+    scenario states what a correct result must contain — that's the check at every rung.
+  </p>
+
+  <div class="scenario" id="scenario-a">
+    <h3>Scenario A — The Monday inbox (triage)</h3>
+    <p class="meta">Twelve messages landed over the weekend. Sort them: decide each
+      one's home (folder), category, and whether it gets a flag (a follow-up you own).</p>
+    <table class="inboxlist">
+      <tr><th>#</th><th>From</th><th>Subject</th><th>Gist</th></tr>
+      <tr><td>1</td><td>Sam Lee (Harvest Lane)</td><td>Q3 price list</td><td>the awaited list, attached</td></tr>
+      <tr><td>2</td><td>Marco Bianchi (Acme)</td><td>RE: order PO-88231</td><td>confirms Friday delivery</td></tr>
+      <tr><td>3</td><td>IT Comms</td><td>Planned outage Saturday</td><td>no action, dated info</td></tr>
+      <tr><td>4</td><td>Kim Tan (GreenField)</td><td>Organic samples update</td><td>samples ship Thursday — you owe QA a heads-up</td></tr>
+      <tr><td>5</td><td>Your director</td><td>FW: GDM pack</td><td>"worth a read before Friday"</td></tr>
+      <tr><td>6</td><td>Newsletter</td><td>Category Insights Weekly</td><td>unread pile fodder</td></tr>
+      <tr><td>7</td><td>Alex Moreau (Supply Chain)</td><td>DC capacity fortnight</td><td>asks you a question, needs answer Tue</td></tr>
+      <tr><td>8</td><td>Leo Cruz (Riverside)</td><td>Pallet config change</td><td>info; warehouse already told</td></tr>
+      <tr><td>9</td><td>HR</td><td>Benefits window closing</td><td>personal admin, deadline next week</td></tr>
+      <tr><td>10</td><td>Sam Lee (Harvest Lane)</td><td>RE: promo volumes</td><td>chases your confirmation — you owe by Fri</td></tr>
+      <tr><td>11</td><td>Amy Ng (BrightHarvest)</td><td>New line teaser</td><td>speculative pitch, no date</td></tr>
+      <tr><td>12</td><td>Finance</td><td>Month-end accruals</td><td>needs your figures Thursday</td></tr>
+    </table>
+    <div class="survive"><b>A correct triage:</b> exactly three flags carry follow-ups
+      you owe with dates (4 → QA heads-up, 7 → Tuesday answer, 10 → Friday confirmation;
+      12 is a calendar task, flag acceptable) · suppliers file by supplier folder, not
+      one "Suppliers" dump · 3, 6, 11 never earn a flag · nothing stays in the inbox
+      that has a home.</div>
+  </div>
+
+  <div class="scenario" id="scenario-b">
+    <h3>Scenario B — The lost attachment (search)</h3>
+    <p class="meta">Practised in your own mailbox — the targets below are described, not
+      supplied. Build the operator query <em>before</em> you look.</p>
+    <p>Three retrieval jobs, in rising difficulty:</p>
+    <p>1 · A price list <strong>attachment</strong> from a named supplier contact,
+      received <strong>roughly three months ago</strong> — you remember the sender, not
+      the subject.<br>
+      2 · The message where a colleague <strong>asked you a question you never
+      answered</strong> — you remember one distinctive word from it.<br>
+      3 · Everything still <strong>flagged</strong> from before last month — the
+      follow-ups that quietly aged out.</p>
+    <div class="survive"><b>A correct result:</b> each job solved by a written operator
+      query (e.g. <code>from: hasattachments:yes received:</code> ranges,
+      <code>flagged</code>) — not by scrolling; each query returns a candidate set small
+      enough to scan in one screen (&lt;20 results); you can say which operator did the
+      narrowing.</div>
+  </div>
+
+  <div class="scenario" id="scenario-c">
+    <h3>Scenario C — The promo thread (threading &amp; routing)</h3>
+    <p class="meta">The four-message thread below has reached Wednesday evening. Decide
+      the mechanics of your next send: reply, reply-all, or forward — and who belongs on
+      To vs CC.</p>
+    <div class="prompt">
+      <textarea rows="14" readonly>From: Sam Lee (Harvest Lane) — Monday 09:12
+Subject: Rice Crackers promo fortnight — volumes
+Proposes +40 cases/week of Rice Crackers 24pk for the promo fortnight (on top of the usual 70). Needs volume confirmation by Friday to hold the production slot. Mentions pallet configuration changes from 1 September.
+
+From: You — Monday 11:38 (forwarded to Alex Moreau, Supply Chain)
+Asks whether the DC can absorb +40/week for the fortnight.
+
+From: Alex Moreau — Tuesday 14:05 (reply to you only)
+Yes, but only if Harvest Lane deliveries move Monday → Wednesday those two weeks. Also asks: is Popcorn 10pk in this promo? Nothing on his sheet.
+
+From: Sam Lee — Wednesday 16:47 (to you)
+Chases the confirmation — Friday stands, slot lapses after. Wednesday deliveries are fine. Pallet change going ahead 1 September regardless.</textarea>
+      <button class="copy" type="button">Copy thread</button>
+    </div>
+    <div class="survive"><b>A correct routing:</b> the confirmation to Sam is a
+      <b>reply</b> on the supplier thread (To: Sam; CC: Alex — he owns the DC condition)
+      — never reply-all across the internal/external seam, because Alex's internal
+      capacity discussion must not travel to Harvest Lane · the Popcorn question goes to
+      whoever owns the promo list on a <b>separate thread</b> (its own subject), not
+      buried here · nothing internal is forwarded to Sam without pruning the trail.</div>
+  </div>
+
+  <div class="scenario" id="scenario-d">
+    <h3>Scenario D — The agenda-less invite (scheduling)</h3>
+    <p class="meta">This invite went out for a meeting that matters. Predict its fate,
+      then rebuild it.</p>
+    <div class="prompt">
+      <textarea rows="6" readonly>Subject: Catch up
+Time: Thursday 14:00–15:00
+Required: Sam Lee (Harvest Lane); Alex Moreau; You
+Body: Hi both, thought it would be good to get together and go through a few things ahead of the promo. Various bits to cover. See you Thursday!</textarea>
+      <button class="copy" type="button">Copy invite</button>
+    </div>
+    <div class="survive"><b>A correct rebuild:</b> subject names the decision
+      ("Promo fortnight: confirm volumes &amp; delivery day") · body carries a numbered
+      agenda (confirm 110/wk; Monday→Wednesday deliveries; Popcorn in/out) · each item
+      names its owner · prep stated ("bring DC capacity sheet") · duration matches the
+      agenda (30 min, not 60) · outcome named ("we leave with the Friday confirmation
+      sendable").</div>
+  </div>
+
+  <div class="scenario" id="scenario-e">
+    <h3>Scenario E — The Friday ritual (automation)</h3>
+    <p class="meta">Every Friday, the same six minutes: the weekly sell-through report
+      arrives from Finance; you file it to the reporting folder, flag it for Monday's
+      read-through, and send the same two-line acknowledgement ("Received, will review
+      Monday — flag anything unusual now"). Fifty-two times a year.</p>
+    <div class="survive"><b>A correct automation:</b> one <b>Quick Step</b> chaining all
+      three actions (move to folder + flag for Monday + reply from template), triggered
+      by one click on the arrived mail · it is a Quick Step and not a rule, and the
+      learner can say why (the acknowledgement should go only after a human glanced at
+      the report — rules fire unattended) · the reply template keeps the "flag anything
+      unusual now" ask.</div>
+  </div>
+
+  <div class="scenario" id="scenario-f">
+    <h3>Scenario F — The naked send (attachments &amp; mechanics)</h3>
+    <p class="meta">You're about to send the volume confirmation to Sam Lee (external).
+      Alex Moreau (internal) should see it land. The draft below has three mechanical
+      problems; sending it as-is causes three follow-up emails.</p>
+    <div class="prompt">
+      <textarea rows="6" readonly>To: Sam Lee
+Subject: RE: Rice Crackers promo fortnight — volumes
+
+Hi Sam — confirming as attached: the signed-off volume sheet with the 110/week for the fortnight. I've also pasted the week-by-week split below as a screenshot from my workbook. @Alex can you make sure the DC slots line up.
+
+[no attachment on the draft · the split is an image of a spreadsheet · Alex is not on the recipient lines]</textarea>
+      <button class="copy" type="button">Copy draft</button>
+    </div>
+    <div class="survive"><b>A correct send:</b> the sheet actually attached, with a
+      filename the receiver can file (not "Book1 (3).xlsx") · the split pasted as a real
+      table or text, never a screenshot (Sam can't copy numbers out of a picture) ·
+      @mentions are an internal instrument — Alex goes on CC (he owns the DC condition);
+      an @mention in an external mail is just decoration the external reader can't act
+      on · attachment named in the body matches the attachment on the mail.</div>
+  </div>
+
+  <div class="scenario" id="scenario-g">
+    <h3>Scenario G — The meeting output (recap → tracked follow-ups)</h3>
+    <p class="meta">Raw notes from Thursday's promo meeting. Present: you, Alex Moreau
+      (Supply Chain), Dana Whitfield (Merch). The meeting is over; the question is where
+      its outputs now live in Outlook.</p>
+    <div class="prompt">
+      <textarea rows="10" readonly>promo mtg thurs — confirmed 110/wk rice crackers for the fortnight, I send Sam the confirmation Friday AM. wednesday deliveries agreed all round. popcorn is OUT of the promo this time (Dana confirmed) — I need to tell Alex today so his sheet is right, and it goes in my reply on the supplier thread. Dana getting us the catalogue proof Tuesday. Alex to book the DC slots for the wednesday pattern by Monday. parked: organic samples timing — next month's meeting, don't lose it.</textarea>
+      <button class="copy" type="button">Copy notes</button>
+    </div>
+    <div class="survive"><b>A correct capture:</b> every action lives where it will
+      fire, not in the notes — yours (Sam confirmation Fri AM; tell Alex today) as
+      flagged items/tasks with dates · others' (Dana's Tuesday proof, Alex's Monday
+      booking) tracked by a follow-up you can chase, not by memory · the parked item
+      lands on next month's meeting invite, not in a note · decisions (110/wk, Wednesday,
+      Popcorn out) travel to the people whose sheets they change. Writing the minutes
+      document is the communication course's job — this is about where actions live.</div>
+  </div>
+
+  <div class="scenario" id="scenario-h">
+    <h3>Scenario H — The absence brief (out-of-office)</h3>
+    <p class="meta">You're out Monday 20 – Friday 24 July, back Monday 27. Coverage
+      agreed: Alex Moreau for DC/logistics questions, Priya Shah for supplier
+      commercials; genuinely urgent items escalate to your director. Build the
+      out-of-office from these facts.</p>
+    <div class="survive"><b>A correct out-of-office:</b> dates exact, including the
+      back-on date · who covers <em>what</em>, by name, so the sender self-routes ·
+      no "checking emails occasionally" (a promise that makes coverage pointless and
+      you half-on-leave) · <b>two versions</b>: internal (names, direct routes) and
+      external (no org chart — one contact, no internal detail) · set before you leave,
+      expiry set so it turns itself off.</div>
+  </div>
+
+  <div class="ask">
+    <strong>Make it yours.</strong> These are fictional. Describe your real Monday inbox
+    or your real Friday ritual and the lessons retarget to your actual folders,
+    suppliers and rituals.
+  </div>
+
+  <script>
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+          btn.textContent = 'Copied';
+        } catch (e) {
+          text.select();
+          document.execCommand('copy');
+          btn.textContent = 'Copied';
+        }
+        setTimeout(() => { btn.textContent = 'Copy'; }, 1600);
+      });
+    });
+  </script>
+</body>
+</html>

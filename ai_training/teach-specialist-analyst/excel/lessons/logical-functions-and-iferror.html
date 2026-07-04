@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0007 — Logical functions &amp; IFERROR</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="get-and-transform-power-query.html">0006 — Power Query</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="aggregation-and-precision.html">0008 — Aggregation</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="relative-and-absolute-references.html">Source &amp; prepare</a>
+    <a href="logical-functions-and-iferror.html" class="current">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0007</p>
+  <h1>Logical functions &amp; IFERROR</h1>
+
+  <p class="mission">
+    Tied to your mission: a report shouldn't just show numbers, it should <em>judge</em> them — flag
+    the lines under target, and never blow up with a <span class="cell">#DIV/0!</span> when a divisor
+    is blank. <strong>IF</strong> makes a cell decide; <strong>IFERROR</strong> makes it fail
+    gracefully. These are the glue between a raw formula and a report a director can read.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">Logical &amp; IFERROR</span> tab — a product list with
+      revenue, cases and a target sits ready for a verdict column and a safe per-case calculation.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    <span class="cell">IF</span> reads as <em>if this is true, do the first thing, otherwise the
+    second</em>: <span class="cell">=IF(D2&gt;=E2, "On target", "Below")</span>. Need several bands?
+    <span class="cell">IFS</span> tests conditions in order:
+    <span class="cell">=IFS(D2&gt;=E2,"On target", D2&gt;=E2*0.8,"Close", TRUE,"Below")</span>.
+    Combine tests with <span class="cell">AND</span> / <span class="cell">OR</span>:
+    <span class="cell">=IF(AND(D2&gt;=E2, B2="Snacks"), "Star", "")</span>.
+  </p>
+  <p>
+    <span class="cell">IFERROR</span> wraps anything that might error and supplies a clean fallback:
+    <span class="cell">=IFERROR(F2/C2, 0)</span> gives revenue-per-case, but returns
+    <span class="cell">0</span> instead of <span class="cell">#DIV/0!</span> when cases are blank.
+  </p>
+
+  <h2>Why it matters to a specialist analyst</h2>
+  <p>
+    Sustainability, category and compliance reporting all run on thresholds — under target, over
+    limit, out of compliance — and a report that reads "Below" beside the weak lines is doing your
+    triage for you before leadership even opens it. A stray <span class="cell">#DIV/0!</span> in a
+    POST/NBC summary loses trust instantly, and once a reader spots one error they start doubting
+    every figure on the page, including the ones you got right. IF adds the judgement your metrics
+    need; IFERROR protects the finish on extracts that won't always arrive complete.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Eyeballing a column to decide which lines are under target, and shipping a report with a raw
+    error cell because one row had no cases. Let the formula judge, and let IFERROR keep the page clean.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    On the <span class="cell">Logical &amp; IFERROR</span> tab, in <span class="cell">F2</span> type
+    <span class="cell">=IF(D2&gt;=E2, "On target", "Below")</span> and fill down — each line judges
+    itself against its target. In <span class="cell">G2</span> type
+    <span class="cell">=IFERROR(C2/B2, 0)</span> for revenue per case that stays clean when a divisor
+    is missing. Fill down. Row 7 has blank cases on purpose — watch IFERROR catch it.
+  </p>
+  <p>
+    <em>Builds on references:</em> if the target lived in one fixed cell instead of a column, you'd
+    lock it with <span class="cell">$</span> — the absolute reference from an earlier lesson, holding
+    the goalpost still as the formula fills down.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="1">
+      <p class="q">1. <span class="cell">=IF(D2&gt;=E2,"On target","Below")</span> puts "Below" in
+        the cell when …</p>
+      <ul class="opts">
+        <li><button class="opt">D2 is at least E2</button></li>
+        <li><button class="opt">D2 is less than E2</button></li>
+        <li><button class="opt">E2 is blank</button></li>
+        <li><button class="opt">never</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="2">
+      <p class="q">2. What does <span class="cell">=IFERROR(F2/C2, 0)</span> return when C2 is blank?</p>
+      <ul class="opts">
+        <li><button class="opt">#DIV/0!</button></li>
+        <li><button class="opt">a blank cell</button></li>
+        <li><button class="opt">0</button></li>
+        <li><button class="opt">an error message box</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. To flag a line only when it's on target <em>and</em> a Snack, you use …</p>
+      <ul class="opts">
+        <li><button class="opt">IF with AND(...)</button></li>
+        <li><button class="opt">SUM</button></li>
+        <li><button class="opt">IFERROR</button></li>
+        <li><button class="opt">a filter</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Fill both columns on the <span class="cell">Logical &amp; IFERROR</span> tab. Confirm the verdict
+    column reads "Below" exactly on the lines whose revenue is under their target, and that the
+    per-case column shows <span class="cell">0</span> — not an error — on the blank-cases row. Then
+    try an <span class="cell">IFS</span> version with a middle "Close" band at 80% of target.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — a judgement column and an error-proof calculation — with more handed to AI at each
+    rung. The check never changes: are the verdicts right, and is every cell error-free?
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it writes the formula, you place it</h3>
+  <p>Aldi:GPT can't see your workbook, so it writes the formula; you place and verify it.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I'm using Excel. Column C is Revenue, column B is Cases, column D is actual and column E is a target, data in rows 2 to 11. Write me an IF formula for F2 that shows "On target" when D2 is at least E2 and "Below" otherwise, and an IFERROR formula for G2 that gives Revenue divided by Cases but returns 0 instead of #DIV/0! when Cases is blank. Both ready to fill down.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer uses <span class="cell">&gt;=</span> in the IF and wraps
+      the division in <span class="cell">IFERROR(..., 0)</span> — not a nested IF that only guards zero.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it fills the columns in your workbook</h3>
+  <p>Copilot inside Excel can act on the sheet you have open. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>On the "Logical & IFERROR" sheet, in F2:F11 add an IF formula that reads "On target" when the actual (column D) is at least the target (column E) and "Below" otherwise. In G2:G11 add revenue-per-case as Revenue divided by Cases, wrapped in IFERROR so blank cases return 0 rather than an error.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> click <span class="cell">G7</span> (the blank-cases row) and confirm it
+      shows <span class="cell">0</span>, not <span class="cell">#DIV/0!</span>, and that it's a real
+      IFERROR formula.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the judged report from scratch</h3>
+  <p>An agent with file access builds the workbook for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>Create an Excel workbook named judged-report.xlsx with a sheet "Lines" listing about 10 products with columns Product, Cases, Revenue (AUD), Actual and Target. Add a "Verdict" column using IF that shows "On target" or "Below", and a "Revenue per case" column using IFERROR that returns 0 when Cases is blank. Include one row with blank Cases to prove IFERROR works. Save the file and tell me which cell would show #DIV/0! without the IFERROR.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file, confirm no error cells anywhere, and that the verdicts
+      match a hand-check of actual versus target on a couple of rows.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI writes the IF" to "AI builds the judged, error-proof report" — the deliverable is the
+    same page that judges itself and never shows an error. What protects you is checking the verdicts
+    and hunting for a single stray <span class="cell">#DIV/0!</span>.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/en-us/office/if-function-69aed7c9-4e8a-4755-a9bc-aa8bbff73be2">Microsoft — IF function</a> and
+    <a href="https://support.microsoft.com/en-us/office/iferror-function-c526fd07-caeb-47b8-8bb6-63f3e417f611">Microsoft — IFERROR function</a>.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want the verdict bands and the safe calculations retargeted to
+    your real KPIs and targets? Send a sanitised extract and I'll rebuild this around them.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="get-and-transform-power-query.html">0006 — Power Query</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="aggregation-and-precision.html">0008 — Aggregation</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — IF decides, IFERROR keeps the page clean.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

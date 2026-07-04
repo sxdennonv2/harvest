@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Word practice pack</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+  <style>
+    .scenario{border:1px solid #d9d9d9;border-radius:6px;padding:1rem 1.25rem;margin:1.5rem 0}
+    .scenario h3{margin-top:0}
+    .meta{font-size:.9rem;color:#555;margin:.25rem 0 .75rem}
+    .survive{background:#FFF4CE;border-radius:4px;padding:.6rem .9rem;font-size:.92rem}
+    .survive b{color:#9A6A00}
+    .spec{background:#f3f3ec;border-radius:4px;padding:.6rem .9rem;font-size:.9rem;font-family:ui-monospace,Menlo,monospace;white-space:pre-line}
+  </style>
+</head>
+<body>
+
+  <p class="kicker">Word to a High Standard · Practice pack</p>
+  <h1>The document pack</h1>
+
+  <p class="mission">
+    Scenarios for practising document machinery. The recurring specimen is the
+    <strong>range-review submission</strong> — a GDM-style document with fictional
+    suppliers shared across the course family. Each scenario describes its specimen
+    precisely enough to reconstruct; rung 4 of the relevant lessons builds the specimens
+    from scratch. Each states what a correct result must contain.
+  </p>
+
+  <div class="scenario" id="scenario-a">
+    <h3>Scenario A — The hand-formatted submission (styles)</h3>
+    <p class="meta">The Q3 range-review submission, 14 pages, formatted entirely by hand.</p>
+    <div class="spec">Specimen spec:
+· "Headings" are Normal text made bold 14pt (sometimes 13.5pt) by selection
+· Sub-headings: bold + italic, except section 4 where they're underlined
+· The nav pane shows nothing; outline view is a wall of Normal
+· One paragraph of body text is accidentally bold 14pt too — it looks like a heading</div>
+    <div class="survive"><b>A correct rescue:</b> real styles applied (Heading 1/2, Body)
+      via select-and-click, not retyped · the fake heading demoted by style, not by
+      unbolding · nav pane now walks the document · one global change (Heading 2 colour)
+      made ONCE in the style and landing everywhere · zero direct character formatting
+      doing a style's job.</div>
+  </div>
+
+  <div class="scenario" id="scenario-b">
+    <h3>Scenario B — The fighting page numbers (structure)</h3>
+    <p class="meta">Same submission: the title page shows "Page 1", the annex restarts
+      numbering randomly, landscape tables flipped the whole document sideways once,
+      and the table of contents was typed by hand in March — it lies.</p>
+    <div class="survive"><b>A correct structure:</b> section breaks placed deliberately
+      (title page unnumbered via different-first-page/section; annex restarting at 1 by
+      decision, not accident; landscape confined to its own section) · the typed TOC
+      deleted and replaced by a real one generated from the heading styles · the test:
+      add a heading, update the field, the TOC follows · page breaks by Ctrl+Enter,
+      never Enter-Enter-Enter.</div>
+  </div>
+
+  <div class="scenario" id="scenario-c">
+    <h3>Scenario C — The drifting table (tables &amp; figures)</h3>
+    <p class="meta">The submission's supplier-comparison table: five suppliers ×
+      six criteria, plus one chart pasted from the course workbook.</p>
+    <div class="spec">Specimen spec:
+· Column widths drift every time someone types a long supplier name
+· The header row vanishes when the table crosses to page 7
+· Two "columns" in the summary below it are actually tab-spaced text
+· The chart has floated to the wrong page; its caption was typed as plain text</div>
+    <div class="survive"><b>A correct fix:</b> fixed column widths (AutoFit off by
+      decision) · header row set to repeat across pages · the tab-spaced fake columns
+      rebuilt as a real table · the chart anchored to its paragraph deliberately, with
+      a real caption (Insert Caption) so a table-of-figures could build itself ·
+      the test: type a long name, nothing drifts.</div>
+  </div>
+
+  <div class="scenario" id="scenario-d">
+    <h3>Scenario D — The reviewed draft (review &amp; collaborate)</h3>
+    <p class="meta">The submission comes back from two reviewers: your director
+      (tracked changes: tightened the exec summary, changed a volume figure 110 → 100,
+      deleted a paragraph) and Merch (five comments: two questions, two style
+      quibbles, one "check this with Supply Chain").</p>
+    <div class="survive"><b>A correct review pass:</b> markup views used deliberately
+      (Simple Markup to read, All Markup to decide) · the volume change 110 → 100
+      NOT accepted silently — it's a fact change, verified against the source before
+      accept/reject (the proof-pass discipline) · prose tightening accepted or rejected
+      per change, not Accept All · every comment resolved or answered, the
+      check-with-Supply-Chain one spawning a real follow-up · final saved WITHOUT
+      tracked history riding along.</div>
+  </div>
+
+  <div class="scenario" id="scenario-e">
+    <h3>Scenario E — The new-doc job (templates &amp; consistency)</h3>
+    <p class="meta">A supplier-onboarding pack is needed. The org template exists
+      (cover, styled headings, footer with doc control). The usual move — Save-As on
+      the last onboarding pack — is why three live documents still carry a 2024 footer
+      and Riverside's name in the metadata.</p>
+    <div class="survive"><b>A correct start:</b> New → from the template, never Save-As
+      on a predecessor · the template's styles used as given (if a style is missing,
+      that's a template-owner request, not a local invention) · standing clauses
+      inserted as building blocks (Quick Parts — the same instrument Outlook taught),
+      not retyped from memory · document properties/metadata clean — the test: Inspect
+      Document finds no previous supplier's ghost.</div>
+  </div>
+
+  <div class="ask">
+    <strong>Make it yours.</strong> These are fictional. Describe your real submission
+    war stories and the lessons retarget to your actual template and review cycle.
+  </div>
+</body>
+</html>

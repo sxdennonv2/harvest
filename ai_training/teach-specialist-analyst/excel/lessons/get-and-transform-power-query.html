@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0006 — Get &amp; Transform (Power Query)</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="text-formulas-clean-and-combine.html">0005 — Text formulas</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="logical-functions-and-iferror.html">0007 — Logical &amp; IFERROR</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="relative-and-absolute-references.html" class="current">Source &amp; prepare</a>
+    <a href="logical-functions-and-iferror.html">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0006</p>
+  <h1>Get &amp; Transform: clean once, refresh forever</h1>
+
+  <p class="mission">
+    Tied to your mission: the same export lands every week, and every week you delete the junk rows,
+    fix the headers, trim the text and change the types by hand. <strong>Get &amp; Transform</strong>
+    (Power Query) records those steps once, then replays them on the next file with a single
+    <em>Refresh</em>. It is the difference between cleaning data and building a cleaning machine.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">Power Query</span> tab — a deliberately messy raw export
+      (a title row, stray spaces, mixed casing, a blank row) sits ready for you to import and clean.
+      The <span class="tab-name">Power Query soln</span> tab shows the tidy result to aim for.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    Power Query is a recorder for data clean-up. Select the messy range, then
+    <em>Data &gt; From Table/Range</em> to open the Power Query Editor. Each fix you click — remove
+    top rows, promote the first row to headers, trim and clean text, change a column's type, remove
+    blank rows — is saved as a step in the <em>Applied Steps</em> list on the right.
+  </p>
+  <p>
+    When you <em>Close &amp; Load</em>, the cleaned table lands back on a sheet. Next week, drop the
+    new export in, hit <em>Refresh</em>, and every step runs again in order — no re-doing the work.
+    The steps are recorded in a language called M, but you rarely touch it; the ribbon writes it for
+    you.
+  </p>
+
+  <h2>Why it matters to a specialist analyst</h2>
+  <p>
+    A fresh SAP extract or dashboard download hits your inbox every week, and by hand it costs you the
+    same twenty minutes of deleting junk rows, retyping headers and hoping you remembered every stray
+    space — before you've touched a single formula. Do it by hand twice and it's rarely identical
+    twice: a missed blank row or a revenue column left as text is exactly the kind of silent error that
+    turns up in a sustainability or compliance total on someone else's desk.
+  </p>
+  <p>
+    A query does it identically every time and documents exactly what was done, step by step, so
+    leadership — or anyone checking your work — can see and trust the pipeline behind the numbers. It
+    turns a recurring chore into a button, and buys back the time for the analysis this data was
+    pulled for in the first place.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Re-cleaning the same export by hand every week — slow, and never quite the same twice, so the
+    numbers drift and no one can say what was changed. Record the clean-up once and refresh it.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    On the <span class="cell">Power Query</span> tab, click any cell in the messy block and choose
+    <em>Data &gt; From Table/Range</em>. In the editor: use <em>Remove Rows &gt; Remove Top Rows</em>
+    to drop the title row, then <em>Use First Row as Headers</em>. Select the text columns and use
+    <em>Transform &gt; Format &gt; Trim</em> (and <em>Clean</em>) to strip stray spaces. Set each
+    column's type (a number column to Whole Number or Decimal). Use <em>Remove Rows &gt; Remove Blank
+    Rows</em>. Then <em>Home &gt; Close &amp; Load</em>. Compare your result to the
+    <span class="cell">Power Query soln</span> tab.
+  </p>
+  <p>
+    <em>Builds on text formulas:</em> Trim and Clean here are the point-and-click cousins of the
+    <span class="cell">TRIM</span> you wrote earlier — same fix, now recorded as a repeatable step.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="1">
+      <p class="q">1. You open Power Query on a selected range with …</p>
+      <ul class="opts">
+        <li><button class="opt">Insert &gt; PivotTable</button></li>
+        <li><button class="opt">Data &gt; From Table/Range</button></li>
+        <li><button class="opt">Formulas &gt; Name Manager</button></li>
+        <li><button class="opt">View &gt; Macros</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="2">
+      <p class="q">2. The main payoff of a query over hand-cleaning is …</p>
+      <ul class="opts">
+        <li><button class="opt">it looks nicer</button></li>
+        <li><button class="opt">it uses less memory</button></li>
+        <li><button class="opt">it re-runs every step on the next file with one Refresh</button></li>
+        <li><button class="opt">it hides the raw data</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. Each clean-up you click is saved as …</p>
+      <ul class="opts">
+        <li><button class="opt">a step in the Applied Steps list</button></li>
+        <li><button class="opt">a new worksheet</button></li>
+        <li><button class="opt">a named range</button></li>
+        <li><button class="opt">a chart</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Import and clean the messy block on the <span class="cell">Power Query</span> tab until your loaded
+    table matches the <span class="cell">Power Query soln</span> tab — junk row gone, headers correct,
+    text trimmed, numbers typed as numbers, blank row removed. Then look at the Applied Steps and read
+    them top to bottom: that list <em>is</em> your repeatable pipeline.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — a repeatable clean-up of a recurring export — with more handed to AI at each rung. The
+    check never changes: does the cleaned table match the target, and would it survive a refresh with
+    next week's file?
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it plans the steps, you click them</h3>
+  <p>Aldi:GPT can't see your workbook, so it lists the Power Query steps; you apply them in the editor.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I'm using Excel's Power Query (Get & Transform). I have a messy export with a title row above the headers, stray spaces in the text columns, a blank row, and a revenue column that came in as text. List the exact Applied Steps I should use to remove the title row, promote headers, trim the text, remove the blank row and set the revenue column to a number, then load it back to a sheet.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer names <em>Remove Top Rows</em>, <em>Use First Row as
+      Headers</em>, <em>Trim</em>, <em>Remove Blank Rows</em> and a <em>Changed Type</em> step — in a
+      sensible order.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it drafts the clean-up in your workbook</h3>
+  <p>Copilot inside Excel can help shape and summarise data. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>I've loaded the messy block on the "Power Query" sheet into Power Query. Help me clean it: remove the title row, promote the first row to headers, trim the text columns, remove any blank rows, and set the revenue column to a number type. Then load the result to a new sheet.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> compare the loaded table to the <span class="cell">Power Query soln</span>
+      tab and read the Applied Steps — every fix should be a step you can see and re-run.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the cleaning pipeline from scratch</h3>
+  <p>An agent with file access builds the workbook or script for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>Create an Excel workbook named cleaned-export.xlsx. Add a sheet "Raw" with a deliberately messy export: a title row above the headers, product and category text with stray spaces and mixed casing, a blank row, and a revenue column stored as text. Add a "Clean" sheet with the tidy result: junk row removed, headers correct, text trimmed and proper-cased, blank row gone, revenue as a real number. Describe the transform steps you applied so I could reproduce them in Power Query.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file, confirm the Clean sheet totals the revenue correctly (so
+      it's a real number), and that the described steps match what a Power Query would do.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI lists the steps" to "AI builds the cleaning pipeline" — the deliverable is the same tidy
+    table that survives next week's refresh. What protects you is comparing to the target and checking
+    the numbers actually total, so the types are right.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at the
+    <a href="https://learn.microsoft.com/en-us/power-query/">Microsoft — Power Query documentation</a> and the
+    <a href="https://support.microsoft.com/en-us/excel">Microsoft — Excel help &amp; learning</a> hub (search “Get &amp; Transform”).
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Got a weekly export you clean by hand? Send a sanitised sample
+    and I'll build the query steps so it becomes a one-click refresh.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="text-formulas-clean-and-combine.html">0005 — Text formulas</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="logical-functions-and-iferror.html">0007 — Logical &amp; IFERROR</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — Power Query records the clean-up so a refresh replays it.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

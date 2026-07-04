@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0003 — Breaks &amp; sections: why your page numbering fights you</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="the-heading-hierarchy.html">0002 — Headings</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="the-toc-that-maintains-itself.html">0004 — TOC</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="styles-not-formatting.html">Styles: the document's skeleton</a>
+    <a href="breaks-and-sections.html" class="current">Structure &amp; navigation</a>
+    <a href="tables-that-behave.html">Tables &amp; figures</a>
+    <a href="track-changes-without-fear.html">Review &amp; collaborate</a>
+    <a href="working-the-document-template.html">Templates &amp; consistency</a>
+  </nav>
+
+  <p class="kicker">Word to a High Standard · Lesson 0003</p>
+  <h1>Breaks &amp; sections: why your page numbering fights you</h1>
+
+  <p class="mission">
+    Tied to your mission: a sustainability or compliance report gets assembled under
+    deadline, with a title page that shouldn't be numbered, a landscape table of
+    supplier data that must not flip the rest of the document sideways, and an annex
+    of source data that restarts its own numbering. None of that is optional
+    formatting — it's structure, and structure is exactly what this course exists to
+    make obey. Get the section map right once and the document stops fighting you
+    every time it grows a line.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice pack · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/word-practice-pack.html#scenario-b">Open the practice pack</a>
+      and find <strong>Scenario B — The fighting page numbers</strong>: the title page
+      shows "Page 1", the annex restarts numbering randomly, a landscape table once
+      flipped the whole document sideways, and the "correct structure" underneath tells
+      you exactly what the repaired section map must look like.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    Pages fight you because paragraphs are doing a section's job. Word has a hierarchy
+    of separators, and each owns different powers. A <strong>page break</strong>
+    (Ctrl+Enter) does exactly one thing: it moves what follows to the next page. A
+    <strong>section break</strong> does much more — it owns page numbering, orientation,
+    headers/footers and margins for everything after it, until the next section break
+    says otherwise. Enter-Enter-Enter is not a break at all; it's empty paragraphs
+    cosplaying as one, and it shatters the moment the text above it grows by a single line.
+  </p>
+  <p>
+    Every numbering restart, every landscape table, every unnumbered title page is a
+    section decision — made deliberately, with a section break placed on purpose, or
+    suffered accidentally, when one arrives pasted in from another document and nobody
+    notices until the numbering downstream is wrong.
+  </p>
+
+  <h2>Why it matters to a specialist analyst</h2>
+  <p>
+    A compliance or sustainability report gets assembled under deadline, from
+    pasted-in sections, borrowed tables of POST/NBC or category data, and a cover
+    page nobody wants numbered "Page 1". If page numbering and orientation are being
+    held together by manual pushes and blank paragraphs, every edit anyone makes
+    upstream — leadership tightening the summary, a reviewer adding a sentence —
+    risks shunting the whole back half of the document out of shape the night before
+    it's due. A report built on real section breaks survives that edit without you
+    touching it again.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    The Enter-cascade — hitting Enter repeatedly to "push" the next heading onto a new
+    page — which looks fine until one paragraph above it grows by a line and everything
+    below drifts. And the accidental section break: pasted in from another document,
+    it silently flips page numbering or orientation for the rest of the file, and the
+    usual "fix" is more Enters piled on top, which papers over the symptom and leaves
+    the actual accidental break sitting there for the next edit to trip over.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    First, turn on formatting marks (Ctrl+Shift+8, or the ¶ button on the Home tab).
+    You cannot fix what you can't see, and every diagnosis in Scenario B depends on
+    seeing paragraph marks, page-break marks and section-break marks as distinct
+    symbols rather than guessing from where text happens to land.
+  </p>
+  <p>
+    Fix the title page first. Its "Page 1" is wrong because there's no section boundary
+    between it and the body — put the cursor at the very start of the second page's
+    content, go to Layout &gt; Breaks &gt; Section Breaks &gt; Next Page, then in the
+    body section's footer untick "Link to Previous" before setting its page numbering
+    to restart at 1. The title page's own section stays un-numbered by decision, not by
+    hiding the field.
+  </p>
+  <p>
+    Next, the annex. Scenario B says it restarts numbering "randomly" — find the section
+    break just before it with formatting marks on (it shows as a double dotted line
+    labelled "Section Break"). If it's a genuine Next Page section break, keep it, but
+    make the restart deliberate: Insert &gt; Page Number &gt; Format Page Numbers &gt;
+    Start at 1, set consciously in that section's footer, not left as an accident that
+    happens to look intentional.
+  </p>
+  <p>
+    Then the landscape table. It needs its own section pair: a Next Page (or
+    Continuous, if it shouldn't start a fresh page) section break immediately before
+    it and another immediately after, with only the pages inside that pair set to
+    Landscape via Layout &gt; Orientation. Everything outside that pair must stay
+    Portrait untouched.
+  </p>
+  <p>
+    Last, hunt every Enter-cascade. With formatting marks on, three or more consecutive
+    paragraph marks (¶¶¶) with nothing between them is never a break, it's a stand-in
+    for one. Delete the run of empty paragraphs and replace the job it was doing with
+    the right tool: Ctrl+Enter for a plain page break where nothing but the page needs
+    to change, or a section break where numbering, orientation or the footer must
+    change too.
+  </p>
+  <p>
+    The test that proves you're done: place the cursor on page 2, wherever it falls,
+    and type one new paragraph. Nothing downstream should shatter — no numbering jump,
+    no page flipping orientation, no annex losing its restart. If anything moves that
+    shouldn't, a paragraph somewhere is still doing a section's job.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="2">
+      <p class="q">1. You want the title page to show no page number at all, while the
+        body starts numbering at 1. What actually accomplishes that?</p>
+      <ul class="opts">
+        <li><button class="opt">a page break between the title page and the body</button></li>
+        <li><button class="opt">deleting the page number field on the title page only</button></li>
+        <li><button class="opt">a section break between them, with the body section's numbering set to restart at 1</button></li>
+        <li><button class="opt">four empty paragraphs pushing the body onto page 2</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="1">
+      <p class="q">2. What is Enter-Enter-Enter actually doing when it's used to push
+        a heading onto the next page?</p>
+      <ul class="opts">
+        <li><button class="opt">the same thing as Ctrl+Enter, just slower to type</button></li>
+        <li><button class="opt">standing in for a break with empty paragraphs — it shatters the moment text above it grows</button></li>
+        <li><button class="opt">inserting a section break in disguise</button></li>
+        <li><button class="opt">nothing — Word ignores consecutive empty paragraphs</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="3">
+      <p class="q">3. A landscape table needs to occupy its own pages without flipping
+        the rest of the document sideways. What does that require?</p>
+      <ul class="opts">
+        <li><button class="opt">a page break before the table, orientation changed for the whole document</button></li>
+        <li><button class="opt">nothing — Word tables auto-rotate their own page</button></li>
+        <li><button class="opt">Enter-cascades before and after the table</button></li>
+        <li><button class="opt">a section break before and after the table, orientation changed only inside that section pair</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    On Scenario B's specimen, repair all three problems: unnumber the title page by
+    section decision, make the annex's restart-at-1 deliberate, and confine the
+    landscape table to its own section pair — replacing every Enter-cascade you find
+    along the way with the right break. Self-check: with formatting marks on, place
+    the cursor on page 2 and type one new paragraph. If any numbering jumps, any
+    orientation flips, or the annex's restart moves, a paragraph somewhere is still
+    doing a section's job — find it and fix it before you call the document done.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — a correct section map for a document with a title page, a numbered
+    body, a restarting annex and a landscape table — with more handed to AI at each
+    rung. The check never changes: insert a paragraph on page 2, and nothing downstream
+    shatters.
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it prescribes the section map, you place every break</h3>
+  <p>Aldi:GPT can't see your document, so describe its numbering and orientation
+    requirements in full; it prescribes where each break goes and which kind, and you
+    place every one of them yourself.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>I'm formatting a Word submission with this structure: an unnumbered title page, a numbered body (start numbering at 1 from the body, not the title page), a landscape supplier-comparison table in the middle of the body that must not affect any other page's orientation, and an annex at the end that must restart its page numbering at 1. Prescribe the exact section map: how many sections, in what order, which kind of break separates each pair, and what numbering/orientation/footer setting belongs to each section. Do not use page breaks where a numbering or orientation change is required.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> the signature failure at this rung is over-sectioning —
+      a section break proposed where a plain page break would have done the job with
+      nothing to maintain. Read the prescription back and confirm every section break
+      it names comes with a stated reason: the specific property (numbering, orientation,
+      or footer) that changes at that boundary. A section break with no named property
+      attached is one break too many.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — honest boundary: breaks live on the Layout tab, not in Copilot</h3>
+  <p>Inserting or changing a page break, a section break, orientation or page-number
+    formatting is native Word functionality on the Layout tab — Copilot does not have a
+    button for any of it. Where Copilot helps is drafting or summarising text near a
+    section boundary; the boundary itself, you still build by hand.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Word)</span>
+    <div class="prompt">
+      <textarea rows="4" readonly>Draft a one-paragraph introduction for the annex section of this submission, to sit immediately after the annex's section break and before its first heading.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> after Copilot inserts anything near a section boundary,
+      turn on formatting marks and look at exactly where the new text landed. Confirm
+      it sits inside the section you intended, on the correct side of the break — a
+      drafting tool has no concept of "section" and can drop text on the wrong side of
+      a boundary without either of you noticing until the numbering is wrong again.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — a python-docx section auditor, not a fixer</h3>
+  <p>An agent with file access can read the document's XML and report on its sections
+    directly — far more reliably than eyeballing formatting marks — but it edits nothing
+    in your live file; you apply any fix yourself in Word.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="8" readonly>Using python-docx, write a script that audits a .docx file's section structure. For each section in the document, report: its index, its page numbering start/restart setting, its page orientation, and whether its header/footer is linked to the previous section. Separately, scan the document's paragraphs and flag any run of 3 or more consecutive empty paragraphs as a "suspected Enter-cascade," reporting the paragraph index (or nearby heading text) where each one starts. Output a plain-text report, one line per section and one line per suspected cascade. Do not modify the file.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> run it against Scenario B's broken specimen first — the
+      report must name the accidental section break (the one causing the random annex
+      restart) and flag every Enter-cascade with its location; if either is missing,
+      the auditor isn't reading closely enough. Then run it against your repaired
+      version: the report should come back as a clean section map, one section per
+      genuine property change, and zero suspected cascades.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI prescribes the map" to "AI audits the file for you" — the deliverable
+    never changes: a section map where every break earns its place. What protects you
+    at every rung is the same test, insert a paragraph on page 2 and watch nothing
+    shatter, not the tool. Learn to read formatting marks by hand first, so you can
+    tell a justified section break from an over-sectioned one and a real Enter-cascade
+    from an audit tool's false positive.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/word">Microsoft Support — Word help &amp; learning</a>
+    and <a href="https://support.microsoft.com/en-us/copilot-word">Microsoft — Copilot in Word</a>
+    for exactly what Copilot can and can't do with breaks and sections.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want this retargeted to your actual reporting
+    template instead of the practice pack's fictional one? Send a sanitised copy of a
+    document whose numbering has fought you before, and I'll rebuild this lesson's
+    walkthrough around its real section map.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="the-heading-hierarchy.html">0002 — Headings</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="the-toc-that-maintains-itself.html">0004 — TOC</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — that is a section break earning its place.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

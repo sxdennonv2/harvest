@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0009 — Working the document template</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="comments-versions-and-compare.html">0008 — Compare</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="building-blocks-reusable-clauses.html">0010 — Blocks</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="styles-not-formatting.html">Styles: the document's skeleton</a>
+    <a href="breaks-and-sections.html">Structure &amp; navigation</a>
+    <a href="tables-that-behave.html">Tables &amp; figures</a>
+    <a href="track-changes-without-fear.html">Review &amp; collaborate</a>
+    <a href="working-the-document-template.html" class="current">Templates &amp; consistency</a>
+  </nav>
+
+  <p class="kicker">Word to a High Standard · Lesson 0009</p>
+  <h1>Working the document template</h1>
+
+  <p class="mission">
+    Tied to your mission: your mission states it plainly — "new documents born from
+    the template, not from last month's copy." Every report or technical note you
+    send is a small act of information disclosure whether you mean it to be or not,
+    and the fastest way to disclose the wrong thing is to start a new one from an
+    old one. This lesson is about the first thirty seconds of a document's life,
+    because everything wrong with it later traces back to how it was born.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice pack · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/word-practice-pack.html#scenario-e">Open the practice pack</a>
+      and find <strong>Scenario E — The new-doc job</strong>: a supplier-onboarding
+      pack is needed, the org template exists, and three live documents already carry
+      a 2024 footer and a previous supplier's name in their metadata because someone
+      took the faster-looking shortcut.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    A new document should be born from the template, never from last month's file.
+    New-from-template gives you exactly the template's styles, its doc-control
+    footer, and clean document properties — nothing else. Save-As on a predecessor
+    gives you all of that too, but riding along invisibly: the 2024 footer, the
+    previous supplier's name sitting in the file properties, a superseded clause
+    nobody remembered to delete. The predecessor is not a shortcut to the same
+    starting point — it is the template plus every mistake anyone has ever made in
+    it, inherited silently.
+  </p>
+  <p>
+    The test that tells you which one you actually got is the same every time:
+    <strong>Inspect Document</strong>. Run it before anything ships. A document born
+    from the template comes back clean. A document born from Save-As comes back
+    carrying a ghost — a name, a date, a comment — that was never meant to travel
+    to this recipient at all.
+  </p>
+
+  <h2>Why it matters to a specialist analyst</h2>
+  <p>
+    Range-review submissions, supplier scorecards, sustainability and compliance
+    reports — you produce the same kind of document on a rolling cycle, often
+    against last quarter's file sitting right there in the same folder. That
+    rhythm is exactly the setup where Save-As inheritance turns into a disclosure
+    incident: build this quarter's compliance report from last quarter's file,
+    swap the figures and the dates, and the file properties still carry the
+    previous author or a stray reviewer comment until someone checks. Leadership
+    opening that report and finding a superseded number or a comment thread that
+    was never meant for them isn't a formatting slip — it's the kind of thing that
+    makes a director stop trusting the numbers you sourced, not just the layout.
+  </p>
+  <p>
+    The analysts who never have this problem aren't more careful proofreaders.
+    They simply never start a new report from an old one — every document they
+    send began its life from the template, so there is nothing previous to leak.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    "Grab the last one and change the names." It's faster for the first ten minutes
+    — the layout's already there, the boilerplate's already written — and then
+    Riverside's name surfaces in the file properties of GreenField's onboarding
+    pack, read by GreenField. The habit feels efficient because the visible text
+    looks right immediately; it fails silently in the metadata, the comments, and
+    the hidden text nobody scrolls down to see.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    Work Scenario E. A supplier-onboarding pack is needed for a new supplier. Do not
+    open any previous onboarding pack. Start from <strong>File → New</strong> and
+    choose the organisation's template (or open the template file itself and
+    immediately Save As under the new pack's name — never open a predecessor
+    document and Save As from there; the difference is entirely about whose history
+    you inherit). The template-born file already has the cover page, the styled
+    heading levels, and the doc-control footer built in — you did nothing to earn
+    those, they came free with the correct starting point.
+  </p>
+  <p>
+    Use the template's styles as given. If the pack needs a heading level or a
+    callout style the template doesn't define, that is not licence to invent one
+    locally — a hand-built substitute today is exactly the kind of local patch that
+    becomes next year's inherited mistake. Treat a missing style as a request to the
+    template's owner, the same discipline the deck-building side of this course
+    applies to layouts (see <a href="../../powerpoint/lessons/working-the-corporate-template.html">Working
+    the corporate template</a> for the same contract on slides). Write down what's
+    missing and who owns the template; don't paper over the gap yourself.
+  </p>
+  <p>
+    Now run the ghost-hunt drill, because the habit only teaches you something if you
+    see the wreck it leaves. Take a Save-As copy of a previous onboarding pack — the
+    fast, wrong way to start — and open <strong>File → Info → Check for Issues →
+    Inspect Document</strong>. Run it against Document Properties, Comments, and
+    Hidden Text at minimum. Read what comes back: the predecessor's author name, a
+    reviewer's comment thread that was never meant for this recipient, maybe a
+    hidden paragraph from a clause that got "deleted" by hiding rather than removing.
+    That is what would have shipped to the new supplier if nobody had checked.
+  </p>
+  <p>
+    Finally, run the identical Inspect Document pass on the template-born file you
+    started this exercise with. It comes back clean — no author but you, no stray
+    comments, no hidden text. That contrast, on the same day, on two files built from
+    the same content, is the proof: the starting point decided the outcome before you
+    typed a single word.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="1">
+      <p class="q">1. A new supplier-onboarding pack is needed by Thursday. What's the
+        correct first move?</p>
+      <ul class="opts">
+        <li><button class="opt">open the last onboarding pack and Save-As under the new supplier's name</button></li>
+        <li><button class="opt">start File → New from the organisation's template, never Save-As on a predecessor</button></li>
+        <li><button class="opt">copy whichever recent pack looks tidiest and edit it</button></li>
+        <li><button class="opt">start blank and rebuild the cover page and footer from memory</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="2">
+      <p class="q">2. The template has no style for a callout box the pack seems to
+        need. What's the right response?</p>
+      <ul class="opts">
+        <li><button class="opt">hand-format a box with borders and shading so it looks right today</button></li>
+        <li><button class="opt">copy the closest-looking style from a previous supplier's pack</button></li>
+        <li><button class="opt">treat it as a request to the template's owner, not a local invention</button></li>
+        <li><button class="opt">skip the callout entirely to avoid the decision</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. Before an onboarding pack ships to a new supplier, what's the one
+        check that catches a previous supplier's ghost?</p>
+      <ul class="opts">
+        <li><button class="opt">File → Info → Check for Issues → Inspect Document</button></li>
+        <li><button class="opt">reading the visible text once more for typos</button></li>
+        <li><button class="opt">checking the footer date only</button></li>
+        <li><button class="opt">asking a colleague to skim it</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Start a real document you actually need this week using File → New from your
+    organisation's template — not a copy of any previous file, even one of your own
+    that you're proud of. Build it using only the template's own styles, flagging
+    anything missing rather than inventing it locally. Self-check: run Inspect
+    Document (File → Info → Check for Issues → Inspect Document) against Document
+    Properties, Comments, and Hidden Text before you consider it done. It should come
+    back clean. If anything from a previous document surfaces — a name, a date, a
+    comment — you started from the wrong place; go back to the template and rebuild.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — start a new document from the template and populate it without
+    fighting it — with more handed to AI at each rung. The check never changes: does
+    every part of the document trace to a real template part (or an explicit
+    request to the template's owner), and does Inspect Document come back clean.
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it maps the document to the template, you judge the map</h3>
+  <p>Aldi:GPT can't see your template file, so it can only work from what you
+    describe; you judge whether the section it names for each part of the document
+    actually exists in your template and actually fits the job.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="8" readonly>I'm building a supplier-onboarding pack from our organisation's Word template. The template provides: a cover page, Heading 1/Heading 2 styles for section titles, a Body style, a doc-control footer with version and date fields, and standard document properties (no boilerplate author name). The pack needs these sections: welcome and scope, code of conduct summary, ordering and delivery terms, quality and compliance requirements, and a contacts page. For each section, tell me which template part it should use. If any section needs something the template doesn't provide (a style, a layout, a clause), say so explicitly as a gap for the template's owner instead of proposing a local workaround.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> the signature failure at this rung is template-fighting
+      — proposing local styles or structures the template already provides, like
+      inventing a new heading style when Heading 2 already does that job. Every
+      mapping in its answer must name a real template part or flag an explicit
+      template-owner request; an answer that quietly invents a workaround has
+      failed the check even if the resulting document would look fine.</p>
+  </div>
+
+  <h3>Rung 3 · M365 Copilot in Word — it drafts inside the template, it doesn't replace it</h3>
+  <p>Copilot in Word can draft the new document's section content from a prompt, but
+    it only stays on-template if you're drafting inside the template-born file
+    already — it writes text into whatever structure is open, it does not create a
+    template of its own accord.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Word, with the template-born file open)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>Draft the "Ordering and delivery terms" section for this supplier-onboarding pack: standard lead times, minimum order quantities, and delivery-window expectations, written for a new supplier who hasn't worked with us before. Use this document's existing heading and body styles.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> click into Copilot's output and look at the Styles
+      gallery — did the new section inherit the template's Heading 2 and Body
+      styles, or did it arrive with its own direct formatting riding on top? Same
+      check as the styles lesson; it compounds here, because a section that arrives
+      direct-formatted is a second, quieter way for template-fighting to sneak back
+      in, even when you never touched a predecessor file.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the template itself, from a brand/doc-control spec</h3>
+  <p>An agent with file access can generate the organisation's template file itself
+    via python-docx — styles, footer fields, and document properties — from a
+    written spec, but it can't infer your brand or doc-control rules from nothing;
+    you hand it the spec explicitly.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="9" readonly>Write a python-docx script that builds our organisation's Word document template (.dotx-equivalent .docx) from this spec: styles — Heading 1 and Heading 2 in the brand's heading font and colour, Body in the brand's body font; a footer with document-control fields (version number, last-updated date) as real Word fields, not typed text; document core properties (Company set to the org name, Author left blank, Title left blank) so no boilerplate identity ships by default. Set styles via paragraph.style and the style definitions themselves, not per-run direct formatting.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> every document born from the generated template must
+      pass Inspect Document clean — no author, no stray properties, no residual
+      text — straight out of the script. Then change one thing in the spec (say,
+      the heading colour) and regenerate: the change must flow through to a
+      freshly-born document without hand-editing. The template is code now; a style
+      that doesn't regenerate through, or a document that fails Inspect Document out
+      of the gate, is a bug in the generator, not a one-off to patch in Word.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI maps sections onto the template's parts" to "AI builds the template
+    itself from a spec" — the deliverable never changes: a document whose every part
+    traces to the template, and whose properties come back clean under Inspect
+    Document. What protects you at every rung is that same check, not the tool.
+    Learn to start from the template by hand first, so you can tell a real
+    template-part mapping from a workaround, and a clean document from one still
+    carrying a ghost — whether the ghost came from a predecessor file or from an AI
+    that quietly reached for its own structure instead of yours.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/word">Microsoft Support — Word help &amp; learning</a>
+    and <a href="https://support.microsoft.com/en-us/office/customize-or-create-new-styles-d38d6e47-f6fc-48eb-a607-1eb120dec563">Microsoft
+    — Customize or create new styles</a> for how templates and styles relate.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want this retargeted to your actual
+    reporting-pack template instead of Scenario E's fictional one? Send a sanitised
+    copy of its styles and doc-control footer, and I'll rebuild the mapping around
+    what you really have to work with.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="comments-versions-and-compare.html">0008 — Compare</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="building-blocks-reusable-clauses.html">0010 — Blocks</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — that is starting from the template, not the predecessor.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>
