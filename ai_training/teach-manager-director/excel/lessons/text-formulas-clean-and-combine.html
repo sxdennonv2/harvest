@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0005 — Text formulas: clean &amp; combine</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="data-validation-dropdowns.html">0004 — Data validation</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="get-and-transform-power-query.html">0006 — Power Query</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="relative-and-absolute-references.html" class="current">Source &amp; prepare</a>
+    <a href="logical-functions-and-iferror.html">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0005</p>
+  <h1>Text formulas: clean &amp; combine</h1>
+
+  <p class="mission">
+    Tied to your mission: the workbooks that land on your desk carry text someone else typed — a
+    name with stray spaces, a code buried in a longer string, a label that needs stitching together.
+    You don't need to hand-edit any of it, and you shouldn't have to wait for someone else to fix it
+    either. <strong>TRIM</strong>, <strong>PROPER</strong>, <strong>LEFT</strong> and the join
+    operator <span class="cell">&amp;</span> turn that chore into a formula you can read, trust, and
+    spot missing when you're reviewing someone else's work.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">Text formulas</span> tab — a raw extract with untidy
+      product names and supplier codes sits ready to be cleaned and combined into a neat label.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    Text functions read a string and hand back a tidier one, without you retyping anything.
+    <span class="cell">TRIM</span> strips the stray spaces: <span class="cell">=TRIM(A2)</span>.
+    <span class="cell">PROPER</span> fixes the casing: <span class="cell">=PROPER("corn puffs")</span>
+    gives <em>Corn Puffs</em> (<span class="cell">UPPER</span> and <span class="cell">LOWER</span>
+    do the blunt versions). <span class="cell">LEFT</span>, <span class="cell">RIGHT</span> and
+    <span class="cell">MID</span> slice out part of a string:
+    <span class="cell">=LEFT(B2, 2)</span> takes the first two characters.
+  </p>
+  <p>
+    The ampersand <span class="cell">&amp;</span> joins strings together:
+    <span class="cell">=D2 &amp; " (" &amp; E2 &amp; ")"</span> builds
+    <em>Corn Puffs (HL)</em>. Newer builds add <span class="cell">TEXTSPLIT</span>,
+    <span class="cell">TEXTBEFORE</span> and <span class="cell">SUBSTITUTE</span> for splitting on a
+    delimiter and swapping characters — reach for those when a code is wrapped in punctuation.
+  </p>
+
+  <h2>Why it matters to a manager</h2>
+  <p>
+    Clean text is what lets everything else you review line up: a <span class="cell">SUMIFS</span>
+    only totals correctly when "Snacks" and "Snacks " (with a trailing space) aren't treated as two
+    categories, and an <span class="cell">XLOOKUP</span> only matches when the key is spelt the same
+    on both sides. When a report doesn't reconcile, this is one of the first places to look — and
+    knowing the fix is a formula, not a retype, means you can ask for it to be built properly so it
+    survives the next refresh instead of drifting again before your next submission.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Hand-editing product names cell by cell to fix casing and spaces — invisible trailing spaces stay
+    behind, break your lookups, and come back the moment a new extract lands. Clean it with a formula
+    that reruns itself.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    On the <span class="cell">Text formulas</span> tab, in <span class="cell">D2</span> type
+    <span class="cell">=PROPER(TRIM(A2))</span> and fill down — every name comes back trimmed and
+    correctly cased. In <span class="cell">E2</span> type <span class="cell">=LEFT(B2, 2)</span> to
+    pull the two-letter supplier prefix out of the code. In <span class="cell">F2</span> type
+    <span class="cell">=D2 &amp; " (" &amp; E2 &amp; ")"</span> to stitch the clean name and prefix
+    into one label. Fill down and you have a tidy column built entirely from the messy originals.
+  </p>
+  <p>
+    <em>Builds on references:</em> these formulas point at the raw columns with relative references,
+    so filling down walks each row onto its own source cell — exactly the behaviour the references
+    lesson set up.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="1">
+      <p class="q">1. <span class="cell">=TRIM(A2)</span> is the fix for …</p>
+      <ul class="opts">
+        <li><button class="opt">wrong casing</button></li>
+        <li><button class="opt">stray leading/trailing spaces</button></li>
+        <li><button class="opt">a missing value</button></li>
+        <li><button class="opt">a number stored as text</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="2">
+      <p class="q">2. To pull the first two characters out of <span class="cell">B2</span> you use …</p>
+      <ul class="opts">
+        <li><button class="opt">MID(B2,2)</button></li>
+        <li><button class="opt">RIGHT(B2,2)</button></li>
+        <li><button class="opt">LEFT(B2,2)</button></li>
+        <li><button class="opt">TRIM(B2,2)</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. Which joins a clean name and a code into one label?</p>
+      <ul class="opts">
+        <li><button class="opt">=D2 &amp; " (" &amp; E2 &amp; ")"</button></li>
+        <li><button class="opt">=SUM(D2,E2)</button></li>
+        <li><button class="opt">=PROPER(D2,E2)</button></li>
+        <li><button class="opt">=D2 + E2</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Fill all three columns on the <span class="cell">Text formulas</span> tab. Confirm the clean
+    names have no leading spaces (click one and check the formula bar) and that the label column reads
+    like <em>Corn Puffs (HL)</em>. Then try a <span class="cell">SUBSTITUTE</span> to swap a stray
+    character, or <span class="cell">TEXTBEFORE(C2, "@")</span> to lift the name out of an email.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — clean the text and combine it into a label — with more handed to AI at each rung. The
+    check never changes: are the names trimmed and cased right, and does the label read cleanly?
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it writes the formula, you place it</h3>
+  <p>Aldi:GPT can't see your workbook, so it writes the formula; you place and verify it.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I'm using Excel. Column A has messy product names with stray spaces and mixed casing, and column B has supplier codes like "HL-204". For D2 write a formula that trims the spaces and fixes the casing of A2. For E2 write a formula that takes the first two characters of B2. For F2 write a formula that joins the clean name and the two-letter prefix into a label like "Corn Puffs (HL)". All ready to fill down rows 2 to 11.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer nests <span class="cell">PROPER(TRIM(A2))</span>, uses
+      <span class="cell">LEFT(B2,2)</span>, and joins with <span class="cell">&amp;</span> — not a
+      single giant formula you can't read.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it cleans the columns in your workbook</h3>
+  <p>Copilot inside Excel can act on the sheet you have open. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>On the "Text formulas" sheet, in D2:D11 add a formula that trims and proper-cases the raw product name in column A. In E2:E11 add the first two characters of the supplier code in column B. In F2:F11 join the clean name and the two-letter prefix into a label like "Corn Puffs (HL)".</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> click a cell in <span class="cell">D</span> and confirm it's a real
+      <span class="cell">TRIM</span>/<span class="cell">PROPER</span> formula — not pasted text — and
+      that no name has a leading space.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the cleaned extract from scratch</h3>
+  <p>An agent with file access builds the workbook for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>Create an Excel workbook named clean-extract.xlsx with a sheet "Raw" holding about 10 products with deliberately messy names (stray spaces, inconsistent casing) in column A and supplier codes like "HL-204" in column B. Add column D that trims and proper-cases the name, column E with the first two characters of the code, and column F that joins them into a label like "Corn Puffs (HL)". Save the file and tell me which rows had trailing spaces in the original.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file, confirm the clean column has no stray spaces, and that
+      the labels read correctly on a couple of hand-checked rows.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI writes the TRIM" to "AI builds the cleaned extract" — the deliverable is the same tidy,
+    combined column. What protects you is checking the casing, hunting for a stray leading space, and
+    reading a couple of labels aloud.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/en-us/office/trim-function-410388fa-c5df-49c6-b16c-9e5630b479f9">Microsoft — TRIM function</a> and
+    <a href="https://support.microsoft.com/en-us/office/proper-function-52a5a283-e8b2-49be-8506-b2887b889f94">Microsoft — PROPER function</a>.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Got a real extract whose text never lines up — codes wrapped in
+    punctuation, names that won't match your lookups? Send a sanitised sample and I'll build the
+    cleaning formulas around it.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="data-validation-dropdowns.html">0004 — Data validation</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="get-and-transform-power-query.html">0006 — Power Query</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — clean text at the source and every lookup lines up.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

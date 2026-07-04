@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0011 — Date &amp; time functions</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="xlookup-pull-matching-details.html">0010 — XLOOKUP</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="pivottables-summarise-in-seconds.html">0012 — PivotTables</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="relative-and-absolute-references.html">Source &amp; prepare</a>
+    <a href="logical-functions-and-iferror.html" class="current">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0011</p>
+  <h1>Date &amp; time functions</h1>
+
+  <p class="mission">
+    Tied to your mission: your submissions run on dates — a period to report against, a deadline to
+    chase, an age since something happened. A date in Excel is really just a number, which is exactly
+    why you can add days to it, pull its month out, or find its month-end.
+    <strong>TODAY</strong>, <strong>EOMONTH</strong>, <strong>TEXT</strong> and plain arithmetic turn
+    a column of dates into the calendar logic a report needs.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">Dates</span> tab — a list of orders with dates and lead
+      times sits ready for a due date, a month label, a month-end and an age in days.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    A date is a serial number under the surface, so date maths is just arithmetic:
+    <span class="cell">=B2+C2</span> adds a lead time in days to an order date to get a due date, and
+    <span class="cell">=TODAY()-B2</span> gives an age in days. <span class="cell">TODAY()</span>
+    returns today's date and re-reads every time the file opens.
+  </p>
+  <p>
+    To pull parts out, <span class="cell">YEAR</span>, <span class="cell">MONTH</span> and
+    <span class="cell">DAY</span> return numbers, while <span class="cell">TEXT</span> makes a label:
+    <span class="cell">=TEXT(B2, "mmm")</span> gives <em>Jan</em>,
+    <span class="cell">=TEXT(B2, "yyyy-mm")</span> gives <em>2026-01</em> — perfect for grouping.
+    <span class="cell">EOMONTH(B2, 0)</span> returns the last day of that month (use
+    <span class="cell">1</span> for next month-end); <span class="cell">WEEKDAY</span> and
+    <span class="cell">NETWORKDAYS</span> handle day-of-week and working-day counts.
+  </p>
+
+  <h2>Why it matters to a manager</h2>
+  <p>
+    You don't build these columns yourself, but every submission that lands on your desk leans on them.
+    "Show me this by month" only works if every date collapses to a clean month key — a
+    <span class="cell">TEXT(date, "yyyy-mm")</span> column is what makes a PivotTable group tidily, and
+    a report grouped by eye instead will silently drift the moment the data refreshes. Due dates and
+    ages, computed not typed, are what let a report flag what's overdue today without anyone editing
+    it — exactly the kind of thing you should expect to see already done when you're reviewing, and
+    can do yourself in seconds when you need the quick answer before a meeting.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Typing due dates by hand from a mental "plus two weeks", and grouping a report by month by sorting
+    and eyeballing where the month changes. Both drift and both break on the next refresh — let the
+    date arithmetic and a month key do it.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    On the <span class="cell">Dates</span> tab, in <span class="cell">D2</span> type
+    <span class="cell">=B2+C2</span> to add the lead days to the order date for a due date. In
+    <span class="cell">E2</span> type <span class="cell">=TEXT(B2, "mmm")</span> for a short month
+    label. In <span class="cell">F2</span> type <span class="cell">=EOMONTH(B2, 0)</span> for that
+    order's month-end. In <span class="cell">G2</span> type <span class="cell">=TODAY()-B2</span> for
+    the age in days. Fill all four down. If a due date shows as a plain number, format the column as a
+    date — the value is right, only its display needs setting.
+  </p>
+  <p>
+    <em>Builds on formatting:</em> when arithmetic returns a serial number, a date number format turns
+    it back into a readable date — the same "format changes the display, not the value" idea from the
+    number-formatting lesson.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="1">
+      <p class="q">1. <span class="cell">=B2+C2</span>, where B2 is a date and C2 is a number of days, gives …</p>
+      <ul class="opts">
+        <li><button class="opt">an error — you can't add to a date</button></li>
+        <li><button class="opt">the date C2 days later</button></li>
+        <li><button class="opt">the two serial numbers as text</button></li>
+        <li><button class="opt">today's date</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="2">
+      <p class="q">2. To collapse every date to a groupable month key like <em>2026-01</em> you use …</p>
+      <ul class="opts">
+        <li><button class="opt">=MONTH(B2)</button></li>
+        <li><button class="opt">=EOMONTH(B2,0)</button></li>
+        <li><button class="opt">=TEXT(B2,"yyyy-mm")</button></li>
+        <li><button class="opt">=TODAY()</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. <span class="cell">=EOMONTH(B2, 0)</span> returns …</p>
+      <ul class="opts">
+        <li><button class="opt">the last day of B2's month</button></li>
+        <li><button class="opt">the first day of B2's month</button></li>
+        <li><button class="opt">the number of days in the month</button></li>
+        <li><button class="opt">the same date as B2</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Fill all four columns on the <span class="cell">Dates</span> tab. Hand-check one row: add the lead
+    days to the order date in your head and confirm the due date matches, and confirm the month-end
+    really is the last day of that month. Then add a <span class="cell">TEXT(B2, "yyyy-mm")</span>
+    column and note how cleanly it would group in a pivot.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — due dates, a month key, month-ends and ages — with more handed to AI at each rung. The
+    check never changes: do the due dates match a hand-calc, and does the month key group cleanly?
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it writes the formula, you place it</h3>
+  <p>Aldi:GPT can't see your workbook, so it writes the formula; you place and verify it.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I'm using Excel. Column B is an order date and column C is a lead time in days, rows 2 to 11. Write me: a formula for D2 that gives the due date (order date plus lead days), a formula for E2 that returns the short month name of B2, a formula for F2 that returns the last day of B2's month, and a formula for G2 that gives the age in days from B2 to today. All ready to fill down.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer uses plain <span class="cell">B2+C2</span>,
+      <span class="cell">TEXT(B2,"mmm")</span>, <span class="cell">EOMONTH(B2,0)</span> and
+      <span class="cell">TODAY()-B2</span> — not a hard-coded date anywhere.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it fills the columns in your workbook</h3>
+  <p>Copilot inside Excel can act on the sheet you have open. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>On the "Dates" sheet, in D2:D11 add the due date as the order date (column B) plus the lead days (column C). In E2:E11 add the short month name of the order date. In F2:F11 add the month-end with EOMONTH. In G2:G11 add the age in days from the order date to today. Format the date columns as dates.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> click <span class="cell">D2</span> and confirm it's <span class="cell">=B2+C2</span>,
+      not a typed date, and that the due dates display as dates rather than serial numbers.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the dated schedule from scratch</h3>
+  <p>An agent with file access builds the workbook for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>Create an Excel workbook named order-schedule.xlsx with a sheet "Orders" listing about 10 orders with a Product, an Order date and a Lead time in days. Add a Due date column (order date plus lead days), a Month key column formatted as yyyy-mm, a Month-end column using EOMONTH, and an Age-in-days column using TODAY. Format the date columns as dates and save. Tell me which order is due soonest.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file, hand-check one due date against order date plus lead days,
+      and confirm the month key reads like <span class="cell">2026-01</span>.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI writes the date maths" to "AI builds the dated schedule" — the deliverable is the same set
+    of computed due dates, month keys and ages. What protects you is a hand-check of one due date and a
+    glance that the month key groups cleanly.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/en-us/office/eomonth-function-7314ffa1-2bc9-4005-9d66-f49db127d628">Microsoft — EOMONTH function</a> and
+    <a href="https://support.microsoft.com/en-us/office/today-function-5eb3078d-a82c-4736-8930-2f51a028fdd9">Microsoft — TODAY function</a>.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Working to real lead times, cut-offs or reporting calendars?
+    Send a sanitised order extract and I'll build the due-date and month-key logic around your rules.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="xlookup-pull-matching-details.html">0010 — XLOOKUP</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="pivottables-summarise-in-seconds.html">0012 — PivotTables</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — a date is a number, so the calendar logic is just formulas.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0001 — Relative &amp; absolute references</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev"></span>
+    <span class="nav-mid"><a href="../reference/references-cheatsheet.html">$ &amp; F4 cheat sheet</a> · <a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="tables-the-modern-foundation.html">0002 — Tables</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="relative-and-absolute-references.html" class="current">Source &amp; prepare</a>
+    <a href="logical-functions-and-iferror.html">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0001</p>
+  <h1>The <span class="cell">$</span> that anchors your formula</h1>
+
+  <p class="mission">
+    Tied to your mission: you don't build the workbooks you review, but you do need to spot
+    what's wrong in one fast. Get references right and a formula scales safely across hundreds
+    of rows. Get them wrong and the numbers quietly drift — the most common silent error you'll
+    find sitting undetected in a workbook someone hands you.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">References</span> tab — the products, case costs
+      and a rate cell in <span class="cell">F1</span> are set up and waiting. The
+      <span class="cell">Landed cost</span> column is left empty on purpose: that's your task.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    A cell reference like <span class="cell">B2</span> is not really an address — it's a
+    <em>direction</em>. When you copy a formula, Excel keeps the direction, not the address.
+    Copy <span class="cell">=B2</span> one cell to the right and it becomes
+    <span class="cell">=C2</span>; copy it one row down and it becomes
+    <span class="cell">=B3</span>. That "moving with you" behaviour is a
+    <strong>relative reference</strong>, and it's the default.
+  </p>
+  <p>
+    A dollar sign <span class="cell">$</span> pins a part of the reference so it
+    <em>stops</em> moving. That's an <strong>absolute reference</strong>. You can pin the
+    column, the row, or both:
+  </p>
+
+  <table class="grid" aria-label="Reference lock states">
+    <tr><th>You type</th><th>Column</th><th>Row</th><th>Name</th></tr>
+    <tr><td>B2</td><td>moves</td><td>moves</td><td>relative</td></tr>
+    <tr><td class="locked">$B$2</td><td>locked</td><td>locked</td><td>absolute</td></tr>
+    <tr><td class="locked">$B2</td><td>locked</td><td>moves</td><td>mixed</td></tr>
+    <tr><td class="locked">B$2</td><td>moves</td><td>locked</td><td>mixed</td></tr>
+  </table>
+
+  <h2>Why it matters to a manager</h2>
+  <p>
+    You won't usually type this formula yourself — but you will be handed a workbook that uses
+    it, or asked to sanity-check one before it goes to GDM. A table of case costs in column
+    <span class="cell">B</span> and a single exchange-rate cell in <span class="cell">F1</span>
+    should produce landed cost per line like this:
+  </p>
+  <p><span class="cell">=B2*$F$1</span></p>
+  <p>
+    The <span class="cell">$F$1</span> is pinned, so when the formula is filled down the whole
+    column, every row still multiplies by that one rate cell. Without the dollars,
+    <span class="cell">=B2*F1</span> becomes <span class="cell">=B3*F2</span> on the next row —
+    and <span class="cell">F2</span> is empty, so the landed cost silently collapses to zero or
+    nonsense. That's the kind of error that survives review because the cell still shows a
+    number — just the wrong one — and it's exactly the risk you're on the hook to catch before
+    it reaches your desk again in a submission.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Self-taught users often <em>retype the rate into every row</em>, or fix the drift by hand
+    after filling. Both are slow and error-prone, and both are invisible when you're reviewing
+    someone else's work — you have to check the formula bar, not just the number. One
+    <span class="cell">$F$1</span> and a single fill-down replaces all of it — and updates
+    instantly when the rate changes.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    On the <span class="cell">References</span> tab, click <span class="cell">C2</span> and type
+    <span class="cell">=B2*$F$1</span>, then press <kbd>Enter</kbd>. Click
+    <span class="cell">C2</span> again and fill it down to <span class="cell">C11</span> —
+    double-click the fill handle in the cell's bottom-right corner, or select
+    <span class="cell">C2:C11</span> and press <kbd>Ctrl</kbd>+<kbd>D</kbd>. Every row now
+    multiplies its own case cost by the one rate in <span class="cell">F1</span>.
+  </p>
+  <p>
+    Prove it to yourself: change the rate in <span class="cell">F1</span> from
+    <span class="cell">1.92</span> to <span class="cell">2.10</span> and watch all ten landed
+    costs move at once. Then click <span class="cell">C11</span> and read the formula bar — it
+    should say <span class="cell">=B11*$F$1</span>: the <span class="cell">B</span> reference
+    walked down with you, the pinned <span class="cell">$F$1</span> didn't. If it says
+    <span class="cell">$F$10</span>, the dollars were missing — that's the drift this lesson
+    kills.
+  </p>
+
+  <h2>The keyboard trick: <kbd>F4</kbd></h2>
+  <p>
+    You don't type the dollar signs by hand. Click into a reference in the formula bar (or
+    just after typing it) and press <kbd>F4</kbd> to cycle the lock states:
+  </p>
+  <p>
+    <span class="cell">B2</span> → <kbd>F4</kbd> → <span class="cell">$B$2</span> →
+    <kbd>F4</kbd> → <span class="cell">B$2</span> → <kbd>F4</kbd> →
+    <span class="cell">$B2</span> → <kbd>F4</kbd> → back to <span class="cell">B2</span>.
+  </p>
+  <p>
+    Mental shortcut: the <span class="cell">$</span> sits <em>in front of whatever it locks</em>.
+    <span class="cell">$B2</span> = "lock the <strong>column</strong> B, let the row roam".
+    <span class="cell">B$2</span> = "let the column roam, lock <strong>row</strong> 2".
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+
+    <div class="q-block" data-answer="0">
+      <p class="q">1. You copy <span class="cell">=B2*$F$1</span> from
+        <span class="cell">C2</span> down to <span class="cell">C3</span>. What is in
+        <span class="cell">C3</span>?</p>
+      <ul class="opts">
+        <li><button class="opt">=B3*$F$1</button></li>
+        <li><button class="opt">=B3*$F$2</button></li>
+        <li><button class="opt">=B2*$F$1</button></li>
+        <li><button class="opt">=B2*$F$2</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+
+    <div class="q-block" data-answer="0">
+      <p class="q">2. Which reference locks the <strong>column</strong> but lets the
+        <strong>row</strong> move as you fill down?</p>
+      <ul class="opts">
+        <li><button class="opt">$A1</button></li>
+        <li><button class="opt">A$1</button></li>
+        <li><button class="opt">$A$1</button></li>
+        <li><button class="opt">A1</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+
+    <div class="q-block" data-answer="0">
+      <p class="q">3. Which key cycles a reference through its four lock states?</p>
+      <ul class="opts">
+        <li><button class="opt">F4</button></li>
+        <li><button class="opt">F2</button></li>
+        <li><button class="opt">F9</button></li>
+        <li><button class="opt">F1</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Open a workbook. Put any number in <span class="cell">F1</span>, a short column of numbers
+    in <span class="cell">B2:B6</span>, and in <span class="cell">C2</span> type
+    <span class="cell">=B2*</span>, click <span class="cell">F1</span>, press <kbd>F4</kbd>,
+    press <kbd>Enter</kbd>, then fill <span class="cell">C2</span> down to
+    <span class="cell">C6</span>. Change <span class="cell">F1</span> and watch the whole
+    column recalculate. That muscle memory is the goal.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Now the 10x versions of the very same task. Each rung hands more of the work to AI — but
+    notice the <em>check</em> never changes. The craft you just learned is how you know the output
+    is right, whichever rung you're on.
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it writes the formula, you build it</h3>
+  <p>Aldi:GPT can't see your workbook, so it advises; you place and verify.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I'm using Excel. I have case costs in cells B2:B20 and a single exchange rate in cell F1. I want a formula in cell C2 for landed cost per line that I can fill down to C20. Give me the exact formula, tell me which cell references need a dollar sign ($) and why, and confirm exactly what cell C3 will contain after I fill the formula down.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer is <span class="cell">=B2*$F$1</span> with
+      <span class="cell">F1</span> locked. If it hands you <span class="cell">=B2*F1</span> (no
+      dollars), you know in two seconds it's wrong — the rate slides to the empty
+      <span class="cell">F2</span> on the next row.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it builds it in your workbook</h3>
+  <p>Copilot inside Excel can act on the sheet you have open. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>On the "References" sheet, add a new column headed "Landed cost" next to my case costs. For each row, multiply the case cost by the exchange rate in cell F1, keeping F1 fixed so every row uses the same rate. Fill it down for all rows of data.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> click a cell in the new column and read the formula bar — it should
+      show <span class="cell">$F$1</span>. If every landed cost is identical or zero, the rate
+      wasn't locked and you tell Copilot to fix it.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it creates the whole spreadsheet from scratch</h3>
+  <p>An agent with file access builds the workbook for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>Create an Excel workbook named landed-cost-model.xlsx with these columns: Product, Case cost (GBP), Landed cost (AUD). Put a labelled exchange-rate cell at F1 with a sample rate. Add 10 sample products with realistic case costs. In the Landed cost column, write a formula that multiplies each case cost by the exchange-rate cell using an absolute reference, so changing the rate once updates every row. Save the file and tell me which cell holds the rate.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file it made, click a Landed cost cell — the formula should
+      read <span class="cell">=B2*$F$1</span> style. Change <span class="cell">F1</span> and every
+      row should move together. Same two-second check, on AI-built output.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    The task never changed — landed cost from a case cost and one rate. What changed is how much
+    AI did. And at every rung the thing that keeps you safe is identical: you can read the formula
+    and know whether the rate is locked. That is why the craft comes first.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at ExcelJet's reference guides —
+    <a href="https://exceljet.net/glossary/absolute-reference">Absolute reference</a> and
+    <a href="https://exceljet.net/glossary/relative-reference">Relative reference</a>. If a
+    detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> If any part felt too basic, too fast, or if you want a
+    real example from a workbook that's actually crossed your desk (case cost × FX rate × GST)
+    worked end-to-end, say so — I'll re-pitch the next lesson to match. Tell me too: which Excel
+    version are you on? It decides how soon we reach <span class="cell">XLOOKUP</span> and
+    dynamic arrays.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev"></span>
+    <span class="nav-mid"><a href="../reference/references-cheatsheet.html">$ &amp; F4 cheat sheet</a> · <a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="tables-the-modern-foundation.html">0002 — Tables</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — the pinned part stayed put, the rest moved.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right. Re-read which part the $ locks.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

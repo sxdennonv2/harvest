@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0012 — PivotTables: summarise in seconds</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="date-and-time-functions.html">0011 — Dates</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="add-sliders-to-pivottables.html">0012.1 — Slicers</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="relative-and-absolute-references.html">Source &amp; prepare</a>
+    <a href="logical-functions-and-iferror.html" class="current">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0012</p>
+  <h1>PivotTables: summarise in seconds</h1>
+
+  <p class="mission">
+    Tied to your mission: you have a long extract of sales lines and your director wants the
+    numbers <em>by category</em>, then <em>by supplier</em>, then <em>by month</em> — now. A
+    <strong>PivotTable</strong> answers all three in a few drags, and re-answers them the instant
+    the question changes. No formulas to write, nothing to break.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">PivotTable</span> tab — a flat list of sales lines
+      (month, category, supplier, product, cases, revenue) is set up and waiting. Summarising it is
+      your task.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    A PivotTable is a <strong>drag-to-summarise</strong> engine. You hand it a flat list — one row
+    per transaction — and it groups, totals and averages any way you like, just by dragging field
+    names into four boxes: <span class="cell">Rows</span>, <span class="cell">Columns</span>,
+    <span class="cell">Values</span> and <span class="cell">Filters</span>. Change your mind and
+    you drag again; the answer rebuilds in an instant.
+  </p>
+  <p>
+    Put <span class="cell">Category</span> in Rows and <span class="cell">Revenue (AUD)</span> in
+    Values and you have revenue per category. Drop <span class="cell">Supplier</span> under
+    Category and it breaks each category down by supplier. That is a report you would otherwise
+    build with a wall of <span class="cell">SUMIFS</span> — done in three drags.
+  </p>
+
+  <h2>Why it matters to a manager</h2>
+  <p>
+    You don't build the extract, but you own the question that lands on it: which category is
+    growing, which supplier the business leans on most, how each month compares — and those
+    questions usually arrive minutes before a submission is due. A PivotTable lets you answer them
+    yourself, at the desk, without waiting on the analyst who built the list — and because it sits
+    on a <strong>Table</strong> (see <a href="tables-the-modern-foundation.html">Tables: the modern foundation</a>), next week's longer extract just needs a
+    <span class="cell">Refresh</span> before you present it.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Hand-filtering the list, copying visible rows out, and typing
+    <span class="cell">=SUM()</span> under each group — then redoing all of it when the data
+    changes or the question shifts from category to supplier. A PivotTable makes the regrouping
+    free and the totals self-updating.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    Click any cell in the data → <span class="cell">Insert → PivotTable</span> → confirm the range
+    (or, better, that it's a Table) and place it on a new sheet. In the field list, drag
+    <span class="cell">Category</span> to <span class="cell">Rows</span> and both
+    <span class="cell">Cases</span> and <span class="cell">Revenue (AUD)</span> to
+    <span class="cell">Values</span>. Now drag <span class="cell">Supplier</span> under Category in
+    Rows for the breakdown, or <span class="cell">Month</span> to
+    <span class="cell">Columns</span> to compare across months.
+  </p>
+  <p>
+    <em>Builds on <a href="tables-the-modern-foundation.html">Tables</a>:</em> if your source is a real Table, a longer extract next week is one
+    <span class="cell">PivotTable Analyze → Refresh</span> away — the pivot already knows the data
+    can grow.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="0">
+      <p class="q">1. To total revenue for each category, which box does
+        <span class="cell">Category</span> go in?</p>
+      <ul class="opts">
+        <li><button class="opt">Rows</button></li>
+        <li><button class="opt">Values</button></li>
+        <li><button class="opt">Filters</button></li>
+        <li><button class="opt">Columns</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">2. A field dropped into <span class="cell">Values</span> is, by default, …</p>
+      <ul class="opts">
+        <li><button class="opt">summed (or counted)</button></li>
+        <li><button class="opt">sorted A–Z</button></li>
+        <li><button class="opt">filtered out</button></li>
+        <li><button class="opt">hidden</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. Your extract grew by 200 rows. To update the pivot you …</p>
+      <ul class="opts">
+        <li><button class="opt">click Refresh</button></li>
+        <li><button class="opt">rebuild it from scratch</button></li>
+        <li><button class="opt">retype the totals</button></li>
+        <li><button class="opt">delete and reinsert</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    On the <span class="cell">PivotTable</span> tab, click inside the data and press
+    <span class="cell">Insert → PivotTable</span>. Drag <span class="cell">Category</span> to Rows,
+    then <span class="cell">Cases</span> and <span class="cell">Revenue (AUD)</span> to Values.
+    Read off revenue per category. Now drag <span class="cell">Supplier</span> beneath Category, and
+    <span class="cell">Month</span> to Columns. Watch three different reports appear from the same
+    list, with no formula typed.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — a category/supplier/month summary of one flat list — with more handed to AI at each
+    rung. The check never changes: do the totals reconcile to the raw list, and is it grouping by
+    the field you actually asked for?
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it tells you how, you drag it</h3>
+  <p>Aldi:GPT can't see your workbook, so it guides; you build and verify.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I'm using Excel. I have a flat sales list with columns Month, Category, Supplier, Product, Cases and Revenue (AUD). Walk me through building a PivotTable that shows total Cases and total Revenue for each Category, then broken down by Supplier, then compared across Months. Tell me exactly which field goes in Rows, Columns, Values and Filters, and how to refresh it when the list grows.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer puts <span class="cell">Category</span> (then
+      <span class="cell">Supplier</span>) in Rows, <span class="cell">Month</span> in Columns, and
+      <span class="cell">Cases</span> + <span class="cell">Revenue</span> in Values. If it reaches
+      for <span class="cell">SUMIFS</span> instead, it missed the point — ask it for a PivotTable.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it builds the pivot in your workbook</h3>
+  <p>Copilot inside Excel can act on the sheet you have open. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>On the "PivotTable" sheet, create a PivotTable on a new sheet that shows total Cases and total Revenue (AUD) by Category in the rows, with Supplier nested under Category, and Month across the columns. Add a grand total.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a new sheet should hold a pivot with Category/Supplier down the side
+      and months across the top. Confirm the grand total of Revenue matches a plain
+      <span class="cell">SUM</span> of the source column — if it doesn't, the range was wrong.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the whole workbook from scratch</h3>
+  <p>An agent with file access builds the workbook for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>Create an Excel workbook named sales-pivot.xlsx with a sheet "Sales" containing a proper Excel Table named Sales with columns Month, Category, Supplier, Product, Cases and Revenue (AUD). Populate about 20 realistic sample rows spanning several categories, suppliers and three months. On a second sheet "Summary", build a PivotTable that totals Cases and Revenue by Category (with Supplier nested) down the rows and Month across the columns, with a grand total. Save the file and tell me the Table name.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file, confirm the <span class="cell">Sales</span> Table
+      exists and the Summary pivot groups by Category/Supplier across Months. Add a row to the Table
+      and <span class="cell">Refresh</span> — the pivot totals should move.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI explains where each field goes" to "AI builds the workbook and the pivot" — the
+    deliverable is the same summary. What protects you at every rung is knowing that a pivot's grand
+    total must reconcile to the raw list. Craft first, so you can supervise.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://exceljet.net/articles/excel-pivot-tables">ExcelJet — Pivot tables</a> and
+    <a href="https://support.microsoft.com/en-us/office/create-a-pivottable-to-analyze-worksheet-data-a9a84538-bfe9-40a9-a8e9-f99134456576">Microsoft — Create a PivotTable</a>.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want this run on a real (sanitised) sales extract of yours so
+    the pivot uses your actual categories and suppliers? Send a sample and I'll rebuild this lesson
+    around it.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="date-and-time-functions.html">0011 — Dates</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="add-sliders-to-pivottables.html">0012.1 — Slicers</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — that is how the pivot groups and totals.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

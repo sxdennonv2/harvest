@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0003 — Sort &amp; Filter: order and isolate</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="tables-the-modern-foundation.html">0002 — Tables</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="data-validation-dropdowns.html">0004 — Data validation</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="relative-and-absolute-references.html" class="current">Source &amp; prepare</a>
+    <a href="logical-functions-and-iferror.html">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0003</p>
+  <h1>Sort &amp; Filter: order and isolate</h1>
+
+  <p class="mission">
+    Tied to your mission: a pasted extract lands as hundreds of rows in no useful order. Before you
+    summarise anything you need to <em>see</em> it — the biggest lines first, or just one supplier at
+    a time. <strong>Sort</strong> orders the list; <strong>Filter</strong> hides everything that
+    isn't relevant right now. Together they turn a wall of rows into an answerable question.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">Sort &amp; Filter</span> tab — the flat sales list is
+      waiting, deliberately in raw entry order so you can put it in the order that answers a question.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    Turn on the filter arrows once — click any cell in the list and press
+    <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd> (or <em>Data ▸ Filter</em>). Every header grows a
+    dropdown. From there you <strong>sort</strong> (order the whole list by one column) or
+    <strong>filter</strong> (tick only the values you want to keep in view). Filtering never deletes
+    a thing — it hides rows, and clearing the filter brings them all back.
+  </p>
+  <p>
+    Sorting can go several levels deep: <em>Data ▸ Sort</em> lets you order by Category first, then
+    by Revenue within each category. That's the difference between "sorted" and "sorted the way the
+    question needs".
+  </p>
+
+  <h2>Why it matters to a manager</h2>
+  <p>
+    "Which ten lines make most of my revenue?" and "show me only Coastal Co" are questions you ask in
+    the moment — in a review, in a meeting, five minutes before you need an answer for GDM. You
+    shouldn't need to ask someone else to re-cut the sheet. Sort answers the first in one click;
+    filter answers the second without touching a row you'll need again tomorrow. It's the fastest way
+    to interrogate a workbook someone else built, before you trust what's in it.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Deleting the rows you don't currently care about to "tidy" the view — then having to re-paste the
+    whole extract when you need them back. Filtering hides without destroying; the data stays whole.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    On the <span class="cell">Sort &amp; Filter</span> tab, click any cell in the list and press
+    <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd>. Open the <span class="cell">Revenue (AUD)</span>
+    dropdown and choose <em>Sort Largest to Smallest</em> — the top lines rise to the top. Now open
+    the <span class="cell">Category</span> dropdown, untick <em>Select All</em>, tick only
+    <em>Snacks</em>, and the list collapses to Snacks alone. Clear it with the funnel-with-a-cross
+    icon on the Data tab.
+  </p>
+  <p>
+    <em>Builds on Tables:</em> if you first made this a Table (a previous lesson), the filter arrows
+    are already there — sorting and filtering are simply part of what a Table gives you for free.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="2">
+      <p class="q">1. You filter the list to one supplier. What happens to the other rows?</p>
+      <ul class="opts">
+        <li><button class="opt">they are permanently deleted</button></li>
+        <li><button class="opt">they move to another sheet</button></li>
+        <li><button class="opt">they are hidden and return when you clear the filter</button></li>
+        <li><button class="opt">they are overwritten</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="1">
+      <p class="q">2. To order by Category first, then by Revenue within each category, you use …</p>
+      <ul class="opts">
+        <li><button class="opt">a single-column sort, twice</button></li>
+        <li><button class="opt">Data ▸ Sort with two levels</button></li>
+        <li><button class="opt">a filter</button></li>
+        <li><button class="opt">Find &amp; Replace</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. Which shortcut toggles the filter arrows on and off?</p>
+      <ul class="opts">
+        <li><button class="opt">Ctrl+Shift+L</button></li>
+        <li><button class="opt">Ctrl+T</button></li>
+        <li><button class="opt">Ctrl+E</button></li>
+        <li><button class="opt">Ctrl+Shift+Enter</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    On the <span class="cell">Sort &amp; Filter</span> tab, sort by Revenue descending and note the
+    top three products. Then filter Category to Snacks only and watch the row count in the status bar
+    drop — that count is Excel telling you how many rows passed the filter. Clear both, and confirm
+    every row is back.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — order the list and isolate a slice — with more handed to AI at each rung. The check
+    never changes: does the visible slice match the question you asked?
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it explains the moves, you do them</h3>
+  <p>Aldi:GPT can't see your workbook, so it talks you through the clicks; you do them and verify.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>I'm using Excel. I have a sales list with columns Month, Category, Supplier, Product, Cases and Revenue (AUD). Explain step by step how to sort it by Revenue from largest to smallest, and then filter it to show only the Snacks category, without deleting any rows. Include the keyboard shortcut to toggle the filter arrows.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer names <span class="cell">Ctrl+Shift+L</span> for the
+      filter and points you to the column dropdown's sort option — not to deleting rows.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it sorts and filters your sheet</h3>
+  <p>Copilot inside Excel can act on the sheet you have open. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="4" readonly>On the "Sort & Filter" sheet, sort the list by Revenue (AUD) from highest to lowest, then apply a filter that shows only rows where Category is Snacks. Leave all the underlying data in place.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> the filter funnel should appear on the Category header and the row
+      count should fall to the Snacks lines only. Clear the filter and confirm nothing was removed.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the sorted, filtered report</h3>
+  <p>An agent with file access builds the workbook for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>Create an Excel workbook named top-lines.xlsx with a sheet "Sales" holding a flat list with columns Month, Category, Supplier, Product, Cases and Revenue (AUD) and about 18 realistic rows across four categories. Turn the range into a Table, sort it by Revenue descending, and add a filter set to show only the Snacks category. Save the file and tell me the three highest-revenue Snacks lines.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file, clear the filter, and confirm the full list is intact
+      and simply hidden — sorting reorders, filtering conceals, neither destroys.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI explains the clicks" to "AI builds the sorted, filtered report" — the deliverable is the
+    same answerable view. What protects you is the reversibility check: a filter must never lose a row.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/en-us/office/filter-data-in-a-range-or-table-01832226-31b5-4568-8806-38c37dcc180e">Microsoft — Filter data in a range or table</a> and
+    <a href="https://support.microsoft.com/en-us/office/sort-data-in-a-range-or-table-62d0b95d-2a90-4610-a6ae-2e545c4a4654">Microsoft — Sort data in a range or table</a>.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want this rebuilt around your real extract, with the exact
+    sort order and the filters your team lives in? Send a sanitised sample and I'll retarget it.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="tables-the-modern-foundation.html">0002 — Tables</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="data-validation-dropdowns.html">0004 — Data validation</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — sort orders, filter isolates, and neither deletes.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

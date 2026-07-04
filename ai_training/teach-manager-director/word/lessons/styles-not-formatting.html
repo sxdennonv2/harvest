@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0001 — Styles, not formatting: fix it once</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev"></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="the-heading-hierarchy.html">0002 — Headings</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="styles-not-formatting.html" class="current">Styles: the document's skeleton</a>
+    <a href="breaks-and-sections.html">Structure &amp; navigation</a>
+    <a href="tables-that-behave.html">Tables &amp; figures</a>
+    <a href="track-changes-without-fear.html">Review &amp; collaborate</a>
+    <a href="working-the-document-template.html">Templates &amp; consistency</a>
+  </nav>
+
+  <p class="kicker">Word to a High Standard · Lesson 0001</p>
+  <h1>Styles, not formatting: fix it once</h1>
+
+  <p class="mission">
+    Tied to your mission: a submission you'll present to GDM or senior audiences gets
+    assembled, reviewed, revised, and reviewed again — and every one of those passes
+    depends on Word knowing what each paragraph <em>is</em>, not just what it currently
+    looks like. This lesson is the floor the rest of this course stands on: sections,
+    the TOC, the nav pane, and templates all read the same signal — real styles. Skip
+    this and every later lesson is fighting a document that doesn't know its own
+    shape, which means you're reviewing structure by eye instead of trusting the tools
+    built to check it for you.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice pack · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/word-practice-pack.html#scenario-a">Open the practice pack</a>
+      and find <strong>Scenario A — The hand-formatted submission</strong> — the Q3
+      range-review submission, 14 pages, formatted entirely by hand, with the correct
+      rescue described underneath so you can check your own work.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    A style names what a piece of text <em>is</em> — Heading 1, Heading 2, Body,
+    Caption. Direct formatting only paints what it looks like today: bold, 14pt, a
+    colour picked from the swatch. The two feel identical on screen for about five
+    minutes, and then they diverge completely, because only one of them is connected
+    to anything.
+  </p>
+  <p>
+    A style-formatted document obeys: change the Heading 2 style's colour once, and
+    every Heading 2 on fourteen pages follows, instantly, without you touching a
+    single one of them by hand. A hand-formatted document is fourteen pages of
+    individual decisions that were each correct in isolation and drift the moment
+    anything changes — a "heading" typed at 14pt on page 2 and 13.5pt on page 9,
+    because two different people eyeballed it two different days. The tell that
+    separates the two: open the navigation pane. Does it know your document exists?
+  </p>
+
+  <h2>Why it matters to a manager</h2>
+  <p>
+    You rarely build a submission from a blank page — you commission it, review the
+    draft, send it back with corrections, and present the result. Every one of those
+    passes is faster if the headings are real styles: the nav pane lets you jump
+    straight to the section you need to check, the TOC updates itself as the
+    structure changes under it, and a late instruction like "make all the section
+    headings our house colour" is a thirty-second style edit before you walk into the
+    room. If the headings are hand-formatted bold-and-size instead, that same
+    instruction means opening all fourteen pages and hoping you catch every impostor
+    — and missing one is exactly the kind of thing that surfaces in front of senior
+    readers, not before. Knowing this tell also changes how you review: a document
+    handed back to you with a working nav pane and a self-updating TOC is one you can
+    trust to be structurally sound before you've read a word of it; one without is a
+    document you have to inspect page by page.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Selecting a line of Normal text and making it bold and a bigger size to "make it a
+    heading." It looks like a heading. It is not one — it's invisible to the
+    navigation pane, invisible to the table of contents, invisible to every tool
+    downstream that walks a document by its styles rather than its pixels. The habit
+    feels harmless because the page looks right today; it fails silently, later, the
+    first time anyone needs the document to know its own structure.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    Open Scenario A. Its "headings" are Normal text made bold 14pt (sometimes
+    13.5pt, because a second hand joined in later) by selection; its sub-headings are
+    bold+italic everywhere except section 4, where someone underlined instead; and
+    one ordinary paragraph of body text was accidentally made bold 14pt too, so it
+    now impersonates a heading it never meant to be. Rescue it in this order.
+  </p>
+  <p>
+    First, the real headings: click into each hand-bolded "heading" line — you don't
+    need to select the whole line, just place the cursor in it — and click
+    <strong>Heading 1</strong> or <strong>Heading 2</strong> in the Styles gallery on
+    the Home tab, matching the level to where it sits in the document's outline.
+    Do this by clicking the built-in style, never by retyping the text. Do the same
+    for every sub-heading, including section 4's underlined ones — underline is not a
+    style, it's paint, and Heading 2 replaces it the moment you click.
+  </p>
+  <p>
+    Second, find the impostor paragraph — the one line of body text that got
+    bold-14pt by accident. Click into it and apply <strong>Body</strong> (or
+    <strong>Normal</strong>, whichever this document's Body style is named). Applying
+    the style clears the direct formatting sitting on top of it; you are demoting it
+    by style, not by manually stripping bold and resetting the font size one property
+    at a time.
+  </p>
+  <p>
+    Third, prove the fix travels: right-click <strong>Heading 2</strong> in the
+    Styles gallery, choose <strong>Modify</strong>, and change its colour once, in the
+    style definition itself — not by selecting each heading and repainting it. Click
+    OK. Every Heading 2 on all fourteen pages changes colour at once, because they
+    were never individually coloured to begin with.
+  </p>
+  <p>
+    Now open the navigation pane (View → Navigation Pane). Before the rescue it showed
+    nothing — an outline view that was a wall of Normal. After it, every real heading
+    appears in the pane in order, nested correctly, and clicking one jumps straight to
+    it. That walk is the proof the rescue worked, not a visual impression that it
+    looks tidier.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="2">
+      <p class="q">1. Two paragraphs both look identical on screen: bold, 14pt, same
+        font. One is styled Heading 2; the other is Normal text made to look the same
+        by hand. What's the reliable way to tell them apart?</p>
+      <ul class="opts">
+        <li><button class="opt">measure the font size with a ruler — styled headings are always exactly 14pt</button></li>
+        <li><button class="opt">you can't — they render the same, so they behave the same</button></li>
+        <li><button class="opt">open the navigation pane — only the styled one appears there</button></li>
+        <li><button class="opt">check whether it's centred</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="1">
+      <p class="q">2. You need every Heading 2 in a 14-page document to change to the
+        house colour. What's the one-step fix if the headings are real Heading 2
+        styles?</p>
+      <ul class="opts">
+        <li><button class="opt">select each Heading 2 in turn and change its font colour</button></li>
+        <li><button class="opt">modify the Heading 2 style's colour once — every instance follows</button></li>
+        <li><button class="opt">use Find &amp; Replace on the bold text</button></li>
+        <li><button class="opt">retype each heading in the new colour</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. A paragraph of ordinary body text was accidentally made bold and
+        14pt, so it now looks like a heading. What's the correct way to demote it?</p>
+      <ul class="opts">
+        <li><button class="opt">click into it and apply the Body/Normal style — the direct formatting clears with it</button></li>
+        <li><button class="opt">manually unbold it and reset the font size, property by property</button></li>
+        <li><button class="opt">leave it — it only matters if someone complains</button></li>
+        <li><button class="opt">delete the paragraph and retype it</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Take a document of your own that has at least a few hand-formatted "headings" —
+    bold-and-bigger text standing in for real structure. Apply real Heading 1/2 and
+    Body styles by select-and-click the way you just did in Scenario A, then pick one
+    heading level and change its style's colour or font once, in the style
+    definition. Self-check: open the navigation pane. Every heading you styled should
+    appear there, correctly nested, and the one style change you made should have
+    landed on every instance of that level without you touching any of them
+    individually. If even one heading is missing from the pane, it's still direct
+    formatting masquerading as a heading — go back and style it.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — turn a hand-formatted document's headings and body text into real
+    styles — with more handed to AI at each rung. The check never changes: open the
+    navigation pane and confirm every heading is really there, and confirm a single
+    style edit reaches every instance of that level.
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it maps the styles, you apply them</h3>
+  <p>Aldi:GPT can't see your document, so it can only work from an outline you
+    describe; it proposes a style mapping and a list of direct formatting to strip,
+    and you do the clicking in Word yourself.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="8" readonly>I have a Word document with these text kinds, currently all hand-formatted: (1) section titles, currently Normal text made bold and 14pt (sometimes 13.5pt); (2) sub-headings, currently bold+italic, except in one section where they're underlined instead; (3) one paragraph of ordinary body text that was accidentally made bold 14pt too, so it looks like a heading; (4) everything else, plain Normal body paragraphs. Map each text kind to the correct built-in Word style, and list exactly what direct formatting needs to be stripped from each so nothing but the style is doing the work.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> the signature failure at this rung is prescribing brand
+      new custom styles for jobs the built-ins already own — Word already has
+      Heading 1 and Heading 2; a mapping that invents "MyHeading" or "SectionTitle"
+      multiplies the problem instead of fixing it. A good answer maps everything onto
+      Word's existing built-in styles and tells you to strip the bold/italic/underline
+      once the style is applied, not before.</p>
+  </div>
+
+  <h3>Rung 3 · M365 Copilot in Word — it drafts into a styled document, it doesn't apply styles for you</h3>
+  <p>Be honest about the boundary: applying styles is native Word — the Styles
+    gallery, a click, done — not a Copilot capability. Copilot's move is drafting or
+    rewriting text; what matters is whether what it writes lands inside your styled
+    structure or arrives as its own island of direct formatting.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Word)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>Rewrite this section's opening paragraph to be tighter and more direct, keeping the same facts. Don't change the heading above it.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> after any Copilot rewrite, click into the paragraph it
+      produced and look at the Styles gallery — did the new text inherit the Body
+      style the paragraph already had, or did it arrive with its own direct
+      formatting riding on top? If the style box doesn't say what you expect, apply
+      the correct style yourself before you move on; Copilot rewrote the words, it
+      didn't guarantee the structure.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the styled document from scratch, scripted</h3>
+  <p>An agent with file access can write a script that builds a properly styled
+    Word document straight from a plain-text draft — turning markdown-ish markers
+    into real named styles rather than visual approximations.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="8" readonly>Write a python-docx script that reads a plain-text draft using markdown-ish markers (# for Heading 1, ## for Heading 2, plain lines for body text) and builds a .docx where each marked line is added with the matching real Word style (Heading 1, Heading 2, Normal/Body) via paragraph.style, not by manually setting bold or font size. Zero direct character formatting anywhere in the output — every visual property must come from the style definition.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the result's Styles pane and click through the
+      content — every heading and body paragraph must show a real named style, with
+      zero direct character formatting layered on top. Then modify one style's
+      definition (for example Heading 2's colour) directly in Word and confirm the
+      whole document follows — the same fix-it-once proof from the manual craft,
+      now generated by script.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI proposes the mapping" to "AI builds the styled document from scratch" —
+    the deliverable never changes: real styles doing the work, zero direct formatting
+    impersonating them. What protects you at every rung is the same check — open the
+    navigation pane, change one style, watch the whole document follow. Learn to do
+    it by hand first, so you can tell a real style from a convincing fake at every
+    rung above it.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/en-us/office/customize-or-create-new-styles-d38d6e47-f6fc-48eb-a607-1eb120dec563">Microsoft — Customize or create new styles</a>
+    and <a href="https://support.microsoft.com/word">Microsoft Support — Word help &amp; learning</a>.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want this retargeted to your actual submission
+    template instead of the practice pack's fictional one? Send a sanitised extract
+    of a hand-formatted document you actually work with and I'll rebuild this rescue
+    around it.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev"></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="the-heading-hierarchy.html">0002 — Headings</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — that is the styles-not-formatting test at work.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

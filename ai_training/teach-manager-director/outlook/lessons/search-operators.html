@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0004 — Search operators: describe the mail, don't scroll</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="focused-inbox-and-notification-discipline.html">0003 — Focus</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="search-folders-saved-searches.html">0005 — Search Folders</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="folders-categories-and-flags.html">Triage &amp; organise</a>
+    <a href="search-operators.html" class="current">Find &amp; retrieve</a>
+    <a href="threading-hygiene-reply-reply-all-forward.html">Write &amp; respond</a>
+    <a href="invites-that-get-accepted.html">Schedule &amp; coordinate</a>
+    <a href="quick-steps-one-click-three-actions.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Outlook to a High Standard · Lesson 0004</p>
+  <h1>Search operators: describe the mail, don't scroll</h1>
+
+  <p class="mission">
+    Tied to your mission: a colleague on the survey put it exactly right — AI "helps me
+    find relevant emails, saving time searching through archives." Search operators are
+    the manual-craft version of that same win, and the one you can use in ten seconds
+    without opening anything AI. Before you climb the ladder, learn to <strong>describe
+    the mail to the index</strong> instead of scrolling past it with your eyes.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice pack · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/outlook-practice-pack.html#scenario-b">Open the practice pack</a>
+      and read <span class="tab-name">Scenario B — The lost attachment</span>. It's
+      practised in <em>your own mailbox</em> — the pack describes three retrieval
+      targets; you build the operator query for each before you touch the search box.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    Scrolling is searching with your eyes. Outlook already has an index built for
+    <em>describing</em> the mail, not eyeballing it — operators like
+    <span class="cell">from:</span>, <span class="cell">hasattachments:</span>,
+    <span class="cell">received:</span>, <span class="cell">flagged</span> and
+    <span class="cell">unread</span> let you tell the index who sent it, what it
+    carried, roughly when, and what state it's in — then combine two or three to
+    narrow a mailbox of thousands down to a handful.
+  </p>
+  <p>
+    The habit that makes this work: build the query <em>before</em> you look, from what
+    you actually remember. You rarely remember a subject line. You remember the sender,
+    a rough month, and "it had the attachment." Write that down as
+    <span class="cell">from:sam hasattachments:yes received:&gt;=1/3/2026 received:&lt;=30/4/2026</span>
+    before you open the search box — not a half-remembered phrase you hope is in the
+    subject.
+  </p>
+
+  <h2>Why it matters to a manager</h2>
+  <p>
+    Three months from now, an audit question lands on your desk: "which price list did
+    Harvest Lane send before the change, and when?" You didn't build the artefact
+    yourself — you commissioned it, or reviewed it in passing — so the attachment is
+    buried under hundreds of newer messages, the subject line was never memorable, and
+    scrolling back three months of mail to find it is exactly the kind of afternoon a
+    full-time manager doesn't have. A manager who can write
+    <span class="cell">from:</span> + <span class="cell">hasattachments:yes</span> + a
+    date range answers that question in under thirty seconds, in the meeting or straight
+    after it — with a real message and a real timestamp to hand to GDM or a senior
+    audience, not a guess.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Scrolling and squinting through months of mail looking for something you'll
+    "recognise when you see it" — or typing a misremembered subject phrase into the
+    search box, getting nothing back, and concluding that search "doesn't work." Search
+    didn't fail; the query never described anything the index could match on. A subject
+    guess is one weak signal. Sender, attachment state and a date range are three strong
+    ones, combined.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    Take the three retrieval jobs in <span class="cell">Scenario B</span> of the
+    practice pack, and for each one, write the query in your head <em>before</em>
+    opening Outlook's search box:
+  </p>
+  <p>
+    <strong>Job 1 — the price-list attachment.</strong> You remember the sender and
+    roughly when, not the subject. Query:
+    <span class="cell">from:sam hasattachments:yes received:&gt;=1/3/2026 received:&lt;=30/4/2026</span>.
+    <span class="cell">from:</span> narrows to one contact,
+    <span class="cell">hasattachments:yes</span> drops every message without a file, and
+    the <span class="cell">received:</span> range boxes in the roughly-three-months-ago
+    memory. Three operators, three narrowing cuts.
+  </p>
+  <p>
+    <strong>Job 2 — the unanswered question.</strong> You remember one distinctive word
+    from it and roughly who sent it. Query: that word plus
+    <span class="cell">from:</span> the colleague — the free-text word does the
+    narrowing this time, <span class="cell">from:</span> keeps it inside one person's
+    mail.
+  </p>
+  <p>
+    <strong>Job 3 — everything still flagged from before last month.</strong> Query:
+    <span class="cell">flagged received:&lt;1/6/2026</span> — the state operator finds
+    every follow-up you still owe, the date range drops the ones you already cleared.
+  </p>
+  <p>
+    Run each query in your own mailbox's search box (type it directly — Outlook accepts
+    the operator syntax as typed text). Per the pack's check: each result set should fit
+    on one screen (under 20 messages), and you should be able to name out loud which
+    operator did the narrowing.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="2">
+      <p class="q">1. You remember a supplier sent you a price list about three months
+        ago, but not the subject line. What should you build the query from first?</p>
+      <ul class="opts">
+        <li><button class="opt">a guess at the subject wording</button></li>
+        <li><button class="opt">scrolling to roughly the right week</button></li>
+        <li><button class="opt">sender, attachment state, and a rough date range</button></li>
+        <li><button class="opt">the folder it's probably filed in</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="1">
+      <p class="q">2. A query returns zero results. What does that tell you?</p>
+      <ul class="opts">
+        <li><button class="opt">Outlook search is unreliable and scrolling is safer</button></li>
+        <li><button class="opt">one of the operators (spelling, date, or a wrong assumption) doesn't match — narrow or fix it, don't give up on search</button></li>
+        <li><button class="opt">the message has definitely been deleted</button></li>
+        <li><button class="opt">you must have the wrong mailbox open</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. Why combine <span class="cell">from:</span> with
+        <span class="cell">hasattachments:yes</span> and a <span class="cell">received:</span>
+        range, rather than using just one?</p>
+      <ul class="opts">
+        <li><button class="opt">each operator narrows the candidate set further, so the combination lands on a small, scannable result</button></li>
+        <li><button class="opt">Outlook requires at least three operators per search</button></li>
+        <li><button class="opt">using only one operator is against the mailbox retention policy</button></li>
+        <li><button class="opt">it makes the search run faster on the server</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Pick your own real "lost" item from this month — a message you'd struggle to find
+    right now. Before opening the search box, write the query on paper or in a note:
+    name the sender, the attachment state if relevant, and a rough date range or
+    flag/read state. Then type it into your mailbox's search box.
+    <strong>Check:</strong> found in under 30 seconds, without scrolling — and you can
+    point at which operator did the narrowing. If it takes longer, the query was missing
+    a strong signal (usually the sender or the date range) — add it and re-run rather
+    than falling back to scrolling.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — retrieve one specific mail without scrolling — with more handed to AI at
+    each rung. The check never changes: does the query (or the tool acting on your
+    behalf) land on a small, nameable result, verified against the actual message rather
+    than trusted on faith?
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it writes the query, you verify the operators</h3>
+  <p>
+    Aldi:GPT can't see your mailbox, so it can only write the operator query from what
+    you tell it — you place it in the search box and verify every operator is real
+    Outlook syntax before you trust it.
+  </p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I use Outlook (new Outlook, Windows). I'm trying to find an email I can't recall the subject of. Here's what I remember: it was from a supplier contact named Sam, it had a price list attached as a file, and it arrived roughly between 1 March 2026 and 30 April 2026. Write me the Outlook search-operator query to find it, using from:, hasattachments:, and received: with a date range. List each operator you used and explain in one line what it narrows.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> the signature failure at this rung is an invented or
+      wrong-syntax operator — something plausible-looking that Outlook doesn't actually
+      support, or the wrong date format. Verify every operator it hands you against the
+      <a href="https://support.microsoft.com/en-us/office/search-email-in-outlook-7d060fe6-eea4-4a91-96f8-2c6c4c209513">Microsoft search-operators reference</a>
+      before you trust the query — don't paste blind.</p>
+  </div>
+
+  <h3>Rung 3 · M365 Copilot — it searches and summarises across your mailbox</h3>
+  <p>
+    Copilot in Outlook can act on the mailbox you have open and answer in natural
+    language — "find the thread where the supplier confirmed the price change" — rather
+    than you writing the operator query yourself.
+  </p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Outlook)</span>
+    <div class="prompt">
+      <textarea rows="4" readonly>Find the email thread where a supplier confirmed a change to a price or promo volume in the last few months. Tell me who sent it, when, and summarise what they confirmed.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> Copilot will hand you back an answer or a summary —
+      insist on opening the actual source message before you act on it. The failure here
+      is trusting the paraphrase when the real mail says something subtly different (a
+      different volume, a different date, a condition Copilot's summary dropped). The
+      summary is a pointer, not the record.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds a mailbox report from an export</h3>
+  <p>
+    GitHub Copilot is an agent with file access but no connection to your live
+    mailbox — given an exported CSV of mail metadata, it can build a report (senders by
+    volume, attachment counts, ageing flags) that would take you an age to tally by
+    hand.
+  </p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>I have a CSV export of my Outlook mailbox metadata (columns: MessageId, From, Subject, ReceivedDate, HasAttachment, Flagged, Read). Write a Python script that reads this CSV and produces a report: count of messages per sender, count of messages with attachments per sender, and a list of messages flagged and received more than 30 days ago (ageing flags). Make sure every message is counted in exactly one sender's total — no double-counting threads that span multiple rows.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> the totals must reconcile — the per-sender message counts
+      must sum to the export's total row count, exactly (the same parts-sum-to-whole
+      discipline as any report). A report that double-counts a thread across its
+      messages, or drops rows silently, fails the check even if the numbers look
+      plausible.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "you write the query" to "an agent reports on an export" — the deliverable at
+    every rung is the same: a small, verifiable answer instead of a scrolled guess. What
+    protects you is the check — real operators verified against the source, the actual
+    message opened instead of the paraphrase trusted, totals reconciled instead of taken
+    on faith. Craft first, so you can supervise.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/en-us/office/search-email-in-outlook-7d060fe6-eea4-4a91-96f8-2c6c4c209513">Microsoft — Search email in Outlook (search operators)</a>.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want the operator list retargeted to your real
+    supplier contacts and your actual folder names? Send me a sanitised description of
+    what you typically search for and I'll rebuild the worked examples around it.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="focused-inbox-and-notification-discipline.html">0003 — Focus</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="search-folders-saved-searches.html">0005 — Search Folders</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — that is how search operators narrow a mailbox.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0002 — Placeholders, not text boxes</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="masters-and-layouts-fix-it-once.html">0001 — Masters</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="align-distribute-group.html">0003 — Align</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="masters-and-layouts-fix-it-once.html" class="current">Build on the master</a>
+    <a href="align-distribute-group.html">Arrange &amp; align</a>
+    <a href="excel-to-slide-paste-link.html">Charts &amp; visuals</a>
+    <a href="working-the-corporate-template.html">Reuse &amp; templates</a>
+    <a href="presenter-view-and-rehearse.html">Present &amp; share</a>
+  </nav>
+
+  <p class="kicker">PowerPoint to a High Standard · Lesson 0002</p>
+  <h1>Placeholders, not text boxes</h1>
+
+  <p class="mission">
+    Tied to your mission: a deck built on the master only fixes-once-fixes-everywhere
+    if the text on every slide is actually plugged into that master's skeleton. Builds
+    on <a href="masters-and-layouts-fix-it-once.html">Masters &amp; layouts</a> — that
+    lesson got the deck onto one master with the right layouts; this one makes sure
+    the text on those slides is wired into them, not just sitting on top.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice pack · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/powerpoint-practice-pack.html#scenario-c">Open the practice pack</a>
+      and find <strong>Scenario C — The franken-deck</strong> — the consolidated
+      range-review deck, now on one master, but still carrying text that never made
+      it into a placeholder.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    A <strong>placeholder</strong> is a slot the layout built for you: it inherits
+    position, font, size, and colour from the layout and the master, and it keeps
+    inheriting — change the master, and every placeholder on every slide built from
+    it updates without you touching a slide. A <strong>text box</strong> is an orphan.
+    Nobody built it a home; it inherits nothing; whatever font, size, and position you
+    gave it by hand is the font, size, and position it will have forever, until you
+    hand-edit it again.
+  </p>
+  <p>
+    A deck full of text boxes has quietly opted out of its own skeleton. Outline view
+    goes blank where a text box should be. A layout swap leaves the text box exactly
+    where it was, stranded on the new layout. Reset does nothing to it, because Reset
+    only knows how to put placeholders back — it has no idea a text box exists. The
+    test is one click: select the text and look at the border. Does it say
+    <em>placeholder</em> — this came with the layout — or does it say
+    <em>text box</em> — someone drew this by hand?
+  </p>
+
+  <h2>Why it matters to a manager</h2>
+  <p>
+    The range-review deck gets rebuilt every month from whatever's easiest to grab —
+    last quarter's slides, a colleague's deck, a chart pasted from an email — and you're
+    the one who has to review it fast before it goes upward. Every time text lands as a
+    hand-drawn box instead of a placeholder, that slide becomes a small island: the
+    title fix that landed on the master last week won't reach it, the footer date
+    correction won't reach it, and outline view — the fast way to check a whole deck's
+    message before the 10am GDM review — will show a gap where that slide's content
+    should be. When you're skimming a team's draft for the buried message or the slide
+    doing two jobs, a text box is exactly the kind of thing that hides from that skim.
+    One franken-deck full of orphaned text boxes means every "fix it on the master"
+    promise from the last lesson quietly breaks slide by slide, and you inherit the
+    fallout in the room, not before it.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Reaching for Insert &rarr; Text Box as the default way to get any words onto a
+    slide — a stat, a caption, a title that didn't quite fit — instead of checking
+    whether the layout already has a placeholder for it. Each text box drawn this way
+    is a small, permanent, hand-styled orphan: invisible to outline view, unreachable
+    by the master, and yours to restyle by hand for as long as the deck lives.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    On Scenario C's consolidated deck, go slide by slide and click every block of
+    text. The selection border tells you what you're looking at: a placeholder border
+    reads "Click to add text" when empty and is labelled by its placeholder type in
+    the Selection Pane (Title, Text Placeholder, Content Placeholder); a text box
+    border is just a plain box with no placeholder identity at all. Wherever you find
+    a text box carrying real slide content — a stat, a heading typed over the
+    template's title, a footer note retyped by hand — cut its text out.
+  </p>
+  <p>
+    Then check the slide's layout (Home &rarr; Layout) for a placeholder that fits
+    what you just cut. If one exists, click into it and paste the text in. If the
+    current layout genuinely has no placeholder for that content — say the slide
+    needs a second text block the layout doesn't offer — switch the slide to a layout
+    from the master that does provide it, rather than drawing a box to compensate.
+    Once the text is sitting in a real placeholder, select the slide and hit Reset:
+    position, font, and size should snap to whatever the layout defines, because now
+    there's an inheritance path for Reset to use. Delete the emptied text box last, so
+    you're not working from a slide with duplicate content mid-edit.
+  </p>
+  <p>
+    Finish by switching to outline view (View &rarr; Outline). Every slide's title and
+    body text — the content you just moved into placeholders — should now appear in
+    the outline. Any slide still showing blank in outline view still has an orphan on
+    it somewhere; go back and find the border that says text box.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="2">
+      <p class="q">1. You click a block of slide text and its border reads "Click to
+        add text" with a Selection Pane label of "Text Placeholder". What is it?</p>
+      <ul class="opts">
+        <li><button class="opt">a hand-drawn text box, styled by whoever made it</button></li>
+        <li><button class="opt">a picture with alt text</button></li>
+        <li><button class="opt">a placeholder — it inherits from the layout and master</button></li>
+        <li><button class="opt">a table cell</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">2. A slide's title looks fine, but outline view shows a blank line
+        where that title should be. What does that tell you?</p>
+      <ul class="opts">
+        <li><button class="opt">the title text is sitting in a text box, not the title placeholder</button></li>
+        <li><button class="opt">outline view is broken and needs a refresh</button></li>
+        <li><button class="opt">the slide has no master applied</button></li>
+        <li><button class="opt">the title font is too small to display</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="1">
+      <p class="q">3. You hit Reset on a slide hoping to snap a stranded stat box back
+        onto the layout's position, but nothing happens. Why?</p>
+      <ul class="opts">
+        <li><button class="opt">Reset only works on the first slide of a deck</button></li>
+        <li><button class="opt">the stat is in a text box, which has no layout to reset to</button></li>
+        <li><button class="opt">Reset is disabled until the deck is saved</button></li>
+        <li><button class="opt">the master is missing a theme colour</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Work every slide of Scenario C's consolidated deck: click each piece of text,
+    read its border, and move anything living in a text box into a real placeholder
+    (switching layouts first if the current one doesn't offer the right slot). Hit
+    Reset on each slide once its content is in placeholders. Self-check when you're
+    done: switch to outline view and confirm every slide's title and body text shows
+    up there in full — a slide that still shows blank or partial in outline view
+    still has an orphaned text box on it somewhere.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — get every slide's text off hand-drawn boxes and into real
+    placeholders — with more handed to AI at each rung. The check never changes:
+    outline view must show the deck's full text, and every border you click must read
+    placeholder, not text box.
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it reasons from what you paste, not from the deck</h3>
+  <p>Aldi:GPT can't see your slides or click a border, so it can only diagnose from
+    the outline-view text you paste it; blank lines in that paste are the tell, but
+    confirming which shape is actually behind each blank is still a job only you can
+    do with a mouse.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I switched a PowerPoint deck to outline view to check it's built on real placeholders, not hand-drawn text boxes. Here's what outline view shows me, slide by slide (paste your outline text, and mark any slide where it's blank or missing content you know is on the slide): [paste your outline-view text here]. Which slides look like they have text sitting outside a placeholder, based on the gaps, and what would you check first on each?</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> Aldi:GPT is only reasoning over the gaps you handed it —
+      a blank or missing outline line is real evidence, but it cannot confirm the
+      cause. Go back to each flagged slide and click the text yourself; only the
+      border tells you for certain whether it's a placeholder or a text box.</p>
+  </div>
+
+  <h3>Rung 3 · M365 Copilot — new content only lands in a placeholder if the layout has one</h3>
+  <p>Copilot in PowerPoint writes content straight onto the slide's layout, so if the
+    layout already offers the right placeholder, the generated text lands in it and
+    inherits properly; if the layout doesn't offer one, Copilot still has to put the
+    text somewhere, and it will draw a text box to do it.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in PowerPoint)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>On the current slide, add a short stat callout summarising this month's sell-through rate against target, in a style that matches the rest of the deck.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> click every text block Copilot just generated and read
+      its border. If it reads placeholder, inheritance is live and you're done. If it
+      reads text box, the layout you're on genuinely had no slot for this content —
+      the fix is to add or switch to a layout that provides one, not to leave
+      Copilot's box as-is and restyle it slide by slide.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it audits placeholder vs. free text across the whole deck</h3>
+  <p>An agent with file access can read the deck's XML directly and tell you, shape
+    by shape, which text sits in a real placeholder and which is a free-floating text
+    box — far faster than clicking every border yourself — but it cannot fix your
+    deck; you still do the moving and the layout switching.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="8" readonly>Write a python-pptx script that opens a .pptx file and, for every slide, lists each shape with: whether it is a placeholder (and its placeholder type — title, body, content, etc.) or a free-floating text box, and its text content if any. Then produce a per-slide "outline completeness" report: for each slide, show what outline view would display (title placeholder text, then body/content placeholder text in order) versus any text that exists on the slide but would NOT appear in outline view because it's in a text box. Flag any slide where non-placeholder text is present. Run it against [path to your .pptx].</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> run it against the franken-deck first — it should flag
+      orphaned text boxes on the slides you already know are broken, slide by slide.
+      Then run the same script against a clean, all-placeholder skeleton deck — it
+      should come back silent, flagging nothing. A report that flags on both, or ever
+      confuses a placeholder with a text box, is just counting shapes; it isn't
+      testing inheritance, and you shouldn't trust its verdict on the real deck.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "diagnose the gaps I paste you" to "audit the whole deck's file structure" —
+    the deliverable never changes: every slide's text living in a placeholder,
+    outline view showing all of it, Reset actually doing something. What protects you
+    at every rung is the same border-click and the same outline-view check, not the
+    tool. Learn to tell a placeholder from a text box by hand first, so no rung above
+    it can quietly hand you back a deck of orphans.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/en-us/office/what-is-a-slide-master-b9abb2a0-7aef-4257-a14e-4329c904da54">Microsoft — What is a slide master?</a>
+    and <a href="https://support.microsoft.com/en-us/copilot-powerpoint">Microsoft — Copilot in PowerPoint</a>
+    for exactly what placeholders inherit and what Copilot does and doesn't wire up
+    for you. If a detail here ever disagrees with the source, trust the source and
+    tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want this retargeted to your actual
+    range-review deck instead of the practice pack's franken-deck? Send a sanitised
+    copy (or just its outline-view text) and I'll tell you exactly which slides have
+    opted out of your master.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="masters-and-layouts-fix-it-once.html">0001 — Masters</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="align-distribute-group.html">0003 — Align</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — that is inheritance at work.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>
