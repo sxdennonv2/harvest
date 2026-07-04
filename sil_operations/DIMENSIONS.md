@@ -18,7 +18,8 @@ Earlwood), analysed 2026-07-04. ✅ = populated from source; ⬜ = placeholder, 
 | `dinner-rotation` | **conditional, not a fixed rule** (clarified 2026-07-05) | 28-recipe rotation, identical across all 3 Earlwood residents for the same week/day. Sharing one dinner across a house is only possible when residents' dietary requirements are compatible — where they clash (allergens, texture, medical diets), residents need individual dinners instead. Cadence is arbitrary/manual, not a fixed constraint | frame — now resolved mechanically by `meal-option-pool` × `allocation-process` below, rather than assumed |
 | `meal-option-pool` | resident × time-boxed data | up to 10 named meal options per resident, per meal slot. **Built by Debbie, quarterly** (4x/year); each pool version has a start/end date it's valid between; options can be added/removed/altered mid-quarter, taking effect immediately until changed again | frame — a pool is a sequence of time-boxed versions per resident, not one static list |
 | `allocation-process` | crosscutting mechanism | three modes, confirmed 2026-07-05: **random** (uniform pick from the resident's currently-valid pool), **stratified random** (stratifies by **variety across the 28-day period** — spread option usage evenly rather than clustering repeats), **manual override** (Debbie can override any automated pick). Plus **harmonization**: detect an option shared across multiple residents' pools in the same house/day/slot and assign it to all of them | frame — the concrete answer to "can this house share a dinner", replacing manual judgement with overlap-detection, with an escape hatch for Debbie's judgement |
-| `review-interface` | **new, 2026-07-05** | every resident × meal-slot × day cell is a **dropdown** of that resident's currently-valid option pool, pre-filled by the allocation algorithm's output; Debbie reviews and can change any cell's selection directly — this IS the override mechanism, as a concrete UI control | frame — the artifact's core interaction shape; open question is what format hosts an interactive review step |
+| `review-interface` | web/HTML UI, confirmed 2026-07-05 | every resident × meal-slot × day cell is a **dropdown** of that resident's currently-valid option pool, pre-filled by the allocation algorithm's output. Debbie can change **as much or as little as she wants**, cell by cell, independently — no automatic re-harmonization or cascading | frame — the artifact's core interaction shape, fully specified |
+| `plan-lifecycle` | **new state machine, 2026-07-05** | `draft` (editable) → `locked` (Debbie's explicit action; enables shopping-list generation; editability after locking unconfirmed) → `shopping_list_generated` (confirmed terminal — cannot be changed further, ever) | frame — one-directional as far as confirmed; open question is whether `locked` alone is already immutable |
 | `support-worker-roster` | **parked, 2026-07-05** | single fixed value `TBA` — kept as a dimension so the shape isn't lost, but not pursued as live/volatile data right now | frame — revisit only if worth pursuing later |
 | `tier` | deployment | static (docx, current — **fully manual today**, hand-built by Debbie per resident per 28-day period) · live (generated per resident/period — the automation goal) | same frame + contract would serve both |
 
@@ -90,7 +91,7 @@ This replaces "does Debbie judge this house compatible?" with "do these resident
 option pools happen to overlap?" — and the override mode means her judgement is never
 locked out even if the mechanism gets something wrong.
 
-## Review interface: the override made concrete (2026-07-05)
+## Review interface: the override made concrete (2026-07-05, fully resolved)
 
 The abstract "Debbie can override any automated pick" now has a shape: **every cell in
 the resident × meal-slot × day grid is a dropdown**, populated with that resident's
@@ -99,15 +100,33 @@ stratified-random, or harmonization) pre-fills each dropdown's initial value; De
 reviews the whole plan and changes any cell's selection directly, cell by cell, as she
 goes. This is the concrete review workflow, not just a capability statement.
 
-Two implications, both still open:
-- **Format**: a per-cell dropdown needs something more interactive than a static docx —
-  a web/HTML review UI? A spreadsheet with data-validation dropdowns (mirroring the
-  dropdown mechanic already used elsewhere in the office-app frame)? The final,
-  signed-off artifact might still render as static docx regardless of what hosts the
-  review step — that's a separate decision from the interactive review surface itself.
-- **Override × harmonization interaction**: if Debbie changes one resident's dropdown in
-  a harmonized slot, do the other residents sharing that slot keep their original shared
-  option, or does harmonization re-run around her edit? Not yet decided.
+Both implications from the previous draft are now resolved:
+- **Format**: a **web/HTML UI** hosts the interactive review step. (The final,
+  signed-off artifact may still render differently once locked — that's a separate
+  question from the review surface itself, and not raised as blocking.)
+- **Override × harmonization interaction**: there is **no special interaction** — Debbie
+  can change as much or as little as she wants, cell by cell, independently. No
+  automatic re-harmonization or cascading logic runs when she edits a cell. Whatever
+  state she leaves the grid in in the `draft` state is what gets carried forward when
+  she locks it.
+
+## Plan lifecycle: draft → locked → shopping list (2026-07-05)
+
+A new state machine governs how long a plan stays editable:
+
+1. **`draft`** — the algorithm has pre-filled every cell; Debbie is reviewing and may
+   change any cell, independently, as described above.
+2. **`locked`** — Debbie's explicit action (a "Locked" button), not automatic or
+   time-based. Her edited state becomes final for this plan at this point. A locked
+   plan can be used to generate a shopping list. **Open question**: can a locked plan be
+   unlocked and edited again before a shopping list is generated from it, or does
+   locking itself already make it immutable? Not yet confirmed either way.
+3. **`shopping_list_generated`** — confirmed **terminal and immutable**: once a plan has
+   been used to create a shopping list, it cannot be changed any further, under any
+   circumstances.
+
+Transition order is one-directional as far as confirmed: `draft → locked →
+shopping_list_generated`, with no reopening after shopping-list generation.
 
 ## Roster: parked (2026-07-05)
 

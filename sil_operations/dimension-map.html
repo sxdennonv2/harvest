@@ -133,25 +133,26 @@
 
 <div class="wrap">
   <header class="masthead">
-    <p class="eyebrow">Harvest · pipeline instrument · 05 Jul 2026 · frame v0.7-draft</p>
+    <p class="eyebrow">Harvest · pipeline instrument · 05 Jul 2026 · frame v0.8-draft</p>
     <h1>The SIL-operations dimension space</h1>
     <p class="lede">Harvest instance #4 (FRAME-LEDGER row 4) — a domain <b>promoted</b>
       from real source artifacts rather than elicited blind: three residents' actual
       Weekly Menu Planner <code>.docx</code> files, residence <b>Earlwood</b>, provider
       <b>Danny Met Sally (DMS)</b>. Today it's <b>fully manual</b> — Debbie hand-builds
       one plan per resident per 28-day period. The automation idea taking shape: Debbie
-      builds each resident up to 10 acceptable options per meal <b>quarterly</b>; the
-      algorithm pre-fills a <b>dropdown per cell</b> (random, stratified for variety, or
-      harmonized across a house), and Debbie reviews and overrides any cell directly.</p>
+      builds each resident up to 10 acceptable options per meal <b>quarterly</b>; a
+      web/HTML UI pre-fills a <b>dropdown per cell</b> and Debbie edits as much or as
+      little as she likes, then <b>locks</b> the plan — a locked plan can generate a
+      shopping list, and once used for one, it's permanently unchangeable.</p>
     <div class="stats">
       <div class="stat"><div class="n">1</div><div class="l">domain frame</div></div>
       <div class="stat"><div class="n">1 / 5</div><div class="l">residences populated</div></div>
       <div class="stat"><div class="n">3</div><div class="l">residents · real names</div></div>
       <div class="stat"><div class="n">10</div><div class="l">max options per meal slot</div></div>
       <div class="stat"><div class="n">4×</div><div class="l">pool refresh · per year</div></div>
-      <div class="stat"><div class="n">3</div><div class="l">allocation modes</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">plan-lifecycle states</div></div>
       <div class="stat"><div class="n">TBA</div><div class="l">support-worker roster · parked</div></div>
-      <div class="stat warn"><div class="n">5</div><div class="l">open questions</div></div>
+      <div class="stat warn"><div class="n">4</div><div class="l">open questions</div></div>
     </div>
   </header>
 
@@ -165,12 +166,12 @@
   </nav>
 
   <section id="axes">
-    <p class="eyebrow">The ten axes</p>
+    <p class="eyebrow">The eleven axes</p>
     <h2>Dimensions and their values</h2>
     <p class="read">Solid green chips are populated from real source data; dashed
       chips are addressable but empty. The <b>weekly grid</b> is the one invariant
       axis here — stable across all 3 source residents, the closest analogue to the
-      AI-training frame's ladder. <b>Review-interface</b> is new this pass — see
+      AI-training frame's ladder. <b>Plan-lifecycle</b> is new this pass — see
       <a href="#selection">the mechanism</a>. <b>Support-worker-roster</b> is parked.</p>
     <div class="axes">
       <div class="axis">
@@ -264,14 +265,28 @@
         several, tracked for savings. Scoped to one residence; never crosses houses.</div>
       </div>
       <div class="axis">
-        <div class="axname">review-interface<small>new axis, 05 Jul</small></div>
+        <div class="axname">review-interface<small>fully resolved, 05 Jul</small></div>
         <div class="axkind">interaction shape</div>
-        <div class="axk">Every resident × meal-slot × day cell is a <b>dropdown</b> of
-          that resident's currently-valid option pool. The allocation algorithm
-          pre-fills each cell's initial value; Debbie reviews the whole plan and changes
-          any cell's selection directly — this <i>is</i> the override mechanism, made
-          concrete. Open: what format hosts an interactive review step, and how an edit
-          in a harmonized slot affects the others sharing it.</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">web/HTML UI</span>
+        </div>
+        Every resident × meal-slot × day cell is a <b>dropdown</b> of that resident's
+        currently-valid option pool, pre-filled by the algorithm. Debbie can change
+        <b>as much or as little as she wants</b>, cell by cell — no automatic
+        re-harmonization or cascading when she edits one.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">plan-lifecycle<small>new state machine, 05 Jul</small></div>
+        <div class="axkind">state machine</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">draft</span><span class="chip built">locked</span>
+          <span class="chip built">shopping_list_generated</span>
+        </div>
+        <code>draft</code> is editable. <code>locked</code> is Debbie's explicit action
+        — her edits become final and the plan can generate a shopping list (whether
+        <code>locked</code> alone is already immutable is still open).
+        <code>shopping_list_generated</code> is confirmed <b>terminal</b> — unchangeable
+        under any circumstances once a shopping list has been made from it.</div>
       </div>
       <div class="axis">
         <div class="axname">support-worker-roster<small>parked, 05 Jul</small></div>
@@ -442,8 +457,8 @@
               pool. <b>Stratified random</b>: stratifies by <b>variety across the
               28-day period</b> — shuffled rounds through the pool so each option is
               used a roughly even number of times, not clustered repeats. <b>Manual
-              override</b>: Debbie can override any pick, any time — automation is a
-              default, not a constraint on her</td>
+              override</b>: Debbie can change as much or as little as she wants, cell
+              by cell, independently — no cascading logic</td>
             <td class="slotcell">All three modes fully specified</td></tr>
           <tr><th>3 · Harmonization</th>
             <td class="slotcell">Check whether an option appears in multiple residents'
@@ -459,19 +474,24 @@
           <tr><th>5 · Review interface</th>
             <td class="slotcell">Every resident × meal-slot × day cell renders as a
               <b>dropdown</b> of that resident's option pool, pre-filled by steps 2–3's
-              output. Debbie reviews the whole plan and changes any cell directly —
-              the override, made concrete as a UI control</td>
-            <td class="slotcell">Interaction shape confirmed — hosting format (web UI?
-              spreadsheet dropdowns?) still open</td></tr>
+              output, in a <b>web/HTML UI</b>. Debbie changes as much or as little as
+              she wants, cell by cell</td>
+            <td class="slotcell">Fully specified</td></tr>
+          <tr><th>6 · Plan lifecycle</th>
+            <td class="slotcell"><code>draft</code> (editable) → <code>locked</code>
+              (Debbie's explicit action; her edits become final; enables shopping-list
+              generation) → <code>shopping_list_generated</code> (terminal — no further
+              changes, ever)</td>
+            <td class="slotcell">Terminal state confirmed immutable — whether
+              <code>locked</code> alone already blocks edits is still open</td></tr>
         </tbody>
       </table>
     </div>
     <div class="decision" style="margin-top:16px">
-      <b>Open questions this raises</b>
-      <p>How does changing one resident's dropdown in a harmonized slot affect the
-        others sharing it — do their dropdowns stay on the original shared option, or
-        does harmonization re-run around the edit? And what format actually hosts this
-        interactive review step?</p>
+      <b>Open question this raises</b>
+      <p>Can a <code>locked</code> plan be unlocked and edited again before a shopping
+        list is generated from it, or does clicking "Locked" already make it immutable?
+        Only <code>shopping_list_generated</code> is confirmed unconditionally immutable.</p>
     </div>
   </section>
 
@@ -528,14 +548,20 @@
         directly. This turns "Debbie can override any pick" into a concrete UI: the
         dropdown itself is the override mechanism, not a separate control.</p>
     </div>
+    <div class="decision"><b style="color:var(--thyme-deep)">Resolved · 05 Jul 2026 (sixth pass)</b>
+      <p><b style="display:inline;color:var(--ink)">Override scope</b> — Debbie can
+        change as much or as little as she wants, cell by cell, independently; no
+        automatic re-harmonization runs. <b style="display:inline;color:var(--ink)">Artifact
+        format</b> — a web/HTML UI hosts the review step.
+        <b style="display:inline;color:var(--ink)">Plan lifecycle introduced</b> —
+        <code>draft → locked → shopping_list_generated</code>, with the last state
+        confirmed permanently unchangeable once a shopping list has been made from it.</p>
+    </div>
     <div class="decision open"><b>Still open — before any contract/skill is built</b>
       <ul>
-        <li>How does changing one resident's dropdown in a harmonized slot affect the
-          others sharing it — do they keep the original shared option, or does
-          harmonization re-run around the edit?</li>
-        <li>What format hosts the interactive review step (per-cell dropdowns need more
-          than a static docx) — web/HTML UI? Spreadsheet with data-validation dropdowns?
-          Does the final signed-off artifact still render as static docx regardless?</li>
+        <li>Can a <code>locked</code> plan be unlocked and edited again before a
+          shopping list is generated from it, or is <code>locked</code> itself already
+          immutable?</li>
         <li>Typical residents-per-home (Earlwood = 3; unconfirmed as typical)</li>
         <li>Full list of residences/resident counts nationwide — deferred, sticking
           with Earlwood + 4 placeholders for now</li>
@@ -543,17 +569,17 @@
       </ul>
     </div>
     <div class="decision"><b>Next unit of work</b>
-      <p>Resolve the override/harmonization interaction and the review-artifact format,
-        then draft the unit contract (one printable 28-day meal-plan artifact per
-        resident) and generate <b>one sample artifact</b> — still no repo
-        infrastructure, frame file + skill + artifact only.</p>
+      <p>Confirm whether <code>locked</code> permits unlocking, then draft the unit
+        contract (one printable 28-day meal-plan artifact per resident) and generate
+        <b>one sample artifact</b> — still no repo infrastructure, frame file + skill +
+        artifact only.</p>
     </div>
   </section>
 
   <footer>source of truth: <b>sil_operations/dimension-map.html</b> (this file, in-repo) —
     generated against <code>sil_operations/frame.json</code> ·
     <code>sil_operations/DIMENSIONS.md</code> · sxdennonv2/harvest ·
-    branch <code>feat/sil-meal-plan-frame</code> · frame v0.7-draft, 05 Jul 2026</footer>
+    branch <code>feat/sil-meal-plan-frame</code> · frame v0.8-draft, 05 Jul 2026</footer>
 </div>
 
 <script>
