@@ -15,6 +15,7 @@ the space is addressable but empty. ✅ = populated.
 | `element` | invariant crosscutting, within every lesson page | 20 slots: heading, mission-tie, practice-pointer, one-idea, persona-relevance, bad-habit, manual-craft, quiz, try-real, rung-move ×3, … | CONTRACT.md |
 | `persona` | binding parameter | buying analyst ✅ (others latent in the survey: office assistant, manager/director, specialist) | course — renders element bindings ("Why it matters to a **buyer**") |
 | `tier` | deployment | static (build-time, host-anywhere) ✅ · live (runtime teacher, cloud) | same frame + contract serve both |
+| `competency` | **latent** crosscutting (observed 2026-07-04, not yet extracted) | app mechanics · communication craft | rule of three: Excel's *Communicate & present* and Outlook's *Write & respond* both project it (2 sightings); extract a shared communication tree at the third (PowerPoint). Until then, author craft lessons inside app frames with craft (one-idea, manual-craft) kept separable from app tooling (rung-moves) per CONTRACT.md |
 
 ## How they compose
 

@@ -27,6 +27,16 @@ answer → coordinate the meeting → automate what repeats. **Write & respond c
 survey's demand and gets the most lessons**; Triage and Automate are pillar-complete but
 demand-light — the grid is the map, not a promise to build every cell.
 
+**A note on Write & respond (Stuart, 2026-07-04):** most of its demand — reword, reframe,
+revise for grammar, conciseness, tone, clarity — is *communication craft*, not Outlook
+functionality. It lives here because this is where the writing happens and where the
+in-app tooling (Copilot drafting from thread context) applies. Excel's *Communicate &
+present* projects the same latent competency. Per the rule of three, a shared
+communication tree is extracted at the third sighting (PowerPoint); until then these
+lessons are authored with the craft carried by `one-idea`/`manual-craft` and the
+app-specifics confined to `rung-move`s, so promotion is a move, not a rewrite. Recorded
+as the latent `competency` axis in `../../DIMENSIONS.md`.
+
 ## Lessons so far (by theme)
 
 <!-- BEGIN:auto:lessons -->
