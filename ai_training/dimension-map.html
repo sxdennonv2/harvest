@@ -1,0 +1,598 @@
+<title>Harvest — AI-training dimension space</title>
+<!--
+  The live progress map of the AI-training estate. STANDARD PROCESS (see
+  DIMENSIONS.md § Progress map): after every merged batch or milestone, update
+  this file (stats from enumerate_permutations.py, verdicts from lesson-verify,
+  a milestone card in § decisions) and redeploy it to the standing artifact URL:
+  https://claude.ai/code/artifact/cc3747fc-fcfe-4f93-b6d7-4a0fb3d4be1d
+  This file is the source of truth; the artifact is its deployment.
+-->
+<style>
+  :root{
+    --field:#F6F8F4; --panel:#FFFFFF; --ink:#1D2823; --muted:#5C6B61;
+    --harvest:#1A7A4C; --harvest-deep:#12613B; --sage:#E7F2EC; --line:#D9E2DB;
+    --straw:#FFF4CE; --amber:#9A6A00; --latent:#AEBDB3;
+    --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+    --serif:Charter,'Iowan Old Style',Georgia,'Times New Roman',serif;
+    --sans:system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{background:var(--field);color:var(--ink);font-family:var(--sans);
+       font-size:15px;line-height:1.55;margin:0}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px 96px}
+
+  header.masthead{padding:44px 0 20px;border-bottom:2px solid var(--harvest)}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+           text-transform:uppercase;color:var(--harvest);margin:0 0 10px}
+  h1{font-family:var(--serif);font-size:34px;font-weight:600;margin:0 0 8px;
+     letter-spacing:-.01em;text-wrap:balance}
+  .lede{color:var(--muted);max-width:62ch;margin:0}
+  .lede b{color:var(--ink);font-weight:600}
+
+  nav.jump{position:sticky;top:0;z-index:9;background:var(--field);
+           border-bottom:1px solid var(--line);display:flex;gap:2px;
+           overflow-x:auto;padding:0 0 0 2px}
+  nav.jump a{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;
+             color:var(--muted);text-decoration:none;padding:11px 13px 9px;
+             border-bottom:2px solid transparent;white-space:nowrap}
+  nav.jump a:hover,nav.jump a:focus-visible{color:var(--harvest)}
+  nav.jump a:focus-visible{outline:2px solid var(--harvest);outline-offset:-2px}
+  nav.jump a.on{color:var(--harvest-deep);border-bottom-color:var(--harvest)}
+
+  .stats{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:4px;
+        padding:10px 16px;min-width:118px}
+  .stat .n{font-family:var(--serif);font-size:24px;font-weight:600;
+           font-variant-numeric:tabular-nums;color:var(--harvest-deep)}
+  .stat .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+           text-transform:uppercase;color:var(--muted)}
+  .stat.warn .n{color:var(--amber)}
+
+  section{margin-top:60px}
+  section>h2{font-family:var(--serif);font-size:23px;font-weight:600;margin:6px 0 6px}
+  .read{color:var(--muted);max-width:68ch;margin:0 0 20px}
+  .read b{color:var(--ink);font-weight:600}
+  .read code, td code, .axk code{font-family:var(--mono);font-size:.88em;
+    background:var(--sage);padding:1px 5px;border-radius:3px}
+
+  /* axes table */
+  .axes{border:1px solid var(--line);border-radius:5px;overflow:hidden;background:var(--panel)}
+  .axis{display:grid;grid-template-columns:180px 128px 1fr;gap:0;
+        border-top:1px solid var(--line)}
+  .axis:first-child{border-top:none}
+  .axis>div{padding:13px 16px}
+  .axname{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--harvest-deep)}
+  .axname small{display:block;font-weight:400;color:var(--muted);font-size:11px;margin-top:3px}
+  .axkind{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;
+          text-transform:uppercase;color:var(--muted);padding-top:16px}
+  .axk{font-size:13.5px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+  .chip{font-family:var(--mono);font-size:11.5px;border-radius:3px;
+        padding:2.5px 8px;border:1px solid var(--line);color:var(--muted)}
+  .chip.built{background:var(--sage);border-color:var(--harvest);color:var(--harvest-deep)}
+  .chip.latent{border-style:dashed}
+
+  /* app × theme */
+  .appgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .appcol{border:1px solid var(--line);border-radius:5px;background:var(--panel);
+          display:flex;flex-direction:column}
+  .appcol.built{border-color:var(--harvest)}
+  .appcol h3{font-family:var(--serif);font-size:17px;margin:0;padding:12px 14px 10px;
+             border-bottom:1px solid var(--line);display:flex;justify-content:space-between;
+             align-items:baseline}
+  .appcol.built h3{background:var(--harvest);color:#fff;border-bottom-color:var(--harvest)}
+  .appcol h3 .st{font-family:var(--mono);font-size:10px;letter-spacing:.08em;
+                 text-transform:uppercase;opacity:.85}
+  .themelist{padding:10px 14px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .themecell{background:var(--sage);border-radius:3px;padding:7px 10px;font-size:13px}
+  .themecell b{display:block;font-weight:600}
+  .themecell span{font-family:var(--mono);font-size:11px;color:var(--harvest-deep)}
+  .prompt-note{margin-top:14px;background:var(--panel);border:1px solid var(--line);
+               border-left:3px solid var(--harvest);border-radius:0 4px 4px 0;
+               padding:11px 16px;font-size:13.5px;color:var(--muted)}
+  .prompt-note em{color:var(--ink)}
+
+  /* generic matrix scroller */
+  .scroller{overflow-x:auto;border:1px solid var(--line);border-radius:5px;background:var(--panel)}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th,td{padding:8px 11px;text-align:left;vertical-align:top;border-top:1px solid var(--line)}
+  thead th{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+           text-transform:uppercase;color:var(--muted);border-top:none;
+           background:var(--field);white-space:nowrap}
+  tbody th{font-weight:600;font-size:13px;white-space:nowrap}
+  .lchip{display:inline-block;font-family:var(--mono);font-size:11px;
+         background:var(--sage);color:var(--harvest-deep);border-radius:3px;
+         padding:1.5px 6px;margin:1.5px 2px 1.5px 0;white-space:nowrap}
+  .rungcell{color:var(--muted);font-size:12.5px;max-width:200px}
+
+  /* DAG */
+  .dagbox{border:1px solid var(--line);border-radius:5px;background:var(--panel);
+          padding:18px 10px 6px;overflow-x:auto}
+  .legend{display:flex;flex-wrap:wrap;gap:18px;margin:10px 4px 12px;
+          font-size:12.5px;color:var(--muted)}
+  .legend .k{display:inline-block;width:26px;height:0;border-top:2.5px solid var(--harvest);
+             vertical-align:middle;margin-right:7px}
+  .legend .k.bad{border-color:var(--amber)}
+
+  /* compliance matrix */
+  td.dot{text-align:center;padding:6px 4px}
+  .ok,.gap{display:inline-block;width:9px;height:9px;border-radius:50%}
+  .ok{background:var(--harvest)}
+  .gap{background:var(--straw);border:2px solid var(--amber);width:11px;height:11px}
+  .mrow th{font-family:var(--mono);font-weight:400;font-size:11.5px}
+
+  /* persona grid */
+  .pgrid td{text-align:center;font-family:var(--mono);font-size:11px;padding:12px}
+  .cell-built{background:var(--sage);color:var(--harvest-deep);font-weight:600}
+  .cell-latent{color:var(--latent)}
+
+  /* decisions */
+  .decision{background:var(--straw);border-left:3px solid var(--amber);
+            border-radius:0 4px 4px 0;padding:13px 17px;margin-bottom:12px}
+  .decision b{color:var(--amber);font-family:var(--mono);font-size:11px;
+              letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:4px}
+  .decision p{margin:0;font-size:13.5px}
+
+  footer{margin-top:70px;border-top:1px solid var(--line);padding-top:16px;
+         font-family:var(--mono);font-size:11px;color:var(--muted)}
+  @media(max-width:760px){
+    .appgrid{grid-template-columns:1fr 1fr}
+    .axis{grid-template-columns:1fr}
+    .axkind{padding-top:0}
+    h1{font-size:27px}
+  }
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <p class="eyebrow">Harvest · pipeline instrument · 04 Jul 2026</p>
+    <h1>The AI-training dimension space</h1>
+    <p class="lede">Every axis of the course-generation work, and how much of the
+      addressable space is built. <b>Two pipelines</b> — application functionality and
+      communication craft — one contract, one invariant ladder.
+      <b>The static tier is full</b>: 223/223 pages across four personas,
+      four applications, and the persona-wide communication course.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">2</div><div class="l">pipelines</div></div>
+      <div class="stat"><div class="n">4 / 4</div><div class="l">applications built</div></div>
+      <div class="stat"><div class="n">4 / 4</div><div class="l">personas built</div></div>
+      <div class="stat"><div class="n">223 / 223</div><div class="l">static pages</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">pending jobs</div></div>
+      <div class="stat"><div class="n">4</div><div class="l">ladder rungs</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">skills extracted</div></div>
+      <div class="stat"><div class="n">ALL PASS</div><div class="l">mechanical checks · 17 dirs</div></div>
+    </div>
+  </header>
+
+  <nav class="jump" aria-label="Views">
+    <a href="#axes">AXES</a>
+    <a href="#appmap">APP × THEME</a>
+    <a href="#grid">THEME × RUNG</a>
+    <a href="#dag">PREREQ DAG</a>
+    <a href="#matrix">LESSON × ELEMENT</a>
+    <a href="#market">PERSONA × APP</a>
+    <a href="#decisions">DECISIONS</a>
+  </nav>
+
+  <section id="axes">
+    <p class="eyebrow">The eight axes</p>
+    <h2>Dimensions and their values</h2>
+    <p class="read">Solid green chips are built; dashed chips are addressable but empty.
+      Two axes are <b>invariant</b> — the ladder (the org's adoption model) and the
+      element set (the unit contract) cut across every course unchanged.</p>
+    <div class="axes">
+      <div class="axis">
+        <div class="axname">pipeline<small>Stuart's split, 04 Jul — craft vs mechanics</small></div>
+        <div class="axkind">top-level split</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">app-functionality · 4 apps × 4 personas</span>
+          <span class="chip built">communication · 11 pages, persona-wide</span>
+        </div>
+        Boundary rule: <em>if the lesson would survive the app being swapped, it belongs
+        in communication.</em> The ladder is invariant across both.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">application<small>frame · one course.json each · in communication it relaxes to a binding context (email · doc · slides · chat)</small></div>
+        <div class="axkind">swappable root</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">Excel · 20</span><span class="chip built">Outlook · 13</span>
+          <span class="chip built">PowerPoint · 10</span><span class="chip built">Word · 10</span>
+        </div></div>
+      </div>
+      <div class="axis">
+        <div class="axname">theme<small>elicited per app</small></div>
+        <div class="axkind">tree · in app</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">Source &amp; prepare</span>
+          <span class="chip built">Summarise &amp; analyse</span>
+          <span class="chip built">Report &amp; visualise</span>
+          <span class="chip built">Communicate &amp; present</span>
+          <span class="chip built">Automate the repetitive</span>
+        </div></div>
+      </div>
+      <div class="axis">
+        <div class="axname">lesson<small>+ subcards · builds_on edges</small></div>
+        <div class="axkind">tree leaf · in theme</div>
+        <div class="axk">223 pages built — 64 authored + 159 persona variants; every
+          frame's candidate list is empty and the enumerator computes the count from
+          disk (<code>enumerate_permutations.py</code>: 223 / 0 / 223). Prerequisite
+          edges per frame (see the <a href="#dag">DAG</a> for Excel's).</div>
+      </div>
+      <div class="axis">
+        <div class="axname">rung<small>the org's GenAI adoption model</small></div>
+        <div class="axkind">invariant ladder</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">1 · Manual craft</span>
+          <span class="chip built">2 · Aldi:GPT</span>
+          <span class="chip built">3 · M365 Copilot</span>
+          <span class="chip built">4 · GitHub Copilot</span>
+        </div></div>
+      </div>
+      <div class="axis">
+        <div class="axname">element<small>CONTRACT.md · the page anatomy</small></div>
+        <div class="axkind">invariant · in lesson</div>
+        <div class="axk">20 slots per page — 5 machine-owned (nav, kicker, title),
+          15 author-owned (one-idea, bad-habit, quiz, <code>rung-move ×3</code>&hairsp;…).
+          The contract now also carries the <b>persona-variant translation ruling</b>
+          (what re-renders vs what stands; PR #30).</div>
+      </div>
+      <div class="axis">
+        <div class="axname">persona<small>binds element renderings · family dir = persona binding</small></div>
+        <div class="axkind">binding param</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">Buying analyst · source</span>
+          <span class="chip built">Specialist / Analyst · 53</span>
+          <span class="chip built">Manager / Director · 53</span>
+          <span class="chip built">Office Assistant · 53</span>
+        </div>
+        Communication is persona-wide by its MISSION ("the whole office") — persona
+        multiplies functionality pages only.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">tier<small>same frame + contract serve both</small></div>
+        <div class="axkind">deployment</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">static · build-time, host-anywhere · FULL</span>
+          <span class="chip latent">live · runtime teacher, cloud</span>
+        </div>
+        The live tier is never pre-built — it ships the generator and materialises
+        per learner over the 223 static coordinates.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="appmap">
+    <p class="eyebrow">Projection 1 · application × theme (buying-analyst source family)</p>
+    <h2>The four-course map</h2>
+    <p class="read">The authored source family. Every column now also exists in three
+      sibling persona families (<code>teach-specialist-analyst</code> ·
+      <code>teach-manager-director</code> · <code>teach-office-assistant</code>) as
+      translation-grade variants per the contract's persona-variant ruling — craft,
+      scenarios, rungs and checks shared; persona bindings re-rendered.</p>
+    <div class="appgrid">
+      <div class="appcol built">
+        <h3>Excel <span class="st">built ×4</span></h3>
+        <div class="themelist">
+          <div class="themecell"><b>Source &amp; prepare</b><span>6 lessons</span></div>
+          <div class="themecell"><b>Summarise &amp; analyse</b><span>7 lessons + 1 sub</span></div>
+          <div class="themecell"><b>Report &amp; visualise</b><span>3 lessons</span></div>
+          <div class="themecell"><b>Communicate &amp; present</b><span>1 lesson</span></div>
+          <div class="themecell"><b>Automate the repetitive</b><span>2 lessons</span></div>
+        </div>
+      </div>
+      <div class="appcol built">
+        <h3>Outlook <span class="st">built ×4 · 13</span></h3>
+        <div class="themelist">
+          <div class="themecell"><b>Triage &amp; organise</b><span>✅ 0001–0003 · Folders · Rules · Focused Inbox</span></div>
+          <div class="themecell"><b>Find &amp; retrieve</b><span>✅ 0004–0005 · Operators · Search Folders</span></div>
+          <div class="themecell"><b>Write &amp; respond</b><span>✅ 0006–0007 · Threading · Send mechanics</span></div>
+          <div class="themecell"><b>Schedule &amp; coordinate</b><span>✅ 0008–0010 · Invites · Assistant · Follow-ups</span></div>
+          <div class="themecell"><b>Automate the repetitive</b><span>✅ 0011–0013 · Quick Steps · Quick Parts · OOO</span></div>
+        </div>
+      </div>
+      <div class="appcol built">
+        <h3>PowerPoint <span class="st">built ×4 · 10</span></h3>
+        <div class="themelist">
+          <div class="themecell"><b>Build on the master</b><span>✅ 0001–0002 · Masters · Placeholders</span></div>
+          <div class="themecell"><b>Arrange &amp; align</b><span>✅ 0003–0004 · Align · Whitespace</span></div>
+          <div class="themecell"><b>Charts &amp; visuals</b><span>✅ 0005–0006 · Paste-link · One chart</span></div>
+          <div class="themecell"><b>Reuse &amp; templates</b><span>✅ 0007–0008 · Template · Library</span></div>
+          <div class="themecell"><b>Present &amp; share</b><span>✅ 0009–0010 · Rehearse · Export</span></div>
+        </div>
+      </div>
+      <div class="appcol built">
+        <h3>Word <span class="st">built ×4 · 10</span></h3>
+        <div class="themelist">
+          <div class="themecell"><b>Styles: the skeleton</b><span>✅ 0001–0002 · Styles · Headings</span></div>
+          <div class="themecell"><b>Structure &amp; navigation</b><span>✅ 0003–0004 · Sections · TOC</span></div>
+          <div class="themecell"><b>Tables &amp; figures</b><span>✅ 0005–0006 · Tables · Figures</span></div>
+          <div class="themecell"><b>Review &amp; collaborate</b><span>✅ 0007–0008 · Track changes · Compare</span></div>
+          <div class="themecell"><b>Templates &amp; consistency</b><span>✅ 0009–0010 · Template · Blocks</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="prompt-note">Elicitation primitive, recorded in DIMENSIONS.md —
+      <em>"What are the fundamental pillars of functionality within {application}?"</em> —
+      then expand each pillar against the survey's expressed needs.</div>
+
+    <p class="eyebrow" style="margin-top:34px">Pipeline 2 · communication (persona-wide)</p>
+    <h2 style="font-size:19px">Writing &amp; communication craft</h2>
+    <p class="read">The survey's dominant demand (~14 of 31: reword, formalise, tone,
+      clarity). Its own tree, its own pipeline; lessons bind to <b>contexts</b> instead
+      of one app — all four bound: <b>email ✅ · document ✅ · slides ✅ · chat ✅</b>,
+      via the optional <code>context-rebind</code> element ("Other rooms, same craft") —
+      every lesson rebound without forking a page. Persona-wide by its MISSION: one
+      course serves all four roles. Same ladder, same contract.</p>
+    <div class="appgrid" style="grid-template-columns:repeat(5,1fr)">
+      <div class="themecell"><b>Clarity &amp; conciseness</b><span>✅ 0001–0002 · Tighten · One thing</span></div>
+      <div class="themecell"><b>Tone &amp; audience</b><span>✅ 0003–0005 · Reword · Writing up · External</span></div>
+      <div class="themecell"><b>Structure &amp; framing</b><span>✅ 0006–0008 · One-ask · Bullets↔prose · BLUF</span></div>
+      <div class="themecell"><b>Correctness</b><span>✅ 0009 · Proof pass</span></div>
+      <div class="themecell"><b>Condense &amp; summarise</b><span>✅ 0010–0011 · Summarise · Minutes</span></div>
+    </div>
+  </section>
+
+  <section id="grid">
+    <p class="eyebrow">Projection 2 · theme × rung (Excel)</p>
+    <h2>The course grid</h2>
+    <p class="read">Rows are the domain tree, columns are the invariant ladder. Rung 1
+      holds the built lessons; rungs 2–4 state what the same theme looks like with more
+      handed to AI. <b>Every lesson page climbs its row's full ladder internally.</b></p>
+    <div class="scroller">
+      <table>
+        <thead><tr>
+          <th>Theme ↓ / Rung →</th><th>1 · Manual craft</th><th>2 · Aldi:GPT</th>
+          <th>3 · M365 Copilot</th><th>4 · GitHub Copilot</th>
+        </tr></thead>
+        <tbody>
+          <tr><th>Source &amp; prepare</th>
+            <td><span class="lchip">0001 References</span><span class="lchip">0002 Tables</span>
+                <span class="lchip">0003 Sort &amp; Filter</span><span class="lchip">0004 Data validation</span>
+                <span class="lchip">0005 Text formulas</span><span class="lchip">0006 Get &amp; Transform</span></td>
+            <td class="rungcell">Ask it to write / explain a formula or SQL snippet</td>
+            <td class="rungcell">"Clean and shape this pasted extract"</td>
+            <td class="rungcell">Build a clean, shaped workbook from a raw file</td></tr>
+          <tr><th>Summarise &amp; analyse</th>
+            <td><span class="lchip">0007 Logical &amp; IFERROR</span>
+                <span class="lchip">0008 Aggregation</span><span class="lchip">0009 SUMIFS</span>
+                <span class="lchip">0010 XLOOKUP</span><span class="lchip">0011 Dates</span>
+                <span class="lchip">0012 PivotTables</span><span class="lchip">0012.1 Slicers</span>
+                <span class="lchip">0013 Dynamic arrays</span></td>
+            <td class="rungcell">Interpret a pivot; sanity-check a calculation</td>
+            <td class="rungcell">"Summarise the trends in this range"</td>
+            <td class="rungcell">Build a workbook that summarises the data end-to-end</td></tr>
+          <tr><th>Report &amp; visualise</th>
+            <td><span class="lchip">0014 Number formatting</span>
+                <span class="lchip">0015 Conditional formatting</span>
+                <span class="lchip">0016 Charts</span></td>
+            <td class="rungcell">Draft the commentary under a chart</td>
+            <td class="rungcell">Build a summary sheet from raw data</td>
+            <td class="rungcell">Build a formatted, charted report workbook</td></tr>
+          <tr><th>Communicate &amp; present</th>
+            <td><span class="lchip">0017 Print- &amp; export-ready</span></td>
+            <td class="rungcell">Turn numbers into a short narrative</td>
+            <td class="rungcell">"Make a one-page summary for my director"</td>
+            <td class="rungcell">Build a print-ready one-page report workbook</td></tr>
+          <tr><th>Automate the repetitive</th>
+            <td><span class="lchip">0018 Flash Fill</span><span class="lchip">0019 Named ranges</span></td>
+            <td class="rungcell">Write a formula to replace manual steps</td>
+            <td class="rungcell">Office Scripts / repeatable actions</td>
+            <td class="rungcell">Script a repeatable clean-up &amp; build from scratch</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="dag">
+    <p class="eyebrow">Projection 3 · the builds_on DAG</p>
+    <h2>Prerequisites vs authored order</h2>
+    <p class="read">Nodes sit at their authored position, 0001 → 0019. Arrows run
+      <b>prerequisite → dependent</b>; every arc flows rightward — <b>the authored
+      order is a valid topological sort of the DAG</b>. Repaired 04 Jul: References moved
+      back to 0001 (its original seat), and the soft SUMIFS→PivotTables contrast was
+      reworded as a forward link and removed from the frame.</p>
+    <div class="legend">
+      <span><span class="k"></span>order satisfies the edge</span>
+      <span><span class="k bad"></span>order violates the edge — none remaining</span>
+    </div>
+    <div class="dagbox">
+      <svg viewBox="0 0 1040 250" width="1020" height="245" role="img"
+           aria-label="Prerequisite DAG over authored lesson order; all edges satisfied">
+        <line x1="40" y1="170" x2="1000" y2="170" stroke="#D9E2DB" stroke-width="1.5"/>
+        <g font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#AEBDB3" text-anchor="middle">
+          <circle cx="144" cy="170" r="3" fill="#D9E2DB"/><text x="144" y="192">03</text>
+          <circle cx="196" cy="170" r="3" fill="#D9E2DB"/><text x="196" y="192">04</text>
+          <circle cx="248" cy="170" r="3" fill="#D9E2DB"/><text x="248" y="192">05</text>
+          <circle cx="300" cy="170" r="3" fill="#D9E2DB"/><text x="300" y="192">06</text>
+          <circle cx="352" cy="170" r="3" fill="#D9E2DB"/><text x="352" y="192">07</text>
+          <circle cx="404" cy="170" r="3" fill="#D9E2DB"/><text x="404" y="192">08</text>
+          <circle cx="508" cy="170" r="3" fill="#D9E2DB"/><text x="508" y="192">10</text>
+          <circle cx="560" cy="170" r="3" fill="#D9E2DB"/><text x="560" y="192">11</text>
+          <circle cx="716" cy="170" r="3" fill="#D9E2DB"/><text x="716" y="192">13</text>
+          <circle cx="768" cy="170" r="3" fill="#D9E2DB"/><text x="768" y="192">14</text>
+          <circle cx="820" cy="170" r="3" fill="#D9E2DB"/><text x="820" y="192">15</text>
+          <circle cx="872" cy="170" r="3" fill="#D9E2DB"/><text x="872" y="192">16</text>
+          <circle cx="924" cy="170" r="3" fill="#D9E2DB"/><text x="924" y="192">17</text>
+          <circle cx="976" cy="170" r="3" fill="#D9E2DB"/><text x="976" y="192">18–19</text>
+        </g>
+        <defs>
+          <marker id="ag" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto">
+            <path d="M0,0 L9,4 L0,8 z" fill="#1A7A4C"/></marker>
+        </defs>
+        <path d="M 48 154 Q 66 128 84 154" fill="none" stroke="#1A7A4C" stroke-width="2.5" marker-end="url(#ag)"/>
+        <text x="66" y="120" font-family="ui-monospace,Menlo,monospace" font-size="10.5" fill="#1A7A4C" text-anchor="middle">References → Tables</text>
+        <path d="M 44 150 Q 248 40 450 152" fill="none" stroke="#1A7A4C" stroke-width="2.5" marker-end="url(#ag)"/>
+        <text x="248" y="72" font-family="ui-monospace,Menlo,monospace" font-size="10.5" fill="#1A7A4C" text-anchor="middle">References → SUMIFS</text>
+        <path d="M 96 148 Q 374 8 646 150" fill="none" stroke="#1A7A4C" stroke-width="2.5" marker-end="url(#ag)"/>
+        <text x="374" y="40" font-family="ui-monospace,Menlo,monospace" font-size="10.5" fill="#1A7A4C" text-anchor="middle">Tables → PivotTables</text>
+        <path d="M 655 152 Q 664 130 672 150" fill="none" stroke="#1A7A4C" stroke-width="2" marker-end="url(#ag)"/>
+        <g font-family="ui-monospace,Menlo,monospace" font-size="11" text-anchor="middle">
+          <circle cx="40"  cy="170" r="8" fill="#1A7A4C"/>
+          <text x="40" y="152" fill="#12613B" font-weight="700">0001</text>
+          <text x="40" y="212" fill="#1D2823">References</text>
+          <circle cx="92" cy="170" r="8" fill="#1A7A4C"/>
+          <text x="98" y="152" fill="#12613B" font-weight="700">0002</text>
+          <text x="92" y="212" fill="#1D2823">Tables</text>
+          <circle cx="456" cy="170" r="8" fill="#1A7A4C"/>
+          <text x="456" y="152" fill="#12613B" font-weight="700">0009</text>
+          <text x="456" y="212" fill="#1D2823">SUMIFS</text>
+          <circle cx="652" cy="170" r="8" fill="#1A7A4C"/>
+          <text x="652" y="152" fill="#12613B" font-weight="700">0012</text>
+          <text x="652" y="212" fill="#1D2823">PivotTables</text>
+          <circle cx="676" cy="170" r="5" fill="#E7F2EC" stroke="#1A7A4C" stroke-width="2"/>
+          <text x="686" y="232" fill="#5C6B61" font-size="10">0012.1 Slicers</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section id="matrix">
+    <p class="eyebrow">Projection 4 · lesson × element</p>
+    <h2>Contract compliance</h2>
+    <p class="read">This projection is produced by a real skill:
+      <code>.claude/skills/lesson-verify</code> (deterministic script + judged pass).
+      Latest run — <b>all 17 course dirs, 223 pages: ALL MECHANICAL CHECKS PASS</b>.
+      The stage-2 judged pass (9-page sample across the three persona families) found
+      1 violation and 9 advisories; all fixed and merged (PRs #26, #28). The matrix
+      below shows the Excel reference course.</p>
+    <div class="scroller">
+      <table id="cmx">
+        <thead><tr><th>lesson (slug)</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="market">
+    <p class="eyebrow">Projection 5 · persona × application</p>
+    <h2>The retargeting space</h2>
+    <p class="read">Elements are invariant; <b>bindings</b> re-render per persona
+      ("Why it matters to a <i>buyer</i>" becomes "…to an <i>assistant</i>"). Every cell
+      is now a shippable course; personas come straight from the survey's role field.
+      Communication sits outside this grid — persona-wide by its MISSION. The one
+      multiplier still outside all counts: the <b>ladder is org data</b> — a second
+      organisation doubles the space with one swapped file.</p>
+    <div class="scroller">
+      <table class="pgrid">
+        <thead><tr><th>Persona ↓ / App →</th><th>Excel</th><th>Outlook</th><th>PowerPoint</th><th>Word</th></tr></thead>
+        <tbody>
+          <tr><th>Buying analyst</th><td class="cell-built">BUILT · source</td><td class="cell-built">BUILT · source</td><td class="cell-built">BUILT · source</td><td class="cell-built">BUILT · source</td></tr>
+          <tr><th>Specialist / Analyst</th><td class="cell-built">BUILT</td><td class="cell-built">BUILT</td><td class="cell-built">BUILT</td><td class="cell-built">BUILT</td></tr>
+          <tr><th>Manager / Director</th><td class="cell-built">BUILT</td><td class="cell-built">BUILT</td><td class="cell-built">BUILT</td><td class="cell-built">BUILT</td></tr>
+          <tr><th>Office Assistant</th><td class="cell-built">BUILT</td><td class="cell-built">BUILT</td><td class="cell-built">BUILT</td><td class="cell-built">BUILT</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="decisions">
+    <p class="eyebrow">Milestones &amp; open decisions</p>
+    <h2>What the space is asking you</h2>
+    <div class="decision" style="background:var(--sage);border-left-color:var(--harvest)"><b style="color:var(--harvest-deep)">All resolved · 04 Jul</b>
+      <p><b style="display:inline;color:var(--ink)">Curriculum order</b> — References moved to
+      0001; order is a valid topological sort.
+      <b style="display:inline;color:var(--ink)">Stale prose numbers</b> — all ten replaced
+      with slug links or "this lesson"; the soft SUMIFS→PivotTables edge reworded and dropped.
+      <b style="display:inline;color:var(--ink)">Contract backfill</b> — References got its
+      "How to do it"; the Excel reference instance fully contract-clean.</p></div>
+    <div class="decision" style="background:var(--sage);border-left-color:var(--harvest)"><b style="color:var(--harvest-deep)">Milestone · 04 Jul</b>
+      <p><i>Reword for tone &amp; audience</i> (0001) authored — the communication
+      pipeline's first fire, and the repo's first extracted skill
+      (<code>.claude/skills/lesson-author</code>). <code>build_contents.py</code>
+      ran unchanged against the new course — the renderer is course-agnostic across
+      pipelines. PR #6. <code>lesson-verify</code> extracted the same evening (PR #7):
+      deterministic script + judged pass; first fire caught one stray reference.</p></div>
+    <div class="decision" style="background:var(--sage);border-left-color:var(--harvest)"><b style="color:var(--harvest-deep)">Milestone · 04 Jul (night)</b>
+      <p><b style="display:inline;color:var(--ink)">THE SPACE IS BUILT.</b> All four
+      applications + communication: 64 verified pages, five courses, one contract, one
+      invariant ladder, zero candidates anywhere. 38 pages by delegated Sonnet batches
+      (PRs #14–#16, #18–#19); agent self-checks caught two real defects mid-run.
+      <b style="display:inline;color:var(--ink)">Context axis populated</b> — all 11
+      communication lessons rebound to document/slides/chat via the optional
+      <code>context-rebind</code> element, zero pages forked (PR #20).</p></div>
+    <div class="decision" style="background:var(--sage);border-left-color:var(--harvest)"><b style="color:var(--harvest-deep)">Milestone · 04 Jul (persona sweep)</b>
+      <p><b style="display:inline;color:var(--ink)">THE STATIC TIER IS FULL — 223/223.</b>
+      159 persona variants (3 families × 53) authored by 159 delegated Sonnet agents in
+      three manifest-driven workflow batches (PRs #23–#25), ~11.5 min authoring wall
+      each. The enumerator (PR #22) turned the arithmetic into code; it now computes
+      built/pending from disk (PR #27): <code>223 / 0 / 223</code>. Sweep lessons
+      banked: workflow args must be hardcoded into generated scripts, and family
+      batches run sequentially (~8 slots) under API rate limits.</p></div>
+    <div class="decision" style="background:var(--sage);border-left-color:var(--harvest)"><b style="color:var(--harvest-deep)">Milestone · 04 Jul (judged pass)</b>
+      <p>Stage-2 judges over a 9-page sample: <b style="display:inline;color:var(--ink)">1
+      violation</b> (a carried mission quote, systematic across the three families —
+      fixed, PR #26), <b style="display:inline;color:var(--ink)">9 advisories</b> (all
+      fixed, PR #28), and an upstream IFERROR column-layout bug inherited by all four
+      families (fixed, PR #29). CONTRACT.md now carries the
+      <b style="display:inline;color:var(--ink)">persona-variant translation ruling</b>
+      as a section, plus the deep-link citation reading and the persona-binding
+      clarification (PR #30). The compound stage is digested.</p></div>
+    <div class="decision"><b>Next unit of work</b>
+      <p>Remaining territory: <b style="display:inline;color:var(--ink)">deployment/hosting</b>
+      for the work trial (the static tier is host-anywhere; distribution path undecided —
+      SharePoint? zip? internal host?), the <b style="display:inline;color:var(--ink)">live
+      tier</b>, practice binaries (python-pptx / python-docx generators), the SIL Meal
+      Plan Generator domain (deliberately break the 5-theme symmetry), and the Excel
+      orange-livery revert when the point is made. Calendar:
+      <b>punditry go-live 2026-07-08</b>.</p></div>
+  </section>
+
+  <footer>source of truth: <b>ai_training/dimension-map.html</b> (this file, in-repo) —
+    standard process per DIMENSIONS.md § Progress map: update + redeploy at every
+    milestone · generated against course.json · CONTRACT.md · enumerate_permutations.py ·
+    sxdennonv2/harvest · PRs #1–#30 (all merged) ·
+    verified by lesson-verify over 223 pages, 17 course dirs, 04 Jul 2026</footer>
+</div>
+
+<script>
+(function(){
+  // Lesson × element compliance matrix — verified data, zero gaps.
+  var elements = ["mission-tie","practice-pointer","one-idea","persona-relevance",
+    "bad-habit","manual-craft","quiz","try-real","rung 2","rung 3","rung 4",
+    "primary-source"];
+  var lessons = [
+    "relative-and-absolute-references",
+    "tables-the-modern-foundation","sort-and-filter","data-validation-dropdowns",
+    "text-formulas-clean-and-combine","get-and-transform-power-query",
+    "logical-functions-and-iferror",
+    "aggregation-and-precision","sumifs-totals-by-criteria",
+    "xlookup-pull-matching-details","date-and-time-functions",
+    "pivottables-summarise-in-seconds","add-sliders-to-pivottables",
+    "dynamic-arrays-filter-sort-unique","number-and-custom-formatting",
+    "conditional-formatting-make-numbers-signal","charts-a-clean-column-chart",
+    "print-and-export-ready-tables","flash-fill-and-text-to-columns","named-ranges"];
+  var gaps = {};
+
+  var thead = document.querySelector("#cmx thead tr");
+  elements.forEach(function(e){
+    var th = document.createElement("th");
+    th.textContent = e; thead.appendChild(th);
+  });
+  var tbody = document.querySelector("#cmx tbody");
+  lessons.forEach(function(slug){
+    var tr = document.createElement("tr"); tr.className = "mrow";
+    var th = document.createElement("th"); th.textContent = slug; tr.appendChild(th);
+    elements.forEach(function(e){
+      var td = document.createElement("td"); td.className = "dot";
+      var dot = document.createElement("span");
+      var bad = gaps[slug] && gaps[slug].indexOf(e) > -1;
+      dot.className = bad ? "gap" : "ok";
+      td.title = slug + " · " + e + (bad ? " — MISSING" : " — present");
+      td.appendChild(dot); tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+
+  // active-section highlight in the jump nav
+  var links = Array.prototype.slice.call(document.querySelectorAll("nav.jump a"));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute("href")); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = 0;
+    secs.forEach(function(s,i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a,i){ a.classList.toggle("on", i === idx); });
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+})();
+</script>
