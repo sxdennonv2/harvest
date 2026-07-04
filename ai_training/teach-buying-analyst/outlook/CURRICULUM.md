@@ -14,35 +14,34 @@ Elicitation primitive (recorded in `../../DIMENSIONS.md`): *"What are the fundam
 pillars of functionality within Outlook?"* — then each pillar checked against the survey
 (31 respondents, `../../data/ai_training_survey.csv`):
 
-| Survey cluster | Mentions | Lands in theme |
+| Survey cluster | Mentions | Lands in |
 |---|---|---|
-| Reword / formalise / tighten / tone for leadership / proofread emails | ~14 (dominant) | Write & respond |
-| Summarise messages, threads, meeting notes | ~4 | Write & respond · Schedule & coordinate |
+| Reword / formalise / tighten / tone for leadership / proofread emails | ~14 (dominant) | → **communication pipeline** (`../../communication/`) |
+| Summarise messages, threads, meeting notes | ~5 | → **communication pipeline** (Condense & summarise) |
 | Find old emails, search archives | ~2 | Find & retrieve |
-| Meeting notes → minutes / actions | ~2 | Schedule & coordinate |
+| Meeting notes → minutes / actions | ~2 | Schedule & coordinate (mechanics) · communication (writing) |
 | General productivity / process prompts | diffuse | Triage & organise · Automate the repetitive |
 
 Theme order follows the working day: triage what arrived → find what you need → write the
-answer → coordinate the meeting → automate what repeats. **Write & respond carries the
-survey's demand and gets the most lessons**; Triage and Automate are pillar-complete but
-demand-light — the grid is the map, not a promise to build every cell.
+answer → coordinate the meeting → automate what repeats. The grid is the map, not a
+promise to build every cell.
 
-**A note on Write & respond (Stuart, 2026-07-04):** most of its demand — reword, reframe,
-revise for grammar, conciseness, tone, clarity — is *communication craft*, not Outlook
-functionality. It lives here because this is where the writing happens and where the
-in-app tooling (Copilot drafting from thread context) applies. Excel's *Communicate &
-present* projects the same latent competency. Per the rule of three, a shared
-communication tree is extracted at the third sighting (PowerPoint); until then these
-lessons are authored with the craft carried by `one-idea`/`manual-craft` and the
-app-specifics confined to `rung-move`s, so promotion is a move, not a rewrite. Recorded
-as the latent `competency` axis in `../../DIMENSIONS.md`.
+**The pipeline boundary (Stuart, 2026-07-04):** most of the survey's email demand —
+reword, reframe, revise for grammar, conciseness, tone, clarity — is *communication
+craft*, not Outlook functionality. By decision, this pipeline is strictly **application
+functionality**; writing craft moved to the **communication pipeline**
+(`../../communication/`), taking three candidates with it (one-ask email, reword for
+tone & audience, bullets to prose) before any lesson was authored. *Write & respond*
+here is scoped to mechanics: threading, attachments, formatting, using Copilot's
+draft-from-thread. The boundary rule: **if the lesson would survive the app being
+swapped, it belongs in communication.**
 
 ## Lessons so far (by theme)
 
 <!-- BEGIN:auto:lessons -->
-_None authored yet. 15 candidates are enumerated in `course.json` under `candidates`,
-each tagged with its survey signal. First up (highest demand): **Reword for tone &
-audience** in Write & respond._
+_None authored yet. 13 candidates are enumerated in `course.json` under `candidates`,
+each tagged with its survey signal. Highest in-pipeline demand: **Search operators**
+(Find & retrieve). The reword lesson moved to the communication pipeline._
 <!-- END:auto:lessons -->
 
 ## The grid
@@ -52,7 +51,7 @@ audience** in Write & respond._
 |---|---|---|---|---|
 | **Triage & organise** | 3 candidates | Suggest a folder-and-rule scheme for the mail you describe | "Summarise this thread — what's asked of me and by when?" | Script the folder + rule deployment from scratch |
 | **Find & retrieve** | 2 candidates | Write the search-operator query for what you need | "Find the thread where the supplier confirmed the price change" | Build a mailbox report (senders, volumes, ageing) from an export |
-| **Write & respond** | 4 candidates ← survey demand | Reword this draft — tone, length, audience | Draft the reply from the whole thread's context | Generate a reply-template library from your recurring scenarios |
+| **Write & respond** | 2 candidates (mechanics) | "What is this thread asking of me, and who owes the reply?" | Draft the reply from the whole thread's context | Generate a reply-template library from your recurring scenarios |
 | **Schedule & coordinate** | 3 candidates | Draft the agenda and the invite text | Recap the meeting and draft the follow-up actions | Build the recurring meeting pack (agenda, minutes, invite) from scratch |
 | **Automate the repetitive** | 3 candidates | Turn a repeated email into reusable template text | Draft the out-of-office and standing replies in context | Script signature + template deployment from scratch |
 <!-- END:auto:grid -->

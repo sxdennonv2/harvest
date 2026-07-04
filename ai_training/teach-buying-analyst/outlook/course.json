@@ -45,9 +45,9 @@
     {
       "key": "write-respond",
       "title": "Write & respond",
-      "notes": ["the survey's dominant cluster — most lessons live here"],
+      "notes": ["mechanics only — writing craft lives in the communication pipeline"],
       "rungs": [
-        "Reword this draft — tone, length, audience",
+        "\"What is this thread asking of me, and who owes the reply?\"",
         "Draft the reply from the whole thread's context",
         "Generate a reply-template library from your recurring scenarios"
       ]
@@ -80,10 +80,8 @@
     { "theme": "triage-organise", "working_title": "Focused Inbox & notification discipline", "survey_signal": "pillar-derived" },
     { "theme": "find-retrieve", "working_title": "Search operators: from:, hasattachments:, received:", "survey_signal": "\"find relevant emails, saving time searching archives\"" },
     { "theme": "find-retrieve", "working_title": "Search Folders: saved searches that stay fresh", "survey_signal": "pillar-derived" },
-    { "theme": "write-respond", "working_title": "The one-ask email: subject lines & structure", "survey_signal": "\"clarity and conciseness\"; \"tighten emails\"" },
-    { "theme": "write-respond", "working_title": "Reword for tone & audience", "survey_signal": "DOMINANT: ~14 mentions — reword, formalise, professional standard, senior-leadership tone" },
-    { "theme": "write-respond", "working_title": "From bullets to a formal reply", "survey_signal": "\"write emails/formalise\"; \"write intro email from data\"" },
     { "theme": "write-respond", "working_title": "Threading hygiene: reply, reply-all, forward", "survey_signal": "pillar-derived" },
+    { "theme": "write-respond", "working_title": "Attachments, formatting & @mentions: send it right first time", "survey_signal": "pillar-derived" },
     { "theme": "schedule-coordinate", "working_title": "Invites that get accepted: agenda in the invite", "survey_signal": "pillar-derived" },
     { "theme": "schedule-coordinate", "working_title": "Scheduling Assistant & free/busy", "survey_signal": "pillar-derived" },
     { "theme": "schedule-coordinate", "working_title": "From meeting notes to actions", "survey_signal": "\"meeting notes to text\"; \"summarise meeting notes & populate minutes\"" },

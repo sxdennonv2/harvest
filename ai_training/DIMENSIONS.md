@@ -1,28 +1,37 @@
-# Dimensions of the AI-training pipeline
+# Dimensions of the AI-training pipelines
 
-The axes of the course-generation pipeline, named so the whole space can be seen and
-expanded before the detail is infilled. One instance (Excel) is fully built; the rest of
-the space is addressable but empty. ✅ = populated.
+The axes of the course-generation pipelines, named so the whole space can be seen and
+expanded before the detail is infilled. **Two pipelines** (Stuart's split, 2026-07-04):
+`teach-buying-analyst/` teaches **application functionality**; `communication/` teaches
+**writing & communication craft**. Boundary rule: *if the lesson would survive the app
+being swapped, it belongs in communication.* ✅ = populated.
 
 ## The axes
 
 | Dimension | Kind | Values today | Owned by |
 |---|---|---|---|
-| `application` | swappable tree root | Excel ✅ · Outlook (frame drafted 2026-07-04) · PowerPoint · Word | frame (one course.json each) |
+| `pipeline` | top-level split | app-functionality (Excel ✅) · communication (frame drafted 2026-07-04) | decision, FRAME-LEDGER; the ladder is invariant **across pipelines** |
+| `application` | swappable tree root (functionality pipeline); binding `context` (communication pipeline: email · document · slides · chat) | Excel ✅ · Outlook (frame drafted 2026-07-04) · PowerPoint · Word | frame (one course.json each) |
 | `theme` | swappable tree, nested in application | Excel: Source & prepare · Summarise & analyse · Report & visualise · Communicate & present · Automate the repetitive (all ✅) · Outlook: Triage & organise · Find & retrieve · Write & respond · Schedule & coordinate · Automate the repetitive (elicited, 0 lessons) | frame — elicited per app: *"what are the fundamental pillars of functionality within {app}?"* |
 | `lesson` | tree leaf, nested in theme (+ subcards; `builds_on` DAG edges) | Excel: 19 ✅ · Outlook: 15 candidates enumerated, survey-tagged | frame |
 | `rung` | **invariant crosscutting ladder** | 1 Manual craft · 2 Aldi:GPT · 3 M365 Copilot · 4 GitHub Copilot | org — the GenAI adoption model; swap the org, swap the ladder |
 | `element` | invariant crosscutting, within every lesson page | 20 slots: heading, mission-tie, practice-pointer, one-idea, persona-relevance, bad-habit, manual-craft, quiz, try-real, rung-move ×3, … | CONTRACT.md |
 | `persona` | binding parameter | buying analyst ✅ (others latent in the survey: office assistant, manager/director, specialist) | course — renders element bindings ("Why it matters to a **buyer**") |
 | `tier` | deployment | static (build-time, host-anywhere) ✅ · live (runtime teacher, cloud) | same frame + contract serve both |
-| `competency` | **latent** crosscutting (observed 2026-07-04, not yet extracted) | app mechanics · communication craft | rule of three: Excel's *Communicate & present* and Outlook's *Write & respond* both project it (2 sightings); extract a shared communication tree at the third (PowerPoint). Until then, author craft lessons inside app frames with craft (one-idea, manual-craft) kept separable from app tooling (rung-moves) per CONTRACT.md |
+
+*(History: the pipeline split began life on 2026-07-04 as a latent `competency` axis —
+craft vs mechanics — spotted inside the theme dimension. Stuart promoted it to the
+top-level `pipeline` split the same day, superseding the rule-of-three deferral: the
+survey's dominant demand sat on the craft side, so the third sighting wasn't worth
+waiting for.)*
 
 ## How they compose
 
 ```
-application → theme → lesson            the swappable domain tree (frame, data)
-lesson × rung                           the ladder climb inside every page
-lesson × element                        the unit contract (page anatomy)
+pipeline → tree → theme → lesson        functionality: tree root = application
+                                        communication: one tree; lessons bind to contexts
+lesson × rung                           the ladder climb inside every page (both pipelines)
+lesson × element                        the unit contract (page anatomy, both pipelines)
 element × persona                       the voice/binding layer
 everything × tier                       static export or live teacher
 ```
