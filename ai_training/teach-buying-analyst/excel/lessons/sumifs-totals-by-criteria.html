@@ -16,8 +16,8 @@
 
   <nav class="theme-nav" aria-label="Course sections">
     <span class="theme-nav-label">Sections</span>
-    <a href="tables-the-modern-foundation.html">Source &amp; prepare</a>
-    <a href="relative-and-absolute-references.html" class="current">Summarise &amp; analyse</a>
+    <a href="relative-and-absolute-references.html">Source &amp; prepare</a>
+    <a href="logical-functions-and-iferror.html" class="current">Summarise &amp; analyse</a>
     <a href="number-and-custom-formatting.html">Report &amp; visualise</a>
     <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
     <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
@@ -27,7 +27,7 @@
   <h1>SUMIFS: totals by criteria</h1>
 
   <p class="mission">
-    Tied to your mission: the pivot (Lesson 3) is perfect for exploring, but sometimes you need a
+    Tied to your mission: a PivotTable (see <a href="pivottables-summarise-in-seconds.html">PivotTables: summarise in seconds</a>) is perfect for exploring, but sometimes you need a
     <em>live number in a fixed cell</em> — "total revenue for Snacks" sitting in a report that
     updates itself. <strong>SUMIFS</strong> is that number: a total that only adds the rows meeting
     your conditions, and recalculates the instant the data changes.
@@ -77,10 +77,10 @@
     <span class="cell">=SUMIFS($E$2:$E$19, $B$2:$B$19, H2)</span> for total cases, and in
     <span class="cell">J2</span> type <span class="cell">=SUMIFS($F$2:$F$19, $B$2:$B$19, H2)</span>
     for total revenue. Fill both down to row 5. The <span class="cell">$</span> signs lock the list
-    so every row still points at the full data (Lesson 1) — only <span class="cell">H2</span> moves.
+    so every row still points at the full data (see <a href="relative-and-absolute-references.html">References</a>) — only <span class="cell">H2</span> moves.
   </p>
   <p>
-    <em>Builds on Lesson 1:</em> those dollar signs are the absolute references you met in Lesson 1,
+    <em>Builds on <a href="relative-and-absolute-references.html">References</a>:</em> those dollar signs are the absolute references you met there,
     doing exactly the job they were made for — anchoring the range while the criterion walks down.
   </p>
 
@@ -194,7 +194,7 @@
   <div class="ask">
     <strong>Ask your teacher.</strong> Want this rebuilt around your real category and supplier
     names, with the exact report lines your director asks for? Send a sanitised extract and I'll
-    retarget Lesson 4 to it.
+    retarget this lesson to it.
   </div>
 
   <footer class="lesson-nav">
