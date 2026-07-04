@@ -74,11 +74,20 @@
       ]
     }
   ],
-  "lessons": [],
+  "lessons": [
+    {
+      "slug": "reword-for-tone-and-audience",
+      "file": "reword-for-tone-and-audience.html",
+      "title": "Reword for tone & audience",
+      "nav_label": "Reword",
+      "grid_label": "Reword for tone & audience",
+      "theme": "tone-audience",
+      "contexts": ["email"]
+    }
+  ],
   "candidates": [
     { "theme": "clarity-conciseness", "working_title": "Tighten: cut the flab, keep the message", "contexts": ["email"], "survey_signal": "\"tighten emails\"; \"clarity and conciseness\"" },
     { "theme": "clarity-conciseness", "working_title": "Say exactly one thing: killing ambiguity", "contexts": ["email", "document"], "survey_signal": "\"professional writing for external stakeholders where ambiguity is removed\"" },
-    { "theme": "tone-audience", "working_title": "Reword for tone & audience", "contexts": ["email"], "survey_signal": "DOMINANT: ~14 of 31 — reword, rephrase, formalise, professional standard" },
     { "theme": "tone-audience", "working_title": "Writing up: the senior-leadership register", "contexts": ["email", "document"], "survey_signal": "\"tone in responses where the audience might be senior leadership\"" },
     { "theme": "tone-audience", "working_title": "External stakeholders: firm, polite, unambiguous", "contexts": ["email"], "survey_signal": "\"professional writing for external stakeholders\"" },
     { "theme": "structure-framing", "working_title": "The one-ask email", "contexts": ["email"], "survey_signal": "\"clarity and conciseness\"; moved from Outlook frame 2026-07-04" },
