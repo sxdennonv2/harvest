@@ -41,23 +41,28 @@ before a single lesson was authored, so the move cost nothing.
 ### Clarity & conciseness
 
 - [0001 — Tighten: cut the flab, keep the message](lessons/tighten-cut-the-flab-keep-the-message.html)
+- [0002 — Say exactly one thing: killing ambiguity](lessons/say-exactly-one-thing.html)
 
 ### Tone & audience
 
-- [0002 — Reword for tone & audience](lessons/reword-for-tone-and-audience.html)
-- [0003 — Writing up: the senior-leadership register](lessons/writing-up-the-senior-leadership-register.html)
+- [0003 — Reword for tone & audience](lessons/reword-for-tone-and-audience.html)
+- [0004 — Writing up: the senior-leadership register](lessons/writing-up-the-senior-leadership-register.html)
+- [0005 — External stakeholders: firm, polite, unambiguous](lessons/external-stakeholders-firm-polite-unambiguous.html)
 
 ### Structure & framing
 
-- [0004 — The one-ask email](lessons/the-one-ask-email.html)
+- [0006 — The one-ask email](lessons/the-one-ask-email.html)
+- [0007 — From bullets to prose (and back)](lessons/from-bullets-to-prose-and-back.html)
+- [0008 — Lead with the answer: bottom line up front](lessons/lead-with-the-answer.html)
 
 ### Correctness
 
-- [0005 — The 60-second proof pass](lessons/the-60-second-proof-pass.html)
+- [0009 — The 60-second proof pass](lessons/the-60-second-proof-pass.html)
 
 ### Condense & summarise
 
-- [0006 — Summarise a thread without losing the ask](lessons/summarise-a-thread-without-losing-the-ask.html)
+- [0010 — Summarise a thread without losing the ask](lessons/summarise-a-thread-without-losing-the-ask.html)
+- [0011 — Meeting notes to minutes & actions](lessons/meeting-notes-to-minutes-and-actions.html)
 <!-- END:auto:lessons -->
 
 ## The grid
@@ -65,11 +70,11 @@ before a single lesson was authored, so the move cost nothing.
 <!-- BEGIN:auto:grid -->
 | Theme ↓ / Rung → | 1 · Manual craft (do it well by hand) | 2 · Aldi:GPT (chat, no tool use) | 3 · M365 Copilot (acts in the app you write in) | 4 · GitHub Copilot (builds the artefact) |
 |---|---|---|---|---|
-| **Clarity & conciseness** | ✅ [0001 Tighten](lessons/tighten-cut-the-flab-keep-the-message.html); tighten; remove ambiguity | Tighten this draft — same message, half the words | Rewrite this selection in place: clearer, shorter, same meaning | Batch-rewrite a library of standard texts to the new standard |
-| **Tone & audience** | ✅ [0002 Reword for tone & audience](lessons/reword-for-tone-and-audience.html); ✅ [0003 Senior-leadership register](lessons/writing-up-the-senior-leadership-register.html); the survey's dominant cluster — most lessons live here | Reword for the reader — formal, firm, or friendly | Adjust the tone of this draft for its audience, in place | Generate audience-tuned variants of a template set |
-| **Structure & framing** | ✅ [0004 The one-ask email](lessons/the-one-ask-email.html); lead with the ask; bullets to prose and back | Restructure this: lead with the ask, turn bullets into prose | Draft the message from these bullet points, in the app | Build skeleton templates for your recurring message types |
-| **Correctness** | ✅ [0005 The 60-second proof pass](lessons/the-60-second-proof-pass.html); grammar, spelling, punctuation, house style | Proof this — grammar, spelling, punctuation, house style | Check and correct the draft in place | Build a house-style checklist and apply it across a document set |
-| **Condense & summarise** | ✅ [0006 Summarise a thread](lessons/summarise-a-thread-without-losing-the-ask.html); threads, meeting notes, reports — keep every ask and owner | Summarise this thread or these notes — keep every ask and owner | Summarise the thread and draft the minutes, in the app | Build the meeting-pack generator: notes in, minutes + actions out |
+| **Clarity & conciseness** | ✅ [0001 Tighten](lessons/tighten-cut-the-flab-keep-the-message.html); ✅ [0002 Killing ambiguity](lessons/say-exactly-one-thing.html); tighten; remove ambiguity | Tighten this draft — same message, half the words | Rewrite this selection in place: clearer, shorter, same meaning | Batch-rewrite a library of standard texts to the new standard |
+| **Tone & audience** | ✅ [0003 Reword for tone & audience](lessons/reword-for-tone-and-audience.html); ✅ [0004 Senior-leadership register](lessons/writing-up-the-senior-leadership-register.html); ✅ [0005 External stakeholders](lessons/external-stakeholders-firm-polite-unambiguous.html); the survey's dominant cluster — most lessons live here | Reword for the reader — formal, firm, or friendly | Adjust the tone of this draft for its audience, in place | Generate audience-tuned variants of a template set |
+| **Structure & framing** | ✅ [0006 The one-ask email](lessons/the-one-ask-email.html); ✅ [0007 Bullets to prose](lessons/from-bullets-to-prose-and-back.html); ✅ [0008 Lead with the answer](lessons/lead-with-the-answer.html); lead with the ask; bullets to prose and back | Restructure this: lead with the ask, turn bullets into prose | Draft the message from these bullet points, in the app | Build skeleton templates for your recurring message types |
+| **Correctness** | ✅ [0009 The 60-second proof pass](lessons/the-60-second-proof-pass.html); grammar, spelling, punctuation, house style | Proof this — grammar, spelling, punctuation, house style | Check and correct the draft in place | Build a house-style checklist and apply it across a document set |
+| **Condense & summarise** | ✅ [0010 Summarise a thread](lessons/summarise-a-thread-without-losing-the-ask.html); ✅ [0011 Minutes & actions](lessons/meeting-notes-to-minutes-and-actions.html); threads, meeting notes, reports — keep every ask and owner | Summarise this thread or these notes — keep every ask and owner | Summarise the thread and draft the minutes, in the app | Build the meeting-pack generator: notes in, minutes + actions out |
 <!-- END:auto:grid -->
 
 ## Practice artefact (decision pending first lesson)

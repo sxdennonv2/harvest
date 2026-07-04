@@ -287,6 +287,102 @@ Note the count: that's 8 findings across 7 sentences of a routine email — and 
     </details>
   </div>
 
+  <div class="scenario" id="scenario-i">
+    <h3>Scenario I — The ambiguous instruction</h3>
+    <p class="meta">To: your assistant · From: you · Situation: a quick internal ask,
+      dashed off between meetings. Every vague term in it is a decision you've silently
+      delegated. The facts box holds what you actually meant.</p>
+    <div class="survive"><b>The facts (what you actually meant):</b> the <b>organic
+      line</b> samples from GreenField · <b>24 units</b> · needed <b>by Friday</b> ·
+      pricing: the <b>May quote, $6.40/unit</b>, is fine · <b>GreenField arranges the
+      courier</b> (they offered).</div>
+    <div class="prompt">
+      <textarea rows="5" readonly>Hi — can you sort the samples thing with GreenField soon? They need the usual amount and tell them pricing similar to last time is fine. They said they'd sort the delivery.
+
+Thanks!</textarea>
+      <button class="copy" type="button">Copy draft</button>
+    </div>
+    <details class="soln"><summary>The five ambiguities (peek after your own attempt)</summary>
+      <p style="white-space:pre-line">"the samples thing" — which line? (organic line)
+"soon" — when? (by Friday)
+"the usual amount" — how many? (24 units; there is no established "usual")
+"pricing similar to last time" — which number? (the May quote, $6.40/unit — "similar" invites a different one)
+"They said they'd sort the delivery" — who is "they", and sort what? (GreenField arranges the courier)
+
+Each vague term reads fine to you because you hold the missing fact. The assistant holds none of them — five guesses, five chances to be wrong at $6.40 a unit.</p>
+    </details>
+  </div>
+
+  <div class="scenario" id="scenario-j">
+    <h3>Scenario J — The bullet dump (both directions)</h3>
+    <p class="meta">Direction one: your raw notes below must become a coherent reply to
+      Kim Tan (GreenField), who asked where the promo planning stands. Direction two is
+      the reverse — take Scenario E's padded update and reduce it to bullets.</p>
+    <div class="prompt">
+      <textarea rows="7" readonly>- 95/wk eggs for the promo fortnight — plan on this
+- maybe more if catalogue lands well, NOT committed
+- deliveries tues not mon that fortnight only
+- need her to confirm courier for the organic samples
+- (check w/ Alex before promising anything on volumes beyond 95)</textarea>
+      <button class="copy" type="button">Copy notes</button>
+    </div>
+    <div class="survive"><b>Must survive (direction one):</b> 95/wk is the committed
+      planning number · upside possible but NOT committed · Tuesday deliveries, that
+      fortnight only · the ask: confirm the courier · the parenthetical is a note to
+      SELF — it must not travel to Kim in any form.</div>
+    <details class="soln"><summary>Worked prose (peek after your own attempt)</summary>
+      <p style="white-space:pre-line">Hi Kim,
+
+Where the promo planning stands:
+
+Plan on 95 cases/week of Free-range Eggs 12pk for the promo fortnight. There may be upside if the catalogue lands well, but 95 is the committed number. Deliveries move to Tuesday for that fortnight only.
+
+One thing from you: could you confirm the courier arrangement for the organic samples?
+
+Thanks,
+[Name]
+
+(Note what didn't travel: the check-with-Alex line — notes to self aren't content, they're process.)</p>
+    </details>
+  </div>
+
+  <div class="scenario" id="scenario-k">
+    <h3>Scenario K — The minutes (from the promo meeting)</h3>
+    <p class="meta">The same Thursday promo meeting whose Outlook plumbing lives in the
+      functionality course — here, the writing job: turn the raw notes into a minutes
+      document someone absent could act on.</p>
+    <div class="prompt">
+      <textarea rows="9" readonly>promo mtg thurs — present: me, Alex Moreau (Supply Chain), Dana Whitfield (Merch)
+
+confirmed 110/wk rice crackers for the fortnight, I send Sam the confirmation Friday AM. wednesday deliveries agreed all round. popcorn is OUT of the promo this time (Dana confirmed) — I need to tell Alex today so his sheet is right. Dana getting us the catalogue proof Tuesday. Alex to book the DC slots for the wednesday pattern by Monday. parked: organic samples timing — next month's meeting, don't lose it.</textarea>
+      <button class="copy" type="button">Copy notes</button>
+    </div>
+    <div class="survive"><b>Must survive:</b> 3 decisions (110/wk confirmed · Wednesday
+      deliveries · Popcorn OUT) · 4 actions each with owner and date (you → Sam
+      confirmation Fri AM · you → tell Alex today · Dana → catalogue proof Tue · Alex →
+      DC slots by Mon) · 1 parked item, labelled parked (organic samples → next month) ·
+      attendees. Decisions, actions and parked items are <em>different species</em> —
+      the minutes must not let them blur.</div>
+    <details class="soln"><summary>Worked minutes (peek after your own attempt)</summary>
+      <p style="white-space:pre-line">PROMO FORTNIGHT — MINUTES (Thu)
+Present: [You], Alex Moreau (Supply Chain), Dana Whitfield (Merch)
+
+DECIDED
+1. Rice Crackers 24pk: 110 cases/week for the promo fortnight.
+2. Deliveries move to Wednesday for the fortnight.
+3. Popcorn 10pk is OUT of this promo.
+
+ACTIONS
+• [You] — send volume confirmation to Sam Lee — Friday AM
+• [You] — tell Alex Popcorn is out (sheet correction) — today
+• Dana — catalogue proof to the team — Tuesday
+• Alex — book DC slots for the Wednesday pattern — Monday
+
+PARKED (not agreed, not dropped)
+• Organic samples timing — carried to next month's meeting.</p>
+    </details>
+  </div>
+
   <div class="ask">
     <strong>Make it yours.</strong> These are fictional. Send a sanitised real draft —
     one you weren't sure about — and the lessons retarget to your actual correspondents.
