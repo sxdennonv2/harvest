@@ -113,6 +113,15 @@
       "contexts": ["email"]
     },
     {
+      "slug": "the-60-second-proof-pass",
+      "file": "the-60-second-proof-pass.html",
+      "title": "The 60-second proof pass",
+      "nav_label": "Proof pass",
+      "grid_label": "The 60-second proof pass",
+      "theme": "correctness",
+      "contexts": ["email"]
+    },
+    {
       "slug": "summarise-a-thread-without-losing-the-ask",
       "file": "summarise-a-thread-without-losing-the-ask.html",
       "title": "Summarise a thread without losing the ask",
@@ -127,7 +136,6 @@
     { "theme": "tone-audience", "working_title": "External stakeholders: firm, polite, unambiguous", "contexts": ["email"], "survey_signal": "\"professional writing for external stakeholders\"" },
     { "theme": "structure-framing", "working_title": "From bullets to prose (and back)", "contexts": ["email", "document"], "survey_signal": "\"write emails/formalise\"; \"write intro email from data\"; moved from Outlook frame" },
     { "theme": "structure-framing", "working_title": "Lead with the answer: bottom line up front", "contexts": ["email", "document"], "survey_signal": "\"preparing submissions for GDM or other audiences\"" },
-    { "theme": "correctness", "working_title": "The 60-second proof pass", "contexts": ["email"], "survey_signal": "\"spell check\"; \"proofreading\"; \"checking emails\"" },
     { "theme": "condense-summarise", "working_title": "Meeting notes to minutes & actions", "contexts": ["document", "email"], "survey_signal": "\"meeting notes to text\"; \"summarise meeting notes & populate minutes\"" }
   ]
 }

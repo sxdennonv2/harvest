@@ -13,6 +13,9 @@ Curated, high-trust sources. Knowledge for lessons is drawn from here, not from 
 - [Purdue OWL — Professional, Technical Writing](https://owl.purdue.edu/owl/subject_specific_writing/professional_technical_writing/index.html)
   Authoritative academic writing lab. Use for: email etiquette, tone and audience
   analysis, formal registers, memo/letter conventions.
+- [Purdue OWL — Proofreading](https://owl.purdue.edu/owl/general_writing/the_writing_process/proofreading/index.html)
+  The writing-process proofreading section. Use for: sweep-based proofing strategies,
+  why rereading fails, finding real-word errors spellcheck can't see.
 - [GOV.UK — Content design: writing for GOV.UK](https://www.gov.uk/guidance/content-design/writing-for-gov-uk)
   The best operational style guide for concise public-facing prose. Use for: front-loading
   the point, plain words over formal ones, sentence-length discipline.
