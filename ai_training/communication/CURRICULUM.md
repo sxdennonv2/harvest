@@ -41,6 +41,10 @@ before a single lesson was authored, so the move cost nothing.
 ### Tone & audience
 
 - [0001 — Reword for tone & audience](lessons/reword-for-tone-and-audience.html)
+
+### Condense & summarise
+
+- [0002 — Summarise a thread without losing the ask](lessons/summarise-a-thread-without-losing-the-ask.html)
 <!-- END:auto:lessons -->
 
 ## The grid
@@ -52,7 +56,7 @@ before a single lesson was authored, so the move cost nothing.
 | **Tone & audience** | ✅ [0001 Reword for tone & audience](lessons/reword-for-tone-and-audience.html); the survey's dominant cluster — most lessons live here | Reword for the reader — formal, firm, or friendly | Adjust the tone of this draft for its audience, in place | Generate audience-tuned variants of a template set |
 | **Structure & framing** | lead with the ask; bullets to prose and back | Restructure this: lead with the ask, turn bullets into prose | Draft the message from these bullet points, in the app | Build skeleton templates for your recurring message types |
 | **Correctness** | grammar, spelling, punctuation, house style | Proof this — grammar, spelling, punctuation, house style | Check and correct the draft in place | Build a house-style checklist and apply it across a document set |
-| **Condense & summarise** | threads, meeting notes, reports — keep every ask and owner | Summarise this thread or these notes — keep every ask and owner | Summarise the thread and draft the minutes, in the app | Build the meeting-pack generator: notes in, minutes + actions out |
+| **Condense & summarise** | ✅ [0002 Summarise a thread](lessons/summarise-a-thread-without-losing-the-ask.html); threads, meeting notes, reports — keep every ask and owner | Summarise this thread or these notes — keep every ask and owner | Summarise the thread and draft the minutes, in the app | Build the meeting-pack generator: notes in, minutes + actions out |
 <!-- END:auto:grid -->
 
 ## Practice artefact (decision pending first lesson)
