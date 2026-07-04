@@ -26,22 +26,42 @@ templates, the last mile.
 ## Lessons so far (by theme)
 
 <!-- BEGIN:auto:lessons -->
-_None authored yet. 10 candidates enumerated in `course.json`, survey-tagged. First
-up by demand: **Align, distribute, group: the tidy slide** (the "refining PPT"
-cluster) — or **Excel to slide: paste-link, never screenshot**, which closes a loop
-the Excel course opened._
+### Build on the master
+
+- [0001 — Masters & layouts: fix it once, fix it everywhere](lessons/masters-and-layouts-fix-it-once.html)
+- [0002 — Placeholders, not text boxes](lessons/placeholders-not-text-boxes.html)
+
+### Arrange & align
+
+- [0003 — Align, distribute, group: the tidy slide](lessons/align-distribute-group.html)
+- [0004 — Whitespace & hierarchy: less on the slide](lessons/whitespace-and-hierarchy.html)
+
+### Charts & visuals
+
+- [0005 — Excel to slide: paste-link, never screenshot](lessons/excel-to-slide-paste-link.html)
+- [0006 — One chart, one point](lessons/one-chart-one-point.html)
+
+### Reuse & templates
+
+- [0007 — Working the corporate template (not against it)](lessons/working-the-corporate-template.html)
+- [0008 — Reusable slides: steal from yourself](lessons/reusable-slides-steal-from-yourself.html)
+
+### Present & share
+
+- [0009 — Presenter view & rehearse](lessons/presenter-view-and-rehearse.html)
+- [0010 — Export & share: PDF, handouts, the deck that travels](lessons/export-and-share.html)
 <!-- END:auto:lessons -->
 
 ## The grid
 
 <!-- BEGIN:auto:grid -->
-| Theme ↓ / Rung → | 1 · Manual craft | 2 · Aldi:GPT | 3 · M365 Copilot | 4 · GitHub Copilot |
+| Theme ↓ / Rung → | 1 · Manual craft (do it well by hand) | 2 · Aldi:GPT (chat, no tool use) | 3 · M365 Copilot (acts in PowerPoint) | 4 · GitHub Copilot (builds the deck) |
 |---|---|---|---|---|
-| **Build on the master** | 2 candidates | Plan the deck's structure: which layouts, in what order | Create the section skeleton from a prompt or a document | Build the deck skeleton from an outline file, on the right layouts |
-| **Arrange & align** | 2 candidates ← survey demand | Diagnose a slide you describe: what makes it look untidy | Apply Designer suggestions — then audit what it changed | Batch-fix alignment and spacing across a deck by script |
-| **Charts & visuals** | 2 candidates | Pick the right visual for the point you describe | Create a slide visualising this data, in the deck | Generate the charts into the deck from the data files |
-| **Reuse & templates** | 2 candidates | Turn a deck you describe into a reusable template checklist | Create a new deck from the organisation's template | Build the organisation template itself from a brand spec |
-| **Present & share** | 2 candidates | Build the pre-presentation checklist for the room you describe | Summarise this deck for the follow-up email | Build the export pack (PDF, handouts, notes pages) by script |
+| **Build on the master** | ✅ [0001 Masters & layouts](lessons/masters-and-layouts-fix-it-once.html); ✅ [0002 Placeholders](lessons/placeholders-not-text-boxes.html); slide masters, layouts, placeholders — the deck's skeleton | Plan the deck's structure: which layouts, in what order | Create the section skeleton from a prompt or a document | Build the deck skeleton from an outline file, on the right layouts |
+| **Arrange & align** | ✅ [0003 Align & distribute](lessons/align-distribute-group.html); ✅ [0004 Whitespace & hierarchy](lessons/whitespace-and-hierarchy.html); guides, distribute, grouping — the formatting demand | Diagnose a slide you describe: what makes it look untidy | Apply Designer suggestions — then audit what it changed | Batch-fix alignment and spacing across a deck by script |
+| **Charts & visuals** | ✅ [0005 Excel to slide](lessons/excel-to-slide-paste-link.html); ✅ [0006 One chart, one point](lessons/one-chart-one-point.html); data onto slides; the Excel seam (paste-link, not screenshot) | Pick the right visual for the point you describe | Create a slide visualising this data, in the deck | Generate the charts into the deck from the data files |
+| **Reuse & templates** | ✅ [0007 Corporate template](lessons/working-the-corporate-template.html); ✅ [0008 Reusable slides](lessons/reusable-slides-steal-from-yourself.html); the corporate template; theme colours/fonts; reusable slides | Turn a deck you describe into a reusable template checklist | Create a new deck from the organisation's template | Build the organisation template itself from a brand spec |
+| **Present & share** | ✅ [0009 Presenter view](lessons/presenter-view-and-rehearse.html); ✅ [0010 Export & share](lessons/export-and-share.html); presenter view, rehearse, export — the last mile | Build the pre-presentation checklist for the room you describe | Summarise this deck for the follow-up email | Build the export pack (PDF, handouts, notes pages) by script |
 <!-- END:auto:grid -->
 
 ## Practice artefact (decision pending first lesson)

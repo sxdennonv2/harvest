@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0005 — Excel to slide: paste-link, never screenshot</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="whitespace-and-hierarchy.html">0004 — Whitespace</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="one-chart-one-point.html">0006 — One chart</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="masters-and-layouts-fix-it-once.html">Build on the master</a>
+    <a href="align-distribute-group.html">Arrange &amp; align</a>
+    <a href="excel-to-slide-paste-link.html" class="current">Charts &amp; visuals</a>
+    <a href="working-the-corporate-template.html">Reuse &amp; templates</a>
+    <a href="presenter-view-and-rehearse.html">Present &amp; share</a>
+  </nav>
+
+  <p class="kicker">PowerPoint to a High Standard · Lesson 0005</p>
+  <h1>Excel to slide: paste-link, never screenshot</h1>
+
+  <p class="mission">
+    Tied to your mission: your director's monthly review runs on a chart that has to
+    keep telling the truth after you've closed the workbook and moved on to next week's
+    numbers. This lesson closes a loop the Excel course opened — that course taught you
+    to build a chart that says one thing cleanly; this one teaches you to get that chart
+    onto a slide without cutting the wire back to the numbers it's reporting.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice pack · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/powerpoint-practice-pack.html#scenario-b">Open the practice pack</a>
+      and find <strong>Scenario B — The screenshot deck</strong>: the monthly review
+      deck carries four "charts", all screenshots of the course workbook, and the
+      workbook's revenue figures changed yesterday. The deck didn't notice.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    A screenshot of a chart is a picture of data at one moment — it freezes a lie the
+    day the workbook moves. <strong>Paste-link</strong> keeps the slide's chart alive to
+    its workbook instead: change the number in Excel, the deck follows, with no one
+    having to remember to redo the slide. The choice of paste flavour is the actual
+    skill. A <strong>linked</strong> chart updates but needs the workbook nearby to
+    refresh from. An <strong>embedded</strong> chart is self-contained and heavier — a
+    snapshot that still carries its editing tools, but won't move when the source
+    workbook does. A <strong>picture</strong> is dead on arrival, and that's fine — but
+    only for things that were never data in the first place.
+  </p>
+  <p>
+    Monthly decks — the ones that get rebuilt against the same workbook every cycle —
+    want linked. Decks that travel, that leave your machine for someone else's laptop or
+    an external inbox, want the link severed <em>deliberately</em> at export, not
+    accidentally the moment you pasted. Choosing wrong in either direction is how a
+    number goes stale without anyone deciding it should.
+  </p>
+
+  <h2>Why it matters to a buyer</h2>
+  <p>
+    Your monthly category review runs on the same four or five charts every cycle, and
+    the workbook behind them keeps moving — a late credit note, a corrected volume, a
+    recut by supplier — right up until the morning of the meeting. A linked chart
+    absorbs that change for free: open the deck, let it refresh, and the slide already
+    agrees with the workbook. A screenshot absorbs nothing. It sits there looking
+    finished while the number underneath it quietly goes wrong, and the first person to
+    notice is usually the director reading last month's revenue figure aloud as if it
+    were this month's.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Alt-PrtScn as the Excel-to-slide pipeline: build the chart in Excel, screenshot it,
+    paste the picture into the deck, repeat for every chart, every month. Four
+    screenshots a cycle, each one a stale number waiting for a director to read it
+    aloud — and nothing about the slide tells you it's stale, because a picture never
+    complains. The habit survives because it "works" every time you paste it; it only
+    fails the one time the workbook moves after you've stopped looking, which is every
+    month, eventually.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    Rebuild Scenario B's revenue-by-category chart as the pack's box describes. In the
+    workbook, select the existing revenue chart and copy it (<span class="cell">Ctrl+C</span>
+    on the chart object, not the underlying cells). Switch to the deck, click the slide
+    where the screenshot currently sits, delete the picture, then
+    <span class="cell">Home → Paste → Paste Special → Paste Link</span> (in the
+    Paste Special dialog, choose <span class="cell">Microsoft Excel Chart Object</span>
+    with the <span class="cell">Paste Link</span> option selected, not the default
+    plain paste). That one dialog is the whole decision this lesson is about — picking
+    <em>Paste Link</em> instead of the default embed is what keeps the slide wired to
+    the workbook rather than just carrying a heavier copy of it.
+  </p>
+  <p>
+    Then run the proof, because a linked chart that's never been tested is a claim, not
+    a fact: go back to the workbook, change one revenue number that feeds the chart,
+    save it, then return to the deck and right-click the chart to
+    <span class="cell">Update Link</span> (or close and reopen the deck, which refreshes
+    links automatically). Watch the column actually move. If it doesn't, you pasted an
+    embed or a picture, not a link — go back and redo the Paste Special.
+  </p>
+  <p>
+    Once it's live, apply the Excel course's chart discipline on the slide itself, the
+    same as you did in the workbook: one comparison per chart, gridlines kept light, and
+    no legend sitting beside a single data series. A linked chart that's still cluttered
+    with Excel's defaults hasn't finished the job — the link keeps the numbers honest,
+    but the cleanup is what keeps the slide readable.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="2">
+      <p class="q">1. A revenue figure changes in the workbook the morning of the
+        review. Which slide chart reflects that change without you touching the deck?</p>
+      <ul class="opts">
+        <li><button class="opt">a screenshot of the chart, pasted last week</button></li>
+        <li><button class="opt">an embedded chart object with no link back to the workbook</button></li>
+        <li><button class="opt">a chart pasted with Paste Special → Paste Link</button></li>
+        <li><button class="opt">a picture exported from the chart as a PNG</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="1">
+      <p class="q">2. A deck is about to leave the building — going to an external
+        recipient whose machine won't have your workbook open. What should happen to
+        its linked charts before you send it?</p>
+      <ul class="opts">
+        <li><button class="opt">nothing — linked charts work identically on any machine</button></li>
+        <li><button class="opt">the link should be deliberately severed at export (or exported as PDF), not left to fail quietly on their machine</button></li>
+        <li><button class="opt">re-paste every chart as a screenshot instead</button></li>
+        <li><button class="opt">delete the charts before sending</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. A single-series revenue-by-category chart, now correctly linked,
+        still shows Excel's default legend and heavy gridlines. Is the job done?</p>
+      <ul class="opts">
+        <li><button class="opt">no — the link keeps the numbers honest, but the chart still needs the one-comparison, light-gridline, no-legend cleanup</button></li>
+        <li><button class="opt">yes — linking is the only thing that matters</button></li>
+        <li><button class="opt">no — switch it to a 3-D pie instead</button></li>
+        <li><button class="opt">yes, as long as the title is bold</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    On Scenario B's revenue chart, do the full rebuild: copy the chart in the workbook,
+    Paste Special → Paste Link it into the deck in place of the screenshot, then clean it
+    to the Excel course's discipline (one comparison, light gridlines, legend gone for
+    the single series). Self-check: change a revenue number in the workbook, refresh the
+    link, and confirm the column on the slide actually moves. If it doesn't move, you
+    don't have a linked chart yet, whatever the Paste Special dialog told you — go back
+    and check which paste option you actually selected.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — get this workbook's chart onto this slide, correctly, and prove it's
+    alive — with more handed to AI at each rung. The check never changes: change the
+    number in the workbook, and the slide must move, or you haven't linked anything.
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it prescribes the paste flavour, you judge the prescription</h3>
+  <p>Aldi:GPT can't see your deck or your workbook, so describe your deck's data slides
+    and how often each one's source changes; it will prescribe linked, embedded, or
+    picture per slide, with reasons you then have to hold it to.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="8" readonly>I'm building a PowerPoint deck for a monthly category review. It has five data slides: (1) a revenue-by-category column chart, sourced from a workbook that gets updated every month before the review and stays open on my machine; (2) a promo-volume trend line, same workbook, same monthly cadence; (3) a supplier scorecard table, copied from a workbook that a colleague owns and that I don't have open when I build the deck; (4) a headcount org chart that never changes month to month; (5) a photo of a shelf display, for context only. For each of these five slides, tell me whether to use a linked chart/object, an embedded chart/object, or a plain picture when I paste it into the slide — and justify each recommendation by that slide's update cadence and whether the deck will travel to a machine without the source file open.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> the signature failure at this rung is one-size
+      prescription — "link everything" or "embed everything" as a blanket rule. A good
+      answer treats each of the five slides differently and names the reason: slide 3
+      shouldn't be linked to a workbook you don't have open, and slide 5 was never data
+      to begin with, so it stays a picture. Any answer that recommends the same flavour
+      for all five slides has missed the point of the rung — "link everything" is
+      exactly the choice that breaks the deck the moment it leaves the building.</p>
+  </div>
+
+  <h3>Rung 3 · M365 Copilot — it can create the slide, check what it actually created</h3>
+  <p>Copilot in PowerPoint can build a slide that visualises data you give it, but be
+    precise about what you get back: it produces a real chart object you can edit, not
+    a linked-to-your-workbook object — those are two different things, and only you can
+    tell them apart before the month rolls over.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in PowerPoint, with the deck open)</span>
+    <div class="prompt">
+      <textarea rows="4" readonly>Create a slide in this deck that visualises our revenue by category as a column chart. Use a clear title, no legend since there's one series, and light gridlines.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> click the chart Copilot hands you and look at what's
+      selected — a real chart object (with a "Chart Design" ribbon and an editable data
+      table behind it) or a static image dropped onto the slide. Copilot's charts are
+      genuine chart objects, but they are <em>not</em> linked to your source workbook —
+      Copilot built them from data you gave it in the prompt or fed it as a file, which
+      is a snapshot, not a wire back to the workbook. Know which one you got before the
+      month rolls: if it needs to move with the workbook, this chart still needs the
+      manual Paste Special → Paste Link from rung 1, not a Copilot rebuild each cycle.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it scripts the chart generation, with a refresh path</h3>
+  <p>An agent with file access can write a script that builds deck charts directly from
+    your data files using python-pptx's native chart objects — genuinely reproducible,
+    but only as good as the refresh path you make it prove.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="9" readonly>Write a Python script using python-pptx that generates revenue-by-category and promo-volume-trend charts into a PowerPoint deck, reading the source numbers from a CSV file (columns: Category, Revenue, Month). Use python-pptx's native chart objects (not images) — a clustered column chart for revenue by category, no legend since it's a single series, light gridlines, a clear title. The script should be rerunnable: given an updated CSV with changed numbers, rerunning it must regenerate the charts with the new values, and the category totals on the resulting slide must sum to the same total as a plain sum of the source CSV's Revenue column. Include a short README section in comments explaining how to point the script at a new CSV for next month's refresh.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> rerun the script after changing a number in the source
+      CSV — the chart on the slide must move to match, exactly the same proof as rung 1's
+      manual test, just automated. Then check the reconciliation, the family discipline
+      this course shares with the Excel course: the totals on the slide must sum back to
+      a plain total of the source file, parts summing to the whole. A script that
+      regenerates a chart but silently drops or double-counts a category has failed the
+      check even if the chart looks clean.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI prescribes linked vs embedded vs picture" to "AI scripts the charts
+    straight from the data file" — the deliverable never changes: a chart on a slide
+    that stays honest to its source, and a paste flavour chosen on purpose rather than
+    by default. What protects you at every rung is the same test — change the number,
+    watch the slide move, or admit it didn't. Craft the manual paste-link first, so you
+    can tell a real link from a chart object that only looks like one.
+  </div>
+
+  <div class="callout">
+    <span class="label">The family discipline</span>
+    This is the same discipline the Excel course's sourcing lessons taught about the
+    workbook, and the Outlook course's
+    <a href="../../outlook/lessons/attachments-formatting-and-mentions.html">send-mechanics
+    lesson</a> made the identical point about email: data has to travel <em>as data</em>,
+    not as a picture of data. A screenshot pasted into an email and a screenshot pasted
+    into a slide fail for the same reason — the receiver, or the deck itself, is left
+    holding an image nobody can act on or verify.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/en-us/office/insert-a-linked-excel-chart-in-powerpoint-0d3a2853-4d68-4b62-9d21-e69ee6e394b9">Microsoft
+    — Insert a linked Excel chart in PowerPoint</a> and
+    <a href="https://support.microsoft.com/en-us/copilot-powerpoint">Microsoft — Copilot
+    in PowerPoint</a> for exactly what Copilot does and doesn't link. If a detail here
+    ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want this retargeted to your actual review deck
+    and its real refresh cadence — which slides get rebuilt monthly against a live
+    workbook, and which ones travel to people who'll never have that workbook open? Send
+    a sanitised description of your deck's data slides and I'll rebuild the ladder's
+    rung-2 prescription around them.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="whitespace-and-hierarchy.html">0004 — Whitespace</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="one-chart-one-point.html">0006 — One chart</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — that is the live-link test at work.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

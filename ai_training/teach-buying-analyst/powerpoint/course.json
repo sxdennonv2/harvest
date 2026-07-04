@@ -25,7 +25,9 @@
     {
       "key": "masters-foundations",
       "title": "Build on the master",
-      "notes": ["slide masters, layouts, placeholders — the deck's skeleton"],
+      "notes": [
+        "slide masters, layouts, placeholders — the deck's skeleton"
+      ],
       "rungs": [
         "Plan the deck's structure: which layouts, in what order",
         "Create the section skeleton from a prompt or a document",
@@ -35,7 +37,9 @@
     {
       "key": "arrange-align",
       "title": "Arrange & align",
-      "notes": ["guides, distribute, grouping — the formatting demand"],
+      "notes": [
+        "guides, distribute, grouping — the formatting demand"
+      ],
       "rungs": [
         "Diagnose a slide you describe: what makes it look untidy",
         "Apply Designer suggestions — then audit what it changed",
@@ -45,7 +49,9 @@
     {
       "key": "charts-visuals",
       "title": "Charts & visuals",
-      "notes": ["data onto slides; the Excel seam (paste-link, not screenshot)"],
+      "notes": [
+        "data onto slides; the Excel seam (paste-link, not screenshot)"
+      ],
       "rungs": [
         "Pick the right visual for the point you describe",
         "Create a slide visualising this data, in the deck",
@@ -55,7 +61,9 @@
     {
       "key": "reuse-templates",
       "title": "Reuse & templates",
-      "notes": ["the corporate template; theme colours/fonts; reusable slides"],
+      "notes": [
+        "the corporate template; theme colours/fonts; reusable slides"
+      ],
       "rungs": [
         "Turn a deck you describe into a reusable template checklist",
         "Create a new deck from the organisation's template",
@@ -65,7 +73,9 @@
     {
       "key": "present-share",
       "title": "Present & share",
-      "notes": ["presenter view, rehearse, export — the last mile"],
+      "notes": [
+        "presenter view, rehearse, export — the last mile"
+      ],
       "rungs": [
         "Build the pre-presentation checklist for the room you describe",
         "Summarise this deck for the follow-up email",
@@ -73,17 +83,90 @@
       ]
     }
   ],
-  "lessons": [],
-  "candidates": [
-    { "theme": "masters-foundations", "working_title": "Masters & layouts: fix it once, fix it everywhere", "survey_signal": "\"refining PPT or training material\"; \"get ideas on formatting and templates\"" },
-    { "theme": "masters-foundations", "working_title": "Placeholders, not text boxes", "survey_signal": "pillar-derived" },
-    { "theme": "arrange-align", "working_title": "Align, distribute, group: the tidy slide", "survey_signal": "\"refining PPT\"; \"formatting\" (dominant PPT cluster)" },
-    { "theme": "arrange-align", "working_title": "Whitespace & hierarchy: less on the slide", "survey_signal": "pillar-derived" },
-    { "theme": "charts-visuals", "working_title": "Excel to slide: paste-link, never screenshot", "survey_signal": "\"creating graphs or images for reporting\"" },
-    { "theme": "charts-visuals", "working_title": "One chart, one point", "survey_signal": "\"creating graphs or images for reporting\"" },
-    { "theme": "reuse-templates", "working_title": "Working the corporate template (not against it)", "survey_signal": "\"ideas on formatting and templates\"" },
-    { "theme": "reuse-templates", "working_title": "Reusable slides: steal from yourself", "survey_signal": "pillar-derived" },
-    { "theme": "present-share", "working_title": "Presenter view & rehearse", "survey_signal": "\"preparing presentations\"" },
-    { "theme": "present-share", "working_title": "Export & share: PDF, handouts, the deck that travels", "survey_signal": "\"external facing documents\"" }
-  ]
+  "lessons": [
+    {
+      "slug": "masters-and-layouts-fix-it-once",
+      "file": "masters-and-layouts-fix-it-once.html",
+      "title": "Masters & layouts: fix it once, fix it everywhere",
+      "nav_label": "Masters",
+      "grid_label": "Masters & layouts",
+      "theme": "masters-foundations"
+    },
+    {
+      "slug": "placeholders-not-text-boxes",
+      "file": "placeholders-not-text-boxes.html",
+      "title": "Placeholders, not text boxes",
+      "nav_label": "Placeholders",
+      "grid_label": "Placeholders",
+      "theme": "masters-foundations",
+      "builds_on": [
+        "masters-and-layouts-fix-it-once"
+      ]
+    },
+    {
+      "slug": "align-distribute-group",
+      "file": "align-distribute-group.html",
+      "title": "Align, distribute, group: the tidy slide",
+      "nav_label": "Align",
+      "grid_label": "Align & distribute",
+      "theme": "arrange-align"
+    },
+    {
+      "slug": "whitespace-and-hierarchy",
+      "file": "whitespace-and-hierarchy.html",
+      "title": "Whitespace & hierarchy: less on the slide",
+      "nav_label": "Whitespace",
+      "grid_label": "Whitespace & hierarchy",
+      "theme": "arrange-align"
+    },
+    {
+      "slug": "excel-to-slide-paste-link",
+      "file": "excel-to-slide-paste-link.html",
+      "title": "Excel to slide: paste-link, never screenshot",
+      "nav_label": "Paste-link",
+      "grid_label": "Excel to slide",
+      "theme": "charts-visuals"
+    },
+    {
+      "slug": "one-chart-one-point",
+      "file": "one-chart-one-point.html",
+      "title": "One chart, one point",
+      "nav_label": "One chart",
+      "grid_label": "One chart, one point",
+      "theme": "charts-visuals"
+    },
+    {
+      "slug": "working-the-corporate-template",
+      "file": "working-the-corporate-template.html",
+      "title": "Working the corporate template (not against it)",
+      "nav_label": "Template",
+      "grid_label": "Corporate template",
+      "theme": "reuse-templates"
+    },
+    {
+      "slug": "reusable-slides-steal-from-yourself",
+      "file": "reusable-slides-steal-from-yourself.html",
+      "title": "Reusable slides: steal from yourself",
+      "nav_label": "Reuse",
+      "grid_label": "Reusable slides",
+      "theme": "reuse-templates"
+    },
+    {
+      "slug": "presenter-view-and-rehearse",
+      "file": "presenter-view-and-rehearse.html",
+      "title": "Presenter view & rehearse",
+      "nav_label": "Present",
+      "grid_label": "Presenter view",
+      "theme": "present-share"
+    },
+    {
+      "slug": "export-and-share",
+      "file": "export-and-share.html",
+      "title": "Export & share: PDF, handouts, the deck that travels",
+      "nav_label": "Export",
+      "grid_label": "Export & share",
+      "theme": "present-share"
+    }
+  ],
+  "candidates": []
 }
