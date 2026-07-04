@@ -25,7 +25,9 @@
     {
       "key": "styles-skeleton",
       "title": "Styles: the document's skeleton",
-      "notes": ["styles over manual formatting; heading hierarchy"],
+      "notes": [
+        "styles over manual formatting; heading hierarchy"
+      ],
       "rungs": [
         "Design the style set for the document you describe",
         "Apply consistent styles across this draft, in place",
@@ -35,7 +37,9 @@
     {
       "key": "structure-navigation",
       "title": "Structure & navigation",
-      "notes": ["nav pane, TOC, breaks and sections done right"],
+      "notes": [
+        "nav pane, TOC, breaks and sections done right"
+      ],
       "rungs": [
         "Plan the section structure for the document you describe",
         "Insert and update the table of contents; reorganise via headings",
@@ -45,7 +49,9 @@
     {
       "key": "tables-figures",
       "title": "Tables & figures",
-      "notes": ["tables that behave; captions; figures that stay put"],
+      "notes": [
+        "tables that behave; captions; figures that stay put"
+      ],
       "rungs": [
         "Choose table vs figure vs prose for the content you describe",
         "Format this table consistently; add captions throughout",
@@ -55,7 +61,9 @@
     {
       "key": "review-collaborate",
       "title": "Review & collaborate",
-      "notes": ["track changes, comments, compare — the GDM reality"],
+      "notes": [
+        "track changes, comments, compare — the GDM reality"
+      ],
       "rungs": [
         "Triage this list of reviewer comments: accept, push back, or discuss",
         "Summarise what changed in this reviewed document",
@@ -65,7 +73,9 @@
     {
       "key": "templates-consistency",
       "title": "Templates & consistency",
-      "notes": ["document templates; theme fonts/colours; building blocks"],
+      "notes": [
+        "document templates; theme fonts/colours; building blocks"
+      ],
       "rungs": [
         "Turn the document you describe into a template checklist",
         "Create a new document from the organisation's template",
@@ -73,17 +83,96 @@
       ]
     }
   ],
-  "lessons": [],
-  "candidates": [
-    { "theme": "styles-skeleton", "working_title": "Styles, not formatting: fix it once", "survey_signal": "\"training material\"; \"formal documents\" (formatting consistency demand)" },
-    { "theme": "styles-skeleton", "working_title": "The heading hierarchy: one outline, three payoffs", "survey_signal": "pillar-derived (nav pane, TOC and structure all hang off it)" },
-    { "theme": "structure-navigation", "working_title": "Breaks & sections: why your page numbering fights you", "survey_signal": "pillar-derived" },
-    { "theme": "structure-navigation", "working_title": "The table of contents that maintains itself", "survey_signal": "\"preparing submissions for GDM or other audiences\"" },
-    { "theme": "tables-figures", "working_title": "Tables that behave: widths, headers, repeat rows", "survey_signal": "pillar-derived" },
-    { "theme": "tables-figures", "working_title": "Figures & captions that stay where you put them", "survey_signal": "pillar-derived" },
-    { "theme": "review-collaborate", "working_title": "Track changes without fear", "survey_signal": "\"preparing submissions\" (multi-reviewer reality)" },
-    { "theme": "review-collaborate", "working_title": "Comments, versions & compare", "survey_signal": "pillar-derived" },
-    { "theme": "templates-consistency", "working_title": "Working the document template", "survey_signal": "\"get ideas on formatting and templates\"" },
-    { "theme": "templates-consistency", "working_title": "Building blocks: the reusable clauses", "survey_signal": "pillar-derived (sibling of Outlook's Quick Parts)" }
-  ]
+  "lessons": [
+    {
+      "slug": "styles-not-formatting",
+      "file": "styles-not-formatting.html",
+      "title": "Styles, not formatting: fix it once",
+      "nav_label": "Styles",
+      "grid_label": "Styles, not formatting",
+      "theme": "styles-skeleton"
+    },
+    {
+      "slug": "the-heading-hierarchy",
+      "file": "the-heading-hierarchy.html",
+      "title": "The heading hierarchy: one outline, three payoffs",
+      "nav_label": "Headings",
+      "grid_label": "Heading hierarchy",
+      "theme": "styles-skeleton",
+      "builds_on": [
+        "styles-not-formatting"
+      ]
+    },
+    {
+      "slug": "breaks-and-sections",
+      "file": "breaks-and-sections.html",
+      "title": "Breaks & sections: why your page numbering fights you",
+      "nav_label": "Sections",
+      "grid_label": "Breaks & sections",
+      "theme": "structure-navigation"
+    },
+    {
+      "slug": "the-toc-that-maintains-itself",
+      "file": "the-toc-that-maintains-itself.html",
+      "title": "The table of contents that maintains itself",
+      "nav_label": "TOC",
+      "grid_label": "Self-maintaining TOC",
+      "theme": "structure-navigation",
+      "builds_on": [
+        "the-heading-hierarchy"
+      ]
+    },
+    {
+      "slug": "tables-that-behave",
+      "file": "tables-that-behave.html",
+      "title": "Tables that behave: widths, headers, repeat rows",
+      "nav_label": "Tables",
+      "grid_label": "Tables that behave",
+      "theme": "tables-figures"
+    },
+    {
+      "slug": "figures-and-captions",
+      "file": "figures-and-captions.html",
+      "title": "Figures & captions that stay where you put them",
+      "nav_label": "Figures",
+      "grid_label": "Figures & captions",
+      "theme": "tables-figures"
+    },
+    {
+      "slug": "track-changes-without-fear",
+      "file": "track-changes-without-fear.html",
+      "title": "Track changes without fear",
+      "nav_label": "Track changes",
+      "grid_label": "Track changes",
+      "theme": "review-collaborate"
+    },
+    {
+      "slug": "comments-versions-and-compare",
+      "file": "comments-versions-and-compare.html",
+      "title": "Comments, versions & compare",
+      "nav_label": "Compare",
+      "grid_label": "Comments & compare",
+      "theme": "review-collaborate",
+      "builds_on": [
+        "track-changes-without-fear"
+      ]
+    },
+    {
+      "slug": "working-the-document-template",
+      "file": "working-the-document-template.html",
+      "title": "Working the document template",
+      "nav_label": "Template",
+      "grid_label": "Document template",
+      "theme": "templates-consistency"
+    },
+    {
+      "slug": "building-blocks-reusable-clauses",
+      "file": "building-blocks-reusable-clauses.html",
+      "title": "Building blocks: the reusable clauses",
+      "nav_label": "Blocks",
+      "grid_label": "Building blocks",
+      "theme": "templates-consistency"
+    }
+  ],
+  "candidates": []
 }
