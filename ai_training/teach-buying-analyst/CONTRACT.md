@@ -185,8 +185,9 @@ Judged (agent):
 
 ## Known deviations in the Excel reference instance (2026-07-04)
 
-1. `relative-and-absolute-references.html` has no `manual-craft` ("How to do it") section —
-   predates the contract's final shape. Backfill or formally exempt.
+1. ~~`relative-and-absolute-references.html` has no `manual-craft` section.~~ **Resolved
+   2026-07-04**: "How to do it" backfilled against the References workbook tab (fill
+   C2:C11, rate-change proof, formula-bar spot check). Compliance is now 240/240.
 2. ~~Stale bare-number cross-references from the pre-reorder sequence.~~ **Resolved
    2026-07-04**: all ten replaced with slug links or "this lesson".
 3. ~~Frame order violates `builds_on`.~~ **Resolved 2026-07-04**: References moved into

@@ -86,6 +86,25 @@
     single fill-down replaces all of it — and updates instantly when the rate changes.
   </div>
 
+  <h2>How to do it</h2>
+  <p>
+    On the <span class="cell">References</span> tab, click <span class="cell">C2</span> and type
+    <span class="cell">=B2*$F$1</span>, then press <kbd>Enter</kbd>. Click
+    <span class="cell">C2</span> again and fill it down to <span class="cell">C11</span> —
+    double-click the fill handle in the cell's bottom-right corner, or select
+    <span class="cell">C2:C11</span> and press <kbd>Ctrl</kbd>+<kbd>D</kbd>. Every row now
+    multiplies its own case cost by the one rate in <span class="cell">F1</span>.
+  </p>
+  <p>
+    Prove it to yourself: change the rate in <span class="cell">F1</span> from
+    <span class="cell">1.92</span> to <span class="cell">2.10</span> and watch all ten landed
+    costs move at once. Then click <span class="cell">C11</span> and read the formula bar — it
+    should say <span class="cell">=B11*$F$1</span>: the <span class="cell">B</span> reference
+    walked down with you, the pinned <span class="cell">$F$1</span> didn't. If it says
+    <span class="cell">$F$10</span>, the dollars were missing — that's the drift this lesson
+    kills.
+  </p>
+
   <h2>The keyboard trick: <kbd>F4</kbd></h2>
   <p>
     You don't type the dollar signs by hand. Click into a reference in the formula bar (or
