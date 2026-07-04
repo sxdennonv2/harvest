@@ -133,24 +133,24 @@
 
 <div class="wrap">
   <header class="masthead">
-    <p class="eyebrow">Harvest · pipeline instrument · 05 Jul 2026 · frame v0.4-draft</p>
+    <p class="eyebrow">Harvest · pipeline instrument · 05 Jul 2026 · frame v0.5-draft</p>
     <h1>The SIL-operations dimension space</h1>
     <p class="lede">Harvest instance #4 (FRAME-LEDGER row 4) — a domain <b>promoted</b>
       from real source artifacts rather than elicited blind: three residents' actual
       Weekly Menu Planner <code>.docx</code> files, residence <b>Earlwood</b>, provider
       <b>Danny Met Sally (DMS)</b>. Today it's <b>fully manual</b> — Debbie hand-builds
-      one plan per resident per 28-day period. The automation idea taking shape: give
-      each resident up to 10 acceptable options per meal, then <b>harmonize</b> across a
-      house wherever those options overlap. Deliberately small — see
-      <a href="#decisions">open questions</a> before building a generator.</p>
+      one plan per resident per 28-day period. The automation idea taking shape: Debbie
+      builds each resident up to 10 acceptable options per meal <b>quarterly</b>, and
+      the generator can pick randomly, stratify, or <b>harmonize</b> across a house
+      wherever those options overlap — with Debbie able to override any pick.</p>
     <div class="stats">
       <div class="stat"><div class="n">1</div><div class="l">domain frame</div></div>
       <div class="stat"><div class="n">1 / 5</div><div class="l">residences populated</div></div>
       <div class="stat"><div class="n">3</div><div class="l">residents · real names</div></div>
       <div class="stat"><div class="n">10</div><div class="l">max options per meal slot</div></div>
-      <div class="stat"><div class="n">7</div><div class="l">constraint-block types</div></div>
+      <div class="stat"><div class="n">4×</div><div class="l">pool refresh · per year</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">allocation modes</div></div>
       <div class="stat"><div class="n">TBA</div><div class="l">support-worker roster · parked</div></div>
-      <div class="stat"><div class="n">0</div><div class="l">contracts / skills built</div></div>
       <div class="stat warn"><div class="n">5</div><div class="l">open questions</div></div>
     </div>
   </header>
@@ -237,22 +237,31 @@
           — rather than a manual per-house judgement call.</div>
       </div>
       <div class="axis">
-        <div class="axname">meal-option-pool<small>new axis, 05 Jul</small></div>
+        <div class="axname">meal-option-pool<small>resident × time-boxed data</small></div>
         <div class="axkind">candidate set</div>
         <div class="axk"><div class="chips">
           <span class="chip built">up to 10 options</span><span class="chip built">per resident</span>
           <span class="chip built">per meal slot</span>
+          <span class="chip built">built by Debbie · quarterly</span>
         </div>
-        Each option assumed already compatible with that resident's constraint-block.
-        Not yet populated for any resident — who builds the pool is open.</div>
+        Each pool version has a start/end date it's valid between — a resident has a
+        <i>sequence</i> of pool versions over time, not one static list. Options can
+        change mid-quarter (added/removed/altered); a change takes effect
+        <b>immediately</b> and stays until altered again.</div>
       </div>
       <div class="axis">
-        <div class="axname">allocation-process<small>new mechanism, 05 Jul</small></div>
+        <div class="axname">allocation-process<small>three modes, confirmed 05 Jul</small></div>
         <div class="axkind">selection + harmonize</div>
-        <div class="axk">Baseline: random pick from a resident's own pool per day/slot.
-          <b>Harmonization</b>: if an option overlaps across residents' pools in the
-          same house/day/slot, assign it to all of them — one cook serves several
-          residents, tracked for savings. Scoped to one residence; never crosses houses.</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">random</span><span class="chip built">stratified random</span>
+          <span class="chip built">manual override</span>
+        </div>
+        Random: uniform pick from the resident's currently-valid pool. Stratified
+        random: mode exists, stratification variable not yet chosen. Override: Debbie
+        can override any automated pick, any time. <b>Harmonization</b>: if an option
+        overlaps across residents' pools in the same house/day/slot, assign it to all
+        of them — one cook serves several, tracked for savings. Scoped to one
+        residence; never crosses houses.</div>
       </div>
       <div class="axis">
         <div class="axname">support-worker-roster<small>parked, 05 Jul</small></div>
@@ -413,16 +422,22 @@
           <tr><th>1 · Option pool</th>
             <td class="slotcell">Each resident gets up to <b>10 named options</b> per
               meal slot, already assumed compatible with their constraint-block
-              (dislikes, portion-guide, etc.)</td>
-            <td class="slotcell">Schema only — no pools populated for any resident yet</td></tr>
-          <tr><th>2 · Baseline allocation</th>
-            <td class="slotcell">Random pick from the resident's own pool, per day, per slot</td>
-            <td class="slotcell">Sketch only</td></tr>
+              (dislikes, portion-guide, etc.). <b>Debbie builds these quarterly</b>;
+              each pool version is valid between a start/end date, and options can be
+              edited mid-quarter, effective immediately</td>
+            <td class="slotcell">Cadence/validity confirmed — no real pools populated
+              for any resident yet</td></tr>
+          <tr><th>2 · Allocation</th>
+            <td class="slotcell"><b>Random</b>: uniform pick from the currently-valid
+              pool. <b>Stratified random</b>: mode confirmed to exist, stratification
+              variable not yet chosen. <b>Manual override</b>: Debbie can override any
+              pick, any time — automation is a default, not a constraint on her</td>
+            <td class="slotcell">Modes confirmed — stratification variable open</td></tr>
           <tr><th>3 · Harmonization</th>
             <td class="slotcell">Check whether an option appears in multiple residents'
-              pools for the same house/day/slot; if so, assign that same option to all
-              of them — one cook, several residents. Scoped to one residence, never
-              crosses houses</td>
+              currently-valid pools for the same house/day/slot; if so, assign that same
+              option to all of them — one cook, several residents. Scoped to one
+              residence, never crosses houses</td>
             <td class="slotcell">Sketch only — this is the mechanical answer to the
               dinner-sharing question above</td></tr>
           <tr><th>4 · Savings tracking</th>
@@ -433,10 +448,11 @@
       </table>
     </div>
     <div class="decision" style="margin-top:16px">
-      <b>Open question this raises</b>
-      <p>Does random allocation + overlap-detection actually produce plans Debbie would
-        accept, or is there additional judgement — variety across the 28 days, avoiding
-        recent repeats, seasonal availability — that the mechanism doesn't yet capture?</p>
+      <b>Open questions this raises</b>
+      <p>What should stratified-random actually stratify by (food category/nutritional
+        balance, recent-repeat avoidance, day-of-week)? And how does an override on one
+        resident's shared slot interact with harmonization for the others sharing it —
+        does the group keep the original shared option, or does harmonization re-run?</p>
     </div>
   </section>
 
@@ -468,12 +484,24 @@
         house's residents) as the mechanical answer to dinner-sharing, with savings
         tracked rather than assumed. See <a href="#selection">the mechanism</a>.</p>
     </div>
+    <div class="decision"><b style="color:var(--thyme-deep)">Resolved · 05 Jul 2026 (third pass)</b>
+      <p><b style="display:inline;color:var(--ink)">Who builds the pool, and when</b> —
+        Debbie, quarterly (4×/year). <b style="display:inline;color:var(--ink)">Validity</b>
+        — each pool version applies between a start/end date; a resident has a sequence
+        of pool versions over time. <b style="display:inline;color:var(--ink)">Mid-quarter
+        edits</b> — options can be changed anytime, taking effect immediately until
+        altered again. <b style="display:inline;color:var(--ink)">Allocation modes</b> —
+        random, stratified random, and manual override are all confirmed available;
+        Debbie can override any automated pick.</p>
+    </div>
     <div class="decision open"><b>Still open — before any contract/skill is built</b>
       <ul>
-        <li>Who builds each resident's option pool, and how it maps to the existing
-          constraint-block fields (dislikes, portion-guide)</li>
-        <li>Whether random allocation + harmonization actually produces plans Debbie
-          would accept, or misses judgement she currently applies (variety, repeat-avoidance)</li>
+        <li>What variable should stratified-random stratify by? (food category/
+          nutritional balance, recent-repeat avoidance, day-of-week — mode exists,
+          variable doesn't yet)</li>
+        <li>How does Debbie's override interact with harmonization — does an override
+          for one resident break the shared option for others in that house/slot, or
+          does the group keep it?</li>
         <li>Typical residents-per-home (Earlwood = 3; unconfirmed as typical)</li>
         <li>Full list of residences/resident counts nationwide — deferred, sticking
           with Earlwood + 4 placeholders for now</li>
@@ -481,17 +509,17 @@
       </ul>
     </div>
     <div class="decision"><b>Next unit of work</b>
-      <p>Sketch how option pools get populated and validate the harmonization idea
-        against how Debbie actually plans today, then draft the unit contract (one
-        printable 28-day meal-plan artifact per resident) and generate <b>one sample
-        artifact</b> — still no repo infrastructure, frame file + skill + artifact only.</p>
+      <p>Pick the stratification variable and resolve the override/harmonization
+        interaction, then draft the unit contract (one printable 28-day meal-plan
+        artifact per resident) and generate <b>one sample artifact</b> — still no repo
+        infrastructure, frame file + skill + artifact only.</p>
     </div>
   </section>
 
   <footer>source of truth: <b>sil_operations/dimension-map.html</b> (this file, in-repo) —
     generated against <code>sil_operations/frame.json</code> ·
     <code>sil_operations/DIMENSIONS.md</code> · sxdennonv2/harvest ·
-    branch <code>feat/sil-meal-plan-frame</code> · frame v0.4-draft, 05 Jul 2026</footer>
+    branch <code>feat/sil-meal-plan-frame</code> · frame v0.5-draft, 05 Jul 2026</footer>
 </div>
 
 <script>

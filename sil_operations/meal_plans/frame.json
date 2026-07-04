@@ -1,8 +1,8 @@
 {
   "domain": "sil-operations",
   "unit": "meal-plan",
-  "frame_version": "0.4-draft",
-  "source": "Promoted from 3 real Weekly Menu Planner .docx files (residence: Earlwood, June 2026 cycle), analysed 2026-07-04. See FRAME-LEDGER.md row 4. Updated 2026-07-04 with Stuart's answers on organisation, process state, rotation, template, and roster. Updated 2026-07-05 (a) with roster volatility and per-house dinner-sharing conditionality, then (b) parking the roster axis and adding the meal-option-pool + harmonization mechanism as the concrete answer to dinner-sharing.",
+  "frame_version": "0.5-draft",
+  "source": "Promoted from 3 real Weekly Menu Planner .docx files (residence: Earlwood, June 2026 cycle), analysed 2026-07-04. See FRAME-LEDGER.md row 4. Updated 2026-07-04 with Stuart's answers on organisation, process state, rotation, template, and roster. Updated 2026-07-05 (a) with roster volatility and per-house dinner-sharing conditionality, (b) parking the roster axis and adding the meal-option-pool + harmonization mechanism, then (c) with the option-pool's real cadence (quarterly, Debbie-built, time-boxed validity, live mid-quarter edits) and the allocation modes (random / stratified random / manual override).",
   "privacy_note": "Documentation is internal (Stuart, 2026-07-04) - privacy anonymisation lifted for this repo. Real resident names now used. Still avoid publishing this repo externally without re-checking that footing.",
 
   "organisation": {
@@ -53,11 +53,19 @@
       "scope": "per resident, per meal slot (breakfast / morning_tea / lunch / afternoon_tea / dinner)",
       "max_options": 10,
       "shape": "a list of up to 10 named meal options for that resident+slot, each assumed already compatible with that resident's constraint-block (dislikes, portion-guide, etc. - satisfied by construction when the pool is built, not re-checked at allocation time)",
-      "status": "schema only - no real option pools populated yet for any resident; who builds the pool (Debbie? a dietitian?) is an open question"
+      "builder": "Debbie, confirmed 2026-07-05",
+      "cadence": "quarterly - Debbie populates/refreshes each resident's option pools 4x per year",
+      "validity_window": "each pool version has a start date and end date it applies between - so a resident can have a sequence of pool versions over time, not one pool forever",
+      "mutability": "options can be changed mid-quarter (added/removed/altered) - a change takes effect IMMEDIATELY and stays in effect until removed or altered again. So the quarterly cadence sets the baseline refresh rhythm, but the pool is a living list within its validity window, not frozen for the whole quarter.",
+      "generator_implication": "allocation must always read the option pool version that is currently valid for the date being planned - a pool is time-boxed data (start_date, end_date, options[]), not a single static list per resident",
+      "status": "schema now includes cadence/validity/mutability; no real option pools populated yet for any resident"
     },
     "allocation_process": {
-      "baseline": "random selection - for each day and slot, pick one option at random from that resident's own pool",
-      "harmonization": "smarter mode, replacing the earlier manual dinner-sharing judgement: before allocating individually, check whether an option appears in more than one resident's pool for the same house, day, and slot. If an overlapping option exists, assign that SAME option to every resident whose pool contains it - one cooked meal serves several residents. Residents with no shared option available fall back to a random pick from their own pool.",
+      "modes": ["random", "stratified random"],
+      "random": "for each day and slot, pick one option uniformly at random from that resident's currently-valid pool",
+      "stratified_random": "confirmed as an available mode 2026-07-05, but the stratification variable itself is NOT yet specified (candidates: food category/nutritional balance, recent-repeat avoidance, day-of-week pattern - open question, see open_questions)",
+      "override": "Debbie can override any automated allocation for any resident/day/slot if she wants to - the automated process is a default, not a constraint on her judgement",
+      "harmonization": "smarter mode, replacing the earlier manual dinner-sharing judgement: before allocating individually, check whether an option appears in more than one resident's pool for the same house, day, and slot (using each resident's currently-valid pool version). If an overlapping option exists, assign that SAME option to every resident whose pool contains it - one cooked meal serves several residents. Residents with no shared option available fall back to random or stratified-random selection from their own pool.",
       "residence_scope": "harmonization operates within one residence (one house, one kitchen) - never across residences",
       "priority_slot": "dinner is the natural first target, matching the pattern already observed at Earlwood, but the mechanism is written to generalise to any meal slot"
     },
@@ -220,8 +228,8 @@
   ],
 
   "open_questions": [
-    "Who builds each resident's up-to-10-option meal pool per slot, and how - is it Debbie, a dietitian, or some combination, and how does it map to the existing constraint-block fields (dislikes, portion-guide)?",
-    "Does random allocation + overlap-detection actually produce meal plans Debbie would consider acceptable, or is there additional judgement (variety, recent-repeat avoidance, seasonal availability) the mechanism is missing?",
+    "What variable should stratified-random stratify by? (candidates: food category/nutritional balance across the period, recent-repeat avoidance, day-of-week pattern) - mode is confirmed to exist, the stratification variable is not yet chosen",
+    "How does Debbie's override interact with harmonization - if she overrides one resident's allocation for a shared slot, does that break harmonization for the others sharing it that day, or do they keep the original shared option?",
     "How many residents typically live in one SIL home (Earlwood = 3; unconfirmed as typical) - affects how much harmonization opportunity typically exists per house",
     "Full list of residences/resident counts nationwide - deferred, sticking with Earlwood + 4 placeholders for now",
     "Support-worker roster data source - PARKED (single 'TBA' value in use); revisit only if/when worth pursuing"

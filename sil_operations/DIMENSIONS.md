@@ -16,8 +16,8 @@ Earlwood), analysed 2026-07-04. ✅ = populated from source; ⬜ = placeholder, 
 | `weekly-grid` | **invariant crosscutting contract** | 7 days × 5 meal slots (Breakfast 8am, Morning Tea 10:30am, Lunch 12:30pm, Afternoon Tea 3:30pm, Dinner 6pm), one 28-day period per resident (confirmed the standard unit) | frame — stable across all 3 source residents; treat as the fixed shape, like the ladder in the AI-training frame |
 | `constraint-block` | crosscutting, **optional per resident** | 7 block types observed: dislikes list, portion-guide/clinical paragraph, SIL-day flag, community-participation marker, conditional substitution, running quota, eat-out placeholder | frame — presence/absence and wording vary per resident; none is guaranteed present |
 | `dinner-rotation` | **conditional, not a fixed rule** (clarified 2026-07-05) | 28-recipe rotation, identical across all 3 Earlwood residents for the same week/day. Sharing one dinner across a house is only possible when residents' dietary requirements are compatible — where they clash (allergens, texture, medical diets), residents need individual dinners instead. Cadence is arbitrary/manual, not a fixed constraint | frame — now resolved mechanically by `meal-option-pool` × `allocation-process` below, rather than assumed |
-| `meal-option-pool` | **new axis, 2026-07-05** | up to 10 named meal options per resident, per meal slot — each assumed already compatible with that resident's constraint-block | frame — not yet populated for any resident; who builds the pool (Debbie? a dietitian?) is open |
-| `allocation-process` | **new crosscutting mechanism, 2026-07-05** | baseline: random pick from a resident's own pool per day/slot. Smarter: **harmonization** — detect an option shared across multiple residents' pools in the same house/day/slot and assign it to all of them (one cook, several residents), tracked for time/cost savings | frame — the concrete answer to "can this house share a dinner", replacing manual judgement with overlap-detection |
+| `meal-option-pool` | resident × time-boxed data | up to 10 named meal options per resident, per meal slot. **Built by Debbie, quarterly** (4x/year); each pool version has a start/end date it's valid between; options can be added/removed/altered mid-quarter, taking effect immediately until changed again | frame — a pool is a sequence of time-boxed versions per resident, not one static list |
+| `allocation-process` | crosscutting mechanism | three modes, confirmed 2026-07-05: **random** (uniform pick from the resident's currently-valid pool), **stratified random** (stratification variable not yet chosen), **manual override** (Debbie can override any automated pick). Plus **harmonization**: detect an option shared across multiple residents' pools in the same house/day/slot and assign it to all of them | frame — the concrete answer to "can this house share a dinner", replacing manual judgement with overlap-detection, with an escape hatch for Debbie's judgement |
 | `support-worker-roster` | **parked, 2026-07-05** | single fixed value `TBA` — kept as a dimension so the shape isn't lost, but not pursued as live/volatile data right now | frame — revisit only if worth pursuing later |
 | `tier` | deployment | static (docx, current — **fully manual today**, hand-built by Debbie per resident per 28-day period) · live (generated per resident/period — the automation goal) | same frame + contract would serve both |
 
@@ -61,20 +61,30 @@ makes that evaluation automatic rather than a manual judgement call:
 
 1. **Meal-option pool** — each resident gets up to 10 named options per meal slot,
    already assumed compatible with their own constraint-block (dislikes, portion-guide,
-   etc.). Not yet populated for any resident; who builds the pool is still open.
-2. **Allocation** — baseline is a random pick from the resident's own pool for each
-   day/slot.
+   etc.). **Confirmed 2026-07-05: Debbie builds these, quarterly** (4x/year). Each pool
+   version applies between a start date and an end date — so this is time-boxed data,
+   not one static list per resident forever. Options can be changed mid-quarter (added,
+   removed, altered); a change takes effect **immediately** and stays in effect until
+   changed again — the quarterly cadence is the baseline refresh rhythm, the pool itself
+   is a living list within its validity window.
+2. **Allocation** — three modes, confirmed 2026-07-05: **random** (uniform pick from the
+   resident's currently-valid pool version), **stratified random** (the mode exists, but
+   the stratification variable itself — food category? recent-repeat avoidance?
+   day-of-week? — is not yet chosen, see open questions), and **manual override**
+   (Debbie can override any automated pick for any resident/day/slot — the automation is
+   a default, not a constraint on her judgement).
 3. **Harmonization** — before allocating individually, check whether an option appears
-   in more than one resident's pool for the same house, day, and slot. If it does,
-   assign that same option to every resident who has it in their pool — one cooked meal
-   serves several residents, discovered by overlap rather than assumed as a rule.
-   Scoped to one residence at a time; never crosses houses.
+   in more than one resident's currently-valid pool for the same house, day, and slot.
+   If it does, assign that same option to every resident who has it in their pool — one
+   cooked meal serves several residents, discovered by overlap rather than assumed as a
+   rule. Scoped to one residence at a time; never crosses houses. Residents without a
+   shared option fall back to random or stratified-random selection from their own pool.
 4. **Savings tracking** — count how many day/slot combinations got harmonized and how
    many residents each one covered, so the time/cost benefit is measured, not assumed.
 
 This replaces "does Debbie judge this house compatible?" with "do these residents'
-option pools happen to overlap?" — still open whether that approximates her judgement or
-misses something (variety, recent-repeat avoidance) she currently accounts for by eye.
+option pools happen to overlap?" — and the override mode means her judgement is never
+locked out even if the mechanism gets something wrong.
 
 ## Roster: parked (2026-07-05)
 
