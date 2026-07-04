@@ -19,7 +19,7 @@ Earlwood), analysed 2026-07-04. ✅ = populated from source; ⬜ = placeholder, 
 | `meal-option-pool` | resident × time-boxed data | up to 10 named meal options per resident, per meal slot. **Built by Debbie, quarterly** (4x/year); each pool version has a start/end date it's valid between; options can be added/removed/altered mid-quarter, taking effect immediately until changed again | frame — a pool is a sequence of time-boxed versions per resident, not one static list |
 | `allocation-process` | crosscutting mechanism | three modes, confirmed 2026-07-05: **random** (uniform pick from the resident's currently-valid pool), **stratified random** (stratifies by **variety across the 28-day period** — spread option usage evenly rather than clustering repeats), **manual override** (Debbie can override any automated pick). Plus **harmonization**: detect an option shared across multiple residents' pools in the same house/day/slot and assign it to all of them | frame — the concrete answer to "can this house share a dinner", replacing manual judgement with overlap-detection, with an escape hatch for Debbie's judgement |
 | `review-interface` | web/HTML UI, confirmed 2026-07-05 | every resident × meal-slot × day cell is a **dropdown** of that resident's currently-valid option pool, pre-filled by the allocation algorithm's output. Debbie can change **as much or as little as she wants**, cell by cell, independently — no automatic re-harmonization or cascading | frame — the artifact's core interaction shape, fully specified |
-| `plan-lifecycle` | **state machine, 2026-07-05** | `draft` (editable) → `locked` (Debbie's explicit action; **hard gate** — cannot shop an unlocked plan; editability after locking unconfirmed) → `shopping_list_generated` (confirmed terminal — cannot be changed further, ever) | frame — one-directional as far as confirmed; open question is whether `locked` alone is already immutable |
+| `plan-lifecycle` | **four-state machine, revised 2026-07-05** | `draft` (editable) → `locked` (Debbie's explicit action; hard gate for shopping) → `shopped` (hard gate for closing; **can reset back to draft**, clearing the shopping list) → `closed` (confirmed the true terminal state — no further changes, ever) | frame — `shopped` is reversible, `closed` is not; open question is whether `locked` can revert to `draft` directly |
 | `support-worker-roster` | **parked, 2026-07-05** | single fixed value `TBA` — kept as a dimension so the shape isn't lost, but not pursued as live/volatile data right now | frame — revisit only if worth pursuing later |
 | `tier` | deployment | static (docx, current — **fully manual today**, hand-built by Debbie per resident per 28-day period) · live (generated per resident/period — the automation goal) | same frame + contract would serve both |
 
@@ -110,27 +110,30 @@ Both implications from the previous draft are now resolved:
   state she leaves the grid in in the `draft` state is what gets carried forward when
   she locks it.
 
-## Plan lifecycle: draft → locked → shopping list (2026-07-05)
+## Plan lifecycle: draft → locked → shopped → closed (revised 2026-07-05)
 
-A new state machine governs how long a plan stays editable:
+**Revision, same day**: the state machine has a fourth state, and `shopped` is
+*reversible* — correcting the earlier draft's assumption that shopping was the terminal
+gate. `closed` is the true terminal state.
 
 1. **`draft`** — the algorithm has pre-filled every cell; Debbie is reviewing and may
    change any cell, independently, as described above.
 2. **`locked`** — Debbie's explicit action (a "Locked" button), not automatic or
-   time-based. Her edited state becomes final for this plan at this point. **Confirmed
-   2026-07-05 as a hard gate, not just a path**: a plan cannot be used to generate a
-   shopping list until it is locked — there's no way to shop an unlocked plan.
-   **Open question**: can a locked plan itself be unlocked and edited again before a
-   shopping list is generated from it, or does locking already make it immutable? Not
-   yet confirmed either way.
-3. **`shopping_list_generated`** — confirmed **terminal and immutable**: once a plan has
-   been used to create a shopping list, it cannot be changed any further, under any
+   time-based. Her edited state becomes final for this plan at this point. **Hard
+   gate**: a plan cannot be shopped until it is locked.
+3. **`shopped`** — a shopping list has been generated from the locked plan. **Hard
+   gate**: a plan cannot be closed until it has been shopped. **Reversible**: a shopped
+   plan can be **reset back to `draft`** — this clears the generated shopping list and
+   reopens the plan for editing. Not terminal, despite the earlier draft's assumption.
+4. **`closed`** — explicitly closed, after having been shopped. **Confirmed the true
+   terminal state**: once closed, a plan cannot be changed any further, under any
    circumstances.
 
-Both gates are now confirmed as hard rules, not descriptions of a typical path: (1) no
-shopping list without locking first; (2) no changes at all after shopping. The one
-remaining gap in the lifecycle is whether `locked` is itself reversible before a
-shopping list gets made.
+Both "must have happened first" gates are hard rules: locked before shopped, shopped
+before closed. The one remaining open question: whether `locked` can revert directly to
+`draft` (an "unlock"), or whether the only confirmed way back to `draft` is via
+`shopped → draft` — i.e. generating a shopping list and then resetting it, even if all
+you wanted to undo was the lock.
 
 Transition order is one-directional as far as confirmed: `draft → locked →
 shopping_list_generated`, with no reopening after shopping-list generation.

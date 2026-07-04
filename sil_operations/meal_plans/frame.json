@@ -1,8 +1,8 @@
 {
   "domain": "sil-operations",
   "unit": "meal-plan",
-  "frame_version": "0.9-draft",
-  "source": "Promoted from 3 real Weekly Menu Planner .docx files (residence: Earlwood, June 2026 cycle), analysed 2026-07-04. See FRAME-LEDGER.md row 4. Updated 2026-07-04 with Stuart's answers on organisation, process state, rotation, template, and roster. Updated 2026-07-05 (a) with roster volatility and per-house dinner-sharing conditionality, (b) parking the roster axis and adding the meal-option-pool + harmonization mechanism, (c) with the option-pool's real cadence (quarterly, Debbie-built, time-boxed validity, live mid-quarter edits) and the allocation modes (random / stratified random / manual override), (d) with the stratification variable (variety across the 28-day period), (e) with the review interface's concrete UI shape - a dropdown per resident x meal-slot x day cell, then (f) with the override scope (independent per-cell edits, no cascading), the artifact format (web/HTML UI), and the plan lifecycle (draft -> locked -> shopping_list_generated, terminal).",
+  "frame_version": "0.10-draft",
+  "source": "Promoted from 3 real Weekly Menu Planner .docx files (residence: Earlwood, June 2026 cycle), analysed 2026-07-04. See FRAME-LEDGER.md row 4. Updated 2026-07-04 with Stuart's answers on organisation, process state, rotation, template, and roster. Updated 2026-07-05 (a) with roster volatility and per-house dinner-sharing conditionality, (b) parking the roster axis and adding the meal-option-pool + harmonization mechanism, (c) with the option-pool's real cadence (quarterly, Debbie-built, time-boxed validity, live mid-quarter edits) and the allocation modes (random / stratified random / manual override), (d) with the stratification variable (variety across the 28-day period), (e) with the review interface's concrete UI shape - a dropdown per resident x meal-slot x day cell, (f) with the override scope (independent per-cell edits, no cascading) and the artifact format (web/HTML UI), then (g) REVISED the plan lifecycle to four states - draft -> locked -> shopped -> closed - correcting the earlier draft's assumption that 'shopped' was terminal: shopped can actually reset back to draft (shopping list cleared); closed is the true terminal state.",
   "privacy_note": "Documentation is internal (Stuart, 2026-07-04) - privacy anonymisation lifted for this repo. Real resident names now used. Still avoid publishing this repo externally without re-checking that footing.",
 
   "organisation": {
@@ -87,7 +87,7 @@
       "artifact_format": "CONFIRMED 2026-07-05: a web/HTML UI hosts the interactive review step (resolves the earlier open question about what format supports per-cell dropdowns)."
     },
     "plan_lifecycle": {
-      "status": "NEW, 2026-07-05 - the state machine governing when a meal plan can still be edited",
+      "status": "REVISED, 2026-07-05 - four states, corrects the earlier draft's assumption that the shopped state was terminal",
       "states": [
         {
           "state": "draft",
@@ -98,17 +98,31 @@
           "state": "locked",
           "description": "Debbie clicks a 'Locked' button once she is satisfied with her review. Her edited state at that moment becomes final for this plan.",
           "trigger": "Debbie's explicit action - locking is not automatic or time-based",
-          "editable": "UNCONFIRMED - open question: can a locked-but-not-yet-shopping-listed plan be unlocked and edited again, or does locking itself already make it immutable? See open_questions.",
-          "gate": "CONFIRMED 2026-07-05, hard precondition: a plan CANNOT be used to generate a shopping list until it is locked. Locked is not merely one path to shopping-list generation - it is a required gate."
+          "editable": "UNCONFIRMED - open question: can a locked-but-not-yet-shopped plan be unlocked and edited again directly, or is a shopped->draft reset (see below) the only confirmed way back to draft? See open_questions.",
+          "gate_in": "CONFIRMED hard precondition: a plan must be locked before it is eligible to be shopped. No exceptions."
         },
         {
-          "state": "shopping_list_generated",
-          "description": "a shopping list has been created from this locked plan",
+          "state": "shopped",
+          "description": "a shopping list has been generated from this locked plan",
           "editable": false,
-          "note": "CONFIRMED terminal and immutable: once a menu plan has been used to create a shopping list, it cannot be changed any further, under any circumstances"
+          "gate_in": "CONFIRMED hard precondition: a plan must be shopped before it is eligible to be closed. No exceptions.",
+          "reset": "CONFIRMED 2026-07-05: a shopped plan CAN be reset back to draft - this clears the generated shopping list and reopens the plan for editing. This corrects the earlier (2026-07-05, first pass) assumption that shopped was terminal/immutable - it is not; only closed is."
+        },
+        {
+          "state": "closed",
+          "description": "the plan has been explicitly closed, after having been shopped",
+          "editable": false,
+          "note": "CONFIRMED the true terminal state: once closed, a plan CANNOT be changed any further, under any circumstances. This replaces the earlier draft's incorrect assignment of that property to the shopped state."
         }
       ],
-      "transition_order": "draft -> locked -> shopping_list_generated (strictly one-directional as far as confirmed; no reopening after shopping-list generation). Two rules now both confirmed as hard gates, not just descriptions: (1) shopping-list generation requires locked first, no exceptions; (2) once shopped, no further changes, no exceptions. The one remaining gap is whether the locked state itself is reversible before shopping happens."
+      "transitions": [
+        "draft -> locked (Debbie's explicit action)",
+        "locked -> shopped (shopping list generated; requires locked first, hard gate)",
+        "shopped -> draft (reset; clears the generated shopping list; reopens for editing)",
+        "shopped -> closed (requires shopped first, hard gate)",
+        "closed -> (none; terminal)"
+      ],
+      "open_question": "whether locked can transition directly back to draft (an 'unlock'), or whether the only confirmed path back to draft is via shopped -> draft (i.e. you'd need to generate a shopping list and then reset it, even if you only wanted to undo the lock). Not yet confirmed either way."
     }
   },
 
@@ -260,7 +274,7 @@
   ],
 
   "open_questions": [
-    "Can a 'locked' plan be unlocked and edited again before a shopping list is generated from it, or does clicking 'Locked' already make it immutable? (Only the shopping_list_generated state is confirmed as unconditionally immutable.)",
+    "Can 'locked' transition directly back to 'draft' (an unlock), or is the shopped -> draft reset the only confirmed way back? (Only 'closed' is confirmed as unconditionally immutable - 'shopped' can reset to 'draft'.)",
     "How many residents typically live in one SIL home (Earlwood = 3; unconfirmed as typical) - affects how much harmonization opportunity typically exists per house",
     "Full list of residences/resident counts nationwide - deferred, sticking with Earlwood + 4 placeholders for now",
     "Support-worker roster data source - PARKED (single 'TBA' value in use); revisit only if/when worth pursuing"
