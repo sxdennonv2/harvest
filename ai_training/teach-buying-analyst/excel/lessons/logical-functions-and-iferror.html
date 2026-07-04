@@ -49,11 +49,12 @@
     <span class="cell">IFS</span> tests conditions in order:
     <span class="cell">=IFS(D2&gt;=E2,"On target", D2&gt;=E2*0.8,"Close", TRUE,"Below")</span>.
     Combine tests with <span class="cell">AND</span> / <span class="cell">OR</span>:
-    <span class="cell">=IF(AND(D2&gt;=E2, B2="Snacks"), "Star", "")</span>.
+    <span class="cell">=IF(AND(D2&gt;=E2, B2&gt;=100), "Star", "")</span> — on target
+    <em>and</em> moving at least 100 cases.
   </p>
   <p>
     <span class="cell">IFERROR</span> wraps anything that might error and supplies a clean fallback:
-    <span class="cell">=IFERROR(F2/C2, 0)</span> gives revenue-per-case, but returns
+    <span class="cell">=IFERROR(C2/B2, 0)</span> gives revenue-per-case, but returns
     <span class="cell">0</span> instead of <span class="cell">#DIV/0!</span> when cases are blank.
   </p>
 
@@ -100,7 +101,7 @@
       <p class="feedback" role="status"></p>
     </div>
     <div class="q-block" data-answer="2">
-      <p class="q">2. What does <span class="cell">=IFERROR(F2/C2, 0)</span> return when C2 is blank?</p>
+      <p class="q">2. What does <span class="cell">=IFERROR(C2/B2, 0)</span> return when B2 is blank?</p>
       <ul class="opts">
         <li><button class="opt">#DIV/0!</button></li>
         <li><button class="opt">a blank cell</button></li>
@@ -110,7 +111,7 @@
       <p class="feedback" role="status"></p>
     </div>
     <div class="q-block" data-answer="0">
-      <p class="q">3. To flag a line only when it's on target <em>and</em> a Snack, you use …</p>
+      <p class="q">3. To flag a line only when it's on target <em>and</em> moving at least 100 cases, you use …</p>
       <ul class="opts">
         <li><button class="opt">IF with AND(...)</button></li>
         <li><button class="opt">SUM</button></li>
