@@ -1,0 +1,89 @@
+{
+  "course": {
+    "title": "PowerPoint to a High Standard",
+    "lessons_dir": "lessons",
+    "workbook": "artefacts/powerpoint-practice-deck",
+    "kicker_prefix": "PowerPoint to a High Standard",
+    "end_next_label": "more coming — ask your teacher"
+  },
+  "rung_headers": {
+    "corner": "Theme ↓ / Rung →",
+    "short": [
+      "1 · Manual craft",
+      "2 · Aldi:GPT",
+      "3 · M365 Copilot",
+      "4 · GitHub Copilot"
+    ],
+    "long": [
+      "1 · Manual craft (do it well by hand)",
+      "2 · Aldi:GPT (chat, no tool use)",
+      "3 · M365 Copilot (acts in PowerPoint)",
+      "4 · GitHub Copilot (builds the deck)"
+    ]
+  },
+  "themes": [
+    {
+      "key": "masters-foundations",
+      "title": "Build on the master",
+      "notes": ["slide masters, layouts, placeholders — the deck's skeleton"],
+      "rungs": [
+        "Plan the deck's structure: which layouts, in what order",
+        "Create the section skeleton from a prompt or a document",
+        "Build the deck skeleton from an outline file, on the right layouts"
+      ]
+    },
+    {
+      "key": "arrange-align",
+      "title": "Arrange & align",
+      "notes": ["guides, distribute, grouping — the formatting demand"],
+      "rungs": [
+        "Diagnose a slide you describe: what makes it look untidy",
+        "Apply Designer suggestions — then audit what it changed",
+        "Batch-fix alignment and spacing across a deck by script"
+      ]
+    },
+    {
+      "key": "charts-visuals",
+      "title": "Charts & visuals",
+      "notes": ["data onto slides; the Excel seam (paste-link, not screenshot)"],
+      "rungs": [
+        "Pick the right visual for the point you describe",
+        "Create a slide visualising this data, in the deck",
+        "Generate the charts into the deck from the data files"
+      ]
+    },
+    {
+      "key": "reuse-templates",
+      "title": "Reuse & templates",
+      "notes": ["the corporate template; theme colours/fonts; reusable slides"],
+      "rungs": [
+        "Turn a deck you describe into a reusable template checklist",
+        "Create a new deck from the organisation's template",
+        "Build the organisation template itself from a brand spec"
+      ]
+    },
+    {
+      "key": "present-share",
+      "title": "Present & share",
+      "notes": ["presenter view, rehearse, export — the last mile"],
+      "rungs": [
+        "Build the pre-presentation checklist for the room you describe",
+        "Summarise this deck for the follow-up email",
+        "Build the export pack (PDF, handouts, notes pages) by script"
+      ]
+    }
+  ],
+  "lessons": [],
+  "candidates": [
+    { "theme": "masters-foundations", "working_title": "Masters & layouts: fix it once, fix it everywhere", "survey_signal": "\"refining PPT or training material\"; \"get ideas on formatting and templates\"" },
+    { "theme": "masters-foundations", "working_title": "Placeholders, not text boxes", "survey_signal": "pillar-derived" },
+    { "theme": "arrange-align", "working_title": "Align, distribute, group: the tidy slide", "survey_signal": "\"refining PPT\"; \"formatting\" (dominant PPT cluster)" },
+    { "theme": "arrange-align", "working_title": "Whitespace & hierarchy: less on the slide", "survey_signal": "pillar-derived" },
+    { "theme": "charts-visuals", "working_title": "Excel to slide: paste-link, never screenshot", "survey_signal": "\"creating graphs or images for reporting\"" },
+    { "theme": "charts-visuals", "working_title": "One chart, one point", "survey_signal": "\"creating graphs or images for reporting\"" },
+    { "theme": "reuse-templates", "working_title": "Working the corporate template (not against it)", "survey_signal": "\"ideas on formatting and templates\"" },
+    { "theme": "reuse-templates", "working_title": "Reusable slides: steal from yourself", "survey_signal": "pillar-derived" },
+    { "theme": "present-share", "working_title": "Presenter view & rehearse", "survey_signal": "\"preparing presentations\"" },
+    { "theme": "present-share", "working_title": "Export & share: PDF, handouts, the deck that travels", "survey_signal": "\"external facing documents\"" }
+  ]
+}
