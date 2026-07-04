@@ -1,8 +1,8 @@
 {
   "domain": "sil-operations",
   "unit": "meal-plan",
-  "frame_version": "0.2-draft",
-  "source": "Promoted from 3 real Weekly Menu Planner .docx files (residence: Earlwood, June 2026 cycle), analysed 2026-07-04. See FRAME-LEDGER.md row 4. Updated 2026-07-04 with Stuart's answers on organisation, process state, rotation, template, and roster.",
+  "frame_version": "0.3-draft",
+  "source": "Promoted from 3 real Weekly Menu Planner .docx files (residence: Earlwood, June 2026 cycle), analysed 2026-07-04. See FRAME-LEDGER.md row 4. Updated 2026-07-04 with Stuart's answers on organisation, process state, rotation, template, and roster. Updated 2026-07-05 with roster volatility and per-house dinner-sharing conditionality.",
   "privacy_note": "Documentation is internal (Stuart, 2026-07-04) - privacy anonymisation lifted for this repo. Real resident names now used. Still avoid publishing this repo externally without re-checking that footing.",
 
   "organisation": {
@@ -31,15 +31,18 @@
       { "slot": "dinner", "time": "6pm" }
     ],
     "dinner_rotation": {
-      "shared_across_residents": true,
-      "shared_across_residences": "unknown - confirmed only within Earlwood; not chasing further for now",
+      "shared_across_residents": "conditional, not a rule - clarified 2026-07-05",
+      "sharing_condition": "in a house where residents' dietary requirements are compatible, all residents can eat the same dinner (Earlwood's observed pattern). Where dietary requirements clash (allergens, texture modification, medical diets), a shared dinner is impracticable and residents need individual dinners instead. So 'one shared dinner per house' is NOT a company-wide rule - it's an outcome of whichever residents happen to live together, evaluated per house.",
+      "shared_across_residences": "not applicable as originally framed - the real question is per-house dietary compatibility, not a nationwide policy. Deferred, not blocking.",
       "cycle_weeks": 4,
-      "source_evidence": "identical dinner text across Earlwood's 3 residents for corresponding weeks/days, e.g. all three had the same dish on Monday of week 1",
-      "cadence_rule": "confirmed by Stuart 2026-07-04: today the rotation's cadence is arbitrary/manual ('whenever') - it is NOT a fixed real-world constraint the frame must preserve. Automation is free to set the rotation cycle however it wants; do not treat the observed 4-week/28-recipe pattern as a hard requirement."
+      "source_evidence": "identical dinner text across Earlwood's 3 residents for corresponding weeks/days, e.g. all three had the same dish on Monday of week 1 - consistent with their dietary requirements being compatible enough to share",
+      "cadence_rule": "confirmed by Stuart 2026-07-04: today the rotation's cadence is arbitrary/manual ('whenever') - it is NOT a fixed real-world constraint the frame must preserve. Automation is free to set the rotation cycle however it wants; do not treat the observed 4-week/28-recipe pattern as a hard requirement.",
+      "generator_implication": "the generator must decide per-house, per-period whether residents can share a dinner rotation or need individual ones, driven by each resident's dietary/constraint-block profile - not assume either way."
     },
     "support_worker_roster": {
       "type": "NEW axis, added 2026-07-04 - support workers are rostered on/off shift by day, by week, by month",
       "implication": "the 'Created with Support Worker' field and the community-participation marker's named-worker variant are both roster lookups, not free text - a generator needs the actual shift roster as an input, not just a static name",
+      "volatility": "clarified 2026-07-05: the roster is highly changeable - named staff can change at short notice. A meal plan that bakes in a specific support worker's name can go stale quickly. Implication: this is not a fact to freeze into a static document at generation time; the generator (especially any 'live' tier) needs to read the roster close to when the plan is used, not once and cache it indefinitely.",
       "source_of_roster_data": "unknown - open question, see open_questions",
       "why_it_matters": "this is the real scale bottleneck: automating roster-aware plan generation is what lets Debbie cover the whole fleet instead of one resident/home at a time"
     }
@@ -193,9 +196,9 @@
   ],
 
   "open_questions": [
-    "Where does the support-worker shift roster live, and in what format (spreadsheet? rostering system? manual)? This is the key new input the generator needs.",
+    "Where does the support-worker shift roster live, and in what format (spreadsheet? rostering system? manual)? Made more urgent by its volatility (2026-07-05) - a short-notice-changeable roster means the generator needs a live/current lookup, not a one-time import.",
+    "How does the generator determine whether a house's residents have dietary requirements compatible enough to share one dinner rotation, vs needing individual dinners? Is this something Debbie assesses manually today, and could that assessment be captured as data per resident?",
     "How many residents typically live in one SIL home (Earlwood = 3; unconfirmed as typical)",
-    "Whether the dinner rotation and template are literally identical across all ~20-30 homes, or just within Earlwood - deferred, not blocking",
     "Full list of residences/resident counts nationwide - deferred, sticking with Earlwood + 4 placeholders for now"
   ]
 }

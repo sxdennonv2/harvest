@@ -15,8 +15,8 @@ Earlwood), analysed 2026-07-04. ✅ = populated from source; ⬜ = placeholder, 
 | `resident` | tree leaf, nested in residence | 3 populated (Earlwood: Kathryn Briggs, Teresa, Vanessa Ryan — real names, privacy anonymisation lifted for this internal repo 2026-07-04) + 2 placeholder per unbuilt residence | frame — one participant, one personalisation profile |
 | `weekly-grid` | **invariant crosscutting contract** | 7 days × 5 meal slots (Breakfast 8am, Morning Tea 10:30am, Lunch 12:30pm, Afternoon Tea 3:30pm, Dinner 6pm), one 28-day period per resident (confirmed the standard unit) | frame — stable across all 3 source residents; treat as the fixed shape, like the ladder in the AI-training frame |
 | `constraint-block` | crosscutting, **optional per resident** | 7 block types observed: dislikes list, portion-guide/clinical paragraph, SIL-day flag, community-participation marker, conditional substitution, running quota, eat-out placeholder | frame — presence/absence and wording vary per resident; none is guaranteed present |
-| `dinner-rotation` | shared cross-resident constant | 28-recipe rotation, identical across all 3 Earlwood residents for the same week/day; confirmed **not** a fixed real-world constraint — cadence is currently arbitrary/manual and automation is free to set it however it wants | frame — batch-cooked; confirmed shared *within* Earlwood only |
-| `support-worker-roster` | **new axis, 2026-07-04** | support workers rostered on/off shift by day/week/month; the "Created with Support Worker" field and the named-CP-marker variant are both roster lookups, not free text | frame — the real scale bottleneck; automating this is what lets Debbie plan fleet-wide instead of home-by-home |
+| `dinner-rotation` | **conditional, not a fixed rule** (clarified 2026-07-05) | 28-recipe rotation, identical across all 3 Earlwood residents for the same week/day. Sharing one dinner across a house is only possible when residents' dietary requirements are compatible — where they clash (allergens, texture, medical diets), residents need individual dinners instead. Cadence is arbitrary/manual, not a fixed constraint | frame — evaluated per house, per period, driven by each resident's constraint-block profile, not assumed either way |
+| `support-worker-roster` | **new axis, 2026-07-04; volatile (clarified 2026-07-05)** | support workers rostered on/off shift by day/week/month, and named staff can change at **short notice** | frame — the real scale bottleneck; a plan that bakes in a specific support worker's name can go stale fast, so the generator needs a near-real-time roster lookup, not a one-time import |
 | `tier` | deployment | static (docx, current — **fully manual today**, hand-built by Debbie per resident per 28-day period) · live (generated per resident/period — the automation goal) | same frame + contract would serve both |
 
 ## How they compose
@@ -25,8 +25,8 @@ Earlwood), analysed 2026-07-04. ✅ = populated from source; ⬜ = placeholder, 
 organisation → residence → resident         swappable tree, one home per residence
 resident × weekly-grid                       the fixed 7×5 grid, one 28-day period per resident
 resident × constraint-block                  the optional personalisation layer (0–7 blocks present)
-residence × dinner-rotation                  shared batch-cooked constant (cadence is a free parameter, not fixed)
-residence × support-worker-roster            shift-based staffing that the generator must read, not assume
+residence × dinner-rotation                  conditional on dietary compatibility across the house's residents, not a fixed rule
+residence × support-worker-roster            shift-based staffing that changes at short notice - the generator must read it live, not assume it
 everything × tier                            static docx today (fully manual), live generation is the goal
 ```
 
@@ -48,6 +48,30 @@ The generator should target one footer shape; the 1×2 variant is something to r
 not preserve. Same ruling likely applies to the community-participation marker's three
 spellings (`ExtCP` / `EXTCP - <name>` / `DMS-CP`) — treat as drift to normalise, backed by
 the support-worker roster, not three real conventions.
+
+## Dinner-sharing is conditional, not universal (clarified 2026-07-05)
+
+Earlier drafts read Earlwood's identical dinner-per-resident pattern as a general rule
+("dinner is shared, batch-cooked"). Stuart corrected this: whether a house's residents
+can share one dinner depends entirely on whether their **dietary requirements are
+compatible**. Earlwood's 3 residents happen to be compatible enough to share. In a house
+where residents have clashing needs — allergens, texture modification, a medical diet —
+a shared dinner is impracticable, and each resident needs their own. So the generator
+can't assume "one dinner per house" or "one dinner per resident" as a default; it has to
+evaluate compatibility per house, per period, from each resident's constraint-block
+profile (see `dislikes`, `portion_guide` in the schema above). Still open: how that
+compatibility judgement is made today (Debbie, presumably by eye) and whether it can be
+captured as structured data.
+
+## Roster volatility (clarified 2026-07-05)
+
+Named support-worker fields (`Created with Support Worker`, the named-CP-marker variant)
+looked like static facts in the source docs, but the actual roster is **highly
+changeable — staff can be swapped at short notice**. A generated plan that hard-codes a
+support worker's name for a given day is liable to be wrong by the time it's used. This
+pushes the automation goal toward the **live tier**, not the static one: whatever reads
+the roster needs to do so close to when the plan is actually needed, not once at
+generation time and then treat it as fixed. Still open: where that roster data lives.
 
 ## Privacy note
 
