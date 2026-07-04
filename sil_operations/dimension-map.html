@@ -1,0 +1,397 @@
+<title>Harvest — SIL-operations dimension space</title>
+<!--
+  Live progress map of the SIL-operations frame (FRAME-LEDGER row 4). Same
+  standard process as ai_training/DIMENSIONS.md § Progress map: after every
+  change to frame.json or a merged batch, update this file (residence/resident
+  counts, constraint-block matrix, open questions) and redeploy to its
+  standing artifact URL. This file is the source of truth; the artifact is
+  its deployment.
+-->
+<style>
+  :root{
+    --field:#F5F2EB; --panel:#FFFFFF; --ink:#221E19; --muted:#6E6459;
+    --thyme:#3F6B3E; --thyme-deep:#2E4F2E; --sage:#E9F0E6; --line:#DDD6C9;
+    --straw:#F3E7C8; --amber:#9A6A00; --latent:#B7AFA0;
+    --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+    --serif:Charter,'Iowan Old Style',Georgia,'Times New Roman',serif;
+    --sans:system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{background:var(--field);color:var(--ink);font-family:var(--sans);
+       font-size:15px;line-height:1.55;margin:0}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px 96px}
+
+  header.masthead{padding:44px 0 20px;border-bottom:2px solid var(--thyme)}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+           text-transform:uppercase;color:var(--thyme);margin:0 0 10px}
+  h1{font-family:var(--serif);font-size:34px;font-weight:600;margin:0 0 8px;
+     letter-spacing:-.01em;text-wrap:balance}
+  .lede{color:var(--muted);max-width:64ch;margin:0}
+  .lede b{color:var(--ink);font-weight:600}
+
+  nav.jump{position:sticky;top:0;z-index:9;background:var(--field);
+           border-bottom:1px solid var(--line);display:flex;gap:2px;
+           overflow-x:auto;padding:0 0 0 2px}
+  nav.jump a{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;
+             color:var(--muted);text-decoration:none;padding:11px 13px 9px;
+             border-bottom:2px solid transparent;white-space:nowrap}
+  nav.jump a:hover,nav.jump a:focus-visible{color:var(--thyme)}
+  nav.jump a:focus-visible{outline:2px solid var(--thyme);outline-offset:-2px}
+  nav.jump a.on{color:var(--thyme-deep);border-bottom-color:var(--thyme)}
+
+  .stats{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:4px;
+        padding:10px 16px;min-width:118px}
+  .stat .n{font-family:var(--serif);font-size:24px;font-weight:600;
+           font-variant-numeric:tabular-nums;color:var(--thyme-deep)}
+  .stat .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+           text-transform:uppercase;color:var(--muted)}
+  .stat.warn .n{color:var(--amber)}
+
+  section{margin-top:60px}
+  section>h2{font-family:var(--serif);font-size:23px;font-weight:600;margin:6px 0 6px}
+  .read{color:var(--muted);max-width:68ch;margin:0 0 20px}
+  .read b{color:var(--ink);font-weight:600}
+  .read code{font-family:var(--mono);font-size:.88em;background:var(--sage);
+              padding:1px 5px;border-radius:3px}
+
+  /* axes table */
+  .axes{border:1px solid var(--line);border-radius:5px;overflow:hidden;background:var(--panel)}
+  .axis{display:grid;grid-template-columns:170px 128px 1fr;gap:0;
+        border-top:1px solid var(--line)}
+  .axis:first-child{border-top:none}
+  .axis>div{padding:13px 16px}
+  .axname{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--thyme-deep)}
+  .axname small{display:block;font-weight:400;color:var(--muted);font-size:11px;margin-top:3px}
+  .axkind{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;
+          text-transform:uppercase;color:var(--muted);padding-top:16px}
+  .axk{font-size:13.5px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+  .chip{font-family:var(--mono);font-size:11.5px;border-radius:3px;
+        padding:2.5px 8px;border:1px solid var(--line);color:var(--muted)}
+  .chip.built{background:var(--sage);border-color:var(--thyme);color:var(--thyme-deep)}
+  .chip.latent{border-style:dashed}
+
+  /* residence map */
+  .resgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .rescol{border:1px solid var(--line);border-radius:5px;background:var(--panel);
+          display:flex;flex-direction:column}
+  .rescol.built{border-color:var(--thyme)}
+  .rescol h3{font-family:var(--serif);font-size:16px;margin:0;padding:11px 13px 9px;
+             border-bottom:1px solid var(--line);display:flex;justify-content:space-between;
+             align-items:baseline;gap:6px}
+  .rescol.built h3{background:var(--thyme);color:#fff;border-bottom-color:var(--thyme)}
+  .rescol h3 .st{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;
+                 text-transform:uppercase;opacity:.85;white-space:nowrap}
+  .residentlist{padding:9px 13px 13px;display:flex;flex-direction:column;gap:7px;flex:1}
+  .residentcell{background:var(--sage);border-radius:3px;padding:6px 9px;font-size:12px}
+  .residentcell.empty{background:var(--field);border:1px dashed var(--line);color:var(--latent)}
+  .residentcell b{display:block;font-weight:600;font-size:12.5px}
+  .residentcell span{font-family:var(--mono);font-size:10.5px;color:var(--thyme-deep)}
+  .residentcell.empty span{color:var(--latent)}
+
+  /* generic matrix scroller */
+  .scroller{overflow-x:auto;border:1px solid var(--line);border-radius:5px;background:var(--panel)}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th,td{padding:8px 11px;text-align:left;vertical-align:top;border-top:1px solid var(--line)}
+  thead th{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+           text-transform:uppercase;color:var(--muted);border-top:none;
+           background:var(--field);white-space:nowrap}
+  tbody th{font-weight:600;font-size:13px;white-space:nowrap}
+  .slotcell{color:var(--muted);font-size:12px}
+  .slotcell b{color:var(--ink);display:block;font-size:12.5px}
+
+  /* constraint-block matrix */
+  td.dot{text-align:center;padding:6px 4px}
+  .yes,.no,.part{display:inline-block;width:9px;height:9px;border-radius:50%}
+  .yes{background:var(--thyme)}
+  .no{background:var(--field);border:1px solid var(--line)}
+  .part{background:var(--straw);border:2px solid var(--amber);width:11px;height:11px}
+  .mrow th{font-family:var(--mono);font-weight:400;font-size:11.5px}
+
+  /* decisions / open questions */
+  .decision{background:var(--sage);border-left:3px solid var(--thyme);
+            border-radius:0 4px 4px 0;padding:13px 17px;margin-bottom:12px}
+  .decision.open{background:var(--straw);border-left-color:var(--amber)}
+  .decision b{color:var(--thyme-deep);font-family:var(--mono);font-size:11px;
+              letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:4px}
+  .decision.open b{color:var(--amber)}
+  .decision p{margin:0;font-size:13.5px}
+  .decision ul{margin:6px 0 0;padding-left:18px;font-size:13.5px}
+  .decision li{margin-bottom:3px}
+
+  footer{margin-top:70px;border-top:1px solid var(--line);padding-top:16px;
+         font-family:var(--mono);font-size:11px;color:var(--muted)}
+  @media(max-width:760px){
+    .resgrid{grid-template-columns:1fr 1fr}
+    .axis{grid-template-columns:1fr}
+    .axkind{padding-top:0}
+    h1{font-size:27px}
+  }
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <p class="eyebrow">Harvest · pipeline instrument · 04 Jul 2026 · frame v0.1-draft</p>
+    <h1>The SIL-operations dimension space</h1>
+    <p class="lede">Harvest instance #4 (FRAME-LEDGER row 4) — the first domain
+      <b>promoted</b> from real source artifacts rather than elicited blind: three
+      residents' actual Weekly Menu Planner <code>.docx</code> files, residence
+      <b>Earlwood</b>. Deliberately small: one frame, one unit (meal-plan), no skill
+      or generator yet — see <a href="#decisions">open questions</a> before building one.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1</div><div class="l">domain frame</div></div>
+      <div class="stat"><div class="n">1 / 5</div><div class="l">residences populated</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">residents · source data</div></div>
+      <div class="stat"><div class="n">8</div><div class="l">residents · placeholder</div></div>
+      <div class="stat"><div class="n">7</div><div class="l">constraint-block types</div></div>
+      <div class="stat warn"><div class="n">2</div><div class="l">footer lineages, unresolved</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">contracts / skills built</div></div>
+      <div class="stat warn"><div class="n">7</div><div class="l">open questions</div></div>
+    </div>
+  </header>
+
+  <nav class="jump" aria-label="Views">
+    <a href="#axes">AXES</a>
+    <a href="#residences">RESIDENCE × RESIDENT</a>
+    <a href="#grid">WEEKLY GRID</a>
+    <a href="#constraints">CONSTRAINT-BLOCK MATRIX</a>
+    <a href="#decisions">OPEN QUESTIONS</a>
+  </nav>
+
+  <section id="axes">
+    <p class="eyebrow">The seven axes</p>
+    <h2>Dimensions and their values</h2>
+    <p class="read">Solid green chips are populated from real source data; dashed
+      chips are addressable but empty. The <b>weekly grid</b> is the one invariant
+      axis here — stable across all 3 source residents, the closest analogue to the
+      AI-training frame's ladder.</p>
+    <div class="axes">
+      <div class="axis">
+        <div class="axname">organisation<small>binding parameter</small></div>
+        <div class="axkind">binding param</div>
+        <div class="axk"><div class="chips">
+          <span class="chip latent">name TBD — Debbie's employer</span>
+        </div>
+        Nationwide, estimated ~20–30 homes. Whole tree sits under one org today.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">residence<small>swappable tree root</small></div>
+        <div class="axkind">tree root</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">Earlwood · 3 residents</span>
+          <span class="chip latent">Berala</span>
+          <span class="chip latent">Burwood</span>
+          <span class="chip latent">Blacktown</span>
+          <span class="chip latent">Mascot</span>
+        </div></div>
+      </div>
+      <div class="axis">
+        <div class="axname">resident<small>tree leaf, nested in residence</small></div>
+        <div class="axkind">tree leaf</div>
+        <div class="axk">3 populated (Earlwood, names anonymised pending a privacy
+          footing) + 2 placeholder per unbuilt residence = 11 total addressable
+          today. One personalisation profile per resident.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">weekly-grid<small>7 days × 5 meal slots, 4-week cycle</small></div>
+        <div class="axkind">invariant contract</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">Breakfast 8am</span>
+          <span class="chip built">Morning Tea 10:30am</span>
+          <span class="chip built">Lunch 12:30pm</span>
+          <span class="chip built">Afternoon Tea 3:30pm</span>
+          <span class="chip built">Dinner 6pm</span>
+        </div>
+        Confirmed identical shape across all 3 source residents — treat as fixed.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">constraint-block<small>crosscutting, optional per resident</small></div>
+        <div class="axkind">optional element set</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">dislikes</span><span class="chip built">portion-guide</span>
+          <span class="chip built">SIL-day flag</span><span class="chip built">CP marker</span>
+          <span class="chip built">conditional sub.</span><span class="chip built">running quota</span>
+          <span class="chip built">eat-out placeholder</span>
+        </div>
+        No block is guaranteed present — see the <a href="#constraints">matrix</a>.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">dinner-rotation<small>shared cross-resident constant</small></div>
+        <div class="axkind">shared constant</div>
+        <div class="axk">28-recipe rotation, identical across all 3 Earlwood residents
+          for the same week/day — batch-cooked. Scope beyond Earlwood unconfirmed.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">tier<small>same frame would serve both</small></div>
+        <div class="axkind">deployment</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">static · docx, hand-produced today</span>
+          <span class="chip latent">live · generated per resident/week</span>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="residences">
+    <p class="eyebrow">Projection 1 · residence × resident</p>
+    <h2>The five-home map</h2>
+    <p class="read">Earlwood is the only populated column — its 3 residents carry
+      real personalisation <b>shape</b> (anonymised identity, per the privacy note in
+      <code>frame.json</code>). The other four are placeholder stubs proving the tree
+      generalises; no real data exists for them yet.</p>
+    <div class="resgrid">
+      <div class="rescol built">
+        <h3>Earlwood <span class="st">source data</span></h3>
+        <div class="residentlist">
+          <div class="residentcell"><b>Resident A</b><span>dislikes · portion-guide · rotating SIL-days</span></div>
+          <div class="residentcell"><b>Resident B</b><span>portion-guide + medical · running quota</span></div>
+          <div class="residentcell"><b>Resident C</b><span>fixed SIL-days · no guide/dislikes</span></div>
+        </div>
+      </div>
+      <div class="rescol"><h3>Berala <span class="st">unbuilt</span></h3>
+        <div class="residentlist">
+          <div class="residentcell empty"><b>Resident</b><span>placeholder</span></div>
+          <div class="residentcell empty"><b>Resident</b><span>placeholder</span></div>
+        </div></div>
+      <div class="rescol"><h3>Burwood <span class="st">unbuilt</span></h3>
+        <div class="residentlist">
+          <div class="residentcell empty"><b>Resident</b><span>placeholder</span></div>
+          <div class="residentcell empty"><b>Resident</b><span>placeholder</span></div>
+        </div></div>
+      <div class="rescol"><h3>Blacktown <span class="st">unbuilt</span></h3>
+        <div class="residentlist">
+          <div class="residentcell empty"><b>Resident</b><span>placeholder</span></div>
+          <div class="residentcell empty"><b>Resident</b><span>placeholder</span></div>
+        </div></div>
+      <div class="rescol"><h3>Mascot <span class="st">unbuilt</span></h3>
+        <div class="residentlist">
+          <div class="residentcell empty"><b>Resident</b><span>placeholder</span></div>
+          <div class="residentcell empty"><b>Resident</b><span>placeholder</span></div>
+        </div></div>
+    </div>
+  </section>
+
+  <section id="grid">
+    <p class="eyebrow">Projection 2 · the weekly grid</p>
+    <h2>One resident's fixed shape</h2>
+    <p class="read">Every resident's plan fills the same 7×5 grid, repeated across a
+      4-week cycle. Dinner is the one row confirmed <b>shared</b> across residents —
+      the rest personalise per resident within the constraint-block layer.</p>
+    <div class="scroller">
+      <table>
+        <thead><tr>
+          <th>Meal slot ↓ / Day →</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th>
+          <th>Fri</th><th>Sat</th><th>Sun</th>
+        </tr></thead>
+        <tbody>
+          <tr><th>Breakfast · 8am</th>
+            <td class="slotcell" colspan="7">Personalised per resident — no shared pattern observed</td></tr>
+          <tr><th>Morning Tea · 10:30am</th>
+            <td class="slotcell" colspan="7">Personalised — carries most CP-marker / eat-out activity</td></tr>
+          <tr><th>Lunch · 12:30pm</th>
+            <td class="slotcell" colspan="7">Personalised — carries most portion-guide detail</td></tr>
+          <tr><th>Afternoon Tea · 3:30pm</th>
+            <td class="slotcell" colspan="7">Personalised — carries conditional-substitution rules</td></tr>
+          <tr><th>Dinner · 6pm</th>
+            <td class="slotcell" colspan="7"><b>Shared 28-recipe rotation</b> — identical text across all 3 Earlwood residents, same week/day</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="constraints">
+    <p class="eyebrow">Projection 3 · constraint-block presence</p>
+    <h2>What each resident actually carries</h2>
+    <p class="read">Real data from the 3 source residents — no block is guaranteed
+      present, and where present, wording/vocabulary differs (see
+      <code>frame.json</code> for the exact community-participation spellings).
+      This is the matrix a generator would need to branch on.</p>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>Resident (Earlwood)</th><th>Dislikes</th><th>Portion-guide</th>
+          <th>SIL-day flag</th><th>CP marker</th><th>Conditional sub.</th>
+          <th>Running quota</th><th>Eat-out</th><th>Footer lineage</th></tr></thead>
+        <tbody>
+          <tr class="mrow"><th>Resident A</th>
+            <td class="dot"><span class="yes" title="present"></span></td>
+            <td class="dot"><span class="yes" title="present · Dietitian"></span></td>
+            <td class="dot"><span class="part" title="rotates weekly"></span></td>
+            <td class="dot"><span class="yes" title="ExtCP"></span></td>
+            <td class="dot"><span class="yes" title="present"></span></td>
+            <td class="dot"><span class="no" title="absent"></span></td>
+            <td class="dot"><span class="yes" title="present"></span></td>
+            <td>A · 2×2</td></tr>
+          <tr class="mrow"><th>Resident B</th>
+            <td class="dot"><span class="no" title="absent"></span></td>
+            <td class="dot"><span class="yes" title="present · Doctor &amp; Dietitian, medical directives"></span></td>
+            <td class="dot"><span class="no" title="absent entirely"></span></td>
+            <td class="dot"><span class="yes" title="EXTCP - named worker"></span></td>
+            <td class="dot"><span class="no" title="absent"></span></td>
+            <td class="dot"><span class="yes" title="present"></span></td>
+            <td class="dot"><span class="yes" title="present"></span></td>
+            <td>B · 1×2</td></tr>
+          <tr class="mrow"><th>Resident C</th>
+            <td class="dot"><span class="no" title="absent"></span></td>
+            <td class="dot"><span class="no" title="absent"></span></td>
+            <td class="dot"><span class="part" title="fixed Tue/Thu/Sat/Sun"></span></td>
+            <td class="dot"><span class="yes" title="DMS-CP"></span></td>
+            <td class="dot"><span class="no" title="absent"></span></td>
+            <td class="dot"><span class="no" title="absent"></span></td>
+            <td class="dot"><span class="no" title="absent"></span></td>
+            <td>A · 2×2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="decision" style="margin-top:16px">
+      <b>Reading the matrix</b>
+      <p>Zero blocks are present for all 3 residents. Only the CP marker is present
+        for all 3 — and even that has 3 different spellings. A frame-first design
+        (build the contract before the generator) has to treat every column as
+        optional, not assume a shape.</p>
+    </div>
+  </section>
+
+  <section id="decisions">
+    <p class="eyebrow">Standing questions</p>
+    <h2>What the frame is asking you</h2>
+    <div class="decision open"><b>Before any contract/skill is built</b>
+      <ul>
+        <li>Organisation name</li>
+        <li>Total residences nationwide (~20–30 estimated) and their names</li>
+        <li>Whether the dinner rotation is shared across residences or only within Earlwood</li>
+        <li>Whether footer lineage A/B reflects two real template versions company-wide, or a one-off drift</li>
+        <li>Whether one support worker covers a whole residence, or plans are made per-resident by different staff</li>
+        <li>Typical residents-per-home (Earlwood = 3; unconfirmed as typical)</li>
+        <li><b style="display:inline;color:var(--amber)">Privacy/consent footing</b> for using real resident names and health data in any generated artifact — currently blocking, per FRAME-LEDGER's standing rule</li>
+      </ul>
+    </div>
+    <div class="decision"><b>Next unit of work</b>
+      <p>Per the FRAME-LEDGER kickoff: interview Debbie for the domain tree
+        (promoted-frame path, not elicited-only), resolve the privacy footing, then
+        draft the unit contract (one printable weekly meal-plan artifact per
+        resident) and generate <b>one sample artifact for a fictional resident</b> —
+        no repo infrastructure, no real data, frame file + skill + artifact only.</p>
+    </div>
+  </section>
+
+  <footer>source of truth: <b>sil_operations/dimension-map.html</b> (this file, in-repo) —
+    generated against <code>sil_operations/frame.json</code> ·
+    <code>sil_operations/DIMENSIONS.md</code> · sxdennonv2/harvest ·
+    branch <code>feat/sil-meal-plan-frame</code> · frame v0.1-draft, 04 Jul 2026</footer>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll("nav.jump a"));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute("href")); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = 0;
+    secs.forEach(function(s,i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a,i){ a.classList.toggle("on", i === idx); });
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+})();
+</script>

@@ -1,0 +1,191 @@
+{
+  "domain": "sil-operations",
+  "unit": "meal-plan",
+  "frame_version": "0.1-draft",
+  "source": "Promoted from 3 real Weekly Menu Planner .docx files (residence: Earlwood, June 2026 cycle), analysed 2026-07-04. See FRAME-LEDGER.md row 4.",
+  "privacy_note": "Real resident names and clinical specifics (medication, weight targets) appeared in source docs but are NOT reproduced here. All resident names below are placeholders pending a privacy footing, per FRAME-LEDGER's standing rule.",
+
+  "organisation": {
+    "name": "PLACEHOLDER_ORG_NAME",
+    "note": "SIL service provider Debbie works for; nationwide, estimated ~20-30 homes. Name not yet captured."
+  },
+
+  "shared": {
+    "cycle": {
+      "weeks_per_cycle": 4,
+      "days_per_week": 7
+    },
+    "meal_slots": [
+      { "slot": "breakfast", "time": "8am" },
+      { "slot": "morning_tea", "time": "10:30am" },
+      { "slot": "lunch", "time": "12:30pm" },
+      { "slot": "afternoon_tea", "time": "3:30pm" },
+      { "slot": "dinner", "time": "6pm" }
+    ],
+    "dinner_rotation": {
+      "shared_across_residents": true,
+      "shared_across_residences": "unknown - confirmed only within Earlwood; verify with Debbie",
+      "cycle_weeks": 4,
+      "source_evidence": "identical dinner text across Earlwood's 3 residents for corresponding weeks/days, e.g. all three had the same dish on Monday of week 1"
+    },
+    "support_worker_field": {
+      "observed_value": "Debbie",
+      "scope": "confirmed for Earlwood only; unknown whether one support worker covers a whole residence or is per-resident elsewhere"
+    }
+  },
+
+  "constraint_block_schema": {
+    "dislikes": {
+      "type": "optional free-text list",
+      "shape": "comma-separated food items, paragraph before the week heading",
+      "observed_in": ["1 of 3 Earlwood residents"]
+    },
+    "portion_guide": {
+      "type": "optional free-text paragraph",
+      "may_include": [
+        "plate-proportion rules (salad/protein/carb ratios)",
+        "sauce/dressing/cheese caps",
+        "medical directives (weight targets, medication timing, exercise mandates)"
+      ],
+      "author_role_observed": ["Dietitian", "Doctor & Dietitian"],
+      "observed_in": ["2 of 3 Earlwood residents"]
+    },
+    "sil_day_flag": {
+      "type": "per-day marker, currently embedded in the day-column header text rather than a structured field",
+      "pattern_varies_by_resident": true,
+      "observed_patterns": [
+        "rotates week to week (different days flagged each of the 4 weeks)",
+        "fixed set of days every week (e.g. always Tue/Thu/Sat/Sun)",
+        "absent entirely (no SIL flag on any day)"
+      ]
+    },
+    "community_participation_marker": {
+      "type": "inline prefix within a meal cell, not a separate column",
+      "vocabulary_observed": ["ExtCP", "EXTCP - <support worker name>", "DMS-CP"],
+      "controlled_vocabulary": false,
+      "note": "three different spellings/conventions across 3 residents - needs a normalisation decision before generation"
+    },
+    "conditional_substitution": {
+      "type": "prose rule embedded in a cell",
+      "example_pattern": "if <person> unavailable, substitute <food>",
+      "observed_in": ["1 of 3 Earlwood residents"]
+    },
+    "running_quota": {
+      "type": "prose rule embedded in a cell, tracking a daily/weekly cap",
+      "example_pattern": "(only if under N for the day)",
+      "observed_in": ["1 of 3 Earlwood residents"]
+    },
+    "eat_out_placeholder": {
+      "type": "cell value delegating the meal to an outing or support worker instead of specifying food",
+      "observed_in": ["2 of 3 Earlwood residents"]
+    }
+  },
+
+  "footer_template_lineages": [
+    {
+      "lineage": "A",
+      "shape": "2 rows x 2 cols",
+      "fields": ["Document Name", "Version", "Document Number", "Effective Date"],
+      "observed_in": ["2 of 3 Earlwood residents"]
+    },
+    {
+      "lineage": "B",
+      "shape": "1 row x 2 cols",
+      "fields": ["Document Name", "Date Developed", "Version", "Author", "Date of Review", "Page"],
+      "observed_in": ["1 of 3 Earlwood residents"]
+    }
+  ],
+
+  "residences": [
+    {
+      "name": "Earlwood",
+      "status": "populated - source data available (3 real residents, anonymised here)",
+      "residents": [
+        {
+          "id": "res-earlwood-01",
+          "name": "Resident A (placeholder)",
+          "constraint_block": {
+            "dislikes": "present - free-text food list",
+            "portion_guide": { "present": true, "author_role": "Dietitian" },
+            "sil_day_pattern": "rotates weekly",
+            "community_participation_vocabulary": "ExtCP",
+            "conditional_substitution": true,
+            "running_quota": false,
+            "eat_out_placeholder": true,
+            "footer_lineage": "A"
+          }
+        },
+        {
+          "id": "res-earlwood-02",
+          "name": "Resident B (placeholder)",
+          "constraint_block": {
+            "dislikes": "absent",
+            "portion_guide": { "present": true, "author_role": "Doctor & Dietitian", "includes_medical_directives": true },
+            "sil_day_pattern": "absent - no SIL flag on any day",
+            "community_participation_vocabulary": "EXTCP - named support worker",
+            "conditional_substitution": false,
+            "running_quota": true,
+            "eat_out_placeholder": true,
+            "footer_lineage": "B"
+          }
+        },
+        {
+          "id": "res-earlwood-03",
+          "name": "Resident C (placeholder)",
+          "constraint_block": {
+            "dislikes": "absent",
+            "portion_guide": { "present": false },
+            "sil_day_pattern": "fixed - Tue/Thu/Sat/Sun every week",
+            "community_participation_vocabulary": "DMS-CP",
+            "conditional_substitution": false,
+            "running_quota": false,
+            "eat_out_placeholder": false,
+            "footer_lineage": "A"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Berala",
+      "status": "unbuilt - no source data, placeholder residents only",
+      "residents": [
+        { "id": "res-berala-01", "name": "Resident (placeholder)", "constraint_block": null },
+        { "id": "res-berala-02", "name": "Resident (placeholder)", "constraint_block": null }
+      ]
+    },
+    {
+      "name": "Burwood",
+      "status": "unbuilt - no source data, placeholder residents only",
+      "residents": [
+        { "id": "res-burwood-01", "name": "Resident (placeholder)", "constraint_block": null },
+        { "id": "res-burwood-02", "name": "Resident (placeholder)", "constraint_block": null }
+      ]
+    },
+    {
+      "name": "Blacktown",
+      "status": "unbuilt - no source data, placeholder residents only",
+      "residents": [
+        { "id": "res-blacktown-01", "name": "Resident (placeholder)", "constraint_block": null },
+        { "id": "res-blacktown-02", "name": "Resident (placeholder)", "constraint_block": null }
+      ]
+    },
+    {
+      "name": "Mascot",
+      "status": "unbuilt - no source data, placeholder residents only",
+      "residents": [
+        { "id": "res-mascot-01", "name": "Resident (placeholder)", "constraint_block": null },
+        { "id": "res-mascot-02", "name": "Resident (placeholder)", "constraint_block": null }
+      ]
+    }
+  ],
+
+  "open_questions": [
+    "Organisation name",
+    "Total number of residences nationwide (estimated 20-30) and their names",
+    "Whether the dinner rotation is shared across residences or only within one",
+    "Whether footer lineage A/B reflects two real template versions across the company, or a one-off drift in a single document",
+    "Whether one support worker (like Debbie) covers a whole residence, or plans are created per-resident by different staff",
+    "How many residents typically live in one SIL home (Earlwood = 3; unconfirmed as typical)",
+    "Privacy/consent footing for using real resident names and health data in any generated artifact"
+  ]
+}
