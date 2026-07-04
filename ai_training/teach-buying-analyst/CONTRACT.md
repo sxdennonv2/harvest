@@ -81,7 +81,11 @@ The practice artefact always ships **set up but undone**: starter state visible,
 present but hidden. Never ask the learner to build scaffolding before the lesson starts.
 
 **persona-relevance.** The business case in the persona's world, concrete to their weekly
-reality (reports on a director's desk, refresh cycles). Binding heading names the persona.
+reality (reports on a director's desk, refresh cycles). Binding heading names the persona —
+the *course family's* persona, not a fixed string: the Excel reference renders "Why it
+matters to a buyer", the communication course (persona-wide) renders "Why it matters at
+work", and persona families render their own ("…to a manager", "…to an office assistant").
+Mechanical readers match the "Why it matters" prefix only.
 
 **bad-habit.** Every lesson names the inherited habit it replaces, and why the habit fails
 silently. This is the wedge that motivates relearning something the learner "already does".
@@ -122,7 +126,9 @@ protects you, craft first so you can supervise.
 
 **primary-source.** 1–3 citations drawn from `RESOURCES.md` (never parametric knowledge),
 plus the standing clause: *if this page disagrees with the source, trust the source and tell
-me.*
+me.* `RESOURCES.md` lists sources at the domain/collection grain; a citation may deep-link
+to a specific page *within* a listed source (e.g. one function's page under a listed
+support.microsoft.com collection) and inherits that listing.
 
 **ask-teacher.** Invites follow-up and makes one **concrete, personalised offer** tied to
 this lesson ("send a sanitised extract and I'll retarget this lesson to it"). On the live
@@ -185,6 +191,32 @@ rewrite persona bindings to the individual. It may not: drop or merge required e
 emit a rung-move without its check, skip an unmet prerequisite edge, or cite outside
 `RESOURCES.md` without adding the source there first.
 
+## Persona variants (static tier) — translation ruling
+
+*(Added 2026-07-04 from the persona sweep, PRs #23–#25; boundary calls refined by its
+judged pass.)*
+
+A persona variant is a **translation** of an existing page into a sibling family dir,
+never a re-authoring. Exactly four things re-render; everything not named here stands
+verbatim — scenario facts, checks, quiz logic, prompt substance, links and anchors,
+machine-owned elements:
+
+- **persona-relevance** — heading and prose, re-grounded in the family's `MISSION.md`.
+- **learner self-identification** — wherever prose or a prompt names the learner ("I'm a
+  buying analyst…"), *including identity carried by verbs*: where the source learner's
+  relation to the artefact doesn't fit the persona (a builder "ships", a reviewer
+  "accepts"), re-voice the relation; the craft sentence it decorates stays.
+- **mission-tie** — re-rendered against the family `MISSION.md`. Any verbatim quotation of
+  "your mission" must be re-verified against the *target* family's `MISSION.md`: quote its
+  actual wording or drop the quotation framing. (The sweep's one violation was a carried
+  quote.)
+- **ask-teacher** — its learner-world references (artefact kinds, extract types) re-render;
+  the offer's shape stays.
+
+Boundary call: a first-person clause *inside* a scenario fact ("suppliers I don't buy from
+yet") is self-identification — re-voice it. A named actor or fact of the practice
+artefact's world (Riverside, Harvest Lane, 110 cases/week) is scenario — it stands.
+
 ## Verify checklist (`lesson-verify` spec)
 
 Mechanical (no judgement):
@@ -203,6 +235,8 @@ Judged (agent):
 - [ ] Each check would actually catch the most likely failure of its rung.
 - [ ] Persona voice consistent; bad-habit is a real habit, concretely stated.
 - [ ] Citations exist in `RESOURCES.md` and support the claims they anchor.
+- [ ] (persona variants) only in-scope elements differ from the source page; any quoted
+      mission line exists verbatim in the family's `MISSION.md`.
 
 ## Known deviations in the Excel reference instance (2026-07-04)
 
