@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0018 — Flash Fill &amp; Text to Columns</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="print-and-export-ready-tables.html">0017 — Print-ready</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="named-ranges.html">0019 — Named ranges</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="tables-the-modern-foundation.html">Source &amp; prepare</a>
+    <a href="relative-and-absolute-references.html">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html" class="current">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0018</p>
+  <h1>Flash Fill &amp; Text to Columns: clean an extract</h1>
+
+  <p class="mission">
+    Tied to your mission: raw extracts arrive messy — names as "Surname, First", product codes
+    mashed into one field. <strong>Flash Fill</strong> and <strong>Text to Columns</strong> split
+    them apart in seconds, so you spend your time analysing clean data instead of retyping dirty
+    data.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">Flash Fill</span> tab — a "Surname, First" contact
+      column sits on the left (with the first row already split as an example) and a mashed
+      <span class="cell">Product code</span> column on the right, ready to break apart.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    Both tools split one column into several, but they learn differently.
+    <strong>Flash Fill</strong> watches you do one row by example, spots the pattern, and fills the
+    rest — press <span class="cell">Ctrl+E</span>. <strong>Text to Columns</strong> splits on a
+    <em>delimiter</em> (a comma, a dash, a space) or at fixed widths, in one guided pass. Reach for
+    Flash Fill when the pattern is easier to <em>show</em> than describe; reach for Text to Columns
+    when there's a clean separator.
+  </p>
+
+  <h2>Why it matters to a buyer</h2>
+  <p>
+    The join and lookup skills from earlier lessons only work if the key columns are clean and
+    consistent. A supplier field that's really "code-number-size" jammed together can't be grouped,
+    filtered or matched until it's split. Cleaning is the unglamorous step that makes every later
+    step possible — and doing it in seconds, not by hand, is what buys back your day.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Retyping hundreds of split values by hand, or fighting a tangle of
+    <span class="cell">LEFT</span>/<span class="cell">RIGHT</span>/<span class="cell">MID</span>
+    formulas for a one-off clean-up. For a quick split you own, Flash Fill and Text to Columns are
+    faster and clearer. (When the split must stay live as new data arrives, that's a formula or
+    Power Query job — a later lesson.)
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    <strong>Flash Fill.</strong> On the <span class="cell">Flash Fill</span> tab,
+    <span class="cell">C2</span> already shows the first name from the contact in
+    <span class="cell">A2</span>. Click <span class="cell">C3</span>, start typing the next first
+    name, and press <span class="cell">Ctrl+E</span> — Excel fills the column. Do the same for the
+    last name in column <span class="cell">D</span>.
+  </p>
+  <p>
+    <strong>Text to Columns.</strong> Select the codes in <span class="cell">F2:F6</span>, then
+    <span class="cell">Data → Text to Columns → Delimited → Next</span>, tick
+    <span class="cell">Other</span> and type <span class="cell">-</span>, and
+    <span class="cell">Finish</span>. The dept, number and size land in
+    <span class="cell">G</span>, <span class="cell">H</span> and <span class="cell">I</span>.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="1">
+      <p class="q">1. The keyboard shortcut to trigger Flash Fill is …</p>
+      <ul class="opts">
+        <li><button class="opt">Ctrl+T</button></li>
+        <li><button class="opt">Ctrl+E</button></li>
+        <li><button class="opt">Ctrl+P</button></li>
+        <li><button class="opt">Ctrl+S</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">2. To split <span class="cell">SNAK-001-300G</span> on the dashes, the right
+        tool is …</p>
+      <ul class="opts">
+        <li><button class="opt">Text to Columns, delimiter "-"</button></li>
+        <li><button class="opt">a PivotTable</button></li>
+        <li><button class="opt">Conditional Formatting</button></li>
+        <li><button class="opt">Insert Chart</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="2">
+      <p class="q">3. Flash Fill is the natural choice when …</p>
+      <ul class="opts">
+        <li><button class="opt">you need a live formula</button></li>
+        <li><button class="opt">there's a single clean delimiter</button></li>
+        <li><button class="opt">the pattern is easier to show by example than to describe</button></li>
+        <li><button class="opt">you want to sum a column</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Split both the names and the codes on the <span class="cell">Flash Fill</span> tab. Then
+    sanity-check: do the first/last names read correctly for a tricky row, and did the code split
+    into exactly three clean parts? Remember the difference — Flash Fill and Text to Columns produce
+    <em>static</em> values, so if the source changes you re-run them; that's fine for a one-off clean.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — split messy fields into clean columns — with more handed to AI at each rung. The
+    check never changes: eyeball a couple of tricky rows and confirm the split is exactly right.
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it picks the method, you run it</h3>
+  <p>Aldi:GPT can't see your workbook, so it advises; you run and verify.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I'm using Excel. I have contact names formatted as "Surname, First" in one column, and product codes like SNAK-001-300G in another. Tell me the fastest way to split the names into First and Last, and the codes into three parts (dept, number, size). Say when to use Flash Fill (Ctrl+E) versus Text to Columns, and give me the exact steps for each.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer uses <span class="cell">Flash Fill</span> for the names
+      (show one example, Ctrl+E) and <span class="cell">Text to Columns</span> with the "-" delimiter
+      for the codes. If it only offers long LEFT/MID formulas for a one-off, ask for the faster tools.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it cleans the columns in your workbook</h3>
+  <p>Copilot inside Excel can act on the sheet you have open. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>On the "Flash Fill" sheet, split the "Surname, First" contacts in column A into First name (column C) and Last name (column D). Then split the product codes in F2:F6 on the "-" delimiter into Dept (G), Number (H) and Size (I).</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> confirm the names read First then Last (not reversed), and the codes
+      split into three tidy parts with no stray dashes. Check a tricky row by eye — that's where a
+      wrong split hides.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the whole workbook from scratch</h3>
+  <p>An agent with file access builds the workbook for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>Create an Excel workbook named clean-extract.xlsx with a sheet "Raw" holding two messy columns: contact names as "Surname, First" (about 5 rows) and product codes like SNAK-001-300G. Add clean columns that split the names into First and Last, and the codes into Dept, Number and Size. Save the file and tell me which columns hold the split results.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file and confirm each messy field was split correctly into
+      separate columns, with a couple of tricky rows spot-checked by eye.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI names the method" to "AI builds the workbook and cleans it" — the deliverable is the
+    same tidy, split-out data. What protects you at every rung is the eyeball check on a tricky row.
+    Craft first, so you can supervise.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/en-us/office/using-flash-fill-in-excel-3f9bcf1e-db93-4890-94a0-1578341f73f7">Microsoft — Using Flash Fill</a> and
+    <a href="https://support.microsoft.com/en-us/office/split-text-into-different-columns-with-the-convert-text-to-columns-wizard-30b14928-5550-41f5-97ca-7a3e9c363ed7">Microsoft — Text to Columns wizard</a>.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Need the split to stay <em>live</em> as new extracts land each
+    week? That's a Power Query (Get &amp; Transform) job — tell me and I'll add that lesson next.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="print-and-export-ready-tables.html">0017 — Print-ready</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="named-ranges.html">0019 — Named ranges</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — that is the fast, clean split.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

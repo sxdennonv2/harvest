@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0001 — Tables: the modern foundation</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev"></span>
+    <span class="nav-mid"><a href="../reference/tables-cheatsheet.html">Tables cheat sheet</a> · <a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="sort-and-filter.html">0002 — Sort &amp; Filter</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="tables-the-modern-foundation.html" class="current">Source &amp; prepare</a>
+    <a href="relative-and-absolute-references.html">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0001</p>
+  <h1>Tables: the modern foundation</h1>
+
+  <p class="mission">
+    Tied to your mission: you paste a SQL extract and need to summarise it fast — and the extract
+    is a different length every time. An Excel <strong>Table</strong> is the single feature that
+    makes that robust: it grows by itself, fills formulas down for you, and feeds pivots and
+    charts that expand automatically.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">Tables</span> tab — a plain block of products and
+      case costs with a rate cell named <span class="cell">Rate</span> is waiting. It is deliberately
+      <em>not</em> a Table yet: turning it into one is your task.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    A plain block of cells is just that — Excel doesn't know where it starts or ends. Press
+    <kbd>Ctrl</kbd>+<kbd>T</kbd> and that block becomes a <strong>Table</strong>: a named,
+    self-describing object with a header row, banded rows, filter arrows, and — crucially — the
+    ability to <em>grow</em>. Add a row at the bottom and the Table absorbs it; every formula and
+    the chart built on it update with no effort from you.
+  </p>
+  <p>
+    Tables also change how formulas <em>read</em>. Instead of <span class="cell">=B2*C2</span> you
+    write <span class="cell">=[@[Case cost]]*[@Rate]</span> — a <strong>structured reference</strong>
+    that names the columns. It's self-documenting, and Excel fills it down the whole column the
+    instant you press <kbd>Enter</kbd>.
+  </p>
+
+  <h2>Why it matters to a buyer</h2>
+  <p>
+    Your extract is 480 rows today and 512 next week. With a loose range you'd hardcode
+    <span class="cell">B2:B480</span> and silently miss 32 rows next time. As a Table, the range
+    <em>is</em> the data — no fixed boundary to get wrong. Add a landed-cost column once and it
+    fills all rows; paste next week's longer extract and everything just extends.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Dragging formulas down by hand, re-selecting <span class="cell">B2:B480</span> ranges that
+    break when the data changes length, and reading cryptic <span class="cell">=B2*C2</span>
+    formulas months later. A Table makes the range self-adjusting and the formula self-explaining.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    Click anywhere in your data → press <kbd>Ctrl</kbd>+<kbd>T</kbd> → confirm
+    <span class="cell">My table has headers</span>. On the <strong>Table Design</strong> tab, give
+    it a real name (e.g. <span class="cell">Products</span>). Type a formula in a new column using
+    a structured reference and watch it fill down. Turn on
+    <span class="cell">Table Design → Total Row</span> for instant sums and averages.
+  </p>
+  <p>
+    <em>Builds on Lesson 1:</em> inside a Table you rarely need <span class="cell">$</span> for
+    columns — the structured reference handles the row-by-row part. You still lock a single outside
+    cell (like a rate) with <span class="cell">$F$1</span> or, better, give it a name.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="0">
+      <p class="q">1. Which shortcut turns a range into a Table?</p>
+      <ul class="opts">
+        <li><button class="opt">Ctrl+T</button></li>
+        <li><button class="opt">Ctrl+B</button></li>
+        <li><button class="opt">Ctrl+R</button></li>
+        <li><button class="opt">Ctrl+K</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">2. A formula like <span class="cell">=[@[Case cost]]*Rate</span> uses a … reference.</p>
+      <ul class="opts">
+        <li><button class="opt">structured</button></li>
+        <li><button class="opt">calculated</button></li>
+        <li><button class="opt">referenced</button></li>
+        <li><button class="opt">privatised</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. When you add a row to a Table, its formulas … automatically.</p>
+      <ul class="opts">
+        <li><button class="opt">extend</button></li>
+        <li><button class="opt">delete</button></li>
+        <li><button class="opt">freeze</button></li>
+        <li><button class="opt">shrink</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Type a few products and case costs, click inside, press <kbd>Ctrl</kbd>+<kbd>T</kbd>. Name it
+    <span class="cell">Products</span> on the Table Design tab. Add a
+    <span class="cell">Landed cost</span> column with a structured reference to your rate cell —
+    it fills down instantly. Turn on the <span class="cell">Total Row</span>. Now add a new product
+    on the row below the Table and watch it swallow the row and extend every formula.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — a self-extending, self-documenting landed-cost list — with more handed to AI at
+    each rung. The check never changes: is it a real Table, and does the formula read in column
+    names rather than cryptic <span class="cell">B2*C2</span>?
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it writes the structured formula, you build it</h3>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I'm using Excel. I have an Excel Table named Products with a column called "Case cost", and a single exchange rate in a named cell called Rate. Write the structured-reference formula for a new "Landed cost" column that multiplies each case cost by the rate. Explain why it fills down the whole column automatically, and what happens when I add a new row to the Table.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer uses <span class="cell">=[@[Case cost]]*Rate</span>
+      structured syntax. If it gives you raw <span class="cell">=B2*F1</span>, it ignored the Table
+      — tell it to use structured references.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it builds it in your workbook</h3>
+  <p>Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>On the "Tables" sheet, convert my range into an Excel Table named Products. Add a "Landed cost" column that multiplies each "Case cost (GBP)" by the exchange rate in the named cell Rate, and add a total row that sums the landed cost.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> the range should now have filter arrows and a Table Design tab; click
+      the new column and confirm the formula uses column names; the total row should sum. If it
+      only formatted the cells without making a real Table, ask it again for a Table.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it creates the whole workbook from scratch</h3>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>Create an Excel workbook named products-table.xlsx containing a proper Excel Table named "Products" with columns Product, Case cost (GBP), and Landed cost (AUD). Add a labelled, named cell "Rate" for the exchange rate with a sample value. Populate 10 realistic sample products with case costs. In the Landed cost column use a structured-reference formula that multiplies Case cost by Rate. Add a total row that sums Landed cost. Save the file and tell me the Table name and the rate cell.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file, click inside the data — the <span class="cell">Table
+      Design</span> tab should appear. The Landed cost formula should read in column names, and the
+      total row should sum. Add a row beneath the Table and confirm it extends.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI explains the formula" to "AI builds the whole workbook" — the deliverable is the same
+    self-extending list. What protects you at every rung is knowing what a real Table is and what a
+    structured reference should look like. Craft first, so you can supervise.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://exceljet.net/articles/excel-tables">ExcelJet — Excel tables</a> and
+    <a href="https://support.microsoft.com/en-us/office/using-structured-references-with-excel-tables-f5ed2452-2337-4f71-bed3-c8ae6d2b276e">Microsoft — Structured references</a>.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want this run on a real (sanitised) SQL extract of yours so
+    the Table lesson uses your actual columns? Send a sample and I'll rebuild Lesson 2 around it.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev"></span>
+    <span class="nav-mid"><a href="../reference/tables-cheatsheet.html">Tables cheat sheet</a> · <a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="sort-and-filter.html">0002 — Sort &amp; Filter</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — the Table names the data and grows with it.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>
