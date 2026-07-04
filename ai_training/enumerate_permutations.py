@@ -3,7 +3,9 @@
 
 The frames (each course's course.json) are the source of truth; this script is a
 build product generator — it emits a DISPOSABLE work-list manifest, never edits a
-frame, and can be re-run at any time. The manifest is what a fan-out orchestrator
+frame, and can be re-run at any time. A coordinate counts as built when its target
+page exists on disk, so re-runs are incremental: only genuinely missing pages
+become jobs. The manifest is what a fan-out orchestrator
 consumes: one row = one subagent job (one lesson-variant, per the one-invocation-
 one-unit contract).
 
@@ -76,6 +78,10 @@ def main() -> int:
                 if persona == BUILT_PERSONA:
                     built += 1
                     continue
+                target = ROOT / family / course / "lessons" / lesson["file"]
+                if target.exists():
+                    built += 1
+                    continue
                 jobs.append({
                     "pipeline": "app-functionality",
                     "course": course,
@@ -86,7 +92,7 @@ def main() -> int:
                     "theme": lesson.get("theme", ""),
                     "builds_on": lesson.get("builds_on", []),
                     "source_page": str(src_dir / "lessons" / lesson["file"]),
-                    "target_page": str(ROOT / family / course / "lessons" / lesson["file"]),
+                    "target_page": str(target),
                     "note": f"translate persona bindings/voice to {display}; craft, "
                             f"scenarios, rungs and checks stand",
                 })
@@ -100,13 +106,17 @@ def main() -> int:
                 if persona == BUILT_PERSONA:
                     built += 1
                     continue
+                target = ROOT / f"communication-{persona}" / "lessons" / lesson["file"]
+                if target.exists():
+                    built += 1
+                    continue
                 jobs.append({
                     "pipeline": "communication", "course": "communication",
                     "persona": persona, "kind": "persona-variant",
                     "slug": lesson["slug"], "title": lesson["title"],
                     "theme": lesson.get("theme", ""),
                     "source_page": str(COMMUNICATION_DIR / "lessons" / lesson["file"]),
-                    "target_page": str(ROOT / f"communication-{persona}" / "lessons" / lesson["file"]),
+                    "target_page": str(target),
                     "note": f"persona variant for {display}",
                 })
         else:
