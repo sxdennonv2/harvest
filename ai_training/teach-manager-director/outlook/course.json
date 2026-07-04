@@ -1,0 +1,186 @@
+{
+  "course": {
+    "title": "Outlook to a High Standard",
+    "lessons_dir": "lessons",
+    "workbook": "artefacts/outlook-practice-pack",
+    "kicker_prefix": "Outlook to a High Standard",
+    "end_next_label": "more coming — ask your teacher"
+  },
+  "rung_headers": {
+    "corner": "Theme ↓ / Rung →",
+    "short": [
+      "1 · Manual craft",
+      "2 · Aldi:GPT",
+      "3 · M365 Copilot",
+      "4 · GitHub Copilot"
+    ],
+    "long": [
+      "1 · Manual craft (do it well by hand)",
+      "2 · Aldi:GPT (chat, no tool use)",
+      "3 · M365 Copilot (acts in Outlook)",
+      "4 · GitHub Copilot (builds the artefact)"
+    ]
+  },
+  "themes": [
+    {
+      "key": "triage-organise",
+      "title": "Triage & organise",
+      "notes": ["folders vs categories vs flags; rules on arrival"],
+      "rungs": [
+        "Suggest a folder-and-rule scheme for the mail you describe",
+        "\"Summarise this thread — what's asked of me and by when?\"",
+        "Script the folder + rule deployment from scratch"
+      ]
+    },
+    {
+      "key": "find-retrieve",
+      "title": "Find & retrieve",
+      "notes": ["search operators; Search Folders"],
+      "rungs": [
+        "Write the search-operator query for what you need",
+        "\"Find the thread where the supplier confirmed the price change\"",
+        "Build a mailbox report (senders, volumes, ageing) from an export"
+      ]
+    },
+    {
+      "key": "write-respond",
+      "title": "Write & respond",
+      "notes": ["mechanics only — writing craft lives in the communication pipeline"],
+      "rungs": [
+        "\"What is this thread asking of me, and who owes the reply?\"",
+        "Draft the reply from the whole thread's context",
+        "Generate a reply-template library from your recurring scenarios"
+      ]
+    },
+    {
+      "key": "schedule-coordinate",
+      "title": "Schedule & coordinate",
+      "notes": ["invites, Scheduling Assistant, notes-to-actions"],
+      "rungs": [
+        "Draft the agenda and the invite text",
+        "Recap the meeting and draft the follow-up actions",
+        "Build the recurring meeting pack (agenda, minutes, invite) from scratch"
+      ]
+    },
+    {
+      "key": "automate-repetitive",
+      "title": "Automate the repetitive",
+      "notes": ["signatures, Quick Parts, Quick Steps, out-of-office"],
+      "rungs": [
+        "Turn a repeated email into reusable template text",
+        "Draft the out-of-office and standing replies in context",
+        "Script signature + template deployment from scratch"
+      ]
+    }
+  ],
+  "lessons": [
+    {
+      "slug": "folders-categories-and-flags",
+      "file": "folders-categories-and-flags.html",
+      "title": "Folders, categories & flags: one home per mail",
+      "nav_label": "Triage",
+      "grid_label": "Folders, categories & flags",
+      "theme": "triage-organise"
+    },
+    {
+      "slug": "rules-that-file-mail-on-arrival",
+      "file": "rules-that-file-mail-on-arrival.html",
+      "title": "Rules that file mail on arrival",
+      "nav_label": "Rules",
+      "grid_label": "Rules on arrival",
+      "theme": "triage-organise",
+      "builds_on": ["folders-categories-and-flags"]
+    },
+    {
+      "slug": "focused-inbox-and-notification-discipline",
+      "file": "focused-inbox-and-notification-discipline.html",
+      "title": "Focused Inbox & notification discipline",
+      "nav_label": "Focus",
+      "grid_label": "Focused Inbox & notifications",
+      "theme": "triage-organise"
+    },
+    {
+      "slug": "search-operators",
+      "file": "search-operators.html",
+      "title": "Search operators: describe the mail, don't scroll",
+      "nav_label": "Search",
+      "grid_label": "Search operators",
+      "theme": "find-retrieve"
+    },
+    {
+      "slug": "search-folders-saved-searches",
+      "file": "search-folders-saved-searches.html",
+      "title": "Search Folders: saved searches that stay fresh",
+      "nav_label": "Search Folders",
+      "grid_label": "Search Folders",
+      "theme": "find-retrieve",
+      "builds_on": ["search-operators"]
+    },
+    {
+      "slug": "threading-hygiene-reply-reply-all-forward",
+      "file": "threading-hygiene-reply-reply-all-forward.html",
+      "title": "Threading hygiene: reply, reply-all, forward",
+      "nav_label": "Threading",
+      "grid_label": "Threading hygiene",
+      "theme": "write-respond"
+    },
+    {
+      "slug": "attachments-formatting-and-mentions",
+      "file": "attachments-formatting-and-mentions.html",
+      "title": "Attachments, formatting & @mentions: send it right first time",
+      "nav_label": "Send mechanics",
+      "grid_label": "Attachments & @mentions",
+      "theme": "write-respond"
+    },
+    {
+      "slug": "invites-that-get-accepted",
+      "file": "invites-that-get-accepted.html",
+      "title": "Invites that get accepted: the agenda is the meeting",
+      "nav_label": "Invites",
+      "grid_label": "Invites that get accepted",
+      "theme": "schedule-coordinate"
+    },
+    {
+      "slug": "scheduling-assistant-and-free-busy",
+      "file": "scheduling-assistant-and-free-busy.html",
+      "title": "Scheduling Assistant & free/busy: find the slot without the email volley",
+      "nav_label": "Scheduling",
+      "grid_label": "Scheduling Assistant",
+      "theme": "schedule-coordinate",
+      "builds_on": ["invites-that-get-accepted"]
+    },
+    {
+      "slug": "meeting-recap-to-tracked-follow-ups",
+      "file": "meeting-recap-to-tracked-follow-ups.html",
+      "title": "From meeting to tracked follow-ups",
+      "nav_label": "Follow-ups",
+      "grid_label": "Meeting follow-ups",
+      "theme": "schedule-coordinate"
+    },
+    {
+      "slug": "quick-steps-one-click-three-actions",
+      "file": "quick-steps-one-click-three-actions.html",
+      "title": "Quick Steps: one click, three actions",
+      "nav_label": "Quick Steps",
+      "grid_label": "Quick Steps",
+      "theme": "automate-repetitive"
+    },
+    {
+      "slug": "signatures-and-quick-parts",
+      "file": "signatures-and-quick-parts.html",
+      "title": "Signatures & Quick Parts: never type it twice",
+      "nav_label": "Quick Parts",
+      "grid_label": "Signatures & Quick Parts",
+      "theme": "automate-repetitive"
+    },
+    {
+      "slug": "out-of-office-done-properly",
+      "file": "out-of-office-done-properly.html",
+      "title": "Out-of-office done properly",
+      "nav_label": "Out of office",
+      "grid_label": "Out-of-office",
+      "theme": "automate-repetitive"
+    }
+  ],
+  "candidates": []
+}
