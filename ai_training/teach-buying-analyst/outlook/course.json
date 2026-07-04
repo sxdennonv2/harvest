@@ -83,6 +83,23 @@
       "theme": "triage-organise"
     },
     {
+      "slug": "rules-that-file-mail-on-arrival",
+      "file": "rules-that-file-mail-on-arrival.html",
+      "title": "Rules that file mail on arrival",
+      "nav_label": "Rules",
+      "grid_label": "Rules on arrival",
+      "theme": "triage-organise",
+      "builds_on": ["folders-categories-and-flags"]
+    },
+    {
+      "slug": "focused-inbox-and-notification-discipline",
+      "file": "focused-inbox-and-notification-discipline.html",
+      "title": "Focused Inbox & notification discipline",
+      "nav_label": "Focus",
+      "grid_label": "Focused Inbox & notifications",
+      "theme": "triage-organise"
+    },
+    {
       "slug": "search-operators",
       "file": "search-operators.html",
       "title": "Search operators: describe the mail, don't scroll",
@@ -91,11 +108,28 @@
       "theme": "find-retrieve"
     },
     {
+      "slug": "search-folders-saved-searches",
+      "file": "search-folders-saved-searches.html",
+      "title": "Search Folders: saved searches that stay fresh",
+      "nav_label": "Search Folders",
+      "grid_label": "Search Folders",
+      "theme": "find-retrieve",
+      "builds_on": ["search-operators"]
+    },
+    {
       "slug": "threading-hygiene-reply-reply-all-forward",
       "file": "threading-hygiene-reply-reply-all-forward.html",
       "title": "Threading hygiene: reply, reply-all, forward",
       "nav_label": "Threading",
       "grid_label": "Threading hygiene",
+      "theme": "write-respond"
+    },
+    {
+      "slug": "attachments-formatting-and-mentions",
+      "file": "attachments-formatting-and-mentions.html",
+      "title": "Attachments, formatting & @mentions: send it right first time",
+      "nav_label": "Send mechanics",
+      "grid_label": "Attachments & @mentions",
       "theme": "write-respond"
     },
     {
@@ -107,22 +141,46 @@
       "theme": "schedule-coordinate"
     },
     {
+      "slug": "scheduling-assistant-and-free-busy",
+      "file": "scheduling-assistant-and-free-busy.html",
+      "title": "Scheduling Assistant & free/busy: find the slot without the email volley",
+      "nav_label": "Scheduling",
+      "grid_label": "Scheduling Assistant",
+      "theme": "schedule-coordinate",
+      "builds_on": ["invites-that-get-accepted"]
+    },
+    {
+      "slug": "meeting-recap-to-tracked-follow-ups",
+      "file": "meeting-recap-to-tracked-follow-ups.html",
+      "title": "From meeting to tracked follow-ups",
+      "nav_label": "Follow-ups",
+      "grid_label": "Meeting follow-ups",
+      "theme": "schedule-coordinate"
+    },
+    {
       "slug": "quick-steps-one-click-three-actions",
       "file": "quick-steps-one-click-three-actions.html",
       "title": "Quick Steps: one click, three actions",
       "nav_label": "Quick Steps",
       "grid_label": "Quick Steps",
       "theme": "automate-repetitive"
+    },
+    {
+      "slug": "signatures-and-quick-parts",
+      "file": "signatures-and-quick-parts.html",
+      "title": "Signatures & Quick Parts: never type it twice",
+      "nav_label": "Quick Parts",
+      "grid_label": "Signatures & Quick Parts",
+      "theme": "automate-repetitive"
+    },
+    {
+      "slug": "out-of-office-done-properly",
+      "file": "out-of-office-done-properly.html",
+      "title": "Out-of-office done properly",
+      "nav_label": "Out of office",
+      "grid_label": "Out-of-office",
+      "theme": "automate-repetitive"
     }
   ],
-  "candidates": [
-    { "theme": "triage-organise", "working_title": "Rules that file mail on arrival", "survey_signal": "pillar-derived; low direct demand" },
-    { "theme": "triage-organise", "working_title": "Focused Inbox & notification discipline", "survey_signal": "pillar-derived" },
-    { "theme": "find-retrieve", "working_title": "Search Folders: saved searches that stay fresh", "survey_signal": "pillar-derived" },
-    { "theme": "write-respond", "working_title": "Attachments, formatting & @mentions: send it right first time", "survey_signal": "pillar-derived" },
-    { "theme": "schedule-coordinate", "working_title": "Scheduling Assistant & free/busy", "survey_signal": "pillar-derived" },
-    { "theme": "schedule-coordinate", "working_title": "From meeting notes to actions", "survey_signal": "\"meeting notes to text\"; \"summarise meeting notes & populate minutes\"" },
-    { "theme": "automate-repetitive", "working_title": "Signatures & Quick Parts", "survey_signal": "pillar-derived" },
-    { "theme": "automate-repetitive", "working_title": "Out-of-office done properly", "survey_signal": "pillar-derived" }
-  ]
+  "candidates": []
 }
