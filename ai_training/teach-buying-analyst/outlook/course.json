@@ -73,20 +73,56 @@
       ]
     }
   ],
-  "lessons": [],
+  "lessons": [
+    {
+      "slug": "folders-categories-and-flags",
+      "file": "folders-categories-and-flags.html",
+      "title": "Folders, categories & flags: one home per mail",
+      "nav_label": "Triage",
+      "grid_label": "Folders, categories & flags",
+      "theme": "triage-organise"
+    },
+    {
+      "slug": "search-operators",
+      "file": "search-operators.html",
+      "title": "Search operators: describe the mail, don't scroll",
+      "nav_label": "Search",
+      "grid_label": "Search operators",
+      "theme": "find-retrieve"
+    },
+    {
+      "slug": "threading-hygiene-reply-reply-all-forward",
+      "file": "threading-hygiene-reply-reply-all-forward.html",
+      "title": "Threading hygiene: reply, reply-all, forward",
+      "nav_label": "Threading",
+      "grid_label": "Threading hygiene",
+      "theme": "write-respond"
+    },
+    {
+      "slug": "invites-that-get-accepted",
+      "file": "invites-that-get-accepted.html",
+      "title": "Invites that get accepted: the agenda is the meeting",
+      "nav_label": "Invites",
+      "grid_label": "Invites that get accepted",
+      "theme": "schedule-coordinate"
+    },
+    {
+      "slug": "quick-steps-one-click-three-actions",
+      "file": "quick-steps-one-click-three-actions.html",
+      "title": "Quick Steps: one click, three actions",
+      "nav_label": "Quick Steps",
+      "grid_label": "Quick Steps",
+      "theme": "automate-repetitive"
+    }
+  ],
   "candidates": [
-    { "theme": "triage-organise", "working_title": "Folders, categories & flags: one home per mail", "survey_signal": "process prompts; volume management (implied)" },
     { "theme": "triage-organise", "working_title": "Rules that file mail on arrival", "survey_signal": "pillar-derived; low direct demand" },
     { "theme": "triage-organise", "working_title": "Focused Inbox & notification discipline", "survey_signal": "pillar-derived" },
-    { "theme": "find-retrieve", "working_title": "Search operators: from:, hasattachments:, received:", "survey_signal": "\"find relevant emails, saving time searching archives\"" },
     { "theme": "find-retrieve", "working_title": "Search Folders: saved searches that stay fresh", "survey_signal": "pillar-derived" },
-    { "theme": "write-respond", "working_title": "Threading hygiene: reply, reply-all, forward", "survey_signal": "pillar-derived" },
     { "theme": "write-respond", "working_title": "Attachments, formatting & @mentions: send it right first time", "survey_signal": "pillar-derived" },
-    { "theme": "schedule-coordinate", "working_title": "Invites that get accepted: agenda in the invite", "survey_signal": "pillar-derived" },
     { "theme": "schedule-coordinate", "working_title": "Scheduling Assistant & free/busy", "survey_signal": "pillar-derived" },
     { "theme": "schedule-coordinate", "working_title": "From meeting notes to actions", "survey_signal": "\"meeting notes to text\"; \"summarise meeting notes & populate minutes\"" },
     { "theme": "automate-repetitive", "working_title": "Signatures & Quick Parts", "survey_signal": "pillar-derived" },
-    { "theme": "automate-repetitive", "working_title": "Quick Steps: one click, three actions", "survey_signal": "productivity improvements (generic demand)" },
     { "theme": "automate-repetitive", "working_title": "Out-of-office done properly", "survey_signal": "pillar-derived" }
   ]
 }
