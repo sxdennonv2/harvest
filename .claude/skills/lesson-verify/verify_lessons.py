@@ -77,6 +77,17 @@ def verify_lesson(course_dir: Path, lesson: dict, n_rungs: int) -> list[str]:
     if re.search(r"Lesson [1-9](?![0-9])", text):
         fails.append("bare lesson-number reference in prose (use slug links)")
 
+    # Optional context-rebind element (communication pipeline): when present,
+    # one labelled callout per bound context beyond the authored one.
+    rebind = re.search(
+        r'Other rooms, same craft(.*?)<div class="callout">\s*<span class="label">Primary source',
+        text, re.DOTALL)
+    if rebind:
+        blocks = len(re.findall(r'class="callout"', rebind.group(1)))
+        expected = len(lesson.get("contexts", [])) - 1
+        if expected >= 1 and blocks != expected:
+            fails.append(f"context-rebind blocks = {blocks} (contexts imply {expected})")
+
     for href in sorted(set(re.findall(r'href="([^"]+)"', text))):
         if href.startswith(("http://", "https://", "mailto:", "#")):
             continue
