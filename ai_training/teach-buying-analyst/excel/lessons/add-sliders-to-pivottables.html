@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0012.1 — Slicers: swap the dropdowns for sliders</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="pivottables-summarise-in-seconds.html">0012 — PivotTables</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="dynamic-arrays-filter-sort-unique.html">0013 — Dynamic arrays</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="tables-the-modern-foundation.html">Source &amp; prepare</a>
+    <a href="relative-and-absolute-references.html" class="current">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0012.1 · a sub-lesson of 0012</p>
+  <h1>Slicers: swap the dropdowns for sliders</h1>
+
+  <p class="mission">
+    Tied to your mission: your PivotTable works, but the little grey
+    <span class="cell">Filter</span> dropdowns are fiddly and hide what's actually selected.
+    <strong>Slicers</strong> replace them with big, obvious buttons — a filter panel your director
+    can read and click at a glance. Same pivot, a far better-looking, faster-to-drive report.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and use the <span class="tab-name">PivotTable</span> tab. Build the pivot from
+      <a href="pivottables-summarise-in-seconds.html">the PivotTables lesson</a> first (Category in Rows,
+      Cases and Revenue in Values) — this sub-lesson adds the slicers on top of it.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    A <strong>slicer</strong> is a filter you can see. Instead of a dropdown buried in the pivot, it
+    is a floating panel of buttons — one per value — that filters the PivotTable when you click. A
+    <strong>Timeline</strong> is the same idea for dates: a literal slider you drag across months or
+    quarters. The pivot underneath is unchanged; the slicer is just a nicer set of controls wired to
+    it, and one slicer can even drive several pivots at once.
+  </p>
+
+  <h2>Why it matters to a buyer</h2>
+  <p>
+    A report is used, not just read. When the filter is a row of labelled buttons, anyone can see
+    that "Snacks" and "Q3" are selected and change it without hunting through menus — no training,
+    no mis-clicks. It's the difference between a pivot only you can drive and a small dashboard your
+    whole team can. That polish is exactly what makes a boss's pivot look "a level up".
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Leaning on the pivot's built-in <span class="cell">Filters</span> dropdowns — where the current
+    selection is invisible until you open them, and no one but the author dares touch it. Slicers put
+    the state on the surface, so the report explains itself.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    Click anywhere in the PivotTable, then <span class="cell">PivotTable Analyze → Insert Slicer</span>,
+    tick <span class="cell">Category</span> and <span class="cell">Supplier</span>, and click OK. Two
+    button panels appear — drag them beside the pivot. Click a button to filter; Ctrl-click for
+    several; use the little <span class="cell">clear filter</span> icon (top-right of the slicer) to
+    reset.
+  </p>
+  <p>
+    For dates, use <span class="cell">PivotTable Analyze → Insert Timeline</span> and pick
+    <span class="cell">Month</span> — you get a slider you drag across the period. To make one slicer
+    drive several pivots, right-click it → <span class="cell">Report Connections</span> and tick the
+    pivots to link.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="1">
+      <p class="q">1. A slicer is best described as …</p>
+      <ul class="opts">
+        <li><button class="opt">a new kind of formula</button></li>
+        <li><button class="opt">a visible, clickable filter for a PivotTable</button></li>
+        <li><button class="opt">a chart type</button></li>
+        <li><button class="opt">a way to sort rows</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="2">
+      <p class="q">2. To filter a PivotTable by <em>date</em> with a draggable slider, you insert a …</p>
+      <ul class="opts">
+        <li><button class="opt">Slicer</button></li>
+        <li><button class="opt">Chart</button></li>
+        <li><button class="opt">Timeline</button></li>
+        <li><button class="opt">Filter dropdown</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. To make one slicer control two PivotTables at once, you use …</p>
+      <ul class="opts">
+        <li><button class="opt">Report Connections</button></li>
+        <li><button class="opt">Insert → Chart</button></li>
+        <li><button class="opt">Conditional Formatting</button></li>
+        <li><button class="opt">Freeze Panes</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    On your pivot, add slicers for <span class="cell">Category</span> and
+    <span class="cell">Supplier</span> and a Timeline for <span class="cell">Month</span>. Click a
+    category button and watch the totals move; drag the timeline to a single month. Then tidy the
+    layout so the panels sit neatly beside the pivot — that arrangement <em>is</em> the report.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — turn the pivot's dropdowns into visible slicers — with more handed to AI at each
+    rung. The check never changes: click a slicer button and confirm the pivot totals actually
+    respond to it.
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it tells you how, you click it</h3>
+  <p>Aldi:GPT can't see your workbook, so it guides; you build and verify.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I'm using Excel. I have a PivotTable summarising sales by Category and Supplier, with a Month field. Walk me through adding slicers for Category and Supplier and a Timeline for Month, positioning them neatly, and connecting one slicer to more than one PivotTable. Give me the exact ribbon steps (PivotTable Analyze) and how to clear a slicer's filter.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer uses <span class="cell">PivotTable Analyze → Insert
+      Slicer</span> and <span class="cell">Insert Timeline</span>, and mentions
+      <span class="cell">Report Connections</span> for linking. If it only describes the old Filter
+      dropdowns, ask specifically for slicers.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it adds the slicers in your workbook</h3>
+  <p>Copilot inside Excel can act on the sheet you have open. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>On the "PivotTable" sheet, add slicers for Category and Supplier to my PivotTable and a Timeline for Month. Arrange them neatly to the right of the pivot, and connect the Category slicer to every PivotTable on the sheet.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> you should see button panels for Category and Supplier and a month
+      Timeline. Click "Snacks" and confirm the totals drop to just that category — if nothing moves,
+      the slicer wasn't wired to the pivot.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the whole workbook from scratch</h3>
+  <p>An agent with file access builds the workbook for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>Create an Excel workbook named sales-dashboard.xlsx with a "Sales" sheet holding a Table (Month, Category, Supplier, Product, Cases, Revenue) of about 20 rows, and a "Dashboard" sheet with a PivotTable of Revenue by Category and Supplier. Add slicers for Category and Supplier and a Timeline for Month, laid out beside the pivot as a simple dashboard. Save the file and tell me which fields have slicers.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file and click the slicer buttons — the pivot totals should
+      react, and the month Timeline should filter the period. If the buttons are just static shapes,
+      they aren't real slicers; send it back.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI explains where the slicer button lives" to "AI builds the dashboard" — the deliverable
+    is the same self-explaining, click-to-filter report. What protects you at every rung is the one
+    test: a slicer must actually move the pivot's numbers. Craft first, so you can supervise.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/en-us/office/use-slicers-to-filter-data-249f966b-a9d5-4b0f-b31a-12651785d29d">Microsoft — Use slicers to filter data</a> and
+    <a href="https://exceljet.net/articles/excel-pivot-tables">ExcelJet — Pivot tables</a>.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want to turn this into a proper one-screen dashboard — several
+    pivots and charts all driven by one shared slicer? Say the word and I'll add that as the next
+    sub-lesson.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="pivottables-summarise-in-seconds.html">0012 — PivotTables</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="dynamic-arrays-filter-sort-unique.html">0013 — Dynamic arrays</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — that is the slicer advantage.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

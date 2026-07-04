@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0009 — SUMIFS: totals by criteria</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="aggregation-and-precision.html">0008 — Aggregation</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="xlookup-pull-matching-details.html">0010 — XLOOKUP</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="tables-the-modern-foundation.html">Source &amp; prepare</a>
+    <a href="relative-and-absolute-references.html" class="current">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0009</p>
+  <h1>SUMIFS: totals by criteria</h1>
+
+  <p class="mission">
+    Tied to your mission: the pivot (Lesson 3) is perfect for exploring, but sometimes you need a
+    <em>live number in a fixed cell</em> — "total revenue for Snacks" sitting in a report that
+    updates itself. <strong>SUMIFS</strong> is that number: a total that only adds the rows meeting
+    your conditions, and recalculates the instant the data changes.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">SUMIFS</span> tab — the flat sales list is on the
+      left and a small summary block (categories down column H) is waiting for its totals.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    <span class="cell">SUMIFS</span> adds up a column, but only the rows that pass one or more
+    tests. You read it as: <em>sum this range, where that range equals this.</em> The shape is
+    <span class="cell">=SUMIFS(sum_range, criteria_range, criteria)</span> — and you can bolt on
+    more <span class="cell">criteria_range, criteria</span> pairs to narrow it further (category
+    <em>and</em> month, say).
+  </p>
+  <p>
+    To total Snacks revenue: <span class="cell">=SUMIFS($F$2:$F$19, $B$2:$B$19, "Snacks")</span>.
+    Point the criteria at a cell instead of typing the word — <span class="cell">…, H2)</span> —
+    and one formula fills down the whole summary.
+  </p>
+
+  <h2>Why it matters to a buyer</h2>
+  <p>
+    Reports that land on a director's desk have <em>fixed</em> lines — revenue by category, cases
+    by supplier — that must be right every week without rebuilding. SUMIFS gives you those lines as
+    living formulas: refresh the extract and the totals move. It is the difference between a report
+    you maintain and a report that maintains itself.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Filtering the list to one category, reading the status-bar sum, and typing that number into
+    your report as a hard value — then repeating it for every category, every week, and never
+    noticing when one goes stale. SUMIFS makes the total a formula that can't fall behind the data.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    On the <span class="cell">SUMIFS</span> tab, in <span class="cell">I2</span> type
+    <span class="cell">=SUMIFS($E$2:$E$19, $B$2:$B$19, H2)</span> for total cases, and in
+    <span class="cell">J2</span> type <span class="cell">=SUMIFS($F$2:$F$19, $B$2:$B$19, H2)</span>
+    for total revenue. Fill both down to row 5. The <span class="cell">$</span> signs lock the list
+    so every row still points at the full data (Lesson 1) — only <span class="cell">H2</span> moves.
+  </p>
+  <p>
+    <em>Builds on Lesson 1:</em> those dollar signs are the absolute references you met in Lesson 1,
+    doing exactly the job they were made for — anchoring the range while the criterion walks down.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="1">
+      <p class="q">1. In <span class="cell">=SUMIFS(sum_range, criteria_range, criteria)</span>,
+        which range holds the numbers that actually get added?</p>
+      <ul class="opts">
+        <li><button class="opt">criteria_range</button></li>
+        <li><button class="opt">sum_range</button></li>
+        <li><button class="opt">criteria</button></li>
+        <li><button class="opt">all of them</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="2">
+      <p class="q">2. Why lock the ranges with <span class="cell">$</span> before filling down?</p>
+      <ul class="opts">
+        <li><button class="opt">it makes them faster</button></li>
+        <li><button class="opt">it rounds the total</button></li>
+        <li><button class="opt">so the range stays on the full list as you fill</button></li>
+        <li><button class="opt">it isn't needed</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. To total revenue for Snacks <em>in February only</em>, you …</p>
+      <ul class="opts">
+        <li><button class="opt">add a second criteria pair for Month = "Feb"</button></li>
+        <li><button class="opt">use SUM instead</button></li>
+        <li><button class="opt">delete the other months</button></li>
+        <li><button class="opt">it can't be done</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Fill the summary on the <span class="cell">SUMIFS</span> tab, then sanity-check it: the
+    four category revenue totals should add up to a plain <span class="cell">=SUM(F2:F19)</span> of
+    the whole list. If they don't, a criterion is misspelt or a range is short. Then try a second
+    block: add <span class="cell">$A$2:$A$19, "Feb"</span> to see Snacks revenue for one month.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — fixed, self-updating totals by category — with more handed to AI at each rung. The
+    check never changes: do the category totals reconcile to a plain SUM of the whole column?
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it writes the formula, you place it</h3>
+  <p>Aldi:GPT can't see your workbook, so it writes the formula; you place and verify it.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I'm using Excel. I have a sales list where column B is Category, column E is Cases and column F is Revenue (AUD), data in rows 2 to 19. I have category names listed down column H starting at H2. Write me a SUMIFS formula for I2 that totals Cases for the category in H2, and one for J2 that totals Revenue, both ready to fill down. Explain which parts to lock with dollar signs and why.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer locks the E, B and F ranges with <span class="cell">$</span>
+      and leaves <span class="cell">H2</span> relative. If it hands you <span class="cell">SUMIF</span>
+      (no S) it still works for one condition — but SUMIFS is the habit to build, as it scales to
+      several criteria.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it fills the summary in your workbook</h3>
+  <p>Copilot inside Excel can act on the sheet you have open. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>On the "SUMIFS" sheet, in I2:I5 total Cases for each category listed in H2:H5, and in J2:J5 total Revenue (AUD), using SUMIFS against the list in A1:F19. Make sure the formulas fill down correctly.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> click <span class="cell">J2</span> and confirm it's a real
+      <span class="cell">SUMIFS</span> formula, not a pasted number. The four revenue totals should
+      sum to <span class="cell">=SUM(F2:F19)</span> — if not, the range was wrong.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the whole workbook from scratch</h3>
+  <p>An agent with file access builds the workbook for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>Create an Excel workbook named category-totals.xlsx with a sheet "Sales" holding a flat list with columns Month, Category, Supplier, Product, Cases and Revenue (AUD) and about 18 realistic rows across four categories and three months. On the same sheet, add a summary block listing each unique category with SUMIFS formulas that total Cases and Revenue per category. Save the file and tell me which cell holds the Snacks revenue total.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file, confirm the summary uses live
+      <span class="cell">SUMIFS</span> formulas, and that the category totals reconcile to a plain
+      <span class="cell">SUM</span> of the Revenue column. Change a number in the list and watch the
+      matching total move.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI writes the formula" to "AI builds the workbook and the totals" — the deliverable is the
+    same set of self-updating lines. What protects you at every rung is the reconciliation check:
+    the parts must sum to the whole. Craft first, so you can supervise.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://exceljet.net/functions/sumifs-function">ExcelJet — SUMIFS function</a> and
+    <a href="https://support.microsoft.com/en-us/office/sumifs-function-c9e748f5-7ea7-455d-9406-611cebce642b">Microsoft — SUMIFS function</a>.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want this rebuilt around your real category and supplier
+    names, with the exact report lines your director asks for? Send a sanitised extract and I'll
+    retarget Lesson 4 to it.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="aggregation-and-precision.html">0008 — Aggregation</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="xlookup-pull-matching-details.html">0010 — XLOOKUP</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — that is how SUMIFS totals by criteria.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

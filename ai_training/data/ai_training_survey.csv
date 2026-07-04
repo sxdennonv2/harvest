@@ -1,0 +1,61 @@
+Id,Which team do you work in?,Which bests describes your role,How often to you use ALDI GPT?,What types of tasks would you like ALDI GPT help you with?,Column1,What currently limits your use of AI tools?,What type of support would you find most useful?,How confident do you currently feel using AI tools in your role?
+23,National Sustainability,Specialist / Analyst,Occasionally,Summarising a message into a particular tone or into a more condensed message which I am already using it for. Have tried to run some calculations on it but as a language model it wasn't very good at it (the calculation was wrong). Resolving excel formulation errors if it could do that somehow that would be useful.,,N/A,"Quick reference guides, templates and prompting tips;Ongoing support sessions, Q&A or consultation;",Neutral
+7,Projects,Manager / Director,Daily,"Analysing data – picking up trends and risks with data accuracy which may skew results.
+For example, in a dataset where a record might suggest a product is 200 days out of date, this presents a risk of data inaccuracy.
+
+- Searching ALDI Australia policies.
+
+Question - How do you suggest we differentiate our use of ALDI GPT vs Copilot. What is your recommendation on when we should use one over the other?
+
+",,N/A,"Role-specific examples and team workshops;Quick reference guides, templates and prompting tips;",Very Confident
+20,Admin,Office Assistant / Assistant,Weekly,"Rewording of emails, asking for process prompts, refining PPT or training material.",,N/A,"Introductory AI training and practical demonstrations;Quick reference guides, templates and prompting tips;",Very Confident
+28,National Sustainability,Office Assistant / Assistant,Occasionally,To reword and rephrase sentences ,,N/A,"Quick reference guides, templates and prompting tips;Introductory AI training and practical demonstrations;",Very Confident
+9,Projects,Manager / Director,Weekly,Anything related to productivity improvements/support,,I would benefit from more practical training or examples,Introductory AI training and practical demonstrations;Role-specific examples and team workshops;,Neutral
+25,Admin,Manager / Director,Daily,"I'm not sure, but believe it could help the department in a few ways (searching multiple training material sources for example). ",,I would benefit from more practical training or examples,"Introductory AI training and practical demonstrations;Ongoing support sessions, Q&A or consultation;Quick reference guides, templates and prompting tips;Role-specific examples and team workshops;",Neutral
+13,Admin,Office Assistant / Assistant,Daily,Write emails/formalise,,I would benefit from more practical training or examples,Role-specific examples and team workshops;,Neutral
+24,NBC/POST,Specialist / Analyst,Daily,"Wording emails/documents etc. Pulling data from resources i.e. reports, channels and providing statistics ",,I would benefit from more practical training or examples,"Introductory AI training and practical demonstrations;Role-specific examples and team workshops;Quick reference guides, templates and prompting tips;Ongoing support sessions, Q&A or consultation;",Neutral
+3,National Sustainability,Office Assistant / Assistant,Daily,"Rewording
+Reviewing Content",,I would benefit from more practical training or examples,"Introductory AI training and practical demonstrations;Role-specific examples and team workshops;Quick reference guides, templates and prompting tips;",Not very confident
+6,National Sustainability,Specialist / Analyst,Tried it once or twice,Interpreting or summarising data. Creating graphs or images for reporting. Image editing. Assistance with excel formulas.,,I would benefit from more practical training or examples,Introductory AI training and practical demonstrations;Role-specific examples and team workshops;,Not very confident
+30,National Sustainability,Specialist / Analyst,Weekly,"It would be great if ALDI GPT was able to provide ALDI knowledge, using reliable sources. 
+
+In regards to Question 5, it is a little bit of all of the options (except N/A). ",,I would benefit from more practical training or examples,"Introductory AI training and practical demonstrations;Role-specific examples and team workshops;Quick reference guides, templates and prompting tips;",Not very confident
+31,Admin,Specialist / Analyst,Weekly,better in supplying excel formulas into excel. ,,I would benefit from more practical training or examples,"Role-specific examples and team workshops;Quick reference guides, templates and prompting tips;Introductory AI training and practical demonstrations;",Not very confident
+11,Projects,Manager / Director,Weekly,"Summarising emails, preparing submissions for GDM or other audiences, preparing presentations or external facing documents. ",,I would benefit from more practical training or examples,Introductory AI training and practical demonstrations;,Somewhat confident
+12,NBC/POST,Office Assistant / Assistant,Occasionally,"I have used it for drafting plans for projects, analyse large datasets in excel, Copilot for topic/project summary and quick access to information, GPT/Gemini/Claude knows common SAP data tables and t-codes, can assist with explaining data flow or processes, and codex for query correction.",,I would benefit from more practical training or examples,"Role-specific examples and team workshops;Quick reference guides, templates and prompting tips;",Somewhat confident
+19,Admin,Office Assistant / Assistant,Weekly,"Currently using ALDI GPT for rewriting emails to a professional standard. Also, when I need assistance with Excel. 
+I would be interested it see how GPT can help with project planning. ",,I would benefit from more practical training or examples,Introductory AI training and practical demonstrations;,Somewhat confident
+29,Admin,Office Assistant / Assistant,Daily,"- Finding technical fields and tables in SAP S/4 Hana
+- Explaining what certain SQLs are pulling and what they are doing
+- Creating excel formulas",,I would benefit from more practical training or examples,"Role-specific examples and team workshops;Quick reference guides, templates and prompting tips;Ongoing support sessions, Q&A or consultation;",Somewhat confident
+10,Admin,Specialist / Analyst,Daily,"I use ALDI GPT and Copilot daily, from proofreading written correspondence to helping with Excel formulas. It helps me find relevant emails, saving time searching through archives, and to suggests different ways of working or looking at a situation.",,I would benefit from more practical training or examples,Introductory AI training and practical demonstrations;,Somewhat confident
+18,NBC/POST,Specialist / Analyst,Daily,"Providing summaries of reports and data analysing
+Providing figures and stats ",,I would benefit from more practical training or examples,Role-specific examples and team workshops;,Somewhat confident
+1,Admin,Specialist / Analyst,Daily,many,,I would benefit from more practical training or examples,"Role-specific examples and team workshops;Quick reference guides, templates and prompting tips;Ongoing support sessions, Q&A or consultation;",Very Confident
+15,Admin,Manager / Director,Weekly,Generally for checking emails for clarity and conciseness,,I have not had enough time or opportunity to explore it yet,Introductory AI training and practical demonstrations;,Neutral
+17,Admin,Office Assistant / Assistant,Tried it once or twice,excel spreadsheet fomulars /macros,,I have not had enough time or opportunity to explore it yet,"Introductory AI training and practical demonstrations;Role-specific examples and team workshops;Quick reference guides, templates and prompting tips;Ongoing support sessions, Q&A or consultation;",Neutral
+21,National Sustainability,Specialist / Analyst,Tried it once or twice,"Clear excel shortcuts and formulas that isn't a description similar to google or other search engines, professional writing for external stake holders where ambiguity is removed (i.e. to provide clearer messaging)",,I have not had enough time or opportunity to explore it yet,,Not very confident
+14,National Sustainability,Manager / Director,Occasionally,"Excel formulas, Excel macros, written text improvements, meeting notes to text",,I have not had enough time or opportunity to explore it yet,Role-specific examples and team workshops;,Somewhat confident
+26,Admin,Manager / Director,Occasionally,"Search information across all published materials on SharePoint e.g. NBuy Training Manual, Handbook, BRAIN, POST etc
+Assistant level tasks e.g. Excel support for data reporting. For q5 below, I can only select one answer but they're all applicable. Answer to Q7 relates to accuracy of tools rather than personal confidence level.",,"I have concerns around accuracy, quality or appropriate use","Introductory AI training and practical demonstrations;Quick reference guides, templates and prompting tips;Ongoing support sessions, Q&A or consultation;",Not very confident
+2,Projects,Office Assistant / Assistant,Weekly,"Summarise information, re-write information, get ideas on formatting and templates. ",,"I have concerns around accuracy, quality or appropriate use","Quick reference guides, templates and prompting tips;",Somewhat confident
+8,Projects,Office Assistant / Assistant,Daily,"Currently I use ALDI GPT to assist with checking spelling, grammar, and tone in responses where the audience might need to be considered, for example senior leadership. I use it to summarise meeting notes & populate meeting minutes. 
+I have tried to use it to analyse data and highlight trends but I would say the consistency and accuracy is up and down. ",,"I have concerns around accuracy, quality or appropriate use",Role-specific examples and team workshops;,Somewhat confident
+4,Admin,Specialist / Analyst,Daily,"- spell check
+- write introduction paragraph based on input of excel data (example is to write an introduction email from ASN compliance score percentage)
+- My GPT's to search sharepoint documents, data, MS files and give specific output, such as step by step instructions or bullet point answers
+- reply to high level stakeholders to ensure correct etiquette, grammar and writing style
+- Simple calculations and comparing documents or data sets
+- acronym meanings
+- Using Rovo to create Jira tasks
+- Generate statistics in simple pie chart or clear visual performance metrics
+- translate foreign language to English
+- help with US English to AU English spelling 
+- ask for windows keyboard shortcuts
+- reduce overly explained text or emails to more palatable level
+- upload screen shot image during presentations of URL and convert into text to access website
+- ask for SAP transaction codes and tables (not so successful)",,"I have concerns around accuracy, quality or appropriate use","Quick reference guides, templates and prompting tips;Ongoing support sessions, Q&A or consultation;Introductory AI training and practical demonstrations;",Somewhat confident
+5,Projects,Specialist / Analyst,Daily,"Help with excel formulas, vba code, sql code, re-writing communications",,"I have concerns around accuracy, quality or appropriate use",Introductory AI training and practical demonstrations;Role-specific examples and team workshops;,Somewhat confident
+22,NBC/POST,Specialist / Analyst,Occasionally,"Proof reading, script writing, logic help",,"I have concerns around accuracy, quality or appropriate use","Quick reference guides, templates and prompting tips;",Somewhat confident
+27,NBC/POST,Specialist / Analyst,Daily,"Writing tool, project scoping ideas",,"I have concerns around accuracy, quality or appropriate use",Role-specific examples and team workshops;,Somewhat confident
+16,NBC/POST,Manager / Director,Occasionally,Tighten emails. ,,"I have concerns around accuracy, quality or appropriate use",,Very Confident

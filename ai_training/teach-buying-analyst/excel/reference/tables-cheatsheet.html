@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet — Excel Tables</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+  <p class="kicker">Excel to a High Standard · Reference</p>
+  <h1>Excel Tables cheat sheet</h1>
+
+  <h3>Make one</h3>
+  <p>Click in the data → <kbd>Ctrl</kbd>+<kbd>T</kbd> → tick <span class="cell">My table has headers</span>.
+     Name it on <span class="cell">Table Design → Table Name</span>.</p>
+
+  <h3>Structured references</h3>
+  <table class="grid" aria-label="Structured reference syntax">
+    <tr><th>You write</th><th>Means</th></tr>
+    <tr><td class="locked">[@[Case cost]]</td><td>this row's Case cost</td></tr>
+    <tr><td>Products[Case cost]</td><td>the whole Case cost column</td></tr>
+    <tr><td>Products[#Totals]</td><td>the total row</td></tr>
+  </table>
+
+  <h3>Why it's the foundation</h3>
+  <p>Grows automatically · fills formulas down · feeds pivots &amp; charts that expand ·
+     one-click <span class="cell">Total Row</span> · readable formulas.</p>
+
+  <div class="callout bad">
+    <span class="label">Smell test</span>
+    If you're re-selecting <span class="cell">B2:B480</span> ranges or dragging formulas down by
+    hand, you should be using a Table.
+  </div>
+
+  <footer class="lesson-nav">
+    <span>Lesson: <a href="../lessons/tables-the-modern-foundation.html">Tables</a></span>
+    <span>Source: <a href="https://exceljet.net/articles/excel-tables">ExcelJet</a></span>
+  </footer>
+</body>
+</html>

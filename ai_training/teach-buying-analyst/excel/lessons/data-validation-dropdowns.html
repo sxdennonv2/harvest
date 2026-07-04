@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0003 — Data validation: controlled dropdowns</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="sort-and-filter.html">0002 — Sort &amp; Filter</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="text-formulas-clean-and-combine.html">0004 — Text formulas</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="tables-the-modern-foundation.html" class="current">Source &amp; prepare</a>
+    <a href="relative-and-absolute-references.html">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0003</p>
+  <h1>Data validation: controlled dropdowns</h1>
+
+  <p class="mission">
+    Tied to your mission: when you (or a colleague) type a category by hand, one week it's "Snacks"
+    and the next it's "snack" or "Snaks" — and every SUMIFS and pivot silently splits in two.
+    <strong>Data validation</strong> stops the typo at the door: a cell that only accepts values from
+    an approved list, chosen from a dropdown instead of typed.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">Data validation</span> tab — an order-entry block is
+      waiting, with the approved Category and Supplier lists set out to the side.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    Select the cells that should be constrained, go to <em>Data ▸ Data Validation</em>, choose
+    <strong>Allow: List</strong>, and point <strong>Source</strong> at the range of approved values.
+    Each cell now shows a dropdown arrow and rejects anything not on the list. One setup protects
+    every row you'll ever type into that column.
+  </p>
+  <p>
+    Point the source at a proper list (better still, a Table column or a named range) and the
+    dropdown grows automatically as you add approved values — no need to reopen the dialog.
+  </p>
+
+  <h2>Why it matters to a buyer</h2>
+  <p>
+    Every downstream total depends on categories and supplier names being spelt <em>identically</em>.
+    A single stray spelling fractures a SUMIFS total and makes a pivot show two rows where there
+    should be one. Validation makes clean input the default, so your analysis can trust its own keys.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Free-typing categories and suppliers, then hunting down "Coastal Co" vs "Coastal Co." vs "coastal
+    co" after the totals look wrong. Fix the input and the outputs stop lying.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    On the <span class="cell">Data validation</span> tab, select <span class="cell">B2:B11</span>
+    (the Category column of the order block), open <em>Data ▸ Data Validation</em>, set
+    <span class="cell">Allow: List</span> and <span class="cell">Source: =$H$2:$H$5</span> (the
+    approved categories). Do the same for <span class="cell">C2:C11</span> against the supplier list
+    in <span class="cell">$I$2:$I$7</span>. Now click a cell in column B — a dropdown appears, and
+    typing "Snaks" is refused.
+  </p>
+  <p>
+    <em>Builds on Tables:</em> if your approved list is a Table column, use it as the source; the
+    dropdown extends itself every time you add a new approved value.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="1">
+      <p class="q">1. Under Data Validation, which "Allow" option gives a dropdown of set values?</p>
+      <ul class="opts">
+        <li><button class="opt">Whole number</button></li>
+        <li><button class="opt">List</button></li>
+        <li><button class="opt">Text length</button></li>
+        <li><button class="opt">Any value</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="2">
+      <p class="q">2. Why does validation matter for a SUMIFS total by category?</p>
+      <ul class="opts">
+        <li><button class="opt">it makes SUMIFS faster</button></li>
+        <li><button class="opt">it changes the number format</button></li>
+        <li><button class="opt">consistent spelling keeps each category as one key</button></li>
+        <li><button class="opt">it isn't related</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. Point the source at a Table column instead of a fixed range so that …</p>
+      <ul class="opts">
+        <li><button class="opt">the dropdown grows as you add approved values</button></li>
+        <li><button class="opt">the cells turn green</button></li>
+        <li><button class="opt">typing is disabled entirely</button></li>
+        <li><button class="opt">nothing changes</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Add both dropdowns on the <span class="cell">Data validation</span> tab, then try to type a
+    misspelt category into column B — Excel should reject it with a stop message. Fill the order
+    block using only the dropdowns, then add a new approved supplier to the side list and confirm it
+    appears in the column C dropdown (immediately if the source is a Table column).
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — constrain the input to an approved list — with more handed to AI at each rung. The
+    check never changes: can a wrong value still get typed in?
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it explains the setup, you apply it</h3>
+  <p>Aldi:GPT can't see your workbook, so it explains the dialog; you apply and test it.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>I'm using Excel. I have an order-entry block where column B is Category and column C is Supplier, rows 2 to 11. My approved categories are in H2:H5 and approved suppliers in I2:I7. Explain step by step how to add a dropdown to each column that only allows those approved values, and what happens if someone types something not on the list.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer sends you to <span class="cell">Data ▸ Data
+      Validation ▸ List</span> and names the source ranges — and mentions the rejection/stop message.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it adds the validation to your sheet</h3>
+  <p>Copilot inside Excel can act on the sheet you have open. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="4" readonly>On the "Data validation" sheet, add list data validation to B2:B11 using the approved categories in H2:H5, and to C2:C11 using the approved suppliers in I2:I7, so those cells only accept values from the lists via a dropdown.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> click a cell in B2:B11 and confirm a dropdown arrow appears; try typing
+      an off-list value and confirm Excel refuses it.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the validated template from scratch</h3>
+  <p>An agent with file access builds the workbook for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>Create an Excel workbook named order-template.xlsx with a sheet "Orders" containing an entry block with columns Date, Category, Supplier, Product, Cases. Add an approved-values area to the side listing four categories and six suppliers, and apply list data validation so the Category and Supplier columns only accept those values from a dropdown. Save the file and tell me which ranges are validated.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file and confirm the Category and Supplier cells show
+      dropdowns and reject off-list text. The approved lists should be the single source of truth.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI explains the dialog" to "AI builds the validated template" — the deliverable is the same
+    clean input. What protects you is the rejection check: an off-list value must not get through.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/en-us/office/apply-data-validation-to-cells-29fecbcc-d1b9-42c1-9d76-eff3ce5f7249">Microsoft — Apply data validation to cells</a> and
+    <a href="https://support.microsoft.com/en-us/office/create-a-drop-down-list-7693307a-59ef-400a-b769-c5402dce407b">Microsoft — Create a drop-down list</a>.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want this built around your real category and supplier master
+    lists, with dropdowns wired to your actual reference tables? Send them and I'll retarget it.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="sort-and-filter.html">0002 — Sort &amp; Filter</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="text-formulas-clean-and-combine.html">0004 — Text formulas</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — a controlled list keeps every key clean.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>
