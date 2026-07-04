@@ -17,7 +17,7 @@ Earlwood), analysed 2026-07-04. ✅ = populated from source; ⬜ = placeholder, 
 | `constraint-block` | crosscutting, **optional per resident** | 7 block types observed: dislikes list, portion-guide/clinical paragraph, SIL-day flag, community-participation marker, conditional substitution, running quota, eat-out placeholder | frame — presence/absence and wording vary per resident; none is guaranteed present |
 | `dinner-rotation` | **conditional, not a fixed rule** (clarified 2026-07-05) | 28-recipe rotation, identical across all 3 Earlwood residents for the same week/day. Sharing one dinner across a house is only possible when residents' dietary requirements are compatible — where they clash (allergens, texture, medical diets), residents need individual dinners instead. Cadence is arbitrary/manual, not a fixed constraint | frame — now resolved mechanically by `meal-option-pool` × `allocation-process` below, rather than assumed |
 | `meal-option-pool` | resident × time-boxed data | up to 10 named meal options per resident, per meal slot. **Built by Debbie, quarterly** (4x/year); each pool version has a start/end date it's valid between; options can be added/removed/altered mid-quarter, taking effect immediately until changed again | frame — a pool is a sequence of time-boxed versions per resident, not one static list |
-| `allocation-process` | crosscutting mechanism | three modes, confirmed 2026-07-05: **random** (uniform pick from the resident's currently-valid pool), **stratified random** (stratification variable not yet chosen), **manual override** (Debbie can override any automated pick). Plus **harmonization**: detect an option shared across multiple residents' pools in the same house/day/slot and assign it to all of them | frame — the concrete answer to "can this house share a dinner", replacing manual judgement with overlap-detection, with an escape hatch for Debbie's judgement |
+| `allocation-process` | crosscutting mechanism | three modes, confirmed 2026-07-05: **random** (uniform pick from the resident's currently-valid pool), **stratified random** (stratifies by **variety across the 28-day period** — spread option usage evenly rather than clustering repeats), **manual override** (Debbie can override any automated pick). Plus **harmonization**: detect an option shared across multiple residents' pools in the same house/day/slot and assign it to all of them | frame — the concrete answer to "can this house share a dinner", replacing manual judgement with overlap-detection, with an escape hatch for Debbie's judgement |
 | `support-worker-roster` | **parked, 2026-07-05** | single fixed value `TBA` — kept as a dimension so the shape isn't lost, but not pursued as live/volatile data right now | frame — revisit only if worth pursuing later |
 | `tier` | deployment | static (docx, current — **fully manual today**, hand-built by Debbie per resident per 28-day period) · live (generated per resident/period — the automation goal) | same frame + contract would serve both |
 
@@ -68,11 +68,14 @@ makes that evaluation automatic rather than a manual judgement call:
    changed again — the quarterly cadence is the baseline refresh rhythm, the pool itself
    is a living list within its validity window.
 2. **Allocation** — three modes, confirmed 2026-07-05: **random** (uniform pick from the
-   resident's currently-valid pool version), **stratified random** (the mode exists, but
-   the stratification variable itself — food category? recent-repeat avoidance?
-   day-of-week? — is not yet chosen, see open questions), and **manual override**
-   (Debbie can override any automated pick for any resident/day/slot — the automation is
-   a default, not a constraint on her judgement).
+   resident's currently-valid pool version), **stratified random** — stratification
+   variable **chosen: variety across the 28-day period**. Rather than sampling each day
+   independently (which can by chance cluster repeats of the same option), work through
+   the pool's options in shuffled rounds so each gets used a roughly even number of
+   times across the period — not zero repetition (a 10-option pool over 28 days still
+   repeats each option ~2-3 times), just no clustering. And **manual override** (Debbie
+   can override any automated pick for any resident/day/slot — the automation is a
+   default, not a constraint on her judgement).
 3. **Harmonization** — before allocating individually, check whether an option appears
    in more than one resident's currently-valid pool for the same house, day, and slot.
    If it does, assign that same option to every resident who has it in their pool — one
