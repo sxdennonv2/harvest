@@ -1,0 +1,264 @@
+{
+  "course": {
+    "title": "Excel to a High Standard",
+    "lessons_dir": "lessons",
+    "workbook": "artefacts/excel-course-workbook.xlsx",
+    "kicker_prefix": "Excel to a High Standard",
+    "end_next_label": "more coming — ask your teacher"
+  },
+  "rung_headers": {
+    "corner": "Theme \u2193 / Rung \u2192",
+    "short": [
+      "1 \u00b7 Manual craft",
+      "2 \u00b7 Aldi:GPT",
+      "3 \u00b7 M365 Copilot",
+      "4 \u00b7 GitHub Copilot"
+    ],
+    "long": [
+      "1 \u00b7 Manual craft (do it well by hand)",
+      "2 \u00b7 Aldi:GPT (chat, no tool use)",
+      "3 \u00b7 M365 Copilot (acts in Excel)",
+      "4 \u00b7 GitHub Copilot (builds the workbook)"
+    ]
+  },
+  "themes": [
+    {
+      "key": "source-prepare",
+      "title": "Source & prepare",
+      "notes": ["Get & Transform basics"],
+      "rungs": [
+        "Ask it to write/explain a formula or SQL snippet",
+        "\"Clean and shape this pasted extract\"",
+        "Build a clean, shaped workbook from a raw file"
+      ]
+    },
+    {
+      "key": "summarise-analyse",
+      "title": "Summarise & analyse",
+      "notes": [],
+      "rungs": [
+        "Interpret a pivot; sanity-check a calculation",
+        "\"Summarise the trends in this range\"",
+        "Build a workbook that summarises the data end-to-end"
+      ]
+    },
+    {
+      "key": "report-visualise",
+      "title": "Report & visualise",
+      "notes": [],
+      "rungs": [
+        "Draft the commentary under a chart",
+        "Build a summary sheet from raw data",
+        "Build a formatted, charted report workbook"
+      ]
+    },
+    {
+      "key": "communicate-present",
+      "title": "Communicate & present",
+      "notes": [],
+      "rungs": [
+        "Turn numbers into a short narrative",
+        "\"Make a one-page summary for my director\"",
+        "Build a print-ready one-page report workbook"
+      ]
+    },
+    {
+      "key": "automate-repetitive",
+      "title": "Automate the repetitive",
+      "notes": ["named ranges; fill-down discipline"],
+      "rungs": [
+        "Write a formula to replace manual steps",
+        "Office Scripts / repeatable actions",
+        "Script a repeatable clean-up & build from scratch"
+      ]
+    }
+  ],
+  "lessons": [
+    {
+      "slug": "relative-and-absolute-references",
+      "file": "relative-and-absolute-references.html",
+      "workbook_sheet": "References",
+      "title": "Relative & absolute references",
+      "nav_label": "References",
+      "grid_label": "References",
+      "theme": "source-prepare",
+      "cheatsheet": { "href": "../reference/references-cheatsheet.html", "label": "$ & F4 cheat sheet" }
+    },
+    {
+      "slug": "tables-the-modern-foundation",
+      "file": "tables-the-modern-foundation.html",
+      "workbook_sheet": "Tables",
+      "title": "Tables: the modern foundation",
+      "nav_label": "Tables",
+      "grid_label": "Tables",
+      "theme": "source-prepare",
+      "builds_on": ["relative-and-absolute-references"],
+      "cheatsheet": { "href": "../reference/tables-cheatsheet.html", "label": "Tables cheat sheet" }
+    },
+    {
+      "slug": "sort-and-filter",
+      "file": "sort-and-filter.html",
+      "workbook_sheet": "Sort & Filter",
+      "title": "Sort & Filter: order and isolate",
+      "nav_label": "Sort & Filter",
+      "grid_label": "Sort & Filter",
+      "theme": "source-prepare"
+    },
+    {
+      "slug": "data-validation-dropdowns",
+      "file": "data-validation-dropdowns.html",
+      "workbook_sheet": "Data validation",
+      "title": "Data validation: controlled dropdowns",
+      "nav_label": "Data validation",
+      "grid_label": "Data validation",
+      "theme": "source-prepare"
+    },
+    {
+      "slug": "text-formulas-clean-and-combine",
+      "file": "text-formulas-clean-and-combine.html",
+      "workbook_sheet": "Text formulas",
+      "title": "Text formulas: clean & combine",
+      "nav_label": "Text formulas",
+      "grid_label": "Text formulas",
+      "theme": "source-prepare"
+    },
+    {
+      "slug": "get-and-transform-power-query",
+      "file": "get-and-transform-power-query.html",
+      "workbook_sheet": "Power Query",
+      "title": "Get & Transform (Power Query)",
+      "nav_label": "Power Query",
+      "grid_label": "Get & Transform",
+      "theme": "source-prepare"
+    },
+    {
+      "slug": "logical-functions-and-iferror",
+      "file": "logical-functions-and-iferror.html",
+      "workbook_sheet": "Logical & IFERROR",
+      "title": "Logical functions & IFERROR",
+      "nav_label": "Logical & IFERROR",
+      "grid_label": "Logical & IFERROR",
+      "theme": "summarise-analyse"
+    },
+    {
+      "slug": "aggregation-and-precision",
+      "file": "aggregation-and-precision.html",
+      "workbook_sheet": "Aggregation",
+      "title": "Aggregation & precision",
+      "nav_label": "Aggregation",
+      "grid_label": "Aggregation & precision",
+      "theme": "summarise-analyse"
+    },
+    {
+      "slug": "sumifs-totals-by-criteria",
+      "file": "sumifs-totals-by-criteria.html",
+      "workbook_sheet": "SUMIFS",
+      "title": "SUMIFS: totals by criteria",
+      "nav_label": "SUMIFS",
+      "grid_label": "SUMIFS",
+      "theme": "summarise-analyse",
+      "builds_on": ["relative-and-absolute-references"]
+    },
+    {
+      "slug": "xlookup-pull-matching-details",
+      "file": "xlookup-pull-matching-details.html",
+      "workbook_sheet": "XLOOKUP",
+      "title": "XLOOKUP: pull matching details",
+      "nav_label": "XLOOKUP",
+      "grid_label": "XLOOKUP",
+      "theme": "summarise-analyse"
+    },
+    {
+      "slug": "date-and-time-functions",
+      "file": "date-and-time-functions.html",
+      "workbook_sheet": "Dates",
+      "title": "Date & time functions",
+      "nav_label": "Dates",
+      "grid_label": "Date & time",
+      "theme": "summarise-analyse"
+    },
+    {
+      "slug": "pivottables-summarise-in-seconds",
+      "file": "pivottables-summarise-in-seconds.html",
+      "workbook_sheet": "PivotTable",
+      "title": "PivotTables: summarise in seconds",
+      "nav_label": "PivotTables",
+      "grid_label": "PivotTables",
+      "theme": "summarise-analyse",
+      "builds_on": ["tables-the-modern-foundation"],
+      "subcards": [
+        {
+          "slug": "add-sliders-to-pivottables",
+          "file": "add-sliders-to-pivottables.html",
+          "workbook_sheet": "Slicers",
+          "title": "Slicers: swap the dropdowns for sliders",
+          "nav_label": "Slicers",
+          "grid_label": "Slicers"
+        }
+      ]
+    },
+    {
+      "slug": "dynamic-arrays-filter-sort-unique",
+      "file": "dynamic-arrays-filter-sort-unique.html",
+      "workbook_sheet": "Dynamic arrays",
+      "title": "Dynamic arrays: FILTER, SORT & UNIQUE",
+      "nav_label": "Dynamic arrays",
+      "grid_label": "Dynamic arrays",
+      "theme": "summarise-analyse"
+    },
+    {
+      "slug": "number-and-custom-formatting",
+      "file": "number-and-custom-formatting.html",
+      "workbook_sheet": "Number formatting",
+      "title": "Number & custom formatting",
+      "nav_label": "Number formatting",
+      "grid_label": "Number formatting",
+      "theme": "report-visualise"
+    },
+    {
+      "slug": "conditional-formatting-make-numbers-signal",
+      "file": "conditional-formatting-make-numbers-signal.html",
+      "workbook_sheet": "Conditional format",
+      "title": "Conditional formatting: make numbers signal",
+      "nav_label": "Conditional formatting",
+      "grid_label": "Conditional formatting",
+      "theme": "report-visualise"
+    },
+    {
+      "slug": "charts-a-clean-column-chart",
+      "file": "charts-a-clean-column-chart.html",
+      "workbook_sheet": "Chart",
+      "title": "Charts: a clean column chart",
+      "nav_label": "Charts",
+      "grid_label": "Charts",
+      "theme": "report-visualise"
+    },
+    {
+      "slug": "print-and-export-ready-tables",
+      "file": "print-and-export-ready-tables.html",
+      "workbook_sheet": "Print ready",
+      "title": "Print- & export-ready tables",
+      "nav_label": "Print-ready",
+      "grid_label": "Print- & export-ready",
+      "theme": "communicate-present"
+    },
+    {
+      "slug": "flash-fill-and-text-to-columns",
+      "file": "flash-fill-and-text-to-columns.html",
+      "workbook_sheet": "Flash Fill",
+      "title": "Flash Fill & Text to Columns",
+      "nav_label": "Flash Fill",
+      "grid_label": "Flash Fill",
+      "theme": "automate-repetitive"
+    },
+    {
+      "slug": "named-ranges",
+      "file": "named-ranges.html",
+      "workbook_sheet": "Named ranges",
+      "title": "Named ranges",
+      "nav_label": "Named ranges",
+      "grid_label": "Named ranges",
+      "theme": "automate-repetitive"
+    }
+  ]
+}

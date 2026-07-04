@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0010 — XLOOKUP: pull matching details</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="sumifs-totals-by-criteria.html">0009 — SUMIFS</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="date-and-time-functions.html">0011 — Dates</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="relative-and-absolute-references.html">Source &amp; prepare</a>
+    <a href="logical-functions-and-iferror.html" class="current">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0010</p>
+  <h1>XLOOKUP: pull matching details</h1>
+
+  <p class="mission">
+    Tied to your mission: you have an order list with just product names, and a separate catalogue
+    that knows each product's supplier and case cost. <strong>XLOOKUP</strong> pulls the right
+    detail across from the catalogue for every line — so you stop copy-pasting supplier names by
+    hand and start joining your data like a pro, the kind of clean tracker that goes out under the
+    department's name without a second thought.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">XLOOKUP</span> tab — a product catalogue sits on
+      the left (columns A–C) and an order list on the right (column F) with blank Supplier and
+      Case-cost columns to fill.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    <span class="cell">XLOOKUP</span> takes a value, finds it in one column, and returns the matching
+    value from another. You read it as: <em>look up this, in that column, and return the value from
+    this other column.</em> The shape is
+    <span class="cell">=XLOOKUP(lookup_value, lookup_array, return_array)</span>.
+  </p>
+  <p>
+    To find a product's supplier: <span class="cell">=XLOOKUP(F2, $A$2:$A$11, $B$2:$B$11)</span>.
+    Swap the return column to <span class="cell">$C$2:$C$11</span> and you get the case cost instead.
+    Unlike the old <span class="cell">VLOOKUP</span>, it doesn't care whether the answer sits left or
+    right of the key, and it never breaks when you insert a column.
+  </p>
+
+  <h2>Why it matters to an office assistant</h2>
+  <p>
+    Your working data is scattered across sheets — an order list here, a supplier catalogue there,
+    a training or records file somewhere else. XLOOKUP is how you stitch them into one honest row:
+    product → supplier → cost, all pulled, never retyped. Retyping is where errors breed; a lookup
+    is where they die.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Eyeballing the catalogue and typing each supplier and cost next to the order by hand — slow,
+    and quietly wrong the moment a cost changes. And its near-cousin: an old
+    <span class="cell">VLOOKUP</span> with a hard-coded column number that silently returns the
+    wrong column after someone inserts a field. XLOOKUP names the return column, so it can't drift.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    On the <span class="cell">XLOOKUP</span> tab, in <span class="cell">G2</span> type
+    <span class="cell">=XLOOKUP(F2, $A$2:$A$11, $B$2:$B$11)</span> to pull the supplier, and in
+    <span class="cell">H2</span> type <span class="cell">=XLOOKUP(F2, $A$2:$A$11, $C$2:$C$11)</span>
+    for the case cost. Fill both down. Lock the catalogue ranges with <span class="cell">$</span>
+    so every order row searches the whole catalogue.
+  </p>
+  <p>
+    <em>Handle a miss gracefully:</em> add a fourth argument for when nothing matches —
+    <span class="cell">=XLOOKUP(F2, $A$2:$A$11, $B$2:$B$11, "not found")</span> — so a typo shows a
+    clear word instead of a bare <span class="cell">#N/A</span>.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="1">
+      <p class="q">1. In <span class="cell">=XLOOKUP(F2, $A$2:$A$11, $B$2:$B$11)</span>, which part
+        is the column you search <em>in</em>?</p>
+      <ul class="opts">
+        <li><button class="opt">F2</button></li>
+        <li><button class="opt">$A$2:$A$11</button></li>
+        <li><button class="opt">$B$2:$B$11</button></li>
+        <li><button class="opt">none of them</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="2">
+      <p class="q">2. A big advantage of XLOOKUP over old VLOOKUP is that …</p>
+      <ul class="opts">
+        <li><button class="opt">it is always faster</button></li>
+        <li><button class="opt">it rounds results</button></li>
+        <li><button class="opt">the return column can be left of the key, and it won't break on inserts</button></li>
+        <li><button class="opt">it needs no arguments</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. To show "not found" instead of <span class="cell">#N/A</span> when a product
+        is missing, you …</p>
+      <ul class="opts">
+        <li><button class="opt">add a 4th "if not found" argument</button></li>
+        <li><button class="opt">delete the row</button></li>
+        <li><button class="opt">use SUM</button></li>
+        <li><button class="opt">nothing can be done</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Fill Supplier and Case cost on the <span class="cell">XLOOKUP</span> tab, then test it:
+    change a supplier in the catalogue (column B) and watch the order list update itself. Type a
+    deliberate typo in an order product and confirm your <span class="cell">"not found"</span>
+    fallback fires — that's the difference between a robust join and a fragile one.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — join two lists on the product key — with more handed to AI at each rung. The check
+    never changes: spot-check two or three rows against the catalogue by eye.
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it writes the formula, you place it</h3>
+  <p>Aldi:GPT can't see your workbook, so it writes the formula; you place and verify it.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I'm using Excel. I have a product catalogue in A2:C11 where column A is Product, B is Supplier and C is Case cost. Separately I have order products listed down column F starting at F2. Write me an XLOOKUP formula for G2 that returns the Supplier for the product in F2, and one for H2 that returns the Case cost, both ready to fill down. Include a friendly "not found" result if a product isn't in the catalogue, and tell me which ranges to lock.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer locks the catalogue arrays with <span class="cell">$</span>,
+      keeps <span class="cell">F2</span> relative, and uses XLOOKUP's 4th argument for the miss. If it
+      reaches for <span class="cell">VLOOKUP</span> with a column number, ask for XLOOKUP instead.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it fills the joins in your workbook</h3>
+  <p>Copilot inside Excel can act on the sheet you have open. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>On the "XLOOKUP" sheet, fill G2:G6 with the Supplier and H2:H6 with the Case cost for each order product in F2:F6, using XLOOKUP against the catalogue in A2:C11. Return "not found" when a product isn't in the catalogue.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> click <span class="cell">G2</span> and confirm it's an
+      <span class="cell">XLOOKUP</span> formula, not a typed value. Spot-check two rows against the
+      catalogue — if a supplier is wrong, the lookup or return column was mismatched.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the whole workbook from scratch</h3>
+  <p>An agent with file access builds the workbook for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>Create an Excel workbook named order-join.xlsx with a sheet "Catalogue" holding about 10 products, each with a Supplier and a Case cost, and a sheet "Orders" listing 6 of those products by name. On the Orders sheet, use XLOOKUP to pull each product's Supplier and Case cost from the Catalogue sheet, returning "not found" for any miss. Save the file and tell me which formula pulls the supplier.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file, confirm the Orders sheet uses live
+      <span class="cell">XLOOKUP</span> formulas that reference the Catalogue sheet, and that two
+      spot-checked rows match. Change a case cost in the Catalogue and watch the order update.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI writes the lookup" to "AI builds both sheets and joins them" — the deliverable is the
+    same joined row. What protects you at every rung is the spot-check against the source. Craft
+    first, so you can supervise.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://exceljet.net/functions/xlookup-function">ExcelJet — XLOOKUP function</a> and
+    <a href="https://support.microsoft.com/en-us/office/xlookup-function-b7fd680e-6d10-43e6-84f9-8818e00d0a02">Microsoft — XLOOKUP function</a>.
+    XLOOKUP needs Microsoft 365 or Excel 2021+; on older builds use
+    <a href="https://exceljet.net/formulas/index-and-match">INDEX + MATCH</a>. Trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> On an older Excel build without XLOOKUP? Tell me and I'll
+    rewrite this lesson around INDEX/MATCH, which works everywhere and teaches the same joining habit.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="sumifs-totals-by-criteria.html">0009 — SUMIFS</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="date-and-time-functions.html">0011 — Dates</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — that is how XLOOKUP pulls the match across.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

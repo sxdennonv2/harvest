@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0015 — Conditional formatting: make numbers signal</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="number-and-custom-formatting.html">0014 — Number formatting</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="charts-a-clean-column-chart.html">0016 — Charts</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="relative-and-absolute-references.html">Source &amp; prepare</a>
+    <a href="logical-functions-and-iferror.html">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html" class="current">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0015</p>
+  <h1>Conditional formatting: make numbers signal</h1>
+
+  <p class="mission">
+    Tied to your mission: a column of margins is just numbers until something makes the weak ones
+    shout. <strong>Conditional formatting</strong> colours cells by their own value, so the
+    low-margin lines light up red and the strong ones go green — your eye finds the problem before
+    you've read a single figure.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">Conditional format</span> tab — a list of products
+      with a plain <span class="cell">Margin %</span> column is waiting. Right now it's a wall of
+      numbers; your job is to make it signal.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    Conditional formatting applies a format — a fill, a colour, an icon — <em>only when a cell meets
+    a rule</em>. Two flavours cover most buying work: a <strong>colour scale</strong> paints a whole
+    range as a heat map (low = red, high = green), and a <strong>highlight rule</strong> flags cells
+    that cross a line you set (margin under 20%, say). The format is live — change the number and the
+    colour follows.
+  </p>
+
+  <h2>Why it matters to an office assistant</h2>
+  <p>
+    You produce documents and trackers that go out under the department's name, and the people who
+    glance at them — your manager, the team — skim rather than audit. A margin column that turns
+    weak rows red is read in a second and trusted, because the colour <em>is</em> the number. It
+    also protects you: an outlier you'd miss scrolling down a long list can't hide once the rule
+    paints it, so a shared workbook stays honest between the updates you make and the next person
+    who opens it.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Manually shading cells yellow and red by hand after eyeballing the column — then having to redo
+    all of it when the numbers change, and quietly getting it wrong when a value crosses the line and
+    you forget to recolour. A rule does the judging every time the data moves; hand-shading freezes a
+    snapshot that goes stale.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    On the <span class="cell">Conditional format</span> tab, select
+    <span class="cell">B2:B11</span>. Go to <span class="cell">Home → Conditional Formatting →
+    Colour Scales</span> and pick the green-white-red scale for an instant heat map. Then, with the
+    range still selected, <span class="cell">Home → Conditional Formatting → Highlight Cells Rules →
+    Less Than</span>, type <span class="cell">0.20</span>, and choose a red fill. Low margins now
+    carry two signals at once.
+  </p>
+  <p>
+    <em>Keep it honest:</em> format the <em>value</em>, never a hand-typed copy of it. And use
+    <span class="cell">Manage Rules</span> (same menu) to see, reorder or delete rules — that panel
+    is where messy sheets get tidied.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="1">
+      <p class="q">1. A <span class="cell">colour scale</span> is best when you want to …</p>
+      <ul class="opts">
+        <li><button class="opt">flag one exact threshold</button></li>
+        <li><button class="opt">see high-to-low across a whole range at a glance</button></li>
+        <li><button class="opt">sum the column</button></li>
+        <li><button class="opt">hide the numbers</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">2. You set a "Less Than 0.20 → red" rule, then change a margin from 25% to 15%.
+        The cell …</p>
+      <ul class="opts">
+        <li><button class="opt">turns red automatically</button></li>
+        <li><button class="opt">stays its old colour</button></li>
+        <li><button class="opt">must be recoloured by hand</button></li>
+        <li><button class="opt">deletes the rule</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="2">
+      <p class="q">3. To review or remove the rules on a sheet, you open …</p>
+      <ul class="opts">
+        <li><button class="opt">Page Layout</button></li>
+        <li><button class="opt">Data → Sort</button></li>
+        <li><button class="opt">Conditional Formatting → Manage Rules</button></li>
+        <li><button class="opt">Insert → Chart</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Apply both rules on the <span class="cell">Conditional format</span> tab, then stress-test
+    them: type <span class="cell">0.19</span> into a cell that was green and watch it flip red on the
+    threshold. Open <span class="cell">Manage Rules</span> and confirm your two rules are listed and
+    apply to <span class="cell">B2:B11</span>. That panel is your audit trail.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — turn a margin column into a signal — with more handed to AI at each rung. The check
+    never changes: does a value crossing the threshold actually change colour, live?
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it tells you the steps, you apply them</h3>
+  <p>Aldi:GPT can't see your workbook, so it guides; you apply and verify.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="6" readonly>I'm using Excel. I have margins as percentages in B2:B11. Walk me through applying a green-to-red colour scale to that range, and then a separate rule that fills any cell below 20% in red. Tell me the exact menu path for each, and how to review or delete the rules afterwards.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer sends you to <span class="cell">Home → Conditional
+      Formatting</span> for both, uses <span class="cell">Colour Scales</span> for the heat map and
+      <span class="cell">Highlight Cells Rules → Less Than</span> for the threshold, and points you to
+      <span class="cell">Manage Rules</span>.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it applies the rules in your workbook</h3>
+  <p>Copilot inside Excel can act on the sheet you have open. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>On the "Conditional format" sheet, apply a green-to-red colour scale to B2:B11, and add a second rule that fills any cell in B2:B11 below 20% with a red background. Leave the underlying numbers unchanged.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> the low margins should show red and the high ones green, with the raw
+      numbers untouched. Change a value across the 20% line and confirm the colour follows — if it
+      doesn't, a rule was applied as a static fill, not a condition.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the whole workbook from scratch</h3>
+  <p>An agent with file access builds the workbook for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>Create an Excel workbook named margin-signal.xlsx with a sheet "Margins" listing about 10 products, each with a Margin % between 5% and 45%. Apply a green-to-red colour scale to the margin column and a conditional rule that fills any margin below 20% with a red background. Save the file and tell me which cells the rules cover.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file and confirm the colours match the numbers, then change a
+      margin below 20% up to 30% and watch it turn from red to green. If the colour is frozen, it was
+      painted as a fill, not a live rule.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI lists the menu steps" to "AI builds the workbook and the rules" — the deliverable is the
+    same self-updating signal. What protects you at every rung is the live-colour test: change a
+    number and watch the format react. Craft first, so you can supervise.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://exceljet.net/articles/excel-conditional-formatting">ExcelJet — Conditional formatting</a> and
+    <a href="https://support.microsoft.com/en-us/office/use-conditional-formatting-to-highlight-information-fed60dfa-1d3f-4e13-9ecb-f1951ff89d7f">Microsoft — Conditional formatting</a>.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want the thresholds tuned to your real margin targets, or a
+    traffic-light icon set instead of fills? Tell me the rule your business actually uses and I'll
+    rebuild this lesson around it.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="number-and-custom-formatting.html">0014 — Number formatting</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="charts-a-clean-column-chart.html">0016 — Charts</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — that is how a live format signals.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

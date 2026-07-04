@@ -1,0 +1,172 @@
+{
+  "course": {
+    "title": "PowerPoint to a High Standard",
+    "lessons_dir": "lessons",
+    "workbook": "artefacts/powerpoint-practice-deck",
+    "kicker_prefix": "PowerPoint to a High Standard",
+    "end_next_label": "more coming — ask your teacher"
+  },
+  "rung_headers": {
+    "corner": "Theme ↓ / Rung →",
+    "short": [
+      "1 · Manual craft",
+      "2 · Aldi:GPT",
+      "3 · M365 Copilot",
+      "4 · GitHub Copilot"
+    ],
+    "long": [
+      "1 · Manual craft (do it well by hand)",
+      "2 · Aldi:GPT (chat, no tool use)",
+      "3 · M365 Copilot (acts in PowerPoint)",
+      "4 · GitHub Copilot (builds the deck)"
+    ]
+  },
+  "themes": [
+    {
+      "key": "masters-foundations",
+      "title": "Build on the master",
+      "notes": [
+        "slide masters, layouts, placeholders — the deck's skeleton"
+      ],
+      "rungs": [
+        "Plan the deck's structure: which layouts, in what order",
+        "Create the section skeleton from a prompt or a document",
+        "Build the deck skeleton from an outline file, on the right layouts"
+      ]
+    },
+    {
+      "key": "arrange-align",
+      "title": "Arrange & align",
+      "notes": [
+        "guides, distribute, grouping — the formatting demand"
+      ],
+      "rungs": [
+        "Diagnose a slide you describe: what makes it look untidy",
+        "Apply Designer suggestions — then audit what it changed",
+        "Batch-fix alignment and spacing across a deck by script"
+      ]
+    },
+    {
+      "key": "charts-visuals",
+      "title": "Charts & visuals",
+      "notes": [
+        "data onto slides; the Excel seam (paste-link, not screenshot)"
+      ],
+      "rungs": [
+        "Pick the right visual for the point you describe",
+        "Create a slide visualising this data, in the deck",
+        "Generate the charts into the deck from the data files"
+      ]
+    },
+    {
+      "key": "reuse-templates",
+      "title": "Reuse & templates",
+      "notes": [
+        "the corporate template; theme colours/fonts; reusable slides"
+      ],
+      "rungs": [
+        "Turn a deck you describe into a reusable template checklist",
+        "Create a new deck from the organisation's template",
+        "Build the organisation template itself from a brand spec"
+      ]
+    },
+    {
+      "key": "present-share",
+      "title": "Present & share",
+      "notes": [
+        "presenter view, rehearse, export — the last mile"
+      ],
+      "rungs": [
+        "Build the pre-presentation checklist for the room you describe",
+        "Summarise this deck for the follow-up email",
+        "Build the export pack (PDF, handouts, notes pages) by script"
+      ]
+    }
+  ],
+  "lessons": [
+    {
+      "slug": "masters-and-layouts-fix-it-once",
+      "file": "masters-and-layouts-fix-it-once.html",
+      "title": "Masters & layouts: fix it once, fix it everywhere",
+      "nav_label": "Masters",
+      "grid_label": "Masters & layouts",
+      "theme": "masters-foundations"
+    },
+    {
+      "slug": "placeholders-not-text-boxes",
+      "file": "placeholders-not-text-boxes.html",
+      "title": "Placeholders, not text boxes",
+      "nav_label": "Placeholders",
+      "grid_label": "Placeholders",
+      "theme": "masters-foundations",
+      "builds_on": [
+        "masters-and-layouts-fix-it-once"
+      ]
+    },
+    {
+      "slug": "align-distribute-group",
+      "file": "align-distribute-group.html",
+      "title": "Align, distribute, group: the tidy slide",
+      "nav_label": "Align",
+      "grid_label": "Align & distribute",
+      "theme": "arrange-align"
+    },
+    {
+      "slug": "whitespace-and-hierarchy",
+      "file": "whitespace-and-hierarchy.html",
+      "title": "Whitespace & hierarchy: less on the slide",
+      "nav_label": "Whitespace",
+      "grid_label": "Whitespace & hierarchy",
+      "theme": "arrange-align"
+    },
+    {
+      "slug": "excel-to-slide-paste-link",
+      "file": "excel-to-slide-paste-link.html",
+      "title": "Excel to slide: paste-link, never screenshot",
+      "nav_label": "Paste-link",
+      "grid_label": "Excel to slide",
+      "theme": "charts-visuals"
+    },
+    {
+      "slug": "one-chart-one-point",
+      "file": "one-chart-one-point.html",
+      "title": "One chart, one point",
+      "nav_label": "One chart",
+      "grid_label": "One chart, one point",
+      "theme": "charts-visuals"
+    },
+    {
+      "slug": "working-the-corporate-template",
+      "file": "working-the-corporate-template.html",
+      "title": "Working the corporate template (not against it)",
+      "nav_label": "Template",
+      "grid_label": "Corporate template",
+      "theme": "reuse-templates"
+    },
+    {
+      "slug": "reusable-slides-steal-from-yourself",
+      "file": "reusable-slides-steal-from-yourself.html",
+      "title": "Reusable slides: steal from yourself",
+      "nav_label": "Reuse",
+      "grid_label": "Reusable slides",
+      "theme": "reuse-templates"
+    },
+    {
+      "slug": "presenter-view-and-rehearse",
+      "file": "presenter-view-and-rehearse.html",
+      "title": "Presenter view & rehearse",
+      "nav_label": "Present",
+      "grid_label": "Presenter view",
+      "theme": "present-share"
+    },
+    {
+      "slug": "export-and-share",
+      "file": "export-and-share.html",
+      "title": "Export & share: PDF, handouts, the deck that travels",
+      "nav_label": "Export",
+      "grid_label": "Export & share",
+      "theme": "present-share"
+    }
+  ],
+  "candidates": []
+}

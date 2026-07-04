@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 0014 — Number &amp; custom formatting</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+  <nav class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="dynamic-arrays-filter-sort-unique.html">0013 — Dynamic arrays</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="conditional-formatting-make-numbers-signal.html">0015 — Conditional formatting</a></span>
+  </nav>
+
+  <nav class="theme-nav" aria-label="Course sections">
+    <span class="theme-nav-label">Sections</span>
+    <a href="relative-and-absolute-references.html">Source &amp; prepare</a>
+    <a href="logical-functions-and-iferror.html">Summarise &amp; analyse</a>
+    <a href="number-and-custom-formatting.html" class="current">Report &amp; visualise</a>
+    <a href="print-and-export-ready-tables.html">Communicate &amp; present</a>
+    <a href="flash-fill-and-text-to-columns.html">Automate the repetitive</a>
+  </nav>
+
+  <p class="kicker">Excel to a High Standard · Lesson 0014</p>
+  <h1>Number &amp; custom formatting</h1>
+
+  <p class="mission">
+    Tied to your mission: the maths can be perfect and the report still unreadable —
+    <span class="cell">3480</span> where a reader wants <span class="cell">$3,480</span>,
+    <span class="cell">0.31</span> where they want <span class="cell">31%</span>. Formatting changes
+    how a number <em>looks</em>, never its value, so you make the page legible without touching the
+    underlying figure a single formula depends on.
+  </p>
+
+  <div class="workbook">
+    <span class="label">Practice workbook · open this first</span>
+    <p>
+      <a class="open" href="../artefacts/excel-course-workbook.xlsx">Open the course workbook</a>
+      and click the <span class="tab-name">Number formatting</span> tab — raw revenue, margin and
+      date columns are waiting, all correct in value and all ugly on the page.
+    </p>
+  </div>
+
+  <h2>The one idea</h2>
+  <p>
+    A cell holds a <em>value</em> and wears a <em>format</em>. Select cells and press
+    <kbd>Ctrl</kbd>+<kbd>1</kbd> to open <em>Format Cells</em>: choose <strong>Currency</strong> for
+    <span class="cell">$3,480</span>, <strong>Percentage</strong> for <span class="cell">31%</span>,
+    or <strong>Number</strong> with a thousands separator. The stored value is unchanged — a SUMIFS on
+    the column still adds the true figures.
+  </p>
+  <p>
+    <strong>Custom</strong> formats go further with a code:
+    <span class="cell">#,##0</span> (whole thousands), <span class="cell">$#,##0.00</span> (money),
+    <span class="cell">0.0%</span> (one-decimal percent), or
+    <span class="cell">#,##0;[Red](#,##0)</span> to show negatives red and in brackets.
+  </p>
+
+  <h2>Why it matters to an office assistant</h2>
+  <p>
+    Much of what you produce goes out under the department's name — a training tracker, a minutes
+    summary, a simple budget — and readers judge it by <em>shape</em> before they judge it by content:
+    aligned money, consistent decimals, percentages that look like percentages. Formatting is what
+    turns a column of raw numbers into something that scans in seconds instead of stumbling. And
+    because it never alters the value, you get all the polish with none of the risk to a formula
+    someone else in the department is relying on.
+  </p>
+
+  <div class="callout bad">
+    <span class="label">The bad habit this undoes</span>
+    Typing a dollar sign or a "%" as text — <span class="cell">"$3,480"</span> — so the cell is no
+    longer a number and every total breaks. Format the number; never disguise it as text.
+  </div>
+
+  <h2>How to do it</h2>
+  <p>
+    On the <span class="cell">Number formatting</span> tab, select the revenue column and press
+    <kbd>Ctrl</kbd>+<kbd>1</kbd> ▸ <span class="cell">Currency</span>, 0 decimals. Select the margin
+    column ▸ <span class="cell">Percentage</span>, 1 decimal. Select the date column ▸
+    <span class="cell">Date</span> in your preferred style. For the variance column, apply a custom
+    code <span class="cell">#,##0;[Red](#,##0)</span> so losses show red and bracketed. Nothing you
+    typed changed — only how it reads.
+  </p>
+  <p>
+    <em>Builds on the whole course:</em> every sheet you've built — SUMIFS totals, pivots, charts —
+    reads better the moment its numbers are formatted. This is the polish the other lessons assume.
+  </p>
+
+  <h2>Check yourself</h2>
+  <p>Answer these before moving on — immediate feedback below each.</p>
+
+  <div class="quiz" id="quiz">
+    <div class="q-block" data-answer="1">
+      <p class="q">1. Formatting a cell as Currency changes …</p>
+      <ul class="opts">
+        <li><button class="opt">the stored value</button></li>
+        <li><button class="opt">only how the value is displayed</button></li>
+        <li><button class="opt">the formula in the cell</button></li>
+        <li><button class="opt">the column width only</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="2">
+      <p class="q">2. Which keyboard shortcut opens the Format Cells dialog?</p>
+      <ul class="opts">
+        <li><button class="opt">Ctrl+T</button></li>
+        <li><button class="opt">Ctrl+E</button></li>
+        <li><button class="opt">Ctrl+1</button></li>
+        <li><button class="opt">Ctrl+Shift+L</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+    <div class="q-block" data-answer="0">
+      <p class="q">3. Typing <span class="cell">"$3,480"</span> with the dollar sign as text is bad
+        because …</p>
+      <ul class="opts">
+        <li><button class="opt">the cell is no longer a number, so totals break</button></li>
+        <li><button class="opt">it looks the same but is faster</button></li>
+        <li><button class="opt">it rounds automatically</button></li>
+        <li><button class="opt">it changes the currency</button></li>
+      </ul>
+      <p class="feedback" role="status"></p>
+    </div>
+  </div>
+
+  <h2>Try it for real</h2>
+  <p>
+    Format every column on the <span class="cell">Number formatting</span> tab, then prove the values
+    are untouched: click a formatted revenue cell and check the formula bar still shows the plain
+    number, and a <span class="cell">=SUM()</span> of the column still totals correctly. Then apply
+    the red-negative custom code and enter a negative variance to see it turn red.
+  </p>
+
+  <h2>The AI moves — climbing the ladder</h2>
+  <p>
+    Same task — make the numbers legible without changing them — with more handed to AI at each rung.
+    The check never changes: does the formula bar still show the true value?
+  </p>
+
+  <h3>Rung 2 · Aldi:GPT — it writes the format code, you apply it</h3>
+  <p>Aldi:GPT can't see your workbook, so it hands you the code; you apply and verify it.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Aldi:GPT</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>I'm using Excel. Give me the custom number format codes to show: whole dollars with a thousands separator like $3,480; a percentage with one decimal like 31.0%; and a number that shows negatives in red and in brackets. Explain where to paste each code in the Format Cells dialog, and confirm this never changes the underlying value.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> a good answer gives codes like <span class="cell">$#,##0</span>,
+      <span class="cell">0.0%</span> and <span class="cell">#,##0;[Red](#,##0)</span> and points to
+      <span class="cell">Format Cells ▸ Custom</span>.</p>
+  </div>
+
+  <h3>Rung 3 · Microsoft 365 Copilot — it formats your columns</h3>
+  <p>Copilot inside Excel can act on the sheet you have open. Requires a Microsoft 365 Copilot licence.</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into Copilot (in Excel)</span>
+    <div class="prompt">
+      <textarea rows="5" readonly>On the "Number formatting" sheet, format the Revenue column as currency with no decimals and a thousands separator, the Margin column as a percentage with one decimal, the Date column as a short date, and the Variance column with a custom format that shows negatives in red and in brackets. Do not change any of the underlying values.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> click a revenue cell and confirm the formula bar still shows the raw
+      number, and that a SUM of the column is unchanged — formatting is skin, not surgery.</p>
+  </div>
+
+  <h3>Rung 4 · GitHub Copilot — it builds the formatted report from scratch</h3>
+  <p>An agent with file access builds the workbook for you. Paste this into GitHub Copilot (agent mode).</p>
+  <div class="ai-move">
+    <span class="label">Type this prompt into GitHub Copilot</span>
+    <div class="prompt">
+      <textarea rows="7" readonly>Create an Excel workbook named formatted-report.xlsx with a sheet "Report" listing about 10 products with columns Product, Revenue (AUD), Margin, Date and Variance. Apply number formats: Revenue as $#,##0, Margin as 0.0%, Date as a short date, and Variance with the custom code #,##0;[Red](#,##0). Keep all stored values as plain numbers. Save the file and confirm a SUM of Revenue equals the sum of the raw values.</textarea>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p><strong>Check:</strong> open the file, confirm the columns read cleanly, and that every
+      formatted cell is still a real number in the formula bar — not text with a dollar sign typed in.</p>
+  </div>
+
+  <div class="callout">
+    <span class="label">The point of the ladder</span>
+    From "AI writes the format code" to "AI builds the formatted report" — the deliverable is the same
+    legible page. What protects you is the value check: the formula bar must still show the true
+    number underneath the pretty format.
+  </div>
+
+  <div class="callout">
+    <span class="label">Primary source</span>
+    Confirm and go deeper at
+    <a href="https://support.microsoft.com/en-us/office/format-numbers-in-cells-9d94e7a1-3fb5-4396-8f13-8a1c9d3b6bb1">Microsoft — Format numbers in cells</a> and
+    <a href="https://support.microsoft.com/en-us/office/create-or-delete-a-custom-number-format-78f2a361-936b-4c03-8772-09fab54be7f4">Microsoft — Create a custom number format</a>.
+    If a detail here ever disagrees with the source, trust the source and tell me.
+  </div>
+
+  <div class="ask">
+    <strong>Ask your teacher.</strong> Want a house format applied across your real reports — the
+    currency, decimals and negative style your team standardises on? Send a sample and I'll set it up.
+  </div>
+
+  <footer class="lesson-nav">
+    <span class="nav-prev">Previous: <a href="dynamic-arrays-filter-sort-unique.html">0013 — Dynamic arrays</a></span>
+    <span class="nav-mid"><a href="../index.html">Contents</a></span>
+    <span class="nav-next">Next: <a href="conditional-formatting-make-numbers-signal.html">0015 — Conditional formatting</a></span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#quiz .q-block').forEach((block) => {
+      const answer = Number(block.dataset.answer);
+      const buttons = block.querySelectorAll('button.opt');
+      const feedback = block.querySelector('.feedback');
+      buttons.forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => { b.disabled = true; });
+          if (i === answer) {
+            btn.classList.add('correct');
+            feedback.textContent = 'Correct — format changes the look, never the value.';
+          } else {
+            btn.classList.add('wrong');
+            buttons[answer].classList.add('correct');
+            feedback.textContent = 'Not quite — the highlighted answer is right.';
+          }
+        });
+      });
+    });
+
+    document.querySelectorAll('.prompt').forEach((block) => {
+      const btn = block.querySelector('.copy');
+      const text = block.querySelector('textarea');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text.value);
+        } catch {
+          text.select();
+          document.execCommand('copy');
+        }
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('done');
+        setTimeout(() => { btn.textContent = 'Copy prompt'; btn.classList.remove('done'); }, 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>
