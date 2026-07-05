@@ -1,0 +1,658 @@
+<title>Harvest — SIL-operations dimension space</title>
+<!--
+  Live progress map of the SIL-operations frame (FRAME-LEDGER row 4). Same
+  standard process as ai_training/DIMENSIONS.md § Progress map: after every
+  change to frame.json or a merged batch, update this file (residence/resident
+  counts, constraint-block matrix, open questions) and redeploy to its
+  standing artifact URL. This file is the source of truth; the artifact is
+  its deployment.
+-->
+<style>
+  :root{
+    --field:#F5F2EB; --panel:#FFFFFF; --ink:#221E19; --muted:#6E6459;
+    --thyme:#3F6B3E; --thyme-deep:#2E4F2E; --sage:#E9F0E6; --line:#DDD6C9;
+    --straw:#F3E7C8; --amber:#9A6A00; --latent:#B7AFA0;
+    --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+    --serif:Charter,'Iowan Old Style',Georgia,'Times New Roman',serif;
+    --sans:system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{background:var(--field);color:var(--ink);font-family:var(--sans);
+       font-size:15px;line-height:1.55;margin:0}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px 96px}
+
+  header.masthead{padding:44px 0 20px;border-bottom:2px solid var(--thyme)}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+           text-transform:uppercase;color:var(--thyme);margin:0 0 10px}
+  h1{font-family:var(--serif);font-size:34px;font-weight:600;margin:0 0 8px;
+     letter-spacing:-.01em;text-wrap:balance}
+  .lede{color:var(--muted);max-width:64ch;margin:0}
+  .lede b{color:var(--ink);font-weight:600}
+
+  nav.jump{position:sticky;top:0;z-index:9;background:var(--field);
+           border-bottom:1px solid var(--line);display:flex;gap:2px;
+           overflow-x:auto;padding:0 0 0 2px}
+  nav.jump a{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;
+             color:var(--muted);text-decoration:none;padding:11px 13px 9px;
+             border-bottom:2px solid transparent;white-space:nowrap}
+  nav.jump a:hover,nav.jump a:focus-visible{color:var(--thyme)}
+  nav.jump a:focus-visible{outline:2px solid var(--thyme);outline-offset:-2px}
+  nav.jump a.on{color:var(--thyme-deep);border-bottom-color:var(--thyme)}
+
+  .stats{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:4px;
+        padding:10px 16px;min-width:118px}
+  .stat .n{font-family:var(--serif);font-size:24px;font-weight:600;
+           font-variant-numeric:tabular-nums;color:var(--thyme-deep)}
+  .stat .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+           text-transform:uppercase;color:var(--muted)}
+  .stat.warn .n{color:var(--amber)}
+
+  section{margin-top:60px}
+  section>h2{font-family:var(--serif);font-size:23px;font-weight:600;margin:6px 0 6px}
+  .read{color:var(--muted);max-width:68ch;margin:0 0 20px}
+  .read b{color:var(--ink);font-weight:600}
+  .read code{font-family:var(--mono);font-size:.88em;background:var(--sage);
+              padding:1px 5px;border-radius:3px}
+
+  /* axes table */
+  .axes{border:1px solid var(--line);border-radius:5px;overflow:hidden;background:var(--panel)}
+  .axis{display:grid;grid-template-columns:170px 128px 1fr;gap:0;
+        border-top:1px solid var(--line)}
+  .axis:first-child{border-top:none}
+  .axis>div{padding:13px 16px}
+  .axname{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--thyme-deep)}
+  .axname small{display:block;font-weight:400;color:var(--muted);font-size:11px;margin-top:3px}
+  .axkind{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;
+          text-transform:uppercase;color:var(--muted);padding-top:16px}
+  .axk{font-size:13.5px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+  .chip{font-family:var(--mono);font-size:11.5px;border-radius:3px;
+        padding:2.5px 8px;border:1px solid var(--line);color:var(--muted)}
+  .chip.built{background:var(--sage);border-color:var(--thyme);color:var(--thyme-deep)}
+  .chip.latent{border-style:dashed}
+
+  /* residence map */
+  .resgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .rescol{border:1px solid var(--line);border-radius:5px;background:var(--panel);
+          display:flex;flex-direction:column}
+  .rescol.built{border-color:var(--thyme)}
+  .rescol h3{font-family:var(--serif);font-size:16px;margin:0;padding:11px 13px 9px;
+             border-bottom:1px solid var(--line);display:flex;justify-content:space-between;
+             align-items:baseline;gap:6px}
+  .rescol.built h3{background:var(--thyme);color:#fff;border-bottom-color:var(--thyme)}
+  .rescol h3 .st{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;
+                 text-transform:uppercase;opacity:.85;white-space:nowrap}
+  .residentlist{padding:9px 13px 13px;display:flex;flex-direction:column;gap:7px;flex:1}
+  .residentcell{background:var(--sage);border-radius:3px;padding:6px 9px;font-size:12px}
+  .residentcell.empty{background:var(--field);border:1px dashed var(--line);color:var(--latent)}
+  .residentcell b{display:block;font-weight:600;font-size:12.5px}
+  .residentcell span{font-family:var(--mono);font-size:10.5px;color:var(--thyme-deep)}
+  .residentcell.empty span{color:var(--latent)}
+
+  /* generic matrix scroller */
+  .scroller{overflow-x:auto;border:1px solid var(--line);border-radius:5px;background:var(--panel)}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th,td{padding:8px 11px;text-align:left;vertical-align:top;border-top:1px solid var(--line)}
+  thead th{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+           text-transform:uppercase;color:var(--muted);border-top:none;
+           background:var(--field);white-space:nowrap}
+  tbody th{font-weight:600;font-size:13px;white-space:nowrap}
+  .slotcell{color:var(--muted);font-size:12px}
+  .slotcell b{color:var(--ink);display:block;font-size:12.5px}
+
+  /* constraint-block matrix */
+  td.dot{text-align:center;padding:6px 4px}
+  .yes,.no,.part{display:inline-block;width:9px;height:9px;border-radius:50%}
+  .yes{background:var(--thyme)}
+  .no{background:var(--field);border:1px solid var(--line)}
+  .part{background:var(--straw);border:2px solid var(--amber);width:11px;height:11px}
+  .mrow th{font-family:var(--mono);font-weight:400;font-size:11.5px}
+
+  /* decisions / open questions */
+  .decision{background:var(--sage);border-left:3px solid var(--thyme);
+            border-radius:0 4px 4px 0;padding:13px 17px;margin-bottom:12px}
+  .decision.open{background:var(--straw);border-left-color:var(--amber)}
+  .decision b{color:var(--thyme-deep);font-family:var(--mono);font-size:11px;
+              letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:4px}
+  .decision.open b{color:var(--amber)}
+  .decision p{margin:0;font-size:13.5px}
+  .decision ul{margin:6px 0 0;padding-left:18px;font-size:13.5px}
+  .decision li{margin-bottom:3px}
+
+  footer{margin-top:70px;border-top:1px solid var(--line);padding-top:16px;
+         font-family:var(--mono);font-size:11px;color:var(--muted)}
+  @media(max-width:760px){
+    .resgrid{grid-template-columns:1fr 1fr}
+    .axis{grid-template-columns:1fr}
+    .axkind{padding-top:0}
+    h1{font-size:27px}
+  }
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <p class="eyebrow">Harvest · pipeline instrument · 05 Jul 2026 · frame v0.14-draft</p>
+    <h1>The SIL-operations dimension space</h1>
+    <p class="lede">Harvest instance #4 (FRAME-LEDGER row 4) — a domain <b>promoted</b>
+      from real source artifacts rather than elicited blind: three residents' actual
+      Weekly Menu Planner <code>.docx</code> files, residence <b>Earlwood</b>, provider
+      <b>Danny Met Sally (DMS)</b>. Today it's <b>fully manual</b> — Debbie hand-builds
+      one plan per resident per 28-day period. The automated design: Debbie builds each
+      resident up to 10 acceptable options per meal <b>quarterly</b>; a web/HTML UI
+      pre-fills a <b>dropdown per cell</b> and Debbie edits as much or as little as she
+      likes, then moves the plan through <code>locked → shopped → closed</code>. The
+      <b>unit contract</b>, <b>generator skill</b> (<code>meal-plan-author</code>), and
+      a <b>first sample artifact</b> are all built — a fictional resident's plan, 140
+      dropdowns rendering correctly in a real browser check.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">1</div><div class="l">domain frame</div></div>
+      <div class="stat"><div class="n">1 / 5</div><div class="l">residences populated</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">residents · real names</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">max options per meal slot</div></div>
+      <div class="stat"><div class="n">4×</div><div class="l">pool refresh · per year</div></div>
+      <div class="stat"><div class="n">4</div><div class="l">plan-lifecycle states</div></div>
+      <div class="stat"><div class="n">1</div><div class="l">unit contract drafted</div></div>
+      <div class="stat"><div class="n">1</div><div class="l">skill extracted · generator</div></div>
+      <div class="stat"><div class="n">1</div><div class="l">sample artifact · fictional</div></div>
+      <div class="stat warn"><div class="n">3</div><div class="l">open questions</div></div>
+    </div>
+  </header>
+
+  <nav class="jump" aria-label="Views">
+    <a href="#axes">AXES</a>
+    <a href="#residences">RESIDENCE × RESIDENT</a>
+    <a href="#grid">WEEKLY GRID</a>
+    <a href="#constraints">CONSTRAINT-BLOCK MATRIX</a>
+    <a href="#selection">MEAL SELECTION</a>
+    <a href="#decisions">OPEN QUESTIONS</a>
+  </nav>
+
+  <section id="axes">
+    <p class="eyebrow">The eleven axes</p>
+    <h2>Dimensions and their values</h2>
+    <p class="read">Solid green chips are populated from real source data; dashed
+      chips are addressable but empty. The <b>weekly grid</b> is the one invariant
+      axis here — stable across all 3 source residents, the closest analogue to the
+      AI-training frame's ladder. <b>Plan-lifecycle</b> is new this pass — see
+      <a href="#selection">the mechanism</a>. <b>Support-worker-roster</b> is parked.</p>
+    <div class="axes">
+      <div class="axis">
+        <div class="axname">organisation<small>binding parameter</small></div>
+        <div class="axkind">binding param</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">Danny Met Sally (DMS)</span>
+        </div>
+        Confirmed — matches the docx creator field <code>dannymetsally</code> seen on
+        2 of 3 source files. Nationwide, ~20–30 homes; sticking with what's known for now.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">residence<small>swappable tree root</small></div>
+        <div class="axkind">tree root</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">Earlwood · 3 residents</span>
+          <span class="chip latent">Berala</span>
+          <span class="chip latent">Burwood</span>
+          <span class="chip latent">Blacktown</span>
+          <span class="chip latent">Mascot</span>
+        </div>
+        Remaining four deferred by Stuart's word — not chasing the full nationwide list yet.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">resident<small>tree leaf, nested in residence</small></div>
+        <div class="axkind">tree leaf</div>
+        <div class="axk">3 populated — <b>Kathryn Briggs, Teresa, Vanessa Ryan</b> (real
+          names; anonymisation lifted 2026-07-04, internal documentation) + 2 placeholder
+          per unbuilt residence = 11 total addressable today. One personalisation
+          profile per resident, one 28-day plan per period.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">weekly-grid<small>7 days × 5 meal slots, 28-day period</small></div>
+        <div class="axkind">invariant contract</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">Breakfast 8am</span>
+          <span class="chip built">Morning Tea 10:30am</span>
+          <span class="chip built">Lunch 12:30pm</span>
+          <span class="chip built">Afternoon Tea 3:30pm</span>
+          <span class="chip built">Dinner 6pm</span>
+        </div>
+        Confirmed identical shape across all 3 source residents — treat as fixed;
+        one 28-day period per resident is the confirmed standard unit.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">constraint-block<small>crosscutting, optional per resident</small></div>
+        <div class="axkind">optional element set</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">dislikes</span><span class="chip built">portion-guide</span>
+          <span class="chip built">SIL-day flag</span><span class="chip built">CP marker</span>
+          <span class="chip built">conditional sub.</span><span class="chip built">running quota</span>
+          <span class="chip built">eat-out placeholder</span>
+        </div>
+        No block is guaranteed present — see the <a href="#constraints">matrix</a>.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">dinner-rotation<small>conditional, not a fixed rule</small></div>
+        <div class="axkind">conditional constant</div>
+        <div class="axk">28-recipe rotation, identical across all 3 Earlwood residents
+          for the same week/day — but <b>only because their dietary requirements happen
+          to be compatible</b>. Where residents' needs clash, sharing is impracticable.
+          Now resolved mechanically — see <a href="#selection">meal selection</a> below
+          — rather than a manual per-house judgement call.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">meal-option-pool<small>resident × time-boxed data</small></div>
+        <div class="axkind">candidate set</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">up to 10 options</span><span class="chip built">per resident</span>
+          <span class="chip built">per meal slot</span>
+          <span class="chip built">built by Debbie · quarterly</span>
+        </div>
+        Each pool version has a start/end date it's valid between — a resident has a
+        <i>sequence</i> of pool versions over time, not one static list. Options can
+        change mid-quarter (added/removed/altered); a change takes effect
+        <b>immediately</b> and stays until altered again.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">allocation-process<small>three modes, confirmed 05 Jul</small></div>
+        <div class="axkind">selection + harmonize</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">random</span><span class="chip built">stratified random</span>
+          <span class="chip built">manual override</span>
+        </div>
+        Random: uniform pick from the resident's currently-valid pool. Stratified
+        random: stratifies by <b>variety across the 28-day period</b> — work through the
+        pool's options in shuffled rounds so each is used a roughly even number of times
+        rather than clustering repeats. Override: Debbie can override any automated
+        pick, any time. <b>Harmonization</b>: if an option overlaps across residents'
+        pools in the same house/day/slot, assign it to all of them — one cook serves
+        several, tracked for savings. Scoped to one residence; never crosses houses.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">review-interface<small>fully resolved, 05 Jul</small></div>
+        <div class="axkind">interaction shape</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">web/HTML UI</span>
+        </div>
+        Every resident × meal-slot × day cell is a <b>dropdown</b> of that resident's
+        currently-valid option pool, pre-filled by the algorithm. Debbie can change
+        <b>as much or as little as she wants</b>, cell by cell — no automatic
+        re-harmonization or cascading when she edits one.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">plan-lifecycle<small>four-state machine, fully resolved 05 Jul</small></div>
+        <div class="axkind">state machine</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">draft</span><span class="chip built">locked</span>
+          <span class="chip built">shopped</span><span class="chip built">closed</span>
+        </div>
+        <code>draft</code> is editable. <code>locked</code> is Debbie's explicit action —
+        a <b>hard gate</b>: cannot shop an unlocked plan — and can <b>revert directly
+        back to draft</b> (an unlock). <code>shopped</code> is also <b>reversible</b> —
+        resets back to <code>draft</code>, clearing the shopping list — and is itself a
+        hard gate: cannot close an unshopped plan. <code>closed</code> is the confirmed
+        <b>true terminal state</b>, the lifecycle's only one-way door.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">support-worker-roster<small>parked, 05 Jul</small></div>
+        <div class="axkind">parked axis</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">TBA</span>
+        </div>
+        Kept as a dimension so the shape isn't lost, fixed to one placeholder value.
+        Not pursued as live/volatile data right now — the automation value comes from
+        meal selection instead.</div>
+      </div>
+      <div class="axis">
+        <div class="axname">tier<small>same frame would serve both</small></div>
+        <div class="axkind">deployment</div>
+        <div class="axk"><div class="chips">
+          <span class="chip built">static · docx, fully manual today</span>
+          <span class="chip latent">live · generated per resident/period</span>
+        </div>
+        The automation goal, not yet built.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="residences">
+    <p class="eyebrow">Projection 1 · residence × resident</p>
+    <h2>The five-home map</h2>
+    <p class="read">Earlwood is the only populated column — real names, real
+      personalisation shape (anonymisation lifted 2026-07-04; this documentation is
+      internal). The other four are placeholder stubs proving the tree generalises;
+      no real data exists for them yet, and Stuart's holding off chasing the rest.</p>
+    <div class="resgrid">
+      <div class="rescol built">
+        <h3>Earlwood <span class="st">source data</span></h3>
+        <div class="residentlist">
+          <div class="residentcell"><b>Kathryn Briggs</b><span>dislikes · portion-guide · rotating SIL-days</span></div>
+          <div class="residentcell"><b>Teresa</b><span>portion-guide + medical · running quota</span></div>
+          <div class="residentcell"><b>Vanessa Ryan</b><span>fixed SIL-days · no guide/dislikes</span></div>
+        </div>
+      </div>
+      <div class="rescol"><h3>Berala <span class="st">unbuilt</span></h3>
+        <div class="residentlist">
+          <div class="residentcell empty"><b>Resident</b><span>placeholder</span></div>
+          <div class="residentcell empty"><b>Resident</b><span>placeholder</span></div>
+        </div></div>
+      <div class="rescol"><h3>Burwood <span class="st">unbuilt</span></h3>
+        <div class="residentlist">
+          <div class="residentcell empty"><b>Resident</b><span>placeholder</span></div>
+          <div class="residentcell empty"><b>Resident</b><span>placeholder</span></div>
+        </div></div>
+      <div class="rescol"><h3>Blacktown <span class="st">unbuilt</span></h3>
+        <div class="residentlist">
+          <div class="residentcell empty"><b>Resident</b><span>placeholder</span></div>
+          <div class="residentcell empty"><b>Resident</b><span>placeholder</span></div>
+        </div></div>
+      <div class="rescol"><h3>Mascot <span class="st">unbuilt</span></h3>
+        <div class="residentlist">
+          <div class="residentcell empty"><b>Resident</b><span>placeholder</span></div>
+          <div class="residentcell empty"><b>Resident</b><span>placeholder</span></div>
+        </div></div>
+    </div>
+  </section>
+
+  <section id="grid">
+    <p class="eyebrow">Projection 2 · the weekly grid</p>
+    <h2>One resident's fixed shape</h2>
+    <p class="read">Every resident's plan fills the same 7×5 grid, repeated across a
+      confirmed 28-day period. Dinner is <b>shared at Earlwood because these 3
+      residents' dietary needs happen to be compatible</b> — batch-cooked, cadence a
+      free parameter for automation. In a house with clashing dietary needs, dinner
+      would personalise too, same as the rest of the grid.</p>
+    <div class="scroller">
+      <table>
+        <thead><tr>
+          <th>Meal slot ↓ / Day →</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th>
+          <th>Fri</th><th>Sat</th><th>Sun</th>
+        </tr></thead>
+        <tbody>
+          <tr><th>Breakfast · 8am</th>
+            <td class="slotcell" colspan="7">Personalised per resident — no shared pattern observed</td></tr>
+          <tr><th>Morning Tea · 10:30am</th>
+            <td class="slotcell" colspan="7">Personalised — carries most CP-marker / eat-out activity</td></tr>
+          <tr><th>Lunch · 12:30pm</th>
+            <td class="slotcell" colspan="7">Personalised — carries most portion-guide detail</td></tr>
+          <tr><th>Afternoon Tea · 3:30pm</th>
+            <td class="slotcell" colspan="7">Personalised — carries conditional-substitution rules</td></tr>
+          <tr><th>Dinner · 6pm</th>
+            <td class="slotcell" colspan="7"><b>Shared 28-recipe rotation at Earlwood</b> — an outcome of overlapping option pools (see <a href="#selection">meal selection</a>), not a fixed rule; identical text across all 3 residents here, same week/day</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="constraints">
+    <p class="eyebrow">Projection 3 · constraint-block presence</p>
+    <h2>What each resident actually carries</h2>
+    <p class="read">Real data from the 3 source residents — no block is guaranteed
+      present, and where present, wording/vocabulary differs (see
+      <code>frame.json</code> for the exact community-participation spellings). The
+      template itself is confirmed standard company-wide, so the footer-shape column
+      is drift to reconcile, not a second lineage to preserve.</p>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>Resident (Earlwood)</th><th>Dislikes</th><th>Portion-guide</th>
+          <th>SIL-day flag</th><th>CP marker</th><th>Conditional sub.</th>
+          <th>Running quota</th><th>Eat-out</th><th>Footer shape</th></tr></thead>
+        <tbody>
+          <tr class="mrow"><th>Kathryn Briggs</th>
+            <td class="dot"><span class="yes" title="present"></span></td>
+            <td class="dot"><span class="yes" title="present · Dietitian"></span></td>
+            <td class="dot"><span class="part" title="rotates weekly"></span></td>
+            <td class="dot"><span class="yes" title="ExtCP"></span></td>
+            <td class="dot"><span class="yes" title="present"></span></td>
+            <td class="dot"><span class="no" title="absent"></span></td>
+            <td class="dot"><span class="yes" title="present"></span></td>
+            <td>2×2</td></tr>
+          <tr class="mrow"><th>Teresa</th>
+            <td class="dot"><span class="no" title="absent"></span></td>
+            <td class="dot"><span class="yes" title="present · Doctor &amp; Dietitian, medical directives"></span></td>
+            <td class="dot"><span class="no" title="absent entirely"></span></td>
+            <td class="dot"><span class="yes" title="EXTCP - named worker"></span></td>
+            <td class="dot"><span class="no" title="absent"></span></td>
+            <td class="dot"><span class="yes" title="present"></span></td>
+            <td class="dot"><span class="yes" title="present"></span></td>
+            <td>1×2 (drift)</td></tr>
+          <tr class="mrow"><th>Vanessa Ryan</th>
+            <td class="dot"><span class="no" title="absent"></span></td>
+            <td class="dot"><span class="no" title="absent"></span></td>
+            <td class="dot"><span class="part" title="fixed Tue/Thu/Sat/Sun"></span></td>
+            <td class="dot"><span class="yes" title="DMS-CP"></span></td>
+            <td class="dot"><span class="no" title="absent"></span></td>
+            <td class="dot"><span class="no" title="absent"></span></td>
+            <td class="dot"><span class="no" title="absent"></span></td>
+            <td>2×2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="decision" style="margin-top:16px">
+      <b>Reading the matrix</b>
+      <p>Zero blocks are present for all 3 residents. Only the CP marker is present
+        for all 3 — and even that has 3 different spellings, now understood as
+        per-resident drift rather than real variation, since the template is
+        confirmed standard. A frame-first design (build the contract before the
+        generator) has to treat every column as optional, not assume a shape — and
+        normalise the CP marker/footer shape rather than preserve their variants.</p>
+    </div>
+  </section>
+
+  <section id="selection">
+    <p class="eyebrow">Projection 4 · meal selection mechanism</p>
+    <h2>From judgement call to a mechanism</h2>
+    <p class="read">The concrete design that replaces "does Debbie judge this house
+      compatible?" with "do these residents' option pools happen to overlap?" — sketch
+      only, nothing built yet.</p>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>Step</th><th>What it does</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><th>1 · Option pool</th>
+            <td class="slotcell">Each resident gets up to <b>10 named options</b> per
+              meal slot, already assumed compatible with their constraint-block
+              (dislikes, portion-guide, etc.). <b>Debbie builds these quarterly</b>;
+              each pool version is valid between a start/end date, and options can be
+              edited mid-quarter, effective immediately</td>
+            <td class="slotcell">Cadence/validity confirmed — no real pools populated
+              for any resident yet</td></tr>
+          <tr><th>2 · Allocation</th>
+            <td class="slotcell"><b>Random</b>: uniform pick from the currently-valid
+              pool. <b>Stratified random</b>: stratifies by <b>variety across the
+              28-day period</b> — shuffled rounds through the pool so each option is
+              used a roughly even number of times, not clustered repeats. <b>Manual
+              override</b>: Debbie can change as much or as little as she wants, cell
+              by cell, independently — no cascading logic</td>
+            <td class="slotcell">All three modes fully specified</td></tr>
+          <tr><th>3 · Harmonization</th>
+            <td class="slotcell">Check whether an option appears in multiple residents'
+              currently-valid pools for the same house/day/slot; if so, assign that same
+              option to all of them — one cook, several residents. Scoped to one
+              residence, never crosses houses</td>
+            <td class="slotcell">Sketch only — this is the mechanical answer to the
+              dinner-sharing question above</td></tr>
+          <tr><th>4 · Savings tracking</th>
+            <td class="slotcell">Count harmonized day/slot combinations and how many
+              residents each covered, so the time/cost benefit is measured, not assumed</td>
+            <td class="slotcell">Metric sketch only — no real numbers yet</td></tr>
+          <tr><th>5 · Review interface</th>
+            <td class="slotcell">Every resident × meal-slot × day cell renders as a
+              <b>dropdown</b> of that resident's option pool, pre-filled by steps 2–3's
+              output, in a <b>web/HTML UI</b>. Debbie changes as much or as little as
+              she wants, cell by cell</td>
+            <td class="slotcell">Fully specified</td></tr>
+          <tr><th>6 · Plan lifecycle</th>
+            <td class="slotcell"><code>draft</code> ↔ <code>locked</code> (Debbie's
+              explicit action, reversible directly; <b>hard gate</b> — cannot shop until
+              locked) → <code>shopped</code> (<b>reversible</b> — can reset to
+              <code>draft</code>, clearing the shopping list; hard gate — cannot close
+              until shopped) → <code>closed</code> (true terminal — no further changes,
+              ever)</td>
+            <td class="slotcell">Fully resolved: two paths back to <code>draft</code>
+              (direct unlock, or via <code>shopped</code>); <code>closed</code> is the
+              only one-way door</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="decisions">
+    <p class="eyebrow">Milestones &amp; standing questions</p>
+    <h2>What the frame is asking you</h2>
+    <div class="decision"><b style="color:var(--thyme-deep)">Resolved · 04 Jul 2026</b>
+      <p><b style="display:inline;color:var(--ink)">Organisation</b> — Danny Met Sally
+        (DMS), confirmed. <b style="display:inline;color:var(--ink)">Process state</b> —
+        fully manual today, one plan per resident per 28-day period; automation is the
+        explicit goal. <b style="display:inline;color:var(--ink)">Template</b> — one
+        standard company-wide template confirmed; the 1×2 footer variant is drift, not a
+        second lineage. <b style="display:inline;color:var(--ink)">Privacy</b> —
+        anonymisation lifted for this internal documentation; real names now in use.</p>
+    </div>
+    <div class="decision"><b style="color:var(--thyme-deep)">Resolved · 05 Jul 2026 (first pass)</b>
+      <p><b style="display:inline;color:var(--ink)">Dinner-sharing is conditional, not
+        universal</b> — a house can share one dinner across residents only when their
+        dietary requirements are compatible; where needs clash, each resident needs
+        their own. <b style="display:inline;color:var(--ink)">Roster is volatile</b> —
+        support workers can be swapped at short notice.</p>
+    </div>
+    <div class="decision"><b style="color:var(--thyme-deep)">Resolved · 05 Jul 2026 (second pass)</b>
+      <p><b style="display:inline;color:var(--ink)">Roster parked</b> — kept as an axis,
+        fixed to one placeholder value (<code>TBA</code>); not pursued as live data for
+        now. <b style="display:inline;color:var(--ink)">Meal-selection mechanism
+        adopted</b> — up to 10 candidate options per resident per meal slot, random
+        baseline allocation, and <b>harmonization</b> (overlap-detection across a
+        house's residents) as the mechanical answer to dinner-sharing, with savings
+        tracked rather than assumed. See <a href="#selection">the mechanism</a>.</p>
+    </div>
+    <div class="decision"><b style="color:var(--thyme-deep)">Resolved · 05 Jul 2026 (third pass)</b>
+      <p><b style="display:inline;color:var(--ink)">Who builds the pool, and when</b> —
+        Debbie, quarterly (4×/year). <b style="display:inline;color:var(--ink)">Validity</b>
+        — each pool version applies between a start/end date; a resident has a sequence
+        of pool versions over time. <b style="display:inline;color:var(--ink)">Mid-quarter
+        edits</b> — options can be changed anytime, taking effect immediately until
+        altered again. <b style="display:inline;color:var(--ink)">Allocation modes</b> —
+        random, stratified random, and manual override are all confirmed available;
+        Debbie can override any automated pick.</p>
+    </div>
+    <div class="decision"><b style="color:var(--thyme-deep)">Resolved · 05 Jul 2026 (fourth pass)</b>
+      <p><b style="display:inline;color:var(--ink)">Stratification variable chosen</b> —
+        variety across the 28-day period. Stratified-random works through a resident's
+        pool in shuffled rounds so each option gets used a roughly even number of times,
+        rather than a plain random draw that could by chance cluster repeats. Not zero
+        repetition — a 10-option pool over 28 days still repeats each option ~2-3 times —
+        just no clustering.</p>
+    </div>
+    <div class="decision"><b style="color:var(--thyme-deep)">Resolved · 05 Jul 2026 (fifth pass)</b>
+      <p><b style="display:inline;color:var(--ink)">Review interface confirmed</b> —
+        every resident × meal-slot × day cell is a dropdown of that resident's option
+        pool. The algorithm pre-fills each cell; Debbie reviews and changes any cell
+        directly. This turns "Debbie can override any pick" into a concrete UI: the
+        dropdown itself is the override mechanism, not a separate control.</p>
+    </div>
+    <div class="decision"><b style="color:var(--thyme-deep)">Resolved · 05 Jul 2026 (sixth pass)</b>
+      <p><b style="display:inline;color:var(--ink)">Override scope</b> — Debbie can
+        change as much or as little as she wants, cell by cell, independently; no
+        automatic re-harmonization runs. <b style="display:inline;color:var(--ink)">Artifact
+        format</b> — a web/HTML UI hosts the review step.
+        <b style="display:inline;color:var(--ink)">Plan lifecycle introduced</b> —
+        <code>draft → locked → shopping_list_generated</code> (later revised, see
+        eighth pass below — this pass's terminal-state claim was wrong).</p>
+    </div>
+    <div class="decision"><b style="color:var(--thyme-deep)">Resolved · 05 Jul 2026 (seventh pass)</b>
+      <p><b style="display:inline;color:var(--ink)">Both lifecycle gates confirmed as
+        hard rules</b>, not just descriptions of a typical path: a plan <b>cannot</b>
+        be used to generate a shopping list until it is locked (no exceptions), and a
+        shopped plan <b>cannot</b> be changed further (no exceptions). The one
+        remaining gap: whether <code>locked</code> is itself reversible before shopping
+        happens.</p>
+    </div>
+    <div class="decision"><b style="color:var(--thyme-deep)">Revised · 05 Jul 2026 (eighth pass)</b>
+      <p><b style="display:inline;color:var(--ink)">Correction</b>: the seventh pass's
+        claim that a shopped plan "cannot be changed further" was wrong. There is a
+        fourth state: <code>draft → locked → shopped → closed</code>.
+        <code>shopped</code> is <b>reversible</b> — it can reset back to
+        <code>draft</code>, clearing the generated shopping list. <code>closed</code> is
+        the true terminal state, reached only after shopping (another hard gate) — and
+        only <code>closed</code> is confirmed unconditionally immutable.</p>
+    </div>
+    <div class="decision"><b style="color:var(--thyme-deep)">Resolved · 05 Jul 2026 (ninth pass)</b>
+      <p><b style="display:inline;color:var(--ink)">Lifecycle fully specified</b> —
+        <code>locked</code> can revert <b>directly</b> back to <code>draft</code> (an
+        unlock), confirmed to not require going via <code>shopped</code>. The plan
+        lifecycle now has zero open questions: two paths lead back to <code>draft</code>
+        (direct unlock from <code>locked</code>, or reset from <code>shopped</code>);
+        <code>closed</code> is the sole one-way door.</p>
+    </div>
+    <div class="decision"><b style="color:var(--thyme-deep)">Milestone · 05 Jul 2026</b>
+      <p><b style="display:inline;color:var(--ink)">Unit contract drafted</b> —
+        <code>meal_plans/CONTRACT.md</code>. Defines the meal plan's elements
+        (header-info, optional constraint blocks, the 7×5×4-week dropdown grid,
+        footer-document-control, the lifecycle control), the three ownership classes
+        (data/Debbie, algorithm, reviewer/Debbie), the target footer shape and
+        normalised CP-marker vocabulary, and a verify checklist for a future
+        <code>meal-plan-verify</code> skill. No generator or verifier built yet — the
+        contract is the shape one must satisfy.</p>
+    </div>
+    <div class="decision"><b style="color:var(--thyme-deep)">Milestone · 05 Jul 2026</b>
+      <p><b style="display:inline;color:var(--ink)">Generator skill extracted</b> —
+        <code>.claude/skills/meal-plan-author/SKILL.md</code>. One invocation
+        instantiates one resident's one-period plan in <code>draft</code>, reading
+        <code>CONTRACT.md</code> and <code>frame.json</code> first. Includes an explicit
+        privacy boundary (real residents only for internal review; fictional resident
+        for sample/demo requests), the harmonization-across-siblings procedure, and a
+        mechanical self-check list. No sample artifact generated yet — this is the
+        skill, not its output.</p>
+    </div>
+    <div class="decision"><b style="color:var(--thyme-deep)">Milestone · 05 Jul 2026</b>
+      <p><b style="display:inline;color:var(--ink)">First sample artifact generated</b> —
+        <code>meal_plans/generated/sample/priya-nathan-2026-07-06.html</code>, a
+        <b>fictional</b> resident (no real option pool existed yet for anyone, so a
+        small fictional pool was invented per the skill's own boundary rules). Every
+        contract element present: header-info, dislikes/portion-guide, a 4-week × 7-day
+        × 5-slot grid (140 dropdowns), fixed SIL-day flags, the normalised
+        community-participation marker, conditional-substitution and
+        eat-out-placeholder annotations, the 2×2 footer, and a lifecycle-control showing
+        <code>draft</code> with only "Lock" offered. Verified in a real browser render
+        (element counts, footer rows, lifecycle state) — caught and fixed a missing
+        charset meta tag that was mangling em-dashes and fractions. Not harmonized (no
+        sibling resident in this fictional demo) and not written back to
+        <code>frame.json</code>.</p>
+    </div>
+    <div class="decision open"><b>Still open — none blocking</b>
+      <ul>
+        <li>Typical residents-per-home (Earlwood = 3; unconfirmed as typical)</li>
+        <li>Full list of residences/resident counts nationwide — deferred, sticking
+          with Earlwood + 4 placeholders for now</li>
+        <li>Support-worker roster data source — parked, revisit only if worth pursuing</li>
+      </ul>
+    </div>
+    <div class="decision"><b>Next unit of work</b>
+      <p>Have Debbie eyeball the sample artifact against real practice — does the
+        dropdown-review workflow feel usable, does stratified-random variety look
+        right — before building a verify skill or touching a real resident's data.</p>
+    </div>
+  </section>
+
+  <footer>source of truth: <b>sil_operations/dimension-map.html</b> (this file, in-repo) —
+    generated against <code>sil_operations/frame.json</code> ·
+    <code>sil_operations/DIMENSIONS.md</code> ·
+    <code>sil_operations/meal_plans/CONTRACT.md</code> ·
+    <code>.claude/skills/meal-plan-author/SKILL.md</code> ·
+    <code>meal_plans/generated/sample/</code> · sxdennonv2/harvest ·
+    branch <code>feat/sil-meal-plan-frame</code> · frame v0.14-draft, 05 Jul 2026</footer>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll("nav.jump a"));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute("href")); });
+  function onScroll(){
+    var y = window.scrollY + 90, idx = 0;
+    secs.forEach(function(s,i){ if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function(a,i){ a.classList.toggle("on", i === idx); });
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+})();
+</script>
