@@ -1,0 +1,147 @@
+# The Harvest Estate — pipeline register
+
+Estate-level dimensions: every pipeline in this repo (built, building, or sketched),
+expanded into the six containers Harvest persists in — **frame** (domain tree as data),
+**contract** (unit anatomy + verify checklist), **skills** (agentic stages), **deterministic
+tools** (render/verify/enumerate), **grounding** (MISSION/RESOURCES/packs), and **git**
+(the compound ledger). Per-pipeline detail lives in each pipeline's own `DIMENSIONS.md`;
+this file is the shape of the whole. Sketched 2026-07-05.
+
+## The two expansion modes
+
+Every Harvest pipeline expands its frame one of two ways, and the choice drives everything
+downstream (cadence, verify mode, feedback liquidity):
+
+- **Enumeration** — the frame's coordinates form a finite, listable set; a manifest is
+  generated and units are produced in batches (courses, risk assessments, meal plans).
+- **Stream** — coordinates arrive on a clock or as events; units are produced one at a
+  time, forever (social posts on a calendar tick; replies on an inbound comment).
+
+## Pipeline register
+
+| Pipeline | Client/org | Expansion | Unit(s) | Cadence | Verify mode | Feedback liquidity | State |
+|---|---|---|---|---|---|---|---|
+| `ai_training/` | ALDI (workplace) | enumeration | lesson page | on demand | script + judged sample | low (colleague feedback) | **BUILT** — 223/223 static |
+| `sil_operations/` | Danny Met Sally | enumeration | meal plan · shift-duty checklist · resident report | monthly (plans, reports) · per-shift | deterministic constraint checks + human review (Debbie) | low, warm access | **BUILDING** — meal_plans contract+skill+first drafts; other two lines latent |
+| `risk_governance/` | LWHC (+referrals) | enumeration | Whole-of-Centre RA · Workshop RA · quarterly report · monthly maintenance log | annual · quarterly · monthly | **human sign-off** (priced/liability — what the $15k buys) | very low, monetised | **SKETCH** — proven manually (delivered engagement); generator skill exists at portfolio level (`risk-assessment-generator`); frame not yet in-repo |
+| `punditry/` | public (10 channels) | **stream** | post (calendar tick) · reply (event) | daily per channel · event | **automated judges** (the liquid line) + human slow-loop over metrics (anti-Goodhart) | HIGH — the laboratory | **SKETCH** — BOb runtime exists (studio); frames to be extracted; go-live 2026-07-08 |
+
+## Per-pipeline expansion into the six containers
+
+### 1. `ai_training/` (built — reference instance)
+See `ai_training/DIMENSIONS.md`. Frames: 7 course.json families. Contract:
+`teach-buying-analyst/CONTRACT.md`. Skills: `lesson-author`, `lesson-verify`.
+Deterministic: `build_contents.py`, `verify_lessons.py`, `enumerate_permutations.py`.
+
+### 2. `sil_operations/` (building)
+See `sil_operations/DIMENSIONS.md` for meal_plans (frame.json, CONTRACT.md,
+`meal-plan-author` skill, generated/ first drafts). Two latent product lines, both
+promote-from-instance (analyse Debbie's real artifacts first, like meal plans did):
+
+- **shift_duties** — unit: one duty checklist per (residence × shift). Frame axes:
+  residence × shift-type (cardinality TBD from source docs) × duty items; likely a
+  fixed-grid invariant like the weekly meal grid. Verify: deterministic completeness
+  checks + Debbie review.
+- **resident_reports** — unit: one monthly report per (residence × resident × month).
+  Frame axes: residence × resident × month × report sections (contract TBD from a real
+  report). Verify: human review mandatory (NDIS-adjacent, names a real person's month).
+  Produce rate: residents × 12/yr.
+
+### 3. `risk_governance/` (sketch — LWHC)
+The already-monetised line, currently delivered by hand + portfolio skill; the pipeline
+move is bringing its knowledge into the containers:
+
+- **Frame** (`risk_governance/frame.json`, to create): centre × document-kind
+  (whole-of-centre · workshop · quarterly-report · maintenance-log) × period ×
+  (workshop-name for workshop RAs) × risk-register rows. **Time is a first-class
+  coordinate** — the annual/quarterly/monthly cadence is IN the frame, so a year of
+  LWHC work enumerates to ~17+W units (1 WoC + W workshops + 4 quarterlies + 12
+  maintenance logs).
+- **Contract** (per document-kind): the RA anatomy already implicit in the delivered
+  docs — hazard rows, likelihood×severity matrix, controls, owners, review dates —
+  plus the quarterly/monthly documents' anatomies. Verify checklist ends in a HUMAN
+  SIGN-OFF gate, always: this line sells accountability, not documents.
+- **Skills**: `ra-author` (adapt the existing portfolio `risk-assessment-generator`
+  into this repo's one-unit-per-invocation shape), `ra-verify` (mechanical: every
+  hazard has owner+review-date+control; matrix arithmetic; register cross-refs),
+  `ra-maintain` (monthly delta pass over the register).
+- **Deterministic**: register renderer (frame → docx via the repo's docx tooling),
+  period enumerator (what's due this month/quarter), diff-reporter for maintenance.
+- **Grounding**: MISSION (the centre's duty of care), RESOURCES (WHS legislation,
+  sector guidance — the citation canon), the delivered LWHC docs as reference produce.
+- **Compound**: each engagement's redlines fold back into contract/skill; referrals
+  extend the org axis (the frame is org-parametric by design — second centre = new
+  binding, zero new machinery).
+
+### 4. `punditry/` (sketch — the stream instance)
+The other half of the empire, and the pattern's laboratory. FRAME-LEDGER row 3
+(persona × topic × format) made concrete:
+
+- **Frames** — one `channels/<channel>/channel.json` per channel: the **persona**
+  (voice fingerprint, worldview, hard guardrails — e.g. no medical advice from
+  PilatesPosition, no financial advice from TheRationalConsumer), the **topic tree**
+  (that channel's themes, elicited per channel like course themes), and the
+  **format set** it may use. Channel roster (10): `whisky`, `the-living-scientist`,
+  `the-rational-consumer`, `the-bible-guy`, `climate-pulse`, `pilates-position`,
+  `expert-on-everything`, `tba-1`, `tba-2`, `tba-3`.
+- **Crosscutting invariants**: the **platform contract** (X first: length, media,
+  threading conventions; platform is a *binding* like context in the communication
+  course — one coordinate can render per-platform variants, it never forks the frame)
+  and the **post anatomy** (see contract).
+- **Contract** (`punditry/CONTRACT.md`, to create — the load-bearing artifact): a post's
+  elements (hook → one point → voice signature; source rule — claims trace to the
+  channel's RESOURCES; **coordinate tags** — BOb v2.1 attribution so every post carries
+  its frame coordinates for the compound loop; guardrails as hard clauses). A second
+  unit contract for **replies** (quote context, dignity rules, disengage-after-N-turns,
+  never invent facts mid-thread).
+- **Skills**: `post-author` (one post per invocation: channel frame + today's topic
+  pick + format), `reply-author` (one reply per event packet), `post-verify` — and this
+  is where the verify spectrum earns its keep: the liquid line is gated by **automated
+  judges** (voice match, guardrail compliance, source grounding, format conformance),
+  not humans; the human loop sits ABOVE the metrics weekly (anti-Goodhart), not on
+  each unit. (The `climate-pulse-draft` portfolio skill is a proto-`post-author` for
+  one channel — extract, don't rewrite.)
+- **Deterministic**: the **calendar enumerator** (tick → today's work-list: 10 posts,
+  channel × slot), the **poster/ingester** (X API — this is BOb, which already exists
+  in the studio repo; streams are the one place the operating rules permit runtime
+  code, and it's already built — extend, never rebuild), the **metrics harvester**
+  (engagement per coordinate tag, windowed), the judge harness.
+- **Grounding**: per-channel MISSION (why this channel exists, who it serves),
+  RESOURCES (each channel's source canon: ClimatePulse → named datasets; TheBibleGuy →
+  texts and translations; Whisky → the tasting/pricing data), exemplar packs (the
+  voice's best posts, the few-shot anchor).
+- **Compound**: the empire's engine — 70 posts/week/platform is the high-liquidity
+  laboratory; windowed engagement regressed against coordinate tags updates frames
+  (topics that land), formats, and skills weekly. What the laboratory learns, the
+  illiquid lines (risk_governance) monetise.
+- **Produce arithmetic**: posts = 10 channels × 1/day = 70/week = **3,640/year per
+  platform** (platforms multiply as bindings); replies = unbounded event stream.
+  Neither is pre-enumerable — the enumerator here is a *calendar*, not a manifest.
+
+## Empire-crosscutting axes
+
+- **cadence**: annual → quarterly → monthly → daily → event. One spectrum from LWHC's
+  Whole-of-Centre RA to a punditry reply; every unit sits somewhere on it, and where
+  it sits predicts everything else about it.
+- **verify mode ↔ feedback liquidity** (inverse pair): deterministic checks → automated
+  judges → human review → human sign-off. The faster the cadence, the cheaper the gate
+  must be (judges for daily posts); the higher the price/liability, the more human the
+  gate (sign-off for RAs). Liquid lines learn; illiquid lines earn.
+- **org/client**: ALDI (training) · LWHC (risk) · DMS (SIL) · the public (punditry).
+  Org is a binding parameter everywhere — the second client of any pipeline costs a
+  frame binding, not a build.
+- **tier**: static/live where units are consumed by people who may or may not have
+  agents; not meaningful for punditry (all units are published artifacts).
+
+## Naming collision to resolve (Stuart's call)
+
+`whisky/` exists empty at repo root. If it's the punditry channel, it belongs at
+`punditry/channels/whisky/`; if it's the whisky Choice-Engine dataset (a different
+FRAME-LEDGER row), root is fine but it should say so. Decide before the punditry
+scaffold lands.
+
+## Progress map
+
+Estate map: `dimension-map.html` at repo root (same standard as the pipeline maps:
+update after every merged batch/milestone, redeploy to its standing artifact URL).
+Per-pipeline maps remain the detail views.

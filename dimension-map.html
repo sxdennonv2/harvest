@@ -1,0 +1,270 @@
+<title>Harvest — the estate map</title>
+<style>
+  :root{
+    --field:#F6F8F4; --panel:#FFFFFF; --ink:#1D2823; --muted:#5C6B61;
+    --harvest:#1A7A4C; --harvest-deep:#12613B; --sage:#E7F2EC; --line:#D9E2DB;
+    --straw:#FFF4CE; --amber:#9A6A00; --latent:#AEBDB3;
+    --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+    --serif:Charter,'Iowan Old Style',Georgia,'Times New Roman',serif;
+    --sans:system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{background:var(--field);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;margin:0}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px 96px}
+  header.masthead{padding:44px 0 20px;border-bottom:2px solid var(--harvest)}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--harvest);margin:0 0 10px}
+  h1{font-family:var(--serif);font-size:34px;font-weight:600;margin:0 0 8px;letter-spacing:-.01em;text-wrap:balance}
+  .lede{color:var(--muted);max-width:66ch;margin:0}
+  .lede b{color:var(--ink);font-weight:600}
+  .stats{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:10px 16px;min-width:118px}
+  .stat .n{font-family:var(--serif);font-size:24px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--harvest-deep)}
+  .stat .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  section{margin-top:56px}
+  section>h2{font-family:var(--serif);font-size:23px;font-weight:600;margin:6px 0 6px}
+  .read{color:var(--muted);max-width:70ch;margin:0 0 20px}
+  .read b{color:var(--ink);font-weight:600}
+  .read code,td code{font-family:var(--mono);font-size:.88em;background:var(--sage);padding:1px 5px;border-radius:3px}
+  .pipes{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .pipe{border:1px solid var(--line);border-radius:6px;background:var(--panel);padding:0 0 12px}
+  .pipe.built{border-color:var(--harvest)}
+  .pipe.building{border-color:var(--harvest);border-style:solid}
+  .pipe.sketch{border-style:dashed;border-color:var(--harvest)}
+  .pipe h3{font-family:var(--serif);font-size:18px;margin:0 0 8px;padding:12px 16px 10px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline}
+  .pipe.built h3{background:var(--harvest);color:#fff;border-radius:5px 5px 0 0}
+  .pipe.building h3{background:var(--sage);color:var(--harvest-deep)}
+  .pipe.sketch h3{color:var(--harvest-deep)}
+  .pipe h3 .st{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
+  .pipe .body{padding:4px 16px 0;font-size:13.5px}
+  .pipe .body p{margin:.45em 0}
+  .kv{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .kv b{color:var(--harvest-deep);font-weight:600}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 2px}
+  .chip{font-family:var(--mono);font-size:11.5px;border-radius:3px;padding:2.5px 8px;border:1px solid var(--line);color:var(--muted)}
+  .chip.built{background:var(--sage);border-color:var(--harvest);color:var(--harvest-deep)}
+  .chip.draft{border:1.5px dashed var(--harvest);color:var(--harvest-deep)}
+  .chip.latent{border-style:dashed}
+  .chip.warn{background:var(--straw);border-color:var(--amber);color:var(--amber)}
+  .scroller{overflow-x:auto;border:1px solid var(--line);border-radius:5px;background:var(--panel)}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th,td{padding:8px 11px;text-align:left;vertical-align:top;border-top:1px solid var(--line)}
+  thead th{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-top:none;background:var(--field);white-space:nowrap}
+  tbody th{font-weight:600;font-size:13px;white-space:nowrap}
+  td.dot{text-align:center}
+  .ok,.half,.no{display:inline-block;width:10px;height:10px;border-radius:50%}
+  .ok{background:var(--harvest)}
+  .half{background:var(--panel);border:2.5px solid var(--harvest)}
+  .no{background:var(--panel);border:1.5px dashed var(--latent)}
+  .legend{display:flex;gap:18px;margin:10px 2px;font-size:12.5px;color:var(--muted);align-items:center}
+  .spectrum{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line);border-radius:5px;overflow:hidden;background:var(--panel)}
+  .spec{padding:12px 14px;border-left:1px solid var(--line);font-size:12.5px}
+  .spec:first-child{border-left:none}
+  .spec b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--harvest-deep);margin-bottom:4px}
+  .spec .who{color:var(--muted)}
+  .decision{background:var(--straw);border-left:3px solid var(--amber);border-radius:0 4px 4px 0;padding:13px 17px;margin-bottom:12px}
+  .decision b{color:var(--amber);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:4px}
+  .decision p{margin:0;font-size:13.5px}
+  footer{margin-top:70px;border-top:1px solid var(--line);padding-top:16px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+  @media(max-width:820px){.pipes{grid-template-columns:1fr}.spectrum{grid-template-columns:1fr}.spec{border-left:none;border-top:1px solid var(--line)}h1{font-size:27px}}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <p class="eyebrow">Harvest · estate map · sketched 05 Jul 2026</p>
+    <h1>The empire as pipelines</h1>
+    <p class="lede">Every Harvest pipeline in this repo — built, building, or sketched —
+      and the shape each one takes: <b>enumeration</b> lines that batch a finite frame,
+      and <b>stream</b> lines that fire on a clock or an event. The same six containers
+      persist all of them; only the frames and the verify gates differ.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">4</div><div class="l">pipelines</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">social channels</div></div>
+      <div class="stat"><div class="n">3+1</div><div class="l">clients + public</div></div>
+      <div class="stat"><div class="n">~3,900</div><div class="l">units / yr at spec</div></div>
+      <div class="stat"><div class="n">03 d</div><div class="l">to punditry go-live</div></div>
+    </div>
+  </header>
+
+  <section id="register">
+    <p class="eyebrow">The pipeline register</p>
+    <h2>Four lines, two expansion modes</h2>
+    <div class="pipes">
+      <div class="pipe built">
+        <h3>ai_training <span class="st">built · 223/223</span></h3>
+        <div class="body">
+          <p class="kv">client <b>ALDI (workplace)</b> · mode <b>enumeration</b> · unit <b>lesson page</b></p>
+          <p>Five courses × four personas; contexts and rungs in-page. Verify: script +
+            judged sample. The reference instance — everything below inherits its shape.</p>
+          <p class="kv">cadence <b>on demand</b> · liquidity <b>low</b> · verify <b>script + judge</b></p>
+        </div>
+      </div>
+      <div class="pipe building">
+        <h3>sil_operations <span class="st">building</span></h3>
+        <div class="body">
+          <p class="kv">client <b>Danny Met Sally</b> · mode <b>enumeration</b> · units <b>3 product lines</b></p>
+          <div class="chips">
+            <span class="chip built">meal plans · residence × resident × 28-day</span>
+            <span class="chip latent">shift duties · residence × shift</span>
+            <span class="chip latent">resident reports · residence × resident × month</span>
+          </div>
+          <p>Meal plans: frame + contract + <code>meal-plan-author</code> + first Earlwood
+            drafts. Verify: deterministic dietary/constraint checks + Debbie review.
+            Latent lines promote-from-instance, like meal plans did.</p>
+          <p class="kv">cadence <b>monthly / per-shift</b> · liquidity <b>low, warm</b> · verify <b>checks + human review</b></p>
+        </div>
+      </div>
+      <div class="pipe sketch">
+        <h3>risk_governance <span class="st">sketch · proven by hand</span></h3>
+        <div class="body">
+          <p class="kv">client <b>LWHC (+referrals)</b> · mode <b>enumeration, time-coordinated</b></p>
+          <div class="chips">
+            <span class="chip draft">Whole-of-Centre RA · annual</span>
+            <span class="chip draft">Workshop RA · annual × workshop</span>
+            <span class="chip draft">Quarterly report</span>
+            <span class="chip draft">Monthly maintenance log</span>
+          </div>
+          <p>Time is a frame coordinate: one LWHC year enumerates to ~17+W units. The
+            $15k engagement was delivered manually — the pipeline move is folding that
+            knowledge into frame + contract. Verify ends in <b>human sign-off, always</b>:
+            this line sells accountability.</p>
+          <p class="kv">cadence <b>annual→monthly</b> · liquidity <b>very low, monetised</b> · verify <b>human sign-off</b></p>
+        </div>
+      </div>
+      <div class="pipe sketch">
+        <h3>punditry <span class="st">sketch · runtime exists (BOb)</span></h3>
+        <div class="body">
+          <p class="kv">client <b>the public</b> · mode <b>STREAM</b> · units <b>post · reply</b></p>
+          <p>One <code>channel.json</code> per channel: persona (voice, worldview, hard
+            guardrails) × topic tree × format set. Platform is a binding (X first).
+            <b>1 post/channel/day = 70/wk = 3,640/yr per platform</b>; replies are an
+            unbounded event stream. The enumerator is a <i>calendar</i>, not a manifest.
+            Verify: <b>automated judges</b> gate each unit; the human loop sits above the
+            metrics weekly (anti-Goodhart). This is the laboratory — what it learns, the
+            illiquid lines monetise.</p>
+          <p class="kv">cadence <b>daily · event</b> · liquidity <b>HIGH</b> · verify <b>judges + human-over-metrics</b></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="channels">
+    <p class="eyebrow">punditry · the channel roster</p>
+    <h2>Ten personas, one contract</h2>
+    <p class="read">Each channel is a frame: persona × topic tree × format set. None is
+      extracted yet; <code>climate-pulse</code> has a proto-author skill at portfolio
+      level to extract rather than rewrite. Platforms multiply as bindings, like
+      contexts in the communication course — they never fork a frame.</p>
+    <div class="chips" style="margin-bottom:10px">
+      <span class="chip draft">whisky</span>
+      <span class="chip draft">the-living-scientist</span>
+      <span class="chip draft">the-rational-consumer</span>
+      <span class="chip draft">the-bible-guy</span>
+      <span class="chip draft">climate-pulse · proto-skill exists</span>
+      <span class="chip draft">pilates-position</span>
+      <span class="chip draft">expert-on-everything</span>
+      <span class="chip latent">tba-1</span><span class="chip latent">tba-2</span><span class="chip latent">tba-3</span>
+    </div>
+    <div class="chips">
+      <span class="chip built">platform: X.com</span>
+      <span class="chip latent">platform: tba</span>
+      <span class="chip latent">platform: tba</span>
+    </div>
+  </section>
+
+  <section id="containers">
+    <p class="eyebrow">The taxonomy, cross-tabulated</p>
+    <h2>Pipeline × the six containers</h2>
+    <div class="legend"><span class="ok"></span> exists &nbsp; <span class="half"></span> partial &nbsp; <span class="no"></span> latent/sketch</div>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>Pipeline</th><th>Frame (data)</th><th>Contract</th><th>Skills (agentic)</th><th>Deterministic tools</th><th>Grounding</th><th>Produce</th></tr></thead>
+        <tbody>
+          <tr><th>ai_training</th>
+            <td class="dot"><span class="ok" title="7 course.json families"></span></td>
+            <td class="dot"><span class="ok" title="CONTRACT.md + optional elements"></span></td>
+            <td class="dot"><span class="ok" title="lesson-author · lesson-verify"></span></td>
+            <td class="dot"><span class="ok" title="build_contents · verify_lessons · enumerate_permutations"></span></td>
+            <td class="dot"><span class="ok" title="MISSION/RESOURCES/packs per course"></span></td>
+            <td class="dot"><span class="ok" title="223 pages"></span></td></tr>
+          <tr><th>sil_operations</th>
+            <td class="dot"><span class="half" title="meal_plans/frame.json; 2 lines latent"></span></td>
+            <td class="dot"><span class="half" title="meal_plans/CONTRACT.md only"></span></td>
+            <td class="dot"><span class="half" title="meal-plan-author; no verify skill yet"></span></td>
+            <td class="dot"><span class="half" title="generators in progress"></span></td>
+            <td class="dot"><span class="half" title="source docx analysed; RESOURCES thin"></span></td>
+            <td class="dot"><span class="half" title="first Earlwood drafts"></span></td></tr>
+          <tr><th>risk_governance</th>
+            <td class="dot"><span class="no" title="frame.json to create from delivered docs"></span></td>
+            <td class="dot"><span class="no" title="RA anatomy implicit in delivered docs"></span></td>
+            <td class="dot"><span class="half" title="portfolio risk-assessment-generator exists — adapt"></span></td>
+            <td class="dot"><span class="no" title="register renderer, period enumerator"></span></td>
+            <td class="dot"><span class="half" title="delivered LWHC docs = reference produce"></span></td>
+            <td class="dot"><span class="half" title="manual engagement delivered"></span></td></tr>
+          <tr><th>punditry</th>
+            <td class="dot"><span class="no" title="10 channel.json to extract"></span></td>
+            <td class="dot"><span class="no" title="post + reply contracts to write"></span></td>
+            <td class="dot"><span class="half" title="climate-pulse-draft proto; post/reply-author + judge to extract"></span></td>
+            <td class="dot"><span class="half" title="BOb runtime EXISTS (studio) — poster/ingester; calendar enumerator + metrics harvester to add"></span></td>
+            <td class="dot"><span class="no" title="per-channel MISSION/RESOURCES/exemplars"></span></td>
+            <td class="dot"><span class="no" title="0 posts via pipeline; go-live 08 Jul"></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="cadence">
+    <p class="eyebrow">Produce arithmetic</p>
+    <h2>Units per year, at current spec</h2>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>Line</th><th>Unit</th><th>Arithmetic</th><th>Units / yr</th><th>Gate per unit</th></tr></thead>
+        <tbody>
+          <tr><th>punditry · posts</th><td>post</td><td>10 channels × 365 × 1 platform</td><td><b>3,650</b></td><td>automated judge</td></tr>
+          <tr><th>punditry · replies</th><td>reply</td><td>event-driven</td><td>unbounded</td><td>automated judge</td></tr>
+          <tr><th>DMS · meal plans</th><td>28-day plan</td><td>residents × 13 periods (Earlwood: 3 × 13)</td><td>39 per residence</td><td>checks + Debbie</td></tr>
+          <tr><th>DMS · resident reports</th><td>monthly report</td><td>residents × 12</td><td>36 per residence</td><td>human review</td></tr>
+          <tr><th>DMS · shift duties</th><td>checklist</td><td>residences × shifts (cardinality TBD)</td><td>TBD</td><td>checks + review</td></tr>
+          <tr><th>LWHC · risk governance</th><td>RA / report / log</td><td>1 WoC + W workshops + 4 quarterly + 12 monthly</td><td>~17 + W</td><td><b>human sign-off</b></td></tr>
+          <tr><th>ai_training</th><td>lesson page</td><td>enumerated; 223 built + live tier</td><td>on demand</td><td>script + judge</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="spectrum">
+    <p class="eyebrow">The empire's spine</p>
+    <h2>Cadence × verify × liquidity — one spectrum</h2>
+    <p class="read">Where a unit sits on the cadence axis predicts its gate and what it's
+      for: <b>liquid lines learn; illiquid lines earn.</b> The laboratory (punditry)
+      feeds the frames; the signed lines (risk) cash the learning.</p>
+    <div class="spectrum">
+      <div class="spec"><b>event</b>punditry replies<div class="who">gate: judge · learns fastest</div></div>
+      <div class="spec"><b>daily</b>punditry posts<div class="who">gate: judge · the laboratory</div></div>
+      <div class="spec"><b>monthly</b>meal plans · reports · RA maintenance<div class="who">gate: checks + human review</div></div>
+      <div class="spec"><b>quarterly</b>RA reporting · option-pool refresh<div class="who">gate: human review</div></div>
+      <div class="spec"><b>annual</b>Whole-of-Centre & Workshop RAs<div class="who">gate: human sign-off · earns most</div></div>
+    </div>
+  </section>
+
+  <section id="decisions">
+    <p class="eyebrow">Open decisions</p>
+    <h2>What the sketch is asking</h2>
+    <div class="decision"><b>Naming collision</b>
+      <p><code>whisky/</code> sits empty at repo root. Punditry channel → belongs at
+      <code>punditry/channels/whisky/</code>; whisky Choice-Engine dataset → root is fine
+      but say so. Decide before the punditry scaffold lands.</p></div>
+    <div class="decision"><b>Go-live order of work</b>
+      <p>Punditry go-live 2026-07-08 (X API 402 funding is the standing blocker).
+      The minimal pipeline for day one: 7 channel frames + the post contract +
+      <code>post-author</code> + judge — BOb already does the posting. Replies stream
+      can follow go-live.</p></div>
+    <div class="decision"><b>TBA channels</b>
+      <p>Three slots open. The frame makes them cheap — a persona, a topic tree, a
+      source canon each. Candidates worth considering against the existing spread.</p></div>
+  </section>
+
+  <footer>generated from DIMENSIONS.md (estate) · sxdennonv2/harvest ·
+    per-pipeline maps: ai_training/dimension-map.html · sil_operations/dimension-map.html ·
+    sketched 05 Jul 2026, PR pending Stuart's word (frame territory)</footer>
+</div>
