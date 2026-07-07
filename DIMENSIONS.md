@@ -24,7 +24,7 @@ downstream (cadence, verify mode, feedback liquidity):
 | `ai_training/` | ALDI (workplace) | enumeration | lesson page | on demand | script + judged sample | low (colleague feedback) | **BUILT** — 223/223 static |
 | `sil_operations/` | Danny Met Sally | enumeration | meal plan · shift-duty checklist · resident report | monthly (plans, reports) · per-shift | deterministic constraint checks + human review (Debbie) | low, warm access | **BUILDING** — meal_plans contract+skill+first drafts; other two lines latent |
 | `risk_governance/` | LWHC (+referrals) | enumeration | Whole-of-Centre RA · Workshop RA · quarterly report · monthly maintenance log | annual · quarterly · monthly | **human sign-off** (priced/liability — what the $15k buys) | very low, monetised | **SKETCH** — proven manually (delivered engagement); generator skill exists at portfolio level (`risk-assessment-generator`); frame not yet in-repo |
-| `punditry/` | public (10 channels) | **stream** | post (calendar tick) · reply (event) | daily per channel · event | **automated judges** (the liquid line) + human slow-loop over metrics (anti-Goodhart) | HIGH — the laboratory | **SKETCH** — BOb runtime exists (studio); frames to be extracted; go-live 2026-07-08 |
+| `punditry/` | public (7 named + 3 TBA channels) | **stream** | post (calendar tick) · reply (event) | daily per channel · event | **automated judges** (the liquid line) + human slow-loop over metrics (anti-Goodhart) | HIGH — the laboratory | **SKETCH, plan-only** — BOb runtime exists (studio) and launches independently; Harvest extraction deferred by Stuart's word (2026-07-08) |
 
 ## Per-pipeline expansion into the six containers
 
@@ -133,12 +133,17 @@ The other half of the empire, and the pattern's laboratory. FRAME-LEDGER row 3
 - **tier**: static/live where units are consumed by people who may or may not have
   agents; not meaningful for punditry (all units are published artifacts).
 
-## Naming collision to resolve (Stuart's call)
+## Resolved decisions (Stuart, 2026-07-08)
 
-`whisky/` exists empty at repo root. If it's the punditry channel, it belongs at
-`punditry/channels/whisky/`; if it's the whisky Choice-Engine dataset (a different
-FRAME-LEDGER row), root is fine but it should say so. Decide before the punditry
-scaffold lands.
+- **`whisky/` deleted** — it was a staged attempt at a whisky-specific Harvest pipeline,
+  abandoned for now. The punditry *channel* named whisky will live at
+  `punditry/channels/whisky/` if and when that pipeline is built.
+- **Plan, not build** — the estate stays at sketch level until Stuart has the whole
+  shape in mind. No punditry scaffold, no risk_governance frame files yet; this
+  register and its map ARE the current deliverable. BOb's go-live proceeds on its own
+  runtime, independent of Harvest; extraction into the pipeline comes later.
+- **TBA channels parked** — the roster plans for 7 named channels; three slots stay
+  open and unnamed.
 
 ## Progress map
 

@@ -82,7 +82,7 @@
       <div class="stat"><div class="n">10</div><div class="l">social channels</div></div>
       <div class="stat"><div class="n">3+1</div><div class="l">clients + public</div></div>
       <div class="stat"><div class="n">~3,900</div><div class="l">units / yr at spec</div></div>
-      <div class="stat"><div class="n">03 d</div><div class="l">to punditry go-live</div></div>
+      <div class="stat"><div class="n">PLAN</div><div class="l">mode: map before build</div></div>
     </div>
   </header>
 
@@ -137,11 +137,12 @@
           <p class="kv">client <b>the public</b> · mode <b>STREAM</b> · units <b>post · reply</b></p>
           <p>One <code>channel.json</code> per channel: persona (voice, worldview, hard
             guardrails) × topic tree × format set. Platform is a binding (X first).
-            <b>1 post/channel/day = 70/wk = 3,640/yr per platform</b>; replies are an
+            <b>1 post/channel/day = 70/wk per platform at full roster</b>; replies are an
             unbounded event stream. The enumerator is a <i>calendar</i>, not a manifest.
             Verify: <b>automated judges</b> gate each unit; the human loop sits above the
             metrics weekly (anti-Goodhart). This is the laboratory — what it learns, the
-            illiquid lines monetise.</p>
+            illiquid lines monetise. <b>Plan-only for now</b>: BOb launches on its own
+            runtime; extraction into these containers is deferred.</p>
           <p class="kv">cadence <b>daily · event</b> · liquidity <b>HIGH</b> · verify <b>judges + human-over-metrics</b></p>
         </div>
       </div>
@@ -250,18 +251,20 @@
   <section id="decisions">
     <p class="eyebrow">Open decisions</p>
     <h2>What the sketch is asking</h2>
-    <div class="decision"><b>Naming collision</b>
-      <p><code>whisky/</code> sits empty at repo root. Punditry channel → belongs at
-      <code>punditry/channels/whisky/</code>; whisky Choice-Engine dataset → root is fine
-      but say so. Decide before the punditry scaffold lands.</p></div>
-    <div class="decision"><b>Go-live order of work</b>
-      <p>Punditry go-live 2026-07-08 (X API 402 funding is the standing blocker).
-      The minimal pipeline for day one: 7 channel frames + the post contract +
-      <code>post-author</code> + judge — BOb already does the posting. Replies stream
-      can follow go-live.</p></div>
-    <div class="decision"><b>TBA channels</b>
-      <p>Three slots open. The frame makes them cheap — a persona, a topic tree, a
-      source canon each. Candidates worth considering against the existing spread.</p></div>
+    <div class="decision" style="background:var(--sage);border-left-color:var(--harvest)"><b style="color:var(--harvest-deep)">Resolved · 08 Jul (Stuart)</b>
+      <p><b style="display:inline;color:var(--ink)">whisky/</b> deleted — an abandoned
+      whisky-pipeline staging dir; the channel will live at
+      <code>punditry/channels/whisky/</code> when built.
+      <b style="display:inline;color:var(--ink)">TBA channels</b> parked — plan for 7.
+      <b style="display:inline;color:var(--ink)">Mode: plan, not build</b> — the estate
+      stays at sketch level until the whole shape is in mind; BOb launches on its own
+      runtime, Harvest extraction comes later.</p></div>
+    <div class="decision"><b>Mapping still open</b>
+      <p>Shapes not yet drawn: the <b>compound-loop flows</b> (which line's learning
+      feeds which frame — the laboratory→cash-register pipe as an actual diagram), the
+      <b>punditry unit contracts</b> at element level (post &amp; reply anatomies, like
+      the lesson contract's 20 elements), and the <b>org axis</b> (what a second centre
+      or a second SIL provider costs, per line).</p></div>
   </section>
 
   <footer>generated from DIMENSIONS.md (estate) · sxdennonv2/harvest ·
