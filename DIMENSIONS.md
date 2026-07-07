@@ -118,6 +118,32 @@ The other half of the empire, and the pattern's laboratory. FRAME-LEDGER row 3
   platform** (platforms multiply as bindings); replies = unbounded event stream.
   Neither is pre-enumerable — the enumerator here is a *calendar*, not a manifest.
 
+## Compound-loop flows
+
+Every line runs the same loop shape at a different speed: **produce → signal →
+instrument → fold**, with a window setting the fold cadence and a guard keeping the
+metric honest. Two speeds coexist everywhere: the **inner loop** (per line, folding
+into that line's own frame/skill/grounding) and the **meta loop** (friction from every
+line folding into the pattern containers — CONTRACT idioms, packet templates, skill
+shapes, FRAME-LEDGER). The lab→register pipe is the meta loop: **what transfers
+between lines is pattern knowledge, never content.**
+
+| Line | Signal (from the world) | Instrument | Window | Folds into | Guard |
+|---|---|---|---|---|---|
+| punditry · posts | engagement per coordinate tag | metrics harvester → windowed regression | weekly | channel frames (topic weights), format sets, `post-author`, exemplar packs | anti-Goodhart human over the metrics, never over units |
+| punditry · replies | thread outcomes (sentiment, disengage events) | same harness | weekly | reply contract, guardrails | same |
+| ai_training | "ask your teacher" requests; colleague feedback; (live tier: learner records) | folded by hand per request | per request / monthly | bindings, packs, RESOURCES | human is the loop |
+| ai_training · intra-build | agent friction reports | skill RETURN sections → PR bodies | per batch | packet template, CONTRACT deviations ledger | orchestrator judgement |
+| SIL · meal plans | Debbie's dropdown overrides (algorithm pick vs her pick); lifecycle transitions (locked/shopped/closed = acceptance ground truth) | review-interface diffs | per 28-day period; quarterly pool refresh | option pools, allocation weights, constraint blocks | Debbie's override IS the human loop |
+| risk_governance | client redlines; sign-off deltas; referrals | engagement-doc compare | per engagement / annual | RA contract, `ra-author`; referrals grow the org axis | sign-off is the loop |
+| **meta (pattern)** | friction from all of the above | handovers, memory, FRAME-LEDGER, contract amendments | continuous | every pipeline's containers | Stuart reviews the objective |
+
+Two structural notes: (1) **no tags, no compounding** — coordinate tags are what let a
+signal find its way back to the frame coordinate that caused it; a unit that ships
+untagged is a unit the pipeline cannot learn from. (2) **synthetic loops inside slow
+loops** — where a real window is annual (RAs), dry-run judges and fleet rehearsals
+substitute for the world until real feedback arrives.
+
 ## Empire-crosscutting axes
 
 - **cadence**: annual → quarterly → monthly → daily → event. One spectrum from LWHC's
