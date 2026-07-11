@@ -86,8 +86,22 @@ format frame (sketched when the pattern was named, 2026-07-04) made concrete:
   `expert-on-everything`, `tba-1`, `tba-2`, `tba-3`.
 - **Crosscutting invariants**: the **platform contract** (X first: length, media,
   threading conventions; platform is a *binding* like context in the communication
-  course — one coordinate can render per-platform variants, it never forks the frame)
-  and the **post anatomy** (see contract).
+  course — one coordinate can render per-platform variants, it never forks the frame);
+  **modality** (text · audio · visual — a binding on the same terms: the author
+  authors one unit, and per-modality variants are rendered from it — a narrated
+  post, a charted figure, a short video. Not hypothetical: the av-pilot line
+  (storyboard → narration → cut) is the working instance of the audio-visual
+  binding; when punditry builds, that machinery is extracted, never rebuilt); and
+  the **post anatomy** (see contract).
+- **Trigger types**: a unit is triggered one of three ways — the **calendar tick**
+  (today's post, per channel), an **inbound event** (a reply-worthy mention or
+  comment), or **cross-channel amplification**: a post whose windowed signal clears
+  a threshold becomes a trigger event on sibling channels whose topic trees can
+  reach it. Hard clause: an amplification trigger carries only the source post and
+  its coordinate tags; the receiving channel authors its own unit through its own
+  persona, topic tree, and contract, and gates it like any other post. Mechanical
+  echo — reposting or lightly rewording across channels — is banned outright: it
+  reads as coordinated inauthentic behaviour, and platforms police exactly that.
 - **Contract** (`punditry/CONTRACT.md`, to create — the load-bearing artifact): a post's
   elements (hook → one point → voice signature; source rule — claims trace to the
   channel's RESOURCES; **coordinate tags** — BOb v2.1 attribution so every post carries
