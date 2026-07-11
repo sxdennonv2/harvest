@@ -74,8 +74,8 @@ move is bringing its knowledge into the containers:
   binding, zero new machinery).
 
 ### 4. `punditry/` (sketch — the stream instance)
-The other half of the empire, and the pattern's laboratory. FRAME-LEDGER row 3
-(persona × topic × format) made concrete:
+The other half of the empire, and the pattern's laboratory. The persona × topic ×
+format frame (sketched when the pattern was named, 2026-07-04) made concrete:
 
 - **Frames** — one `channels/<channel>/channel.json` per channel: the **persona**
   (voice fingerprint, worldview, hard guardrails — e.g. no medical advice from
@@ -124,8 +124,8 @@ Every line runs the same loop shape at a different speed: **produce → signal �
 instrument → fold**, with a window setting the fold cadence and a guard keeping the
 metric honest. Two speeds coexist everywhere: the **inner loop** (per line, folding
 into that line's own frame/skill/grounding) and the **meta loop** (friction from every
-line folding into the pattern containers — CONTRACT idioms, packet templates, skill
-shapes, FRAME-LEDGER). The lab→register pipe is the meta loop: **what transfers
+line folding into the pattern containers — CONTRACT idioms, packet shapes, skill
+shapes, this register). The lab→register pipe is the meta loop: **what transfers
 between lines is pattern knowledge, never content.**
 
 | Line | Signal (from the world) | Instrument | Window | Folds into | Guard |
@@ -136,7 +136,7 @@ between lines is pattern knowledge, never content.**
 | ai_training · intra-build | agent friction reports | skill RETURN sections → PR bodies | per batch | packet template, CONTRACT deviations ledger | orchestrator judgement |
 | SIL · meal plans | Debbie's dropdown overrides (algorithm pick vs her pick); lifecycle transitions (locked/shopped/closed = acceptance ground truth) | review-interface diffs | per 28-day period; quarterly pool refresh | option pools, allocation weights, constraint blocks | Debbie's override IS the human loop |
 | risk_governance | client redlines; sign-off deltas; referrals | engagement-doc compare | per engagement / annual | RA contract, `ra-author`; referrals grow the org axis | sign-off is the loop |
-| **meta (pattern)** | friction from all of the above | handovers, memory, FRAME-LEDGER, contract amendments | continuous | every pipeline's containers | Stuart reviews the objective |
+| **meta (pattern)** | friction from all of the above | handovers, memory, this register, contract amendments | continuous | every pipeline's containers | Stuart reviews the objective |
 
 Two structural notes: (1) **no tags, no compounding** — coordinate tags are what let a
 signal find its way back to the frame coordinate that caused it; a unit that ships
@@ -170,6 +170,10 @@ substitute for the world until real feedback arrives.
   runtime, independent of Harvest; extraction into the pipeline comes later.
 - **TBA channels parked** — the roster plans for 7 named channels; three slots stay
   open and unnamed.
+- **FRAME-LEDGER retired** (Stuart, 2026-07-11) — the studio-root `FRAME-LEDGER.md`
+  no longer exists; this estate register is its successor. All references in this
+  repo now point here; the historical instance numbering (#3 ai_training,
+  #4 sil_operations) is preserved in the pipelines' own docs.
 
 ## Progress map
 
