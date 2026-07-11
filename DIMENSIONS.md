@@ -102,6 +102,13 @@ format frame (sketched when the pattern was named, 2026-07-04) made concrete:
   persona, topic tree, and contract, and gates it like any other post. Mechanical
   echo — reposting or lightly rewording across channels — is banned outright: it
   reads as coordinated inauthentic behaviour, and platforms police exactly that.
+- **Channel-birth line** (machinery-as-produce): the channel is itself a unit — one
+  channel contract governs every channel, which is what makes them units rather than
+  bespoke builds. Contract: `punditry/channel_birth/CONTRACT.md` (drafted 2026-07-11,
+  promote-from-instance from climate-pulse's running machinery). Births are serial —
+  climate-pulse first, whisky (dataset) second — with friction folded between births;
+  gate: **human sign-off at birth and at go-live** (the illiquid unit of the liquid
+  pipeline). Skills to create: `channel-author`, `channel-verify`.
 - **Contract** (`punditry/CONTRACT.md`, to create — the load-bearing artifact): a post's
   elements (hook → one point → voice signature; source rule — claims trace to the
   channel's RESOURCES; **coordinate tags** — BOb v2.1 attribution so every post carries
