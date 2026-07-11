@@ -218,10 +218,12 @@ verify↔liquidity spectrum.
 
 The channel-birth line's frame is the **roster**: one coordinate per planned
 channel, each row carrying `channel_id`, domain, birth method, and birth
-order. The roster is owner-owned frame data. (Flagged at drafting: the harvest
-estate register and the studio `punditry-channels/` directory currently
-disagree on the roster — resolution is Stuart's, and this contract
-deliberately does not list a roster for that reason.)
+order. The roster is owner-owned frame data, and it is the estate register's
+(resolved, Stuart 2026-07-11): the seven named channels — `whisky`,
+`the-living-scientist`, `the-rational-consumer`, `the-bible-guy`,
+`climate-pulse`, `pilates-position`, `expert-on-everything` — plus the three
+parked TBA slots. The studio `punditry-channels/` directories beyond
+climate-pulse and whisky are runtime scaffolds, not frame material.
 
 Per coordinate, the birth method selects the author's path: promote (analyse
 the validated instance or dataset, lift its judgement into the elements) or
@@ -285,12 +287,9 @@ Human (Stuart) — both mandatory, per Lifecycle:
 
 ## Known open items
 
-1. **The roster conflict** — harvest's estate register (7 named + 3 TBA) vs
-   the studio `punditry-channels/` directory (14 scaffolds; only climate-pulse
-   and whisky appear in both). Owner decision; the frame waits on it.
-2. **Post and reply unit contracts** — separate artifacts (the estate register
+1. **Post and reply unit contracts** — separate artifacts (the estate register
    already names them); this contract governs the channel, not its produce.
-3. **Extraction timing** — BOb launches on its own runtime by standing
+2. **Extraction timing** — BOb launches on its own runtime by standing
    decision; when a channel is extracted into harvest containers
    (`channel.json` et al.), the studio `CHANNEL.md` surface remains the
    runtime rendering of the same unit, not a second source of truth.

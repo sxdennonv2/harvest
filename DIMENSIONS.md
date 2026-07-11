@@ -195,6 +195,9 @@ substitute for the world until real feedback arrives.
   no longer exists; this estate register is its successor. All references in this
   repo now point here; the historical instance numbering (#3 ai_training,
   #4 sil_operations) is preserved in the pipelines' own docs.
+- **Channel roster resolved** (Stuart, 2026-07-11) — this register's roster (7 named
+  + 3 TBA) is the channel-birth frame. The studio `punditry-channels/` directories
+  beyond climate-pulse and whisky are runtime scaffolds, not frame material.
 
 ## Progress map
 
