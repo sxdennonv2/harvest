@@ -74,6 +74,27 @@ verifier; **a batch is not closed until the map shows it**:
 session ended — 2026-07-04's persona sweep ran without it until Stuart noticed. Hence
 this section.)
 
+## Dialect (pipeline-local terms)
+
+Terms this pipeline owns that are NOT pattern-level — demoted from the repo-root
+`CONTEXT.md` on 2026-07-11 under its two-pipeline test (a term earns pattern residency
+only when a second pipeline needs it):
+
+- **Ladder / Rung** — the organisation's GenAI adoption model, the invariant
+  crosscutting axis every *lesson* climbs internally (1 Manual craft → 2 Aldi:GPT →
+  3 M365 Copilot → 4 GitHub Copilot). One org, one ladder; swap the org, swap the
+  ladder. _Avoid_: levels, tiers (Tier means deployment).
+- **Room** — the setting a communication unit rebinds into: email, document, slides,
+  chat. Lives inside pages via the rebind element ("Other rooms, same craft"); never
+  forks a page. The frame key `contexts` and the element `context-rebind` are frozen
+  identifiers (CONTEXT.md two-tier rule); in language say Room, never bare "context".
+- **Specimen** — a practice-pack scenario's deliberately flawed input (the flabby
+  draft, the franken-deck, the planted-error email) that units teach against.
+  _Avoid_: example, sample (bare).
+- **Packet ingredients** (this pipeline's list, per the pattern's Packet entry):
+  contract pointer, coordinate, pinned one-idea, specimen anchor, rung-failure pins,
+  voice reference, hard rules.
+
 ## Beyond this pipeline
 
 This file describes one instance of the Harvest shape (enumeration-expanded). A sibling
