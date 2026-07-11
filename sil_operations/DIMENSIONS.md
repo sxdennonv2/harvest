@@ -1,8 +1,9 @@
 # Dimensions of the SIL-operations pipeline
 
 The axes of the SIL (Supported Independent Living) meal-plan frame, named so the whole
-space can be seen before the detail is infilled. This is Harvest instance #4 (FRAME-LEDGER
-row 4) — the first non-office-app domain, promoted from real source artifacts rather than
+space can be seen before the detail is infilled. This is Harvest instance #4 (see the
+estate register, `../DIMENSIONS.md`) — the first non-office-app domain, promoted from
+real source artifacts rather than
 elicited blind: three residents' actual Weekly Menu Planner `.docx` files (residence:
 Earlwood), analysed 2026-07-04. ✅ = populated from source; ⬜ = placeholder, awaiting data.
 
@@ -185,6 +186,6 @@ redeploy to the URL above (favicon 🥗, same URL every time).
 ## Beyond this pipeline
 
 This is one instance of the Harvest shape (enumeration-expanded: organisation × residence ×
-resident is a finite, growable list). See `/Users/stuartdennon/Documents/studio/FRAME-LEDGER.md`
-row 4 for the sibling instances planned on the same frame (Monthly Resident Report, Shift
-Duties Checklist) and the cross-portfolio pattern this shares with `ai_training/DIMENSIONS.md`.
+resident is a finite, growable list). See the estate register, `../DIMENSIONS.md`, for the
+sibling lines planned on the same frame (Monthly Resident Report, Shift Duties Checklist)
+and the pattern this shares with `ai_training/DIMENSIONS.md`.

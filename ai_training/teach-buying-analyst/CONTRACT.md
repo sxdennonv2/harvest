@@ -9,6 +9,10 @@ what every lesson page must contain. It is consumed by:
   same floor before the learner moves on;
 - the **verifier** (`lesson-verify`) at both tiers — the checklist at the end is its spec.
 
+Editing this contract is machinery work: touched prose must conform to the pattern
+language in the repo-root `CONTEXT.md` (judged at integrate-verify-merge; unit produce
+is exempt — inside a lesson, the learner's language rules).
+
 Reverse-engineered from the 19 pages of the Excel reference instance
 (`excel/lessons/*.html`, built 2026-07-02). The Excel course is the worked example of every
 clause; deviations found during extraction are listed at the end.

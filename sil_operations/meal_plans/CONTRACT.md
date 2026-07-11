@@ -10,6 +10,10 @@ every meal plan must contain and how it may move between states. It is consumed 
   and lifecycle control it renders must satisfy this contract;
 - the **verifier** (not yet built) — the checklist at the end is its spec.
 
+Editing this contract is machinery work: touched prose must conform to the pattern
+language in the repo-root `CONTEXT.md` (judged at integrate-verify-merge; unit produce
+is exempt — inside a plan, Debbie's language rules).
+
 Reverse-engineered from 3 real Weekly Menu Planner `.docx` files (residence: Earlwood,
 provider: Danny Met Sally / DMS, analysed 2026-07-04), then extended by Stuart's design
 decisions for the automated mechanism (2026-07-05). See `frame.json` for the frame data

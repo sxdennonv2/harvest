@@ -10,7 +10,7 @@ being swapped, it belongs in communication.* ✅ = populated.
 
 | Dimension | Kind | Values today | Owned by |
 |---|---|---|---|
-| `pipeline` | top-level split | app-functionality ✅ (4 courses, 53 pages) · communication ✅ (11 pages, 4 contexts bound) | decision, FRAME-LEDGER; the ladder is invariant **across pipelines** |
+| `pipeline` | top-level split | app-functionality ✅ (4 courses, 53 pages) · communication ✅ (11 pages, 4 contexts bound) | decision, estate register (`../DIMENSIONS.md`); the ladder is invariant **across pipelines** |
 | `application` | swappable tree root (functionality pipeline); binding `context` (communication pipeline: email ✅ · document ✅ · slides ✅ · chat ✅ — rebound 2026-07-05 via the context-rebind element) | Excel ✅ 20 · Outlook ✅ 13 · PowerPoint ✅ 10 · Word ✅ 10 — all complete (built 2026-07-04) | frame (one course.json each) — **all four applications now framed**; ladder asserted invariant across all 5 frames |
 | `theme` | swappable tree, nested in application | Excel: Source & prepare · Summarise & analyse · Report & visualise · Communicate & present · Automate the repetitive (all ✅) · Outlook: Triage & organise · Find & retrieve · Write & respond · Schedule & coordinate · Automate the repetitive (elicited, 0 lessons) | frame — elicited per app: *"what are the fundamental pillars of functionality within {app}?"* |
 | `lesson` | tree leaf, nested in theme (+ subcards; `builds_on` DAG edges) | 223 static pages ✅ (64 authored + 159 persona variants); zero candidates anywhere; `enumerate_permutations.py` computes built/pending from disk | frame |
@@ -74,9 +74,31 @@ verifier; **a batch is not closed until the map shows it**:
 session ended — 2026-07-04's persona sweep ran without it until Stuart noticed. Hence
 this section.)
 
+## Dialect (pipeline-local terms)
+
+Terms this pipeline owns that are NOT pattern-level — demoted from the repo-root
+`CONTEXT.md` on 2026-07-11 under its two-pipeline test (a term earns pattern residency
+only when a second pipeline needs it):
+
+- **Ladder / Rung** — the organisation's GenAI adoption model, the invariant
+  crosscutting axis every *lesson* climbs internally (1 Manual craft → 2 Aldi:GPT →
+  3 M365 Copilot → 4 GitHub Copilot). One org, one ladder; swap the org, swap the
+  ladder. _Avoid_: levels, tiers (Tier means deployment).
+- **Room** — the setting a communication unit rebinds into: email, document, slides,
+  chat. Lives inside pages via the rebind element ("Other rooms, same craft"); never
+  forks a page. The frame key `contexts` and the element `context-rebind` are frozen
+  identifiers (CONTEXT.md two-tier rule); in language say Room, never bare "context".
+- **Specimen** — a practice-pack scenario's deliberately flawed input (the flabby
+  draft, the franken-deck, the planted-error email) that units teach against.
+  _Avoid_: example, sample (bare).
+- **Packet ingredients** (this pipeline's list, per the pattern's Packet entry):
+  contract pointer, coordinate, pinned one-idea, specimen anchor, rung-failure pins,
+  voice reference, hard rules.
+
 ## Beyond this pipeline
 
 This file describes one instance of the Harvest shape (enumeration-expanded). A sibling
 instance runs stream-expanded (social replies against generated posts). What transfers is
 exactly the discipline above: axes as data, one unit per skill invocation, contract as the
-floor. See `~/Documents/studio/FRAME-LEDGER.md`.
+floor. See the estate register, `../DIMENSIONS.md`. (This pipeline is Harvest
+instance #3.)
